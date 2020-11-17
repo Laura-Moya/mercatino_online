@@ -1,0 +1,284 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 17, 2020 at 12:51 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `mercatino_online`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `annuncio`
+--
+
+CREATE TABLE `annuncio` (
+  `codice` int(8) NOT NULL,
+  `venditore` varchar(16) NOT NULL,
+  `via` varchar(30) NOT NULL,
+  `comune` varchar(20) NOT NULL,
+  `regione` varchar(20) NOT NULL,
+  `provincia` varchar(2) NOT NULL,
+  `nome_annuncio` varchar(50) NOT NULL,
+  `nome_prodotto` varchar(30) NOT NULL,
+  `foto` text DEFAULT NULL,
+  `prezzo` float NOT NULL,
+  `nuovo` tinyint(1) NOT NULL,
+  `tempo_usura` varchar(20) DEFAULT NULL,
+  `stato_usura` enum('pari a nuovo','buono','meglio','usato') DEFAULT NULL,
+  `garanzia` tinyint(1) DEFAULT NULL,
+  `copertura_garanzia` varchar(20) DEFAULT NULL,
+  `acquirente` varchar(16) DEFAULT NULL,
+  `visibilita` enum('privata','pubblica','ristretta') NOT NULL DEFAULT 'privata',
+  `luogo_ristretta` varchar(30) DEFAULT NULL,
+  `categorie` enum('Elettrodomestici','Foto e Video','Abbigliamento','Hobby') NOT NULL,
+  `sottocategorie` enum('Aspirapolveri','Caffetiere','Tostapane','Frullattori','Altro1','Macchine fotografiche','Accessori2','Telecamere','Microfoni','Altro2','Vestiti','Borse','Scarpe','Accessori3','Altro3','Giocattoli','Film e DVD','Musica','Libre e Riviste','Altro4') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `annuncio`
+--
+
+INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `luogo_ristretta`, `categorie`, `sottocategorie`) VALUES
+(1, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'vendesi aspirapolvere', 'folletto 3pro', NULL, 200, 1, NULL, NULL, 1, 'due anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Aspirapolveri'),
+(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'microonde', 'Samsung', NULL, 80, 1, NULL, NULL, 1, '7 anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Altro1'),
+(3, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'si vende cellulare usato', 'huawei p20 lite', NULL, 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'milano', 'Hobby', 'Altro4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `indirizzo`
+--
+
+CREATE TABLE `indirizzo` (
+  `via` varchar(30) NOT NULL,
+  `comune` varchar(20) NOT NULL,
+  `provincia` varchar(2) NOT NULL,
+  `regione` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `indirizzo`
+--
+
+INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
+('pitteri 56', 'milano', 'mi', 'lombardia'),
+('scarlatti 33', 'buccinasco', 'mi', 'lombardia');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `osserva`
+--
+
+CREATE TABLE `osserva` (
+  `utente` varchar(16) NOT NULL,
+  `prodotto` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `osserva`
+--
+
+INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
+('MRNVNT96R63I577A', 2),
+('MRNVNT96R63I577A', 3),
+('MYGLRA99P60Z131O', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stato`
+--
+
+CREATE TABLE `stato` (
+  `prodotto` int(8) NOT NULL,
+  `stato` enum('in vendita','venduto','eliminato') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stato`
+--
+
+INSERT INTO `stato` (`prodotto`, `stato`) VALUES
+(1, 'in vendita'),
+(1, 'venduto');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `utente`
+--
+
+CREATE TABLE `utente` (
+  `codice_fiscale` varchar(16) NOT NULL,
+  `nome` varchar(20) NOT NULL,
+  `cognome` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `immagine` text DEFAULT NULL,
+  `tipo_utente` enum('acquirente','venditore') NOT NULL,
+  `via` varchar(30) NOT NULL,
+  `comune` varchar(20) NOT NULL,
+  `provincia` varchar(2) NOT NULL,
+  `regione` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `utente`
+--
+
+INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `via`, `comune`, `provincia`, `regione`) VALUES
+('MRNVNT96R63I577A', 'Valentina', 'Maronese', 'valentina@maronese.com', NULL, 'acquirente', 'scarlatti 33', 'buccinasco', 'mi', 'lombardia'),
+('MYGLRA99P60Z131O', 'Laura', 'Moya', 'laura@moya.com', NULL, 'venditore', 'pitteri 56', 'milano', 'mi', 'lombardia');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `valutazione`
+--
+
+CREATE TABLE `valutazione` (
+  `codice_fiscale_valuta` varchar(16) NOT NULL,
+  `codice_fiscale_valutato` varchar(16) NOT NULL,
+  `serieta` enum('1','2','3','4','5') NOT NULL,
+  `puntualita` enum('1','2','3','4','5') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `valutazione`
+--
+
+INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`) VALUES
+('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '5', '4'),
+('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '5', '5'),
+('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '5', '5');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `annuncio`
+--
+ALTER TABLE `annuncio`
+  ADD PRIMARY KEY (`codice`),
+  ADD KEY `venditore` (`venditore`),
+  ADD KEY `via` (`via`),
+  ADD KEY `comune` (`comune`),
+  ADD KEY `regione` (`regione`),
+  ADD KEY `provincia` (`provincia`),
+  ADD KEY `acquirente` (`acquirente`);
+
+--
+-- Indexes for table `indirizzo`
+--
+ALTER TABLE `indirizzo`
+  ADD PRIMARY KEY (`via`,`comune`,`provincia`,`regione`),
+  ADD KEY `via` (`via`),
+  ADD KEY `comune` (`comune`),
+  ADD KEY `provincia` (`provincia`),
+  ADD KEY `regione` (`regione`);
+
+--
+-- Indexes for table `osserva`
+--
+ALTER TABLE `osserva`
+  ADD PRIMARY KEY (`utente`,`prodotto`),
+  ADD KEY `prodotto` (`prodotto`);
+
+--
+-- Indexes for table `stato`
+--
+ALTER TABLE `stato`
+  ADD PRIMARY KEY (`prodotto`,`stato`);
+
+--
+-- Indexes for table `utente`
+--
+ALTER TABLE `utente`
+  ADD PRIMARY KEY (`codice_fiscale`),
+  ADD KEY `via` (`via`),
+  ADD KEY `comune` (`comune`),
+  ADD KEY `provincia` (`provincia`),
+  ADD KEY `regione` (`regione`);
+
+--
+-- Indexes for table `valutazione`
+--
+ALTER TABLE `valutazione`
+  ADD KEY `codice_fiscale_valutato` (`codice_fiscale_valutato`),
+  ADD KEY `valutazione_ibfk_1` (`codice_fiscale_valuta`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `annuncio`
+--
+ALTER TABLE `annuncio`
+  MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `annuncio`
+--
+ALTER TABLE `annuncio`
+  ADD CONSTRAINT `annuncio_ibfk_1` FOREIGN KEY (`venditore`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `annuncio_ibfk_2` FOREIGN KEY (`via`) REFERENCES `indirizzo` (`via`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `annuncio_ibfk_3` FOREIGN KEY (`comune`) REFERENCES `indirizzo` (`comune`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `annuncio_ibfk_4` FOREIGN KEY (`provincia`) REFERENCES `indirizzo` (`provincia`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `annuncio_ibfk_5` FOREIGN KEY (`regione`) REFERENCES `indirizzo` (`regione`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `annuncio_ibfk_6` FOREIGN KEY (`acquirente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `osserva`
+--
+ALTER TABLE `osserva`
+  ADD CONSTRAINT `osserva_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `osserva_ibfk_2` FOREIGN KEY (`utente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `stato`
+--
+ALTER TABLE `stato`
+  ADD CONSTRAINT `stato_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `utente`
+--
+ALTER TABLE `utente`
+  ADD CONSTRAINT `utente_ibfk_1` FOREIGN KEY (`via`) REFERENCES `indirizzo` (`via`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `utente_ibfk_2` FOREIGN KEY (`comune`) REFERENCES `indirizzo` (`comune`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `utente_ibfk_3` FOREIGN KEY (`provincia`) REFERENCES `indirizzo` (`provincia`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `utente_ibfk_4` FOREIGN KEY (`regione`) REFERENCES `indirizzo` (`regione`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `valutazione`
+--
+ALTER TABLE `valutazione`
+  ADD CONSTRAINT `valutazione_ibfk_1` FOREIGN KEY (`codice_fiscale_valuta`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `valutazione_ibfk_2` FOREIGN KEY (`codice_fiscale_valutato`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
