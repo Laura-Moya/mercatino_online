@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 12:51 PM
+-- Generation Time: Nov 17, 2020 at 07:41 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -83,6 +83,25 @@ INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `luogo_ristretta`
+--
+
+CREATE TABLE `luogo_ristretta` (
+  `regione` varchar(20) NOT NULL,
+  `provincia` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `luogo_ristretta`
+--
+
+INSERT INTO `luogo_ristretta` (`regione`, `provincia`) VALUES
+('lombardia', 'mi'),
+('piemonte', 'to');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `osserva`
 --
 
@@ -103,21 +122,43 @@ INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `possiede`
+--
+
+CREATE TABLE `possiede` (
+  `prodotto` int(8) NOT NULL,
+  `regione` varchar(20) NOT NULL,
+  `provincia` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `possiede`
+--
+
+INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
+(3, 'lombardia', 'mi'),
+(3, 'piemonte', 'to');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stato`
 --
 
 CREATE TABLE `stato` (
   `prodotto` int(8) NOT NULL,
-  `stato` enum('in vendita','venduto','eliminato') NOT NULL
+  `stato` enum('in vendita','venduto','eliminato') NOT NULL,
+  `data_ora` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `stato`
 --
 
-INSERT INTO `stato` (`prodotto`, `stato`) VALUES
-(1, 'in vendita'),
-(1, 'venduto');
+INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
+(1, 'in vendita', '2020-11-17 18:45:36'),
+(1, 'in vendita', '2020-11-17 18:46:25'),
+(1, 'venduto', '2020-11-17 18:45:36');
 
 -- --------------------------------------------------------
 
@@ -195,6 +236,14 @@ ALTER TABLE `indirizzo`
   ADD KEY `regione` (`regione`);
 
 --
+-- Indexes for table `luogo_ristretta`
+--
+ALTER TABLE `luogo_ristretta`
+  ADD PRIMARY KEY (`regione`,`provincia`),
+  ADD KEY `regione` (`regione`),
+  ADD KEY `provincia` (`provincia`);
+
+--
 -- Indexes for table `osserva`
 --
 ALTER TABLE `osserva`
@@ -202,10 +251,18 @@ ALTER TABLE `osserva`
   ADD KEY `prodotto` (`prodotto`);
 
 --
+-- Indexes for table `possiede`
+--
+ALTER TABLE `possiede`
+  ADD PRIMARY KEY (`prodotto`,`regione`,`provincia`),
+  ADD KEY `regione` (`regione`),
+  ADD KEY `provincia` (`provincia`);
+
+--
 -- Indexes for table `stato`
 --
 ALTER TABLE `stato`
-  ADD PRIMARY KEY (`prodotto`,`stato`);
+  ADD PRIMARY KEY (`prodotto`,`stato`,`data_ora`);
 
 --
 -- Indexes for table `utente`
@@ -255,6 +312,14 @@ ALTER TABLE `annuncio`
 ALTER TABLE `osserva`
   ADD CONSTRAINT `osserva_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `osserva_ibfk_2` FOREIGN KEY (`utente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `possiede`
+--
+ALTER TABLE `possiede`
+  ADD CONSTRAINT `possiede_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `possiede_ibfk_2` FOREIGN KEY (`regione`) REFERENCES `luogo_ristretta` (`regione`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `possiede_ibfk_3` FOREIGN KEY (`provincia`) REFERENCES `luogo_ristretta` (`provincia`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `stato`
