@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 18, 2020 alle 16:19
--- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.2.34
+-- Generation Time: Nov 18, 2020 at 05:38 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `annuncio`
+-- Table structure for table `annuncio`
 --
 
 CREATE TABLE `annuncio` (
@@ -40,30 +40,29 @@ CREATE TABLE `annuncio` (
   `prezzo` float NOT NULL,
   `nuovo` tinyint(1) NOT NULL,
   `tempo_usura` varchar(20) DEFAULT NULL,
-  `stato_usura` enum('pari a nuovo','buono','medio','usato') DEFAULT NULL,
+  `stato_usura` enum('pari a nuovo','buono','meglio','usato') DEFAULT NULL,
   `garanzia` tinyint(1) DEFAULT NULL,
   `copertura_garanzia` varchar(20) DEFAULT NULL,
   `acquirente` varchar(16) DEFAULT NULL,
   `visibilita` enum('privata','pubblica','ristretta') NOT NULL DEFAULT 'privata',
   `luogo_ristretta` varchar(30) DEFAULT NULL,
   `categorie` enum('Elettrodomestici','Foto e Video','Abbigliamento','Hobby') NOT NULL,
-  `sottocategorie` enum('Aspirapolveri','Caffetiere','Tostapane','Frullattori','Altro1','Macchine fotografiche','Accessori2','Telecamere','Microfoni','Altro2','Vestiti','Borse','Scarpe','Accessori3','Altro3','Giocattoli','Film e DVD','Musica','Libre e Riviste','Altro4') NOT NULL,
-  `metodo_pagamento` enum('contanti','carta') DEFAULT NULL
+  `sottocategorie` enum('Aspirapolveri','Caffetiere','Tostapane','Frullattori','Altro1','Macchine fotografiche','Accessori2','Telecamere','Microfoni','Altro2','Vestiti','Borse','Scarpe','Accessori3','Altro3','Giocattoli','Film e DVD','Musica','Libre e Riviste','Altro4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `annuncio`
+-- Dumping data for table `annuncio`
 --
 
-INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `luogo_ristretta`, `categorie`, `sottocategorie`, `metodo_pagamento`) VALUES
-(1, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'vendesi aspirapolvere', 'folletto 3pro', NULL, 200, 1, NULL, NULL, 1, 'due anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Aspirapolveri', 'contanti'),
-(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'microonde', 'Samsung', NULL, 80, 1, NULL, NULL, 1, '7 anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Altro1', 'carta'),
-(3, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'si vende cellulare usato', 'huawei p20 lite', NULL, 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'milano', 'Hobby', 'Altro4', NULL);
+INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `luogo_ristretta`, `categorie`, `sottocategorie`) VALUES
+(1, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'vendesi aspirapolvere', 'folletto 3pro', NULL, 200, 1, NULL, NULL, 1, 'due anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Aspirapolveri'),
+(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'microonde', 'Samsung', NULL, 80, 1, NULL, NULL, 1, '7 anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Altro1'),
+(3, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'si vende cellulare usato', 'huawei p20 lite', NULL, 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'milano', 'Hobby', 'Altro4');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `indirizzo`
+-- Table structure for table `indirizzo`
 --
 
 CREATE TABLE `indirizzo` (
@@ -74,17 +73,18 @@ CREATE TABLE `indirizzo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `indirizzo`
+-- Dumping data for table `indirizzo`
 --
 
 INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
+('galileo galilei 3', 'stresa', 'vb', 'piemonte'),
 ('pitteri 56', 'milano', 'mi', 'lombardia'),
 ('scarlatti 33', 'buccinasco', 'mi', 'lombardia');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `luogo_ristretta`
+-- Table structure for table `luogo_ristretta`
 --
 
 CREATE TABLE `luogo_ristretta` (
@@ -93,7 +93,7 @@ CREATE TABLE `luogo_ristretta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `luogo_ristretta`
+-- Dumping data for table `luogo_ristretta`
 --
 
 INSERT INTO `luogo_ristretta` (`regione`, `provincia`) VALUES
@@ -103,7 +103,7 @@ INSERT INTO `luogo_ristretta` (`regione`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `osserva`
+-- Table structure for table `osserva`
 --
 
 CREATE TABLE `osserva` (
@@ -112,18 +112,19 @@ CREATE TABLE `osserva` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `osserva`
+-- Dumping data for table `osserva`
 --
 
 INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
 ('MRNVNT96R63I577A', 2),
 ('MRNVNT96R63I577A', 3),
+('MYGLRA99P60Z131O', 1),
 ('MYGLRA99P60Z131O', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `possiede`
+-- Table structure for table `possiede`
 --
 
 CREATE TABLE `possiede` (
@@ -133,7 +134,7 @@ CREATE TABLE `possiede` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `possiede`
+-- Dumping data for table `possiede`
 --
 
 INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
@@ -143,7 +144,7 @@ INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `stato`
+-- Table structure for table `stato`
 --
 
 CREATE TABLE `stato` (
@@ -153,18 +154,20 @@ CREATE TABLE `stato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `stato`
+-- Dumping data for table `stato`
 --
 
 INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (1, 'in vendita', '2020-11-17 18:45:36'),
 (1, 'in vendita', '2020-11-17 18:46:25'),
-(1, 'venduto', '2020-11-17 18:45:36');
+(1, 'venduto', '2020-11-17 18:45:36'),
+(3, 'in vendita', '2020-11-18 17:11:16'),
+(3, 'venduto', '2020-11-18 17:11:05');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `utente`
+-- Table structure for table `utente`
 --
 
 CREATE TABLE `utente` (
@@ -181,7 +184,7 @@ CREATE TABLE `utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `utente`
+-- Dumping data for table `utente`
 --
 
 INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `via`, `comune`, `provincia`, `regione`) VALUES
@@ -191,7 +194,7 @@ INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `valutazione`
+-- Table structure for table `valutazione`
 --
 
 CREATE TABLE `valutazione` (
@@ -202,7 +205,7 @@ CREATE TABLE `valutazione` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `valutazione`
+-- Dumping data for table `valutazione`
 --
 
 INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`) VALUES
@@ -211,11 +214,11 @@ INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `
 ('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '5', '5');
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `annuncio`
+-- Indexes for table `annuncio`
 --
 ALTER TABLE `annuncio`
   ADD PRIMARY KEY (`codice`),
@@ -227,7 +230,7 @@ ALTER TABLE `annuncio`
   ADD KEY `acquirente` (`acquirente`);
 
 --
--- Indici per le tabelle `indirizzo`
+-- Indexes for table `indirizzo`
 --
 ALTER TABLE `indirizzo`
   ADD PRIMARY KEY (`via`,`comune`,`provincia`,`regione`),
@@ -237,7 +240,7 @@ ALTER TABLE `indirizzo`
   ADD KEY `regione` (`regione`);
 
 --
--- Indici per le tabelle `luogo_ristretta`
+-- Indexes for table `luogo_ristretta`
 --
 ALTER TABLE `luogo_ristretta`
   ADD PRIMARY KEY (`regione`,`provincia`),
@@ -245,14 +248,14 @@ ALTER TABLE `luogo_ristretta`
   ADD KEY `provincia` (`provincia`);
 
 --
--- Indici per le tabelle `osserva`
+-- Indexes for table `osserva`
 --
 ALTER TABLE `osserva`
   ADD PRIMARY KEY (`utente`,`prodotto`),
   ADD KEY `prodotto` (`prodotto`);
 
 --
--- Indici per le tabelle `possiede`
+-- Indexes for table `possiede`
 --
 ALTER TABLE `possiede`
   ADD PRIMARY KEY (`prodotto`,`regione`,`provincia`),
@@ -260,13 +263,13 @@ ALTER TABLE `possiede`
   ADD KEY `provincia` (`provincia`);
 
 --
--- Indici per le tabelle `stato`
+-- Indexes for table `stato`
 --
 ALTER TABLE `stato`
   ADD PRIMARY KEY (`prodotto`,`stato`,`data_ora`);
 
 --
--- Indici per le tabelle `utente`
+-- Indexes for table `utente`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`codice_fiscale`),
@@ -276,28 +279,28 @@ ALTER TABLE `utente`
   ADD KEY `regione` (`regione`);
 
 --
--- Indici per le tabelle `valutazione`
+-- Indexes for table `valutazione`
 --
 ALTER TABLE `valutazione`
   ADD KEY `codice_fiscale_valutato` (`codice_fiscale_valutato`),
   ADD KEY `valutazione_ibfk_1` (`codice_fiscale_valuta`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `annuncio`
+-- AUTO_INCREMENT for table `annuncio`
 --
 ALTER TABLE `annuncio`
   MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `annuncio`
+-- Constraints for table `annuncio`
 --
 ALTER TABLE `annuncio`
   ADD CONSTRAINT `annuncio_ibfk_1` FOREIGN KEY (`venditore`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -308,14 +311,14 @@ ALTER TABLE `annuncio`
   ADD CONSTRAINT `annuncio_ibfk_6` FOREIGN KEY (`acquirente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `osserva`
+-- Constraints for table `osserva`
 --
 ALTER TABLE `osserva`
   ADD CONSTRAINT `osserva_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `osserva_ibfk_2` FOREIGN KEY (`utente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `possiede`
+-- Constraints for table `possiede`
 --
 ALTER TABLE `possiede`
   ADD CONSTRAINT `possiede_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -323,13 +326,13 @@ ALTER TABLE `possiede`
   ADD CONSTRAINT `possiede_ibfk_3` FOREIGN KEY (`provincia`) REFERENCES `luogo_ristretta` (`provincia`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `stato`
+-- Constraints for table `stato`
 --
 ALTER TABLE `stato`
   ADD CONSTRAINT `stato_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `utente`
+-- Constraints for table `utente`
 --
 ALTER TABLE `utente`
   ADD CONSTRAINT `utente_ibfk_1` FOREIGN KEY (`via`) REFERENCES `indirizzo` (`via`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -338,7 +341,7 @@ ALTER TABLE `utente`
   ADD CONSTRAINT `utente_ibfk_4` FOREIGN KEY (`regione`) REFERENCES `indirizzo` (`regione`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `valutazione`
+-- Constraints for table `valutazione`
 --
 ALTER TABLE `valutazione`
   ADD CONSTRAINT `valutazione_ibfk_1` FOREIGN KEY (`codice_fiscale_valuta`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
