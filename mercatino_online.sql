@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 18, 2020 alle 17:53
+-- Creato il: Nov 18, 2020 alle 18:42
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -45,7 +45,6 @@ CREATE TABLE `annuncio` (
   `copertura_garanzia` varchar(20) DEFAULT NULL,
   `acquirente` varchar(16) DEFAULT NULL,
   `visibilita` enum('privata','pubblica','ristretta') NOT NULL DEFAULT 'privata',
-  `luogo_ristretta` varchar(30) DEFAULT NULL,
   `categorie` enum('Elettrodomestici','Foto e Video','Abbigliamento','Hobby') NOT NULL,
   `sottocategorie` enum('Aspirapolveri','Caffetiere','Tostapane','Frullattori','Altro1','Macchine fotografiche','Accessori2','Telecamere','Microfoni','Altro2','Vestiti','Borse','Scarpe','Accessori3','Altro3','Giocattoli','Film e DVD','Musica','Libre e Riviste','Altro4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -54,10 +53,11 @@ CREATE TABLE `annuncio` (
 -- Dump dei dati per la tabella `annuncio`
 --
 
-INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `luogo_ristretta`, `categorie`, `sottocategorie`) VALUES
-(1, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'vendesi aspirapolvere', 'folletto 3pro', NULL, 200, 1, NULL, NULL, 1, 'due anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Aspirapolveri'),
-(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'microonde', 'Samsung', NULL, 80, 1, NULL, NULL, 1, '7 anni', 'MRNVNT96R63I577A', 'privata', NULL, 'Elettrodomestici', 'Altro1'),
-(3, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'si vende cellulare usato', 'huawei p20 lite', NULL, 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'milano', 'Hobby', 'Altro4');
+INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`) VALUES
+(1, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'vendesi aspirapolvere', 'folletto 3pro', NULL, 200, 1, NULL, NULL, 1, 'due anni', 'MRNVNT96R63I577A', 'privata', 'Elettrodomestici', 'Aspirapolveri'),
+(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'microonde', 'Samsung', NULL, 80, 1, NULL, NULL, 1, '7 anni', 'MRNVNT96R63I577A', 'privata', 'Elettrodomestici', 'Altro1'),
+(3, 'MYGLRA99P60Z131O', 'pitteri 56', 'milano', 'lombardia', 'mi', 'si vende cellulare usato', 'huawei p20 lite', NULL, 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'Hobby', 'Altro4'),
+(4, 'MYGLRA99P60Z131O', 'galileo galilei 3', 'stresa', 'piemonte', 'vb', 'si vende tv usata', 'Philips 480', NULL, 500, 0, '2 anni', 'buono', NULL, NULL, NULL, 'ristretta', 'Foto e Video', 'Altro2');
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,8 @@ CREATE TABLE `possiede` (
 
 INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
 (3, 'lombardia', 'mi'),
-(3, 'piemonte', 'to');
+(3, 'piemonte', 'to'),
+(4, 'piemonte', 'to');
 
 -- --------------------------------------------------------
 
@@ -207,7 +208,9 @@ CREATE TABLE `valutazione` (
 INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`) VALUES
 ('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '5', '4'),
 ('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '5', '5'),
-('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '5', '5');
+('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '5', '5'),
+('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '1', '3'),
+('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -317,7 +320,7 @@ ALTER TABLE `vive`
 -- AUTO_INCREMENT per la tabella `annuncio`
 --
 ALTER TABLE `annuncio`
-  MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Limiti per le tabelle scaricate
