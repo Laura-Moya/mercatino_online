@@ -1,4 +1,10 @@
-body {
+* {
+  margin: 2% 8% 1% 0%  ;
+  display: block;
+}
 
-  background-color: red;
+.navbar {
+  width: 55%;
+  justify-content: center !important;
+  text-align: center;
 }
