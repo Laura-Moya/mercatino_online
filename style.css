@@ -1,9 +1,4 @@
-* {
-  margin: 2% 8% 2% 0%;
-}
-
-.input-group.md-form.form-sm.form-1 input{
-  border: 1px solid #bdbdbd;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+.navbar {
+  margin: 3rem;
+  background-color: #FFFFFF; 
 }
