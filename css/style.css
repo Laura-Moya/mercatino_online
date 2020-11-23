@@ -1,5 +1,10 @@
-.navbar {
+#prima_navbar{
   margin: 3rem;
+  background-color: #FFFFFF;
+}
+
+.navbar {
+  margin: 2rem 3rem 2rem 3rem;
   background-color: #FFFFFF;
 }
 
@@ -21,4 +26,13 @@
 
 .second {
   margin-left: 9.7rem;
+}
+
+.linea {
+  border-top: 1px solid black;
+  height: 2px;
+}
+
+.form-check {
+  vertical-align: middle;
 }
