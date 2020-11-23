@@ -20,19 +20,18 @@
   margin-right: 1rem;
 }
 
-.icon-eye {
-  padding-left: 15px;
-}
-
 .second {
   margin-left: 9.7rem;
 }
 
-.linea {
-  border-top: 1px solid black;
-  height: 2px;
+.icon-eye {
+  padding-left: 15px;
 }
 
-.form-check {
-  vertical-align: middle;
+.linea {
+  border-top: 1px solid black;
+}
+
+#categorie {
+  margin: 0;
 }
