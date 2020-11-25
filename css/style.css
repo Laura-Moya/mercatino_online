@@ -53,6 +53,15 @@ p#primo-piano {
   margin:auto;
 }
 
-#sottocategorie {
-  width: 15% !important;
+/* #sottocategorie {
+  width: 18% !important;
+} */
+
+.container-filtri-annunci {
+  display: grid;
+  grid-template-columns: 28% 72%;
+}
+
+#annunci {
+  margin: 2rem 3rem 2rem 3rem;
 }
