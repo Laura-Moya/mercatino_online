@@ -37,7 +37,7 @@
       </nav>
       <!-- Elenco annunci -->
       <div class="annunci">
-        <div class="card mb-3" id="annunci" style="max-width: 700px;">
+        <div class="card mb-3" id="annunci" style="max-width: 770px;">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img src="images/fornellino.jpg" class="card-img" alt="...">
@@ -51,7 +51,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" id="annunci" style="max-width: 700px;">
+        <div class="card mb-3" id="annunci" style="max-width: 770px;">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img src="images/fornellino.jpg" class="card-img" alt="...">
@@ -65,7 +65,7 @@
             </div>
           </div>
         </div>
-        <!-- <div class="card mb-3" id="annunci" style="max-width: 700px;">
+        <div class="card mb-3" id="annunci" style="max-width: 770px;">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img src="images/fornellino.jpg" class="card-img" alt="...">
@@ -79,7 +79,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" id="annunci" style="max-width: 700px;">
+        <div class="card mb-3" id="annunci" style="max-width: 770px;">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img src="images/fornellino.jpg" class="card-img" alt="...">
@@ -93,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-3" id="annunci" style="max-width: 700px;">
+        <div class="card mb-3" id="annunci" style="max-width: 770px;">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img src="images/fornellino.jpg" class="card-img" alt="...">
@@ -106,7 +106,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
       <!-- Navbar filtri -->
       <nav class="navbar bg-light" id="sottocategorie">
@@ -191,5 +191,6 @@
 
 
   </body>
+  
   <!-- include "common/footer.php"; -->
 </html>

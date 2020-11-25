@@ -60,8 +60,17 @@ p#primo-piano {
 .container-filtri-annunci {
   display: grid;
   grid-template-columns: 28% 72%;
+  /* grid-template-rows: 35% 45% auto; */
+  grid-template-rows: 20rem 27rem auto;
 }
 
 #annunci {
   margin: 2rem 3rem 2rem 3rem;
+}
+
+/* Profilo */
+.container-profilo{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 50% auto;
 }
