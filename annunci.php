@@ -186,11 +186,10 @@
         </ul>
       </nav>
 
-
     </div>
 
 
   </body>
-  
+
   <!-- include "common/footer.php"; -->
 </html>

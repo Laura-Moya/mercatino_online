@@ -69,11 +69,11 @@ p#primo-piano {
 }
 
 /* Profilo */
-.container-profilo{
+/* .container-profilo{
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 50% auto;
-}
+} */
 
 .valutazione-profilo {
   margin-top: 2rem !important;
