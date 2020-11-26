@@ -1,12 +1,17 @@
-#prima_navbar{
+#prima_navbar {
   margin: 3.2rem;
   background-color: #FFFFFF;
 }
 
 p#primo-piano {
-  padding-top: 2rem;
-  padding-left: 4.8rem;
+  /* padding-top: 2rem;
+  padding-left: 4.8rem; */
   font-size: 1.5rem;
+  text-align: center !important;
+}
+
+p {
+  margin-bottom: 2rem !important;
 }
 
 .navbar {
@@ -43,20 +48,19 @@ p#primo-piano {
 }
 
 /* Card Container */
-.container{
+.container {
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
 
 .card {
   margin-bottom: 1rem !important;
-  margin:auto;
+  margin: auto;
 }
 
 /* #sottocategorie {
   width: 18% !important;
 } */
-
 .container-filtri-annunci {
   display: grid;
   grid-template-columns: 28% 72%;
@@ -74,6 +78,14 @@ p#primo-piano {
   grid-template-columns: 30% 70%;
   grid-template-rows: 50% auto;
 } */
+.immagine-profilo {
+  width: auto;
+}
+
+.info-profilo {
+  padding-left: 6.6rem !important;
+  padding-top: 2.5rem !important;
+}
 
 .valutazione-profilo {
   margin-top: 2rem !important;
@@ -81,6 +93,19 @@ p#primo-piano {
 }
 
 /* Icons */
-.fa-star{
+.fa-star {
   color: #f1c40f;
+}
+
+/* Registrazione */
+.container-registrazione {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
 }

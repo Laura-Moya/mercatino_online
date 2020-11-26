@@ -7,10 +7,10 @@
 
     <div class="container-profilo container">
       <div class="row">
-        <div class="immagine-profilo col-sm-6">
-          <img src="images/lisa2.jpg" style="width: 20%;" alt="immagine_profilo">
+        <div class="immagine-profilo col-sm-12 col-md-6 col-lg-4">
+          <img src="images/lisa2.jpg" style="width: 70%;" alt="immagine_profilo">
         </div>
-        <div class="info-profilo col-sm-6">
+        <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
           <h1 class="nome-profilo">LISA</h1>
           <h2 class="cognome-profilo">SIMPSON</h2>
           <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: lisaSimpson@gmail.com">lisaSimpson@gmail.com</a></p>
@@ -29,9 +29,10 @@
 
 
     <!-- Link a gli annunci più osservati -->
-    <p id="primo-piano">I più osservati</p>
+
     <!-- Annunci in vendita -->
     <div class="container">
+      <p id="primo-piano">I più osservati</p>
       <div class="row">
         <div class="card" style="width: 16rem;">
           <img src="images/fornellino.jpg" class="card-img-top" alt="...">

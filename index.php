@@ -89,10 +89,10 @@
   </nav>
   <!-- Linea di Divisione -->
   <div class="linea"></div>
-  <!-- Link a gli annunci più osservati -->
-  <p id="primo-piano"><a href="#">In primo piano</a></p>
   <!-- Top 4 più osservati -->
   <div class="container">
+    <!-- Link a gli annunci più osservati -->
+    <p id="primo-piano"><a href="#">In primo piano</a></p>
     <div class="row">
       <div class="card" style="width: 16rem;">
         <img src="images/fornellino.jpg" class="card-img-top" alt="...">
