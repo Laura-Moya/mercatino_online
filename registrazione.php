@@ -41,11 +41,11 @@
               </tr>
               <tr>
                 <td align="center">
-                  <input class="btn btn-primary" type="submit" value="OK" />
+                  <input class="btn btn-primary" id="btn" type="submit" value="OK" />
 
                 </td>
                 <td align="center">
-                  <input class="btn btn-primary" type = "reset" value = "Cancella"/>
+                  <input class="btn btn-primary" id="btn" type = "reset" value = "Cancella"/>
                 </td>
               </tr>
           </table>

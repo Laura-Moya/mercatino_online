@@ -25,7 +25,7 @@ p {
 
 /* Container search bar */
 .search-bar {
-  width: 90%;
+  width: 80%;
 }
 
 /* Search bar itself */
@@ -118,7 +118,7 @@ input {
   margin-bottom: 0.6rem !important;
 }
 
-.btn {
+#btn {
   width: 100% !important;
 }
 

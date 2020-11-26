@@ -17,7 +17,7 @@
     <ul class="navbar-nav">
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i>Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-eye fa-lg icon-eye"></i></a>
