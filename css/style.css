@@ -14,7 +14,7 @@ p {
   margin-bottom: 2rem !important;
 }
 
-h6#destra {
+.destra {
   margin-left:1.5rem;
 }
 
@@ -121,6 +121,7 @@ input {
 .btn {
   width: 100% !important;
 }
+
 /* .tabella-registrazione {
   padding: 10px;
   border: 1px solid black;

@@ -11,37 +11,30 @@
             </tr>
             <tr>
               <td> <h6>Nome</h6>  </td>
-              <td> <h6 id="destra"> Cognome</h6> </td>
+              <td> <h6 class="destra"> Cognome</h6> </td>
             </tr>
             <tr>
               <td> <input style="margin-right:1.5rem;" type="text" name="nome"> </td>
-              <td> <input style="margin-left:1.5rem;" type="text" name="cognome"> </td>
+              <td> <input class="destra" type="text" name="cognome"> </td>
             </tr>
             <tr>
               <td> <h6>Email</h6> </td>
-              <td> <h6 id="destra">Password</h6> </td>
+              <td> <h6 class="destra">Password</h6> </td>
             </tr>
             <tr>
               <td> <input style="margin-right:1.5rem;" type="email" name="email"> </td>
-              <td><input style="margin-left:1.5rem;" type="password" name="password"> </td>
+              <td><input class="destra" type="password" name="password"> </td>
             </tr>
               <tr>
-                <td colspan="2" align="center"><h6>Seleziona tipo utente</h6>
+                <td><h6>Seleziona tipo utente</h6>
                 <input type="radio" id="venditore" name="tipo_utente" value="venditore">
-                <label for="venditore">Venditore </label>
-                <br>
+                <label style="margin-right:0.5rem" for="venditore">Venditore </label>
                 <input type="radio" id="acquirente" name="tipo_utente" value="acquirente">
-                <label style="margin-bottom: 1rem;" for="acquirente">Acquirente</label></td>
-
+                <label for="acquirente">Acquirente</label></td>
+                <td> <h6 class="destra" style="vertical-align: sub">Codice Fiscale</h6> <input class="destra" type="text" name="codice-fiscale"> </td>
               </tr>
               <tr>
-                <td colspan="2" align="center">Codice Fiscale</td>
-              </tr>
-              <tr>
-                <td colspan="2" align="center"><input type="text" name="codice-fiscale"></td>
-              </tr>
-              <tr>
-                <td colspan="2" align="center">Carica una immagine per il tuo profilo</td>
+                <td colspan="2" align="center"> <h6 style="margin-top: 0.5rem;">Carica una immagine per il tuo profilo</h6></td>
               </tr>
               <tr>
                 <td colspan="2" align="center"><input type="file" name=""></td>
