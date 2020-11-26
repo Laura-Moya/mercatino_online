@@ -5,47 +5,56 @@
 
     <div class="container-registrazione">
         <form class="" action="index.php" method="post">
-          <table>
+          <table class="tabella-registrazione">
             <tr>
               <h2 class="title">Registrazione Profilo</h2>
             </tr>
             <tr>
-              <td>Nome </td>
-              <td>Cognome </td>
+              <td> <h6>Nome</h6>  </td>
+              <td> <h6 id="destra"> Cognome</h6> </td>
             </tr>
             <tr>
-              <td> <input type="text" name="nome"> </td>
-              <td> <input type="text" name="cognome"> </td>
+              <td> <input style="margin-right:1.5rem;" type="text" name="nome"> </td>
+              <td> <input style="margin-left:1.5rem;" type="text" name="cognome"> </td>
             </tr>
             <tr>
-              <td>Email </td>
-              <td>Password </td>
+              <td> <h6>Email</h6> </td>
+              <td> <h6 id="destra">Password</h6> </td>
             </tr>
             <tr>
-              <td> <input type="email" name="email"> </td>
-              <td><input type="password" name="password"> </td>
+              <td> <input style="margin-right:1.5rem;" type="email" name="email"> </td>
+              <td><input style="margin-left:1.5rem;" type="password" name="password"> </td>
             </tr>
-            <tr>
-              <td><p>Seleziona tipo utente</p>
-              <input type="radio" id="venditore" name="tipo_utente" value="venditore">
-              <label for="venditore">Venditore</label>
-              <input type="radio" id="acquirente" name="tipo_utente" value="acquirente">
-              <label for="acquirente">Acquirente</label></td>
+              <tr>
+                <td colspan="2" align="center"><h6>Seleziona tipo utente</h6>
+                <input type="radio" id="venditore" name="tipo_utente" value="venditore">
+                <label for="venditore">Venditore </label>
+                <br>
+                <input type="radio" id="acquirente" name="tipo_utente" value="acquirente">
+                <label style="margin-bottom: 1rem;" for="acquirente">Acquirente</label></td>
 
-            </tr>
-            <tr>
-              <td>Codice Fiscale</td>
-            </tr>
-            <tr>
-              <td><input type="text" name="codice-fiscale"></td>
-            </tr>
-            <tr>
-              <td>Carica una immagine per il tuo profilo</td>
-            </tr>
-            <tr>
-              <td><input type="file" name="dfghj"></td>
-            </tr>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">Codice Fiscale</td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center"><input type="text" name="codice-fiscale"></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">Carica una immagine per il tuo profilo</td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center"><input type="file" name=""></td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <input class="btn btn-primary" type="submit" value="OK" />
 
+                </td>
+                <td align="center">
+                  <input class="btn btn-primary" type = "reset" value = "Cancella"/>
+                </td>
+              </tr>
           </table>
         </form>
     </div>
