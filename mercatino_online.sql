@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2020 at 08:37 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Creato il: Nov 28, 2020 alle 16:37
+-- Versione del server: 10.4.14-MariaDB
+-- Versione PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `annuncio`
+-- Struttura della tabella `annuncio`
 --
 
 CREATE TABLE `annuncio` (
@@ -50,7 +50,7 @@ CREATE TABLE `annuncio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `annuncio`
+-- Dump dei dati per la tabella `annuncio`
 --
 
 INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`) VALUES
@@ -63,7 +63,7 @@ INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `prov
 -- --------------------------------------------------------
 
 --
--- Table structure for table `indirizzo`
+-- Struttura della tabella `indirizzo`
 --
 
 CREATE TABLE `indirizzo` (
@@ -74,7 +74,7 @@ CREATE TABLE `indirizzo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `indirizzo`
+-- Dump dei dati per la tabella `indirizzo`
 --
 
 INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
@@ -86,7 +86,7 @@ INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `luogo_ristretta`
+-- Struttura della tabella `luogo_ristretta`
 --
 
 CREATE TABLE `luogo_ristretta` (
@@ -95,7 +95,7 @@ CREATE TABLE `luogo_ristretta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `luogo_ristretta`
+-- Dump dei dati per la tabella `luogo_ristretta`
 --
 
 INSERT INTO `luogo_ristretta` (`regione`, `provincia`) VALUES
@@ -105,7 +105,7 @@ INSERT INTO `luogo_ristretta` (`regione`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `osserva`
+-- Struttura della tabella `osserva`
 --
 
 CREATE TABLE `osserva` (
@@ -114,7 +114,7 @@ CREATE TABLE `osserva` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `osserva`
+-- Dump dei dati per la tabella `osserva`
 --
 
 INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
@@ -129,7 +129,7 @@ INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `possiede`
+-- Struttura della tabella `possiede`
 --
 
 CREATE TABLE `possiede` (
@@ -139,7 +139,7 @@ CREATE TABLE `possiede` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `possiede`
+-- Dump dei dati per la tabella `possiede`
 --
 
 INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
@@ -150,7 +150,7 @@ INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stato`
+-- Struttura della tabella `stato`
 --
 
 CREATE TABLE `stato` (
@@ -160,20 +160,22 @@ CREATE TABLE `stato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `stato`
+-- Dump dei dati per la tabella `stato`
 --
 
 INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (1, 'in vendita', '2020-11-17 18:45:36'),
 (1, 'in vendita', '2020-11-17 18:46:25'),
 (1, 'venduto', '2020-11-17 18:45:36'),
+(2, 'venduto', '2020-11-19 11:33:30'),
 (3, 'in vendita', '2020-11-18 17:11:16'),
-(3, 'venduto', '2020-11-18 17:11:05');
+(3, 'venduto', '2020-11-18 17:11:05'),
+(5, 'venduto', '2020-11-19 10:48:40');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utente`
+-- Struttura della tabella `utente`
 --
 
 CREATE TABLE `utente` (
@@ -182,22 +184,23 @@ CREATE TABLE `utente` (
   `cognome` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `immagine` text DEFAULT NULL,
-  `tipo_utente` enum('acquirente','venditore') NOT NULL
+  `tipo_utente` enum('acquirente','venditore') NOT NULL,
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `utente`
+-- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`) VALUES
-('MRNVNT96R63I577A', 'Valentina', 'Maronese', 'valentina@maronese.com', NULL, 'acquirente'),
-('MRRCLS06S13H501K', 'Callisto', 'Morra', 'callisto@morra.com', NULL, 'venditore'),
-('MYGLRA99P60Z131O', 'Laura', 'Moya', 'laura@moya.com', NULL, 'venditore');
+INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `password`) VALUES
+('MRNVNT96R63I577A', 'Valentina', 'Maronese', 'valentina@maronese.com', NULL, 'acquirente', '1234'),
+('MRRCLS06S13H501K', 'Callisto', 'Morra', 'callisto@morra.com', NULL, 'venditore', '4567'),
+('MYGLRA99P60Z131O', 'Laura', 'Moya', 'laura@moya.com', NULL, 'venditore', '7890');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `valutazione`
+-- Struttura della tabella `valutazione`
 --
 
 CREATE TABLE `valutazione` (
@@ -208,7 +211,7 @@ CREATE TABLE `valutazione` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `valutazione`
+-- Dump dei dati per la tabella `valutazione`
 --
 
 INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`) VALUES
@@ -222,7 +225,7 @@ INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vive`
+-- Struttura della tabella `vive`
 --
 
 CREATE TABLE `vive` (
@@ -234,7 +237,7 @@ CREATE TABLE `vive` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `vive`
+-- Dump dei dati per la tabella `vive`
 --
 
 INSERT INTO `vive` (`codice_fiscale`, `via`, `comune`, `provincia`, `regione`) VALUES
@@ -242,11 +245,11 @@ INSERT INTO `vive` (`codice_fiscale`, `via`, `comune`, `provincia`, `regione`) V
 ('MRNVNT96R63I577A', 'scarlatti 33', 'buccinasco', 'mi', 'lombardia');
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `annuncio`
+-- Indici per le tabelle `annuncio`
 --
 ALTER TABLE `annuncio`
   ADD PRIMARY KEY (`codice`),
@@ -258,7 +261,7 @@ ALTER TABLE `annuncio`
   ADD KEY `acquirente` (`acquirente`);
 
 --
--- Indexes for table `indirizzo`
+-- Indici per le tabelle `indirizzo`
 --
 ALTER TABLE `indirizzo`
   ADD PRIMARY KEY (`via`,`comune`,`provincia`,`regione`),
@@ -268,7 +271,7 @@ ALTER TABLE `indirizzo`
   ADD KEY `regione` (`regione`);
 
 --
--- Indexes for table `luogo_ristretta`
+-- Indici per le tabelle `luogo_ristretta`
 --
 ALTER TABLE `luogo_ristretta`
   ADD PRIMARY KEY (`regione`,`provincia`),
@@ -276,14 +279,14 @@ ALTER TABLE `luogo_ristretta`
   ADD KEY `provincia` (`provincia`);
 
 --
--- Indexes for table `osserva`
+-- Indici per le tabelle `osserva`
 --
 ALTER TABLE `osserva`
   ADD PRIMARY KEY (`utente`,`prodotto`),
   ADD KEY `prodotto` (`prodotto`);
 
 --
--- Indexes for table `possiede`
+-- Indici per le tabelle `possiede`
 --
 ALTER TABLE `possiede`
   ADD PRIMARY KEY (`prodotto`,`regione`,`provincia`),
@@ -291,26 +294,26 @@ ALTER TABLE `possiede`
   ADD KEY `provincia` (`provincia`);
 
 --
--- Indexes for table `stato`
+-- Indici per le tabelle `stato`
 --
 ALTER TABLE `stato`
   ADD PRIMARY KEY (`prodotto`,`stato`,`data_ora`);
 
 --
--- Indexes for table `utente`
+-- Indici per le tabelle `utente`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`codice_fiscale`);
 
 --
--- Indexes for table `valutazione`
+-- Indici per le tabelle `valutazione`
 --
 ALTER TABLE `valutazione`
   ADD KEY `codice_fiscale_valutato` (`codice_fiscale_valutato`),
   ADD KEY `valutazione_ibfk_1` (`codice_fiscale_valuta`);
 
 --
--- Indexes for table `vive`
+-- Indici per le tabelle `vive`
 --
 ALTER TABLE `vive`
   ADD PRIMARY KEY (`codice_fiscale`,`via`,`comune`,`provincia`,`regione`),
@@ -320,21 +323,21 @@ ALTER TABLE `vive`
   ADD KEY `regione` (`regione`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `annuncio`
+-- AUTO_INCREMENT per la tabella `annuncio`
 --
 ALTER TABLE `annuncio`
   MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `annuncio`
+-- Limiti per la tabella `annuncio`
 --
 ALTER TABLE `annuncio`
   ADD CONSTRAINT `annuncio_ibfk_1` FOREIGN KEY (`venditore`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -345,14 +348,14 @@ ALTER TABLE `annuncio`
   ADD CONSTRAINT `annuncio_ibfk_6` FOREIGN KEY (`acquirente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `osserva`
+-- Limiti per la tabella `osserva`
 --
 ALTER TABLE `osserva`
   ADD CONSTRAINT `osserva_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `osserva_ibfk_2` FOREIGN KEY (`utente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `possiede`
+-- Limiti per la tabella `possiede`
 --
 ALTER TABLE `possiede`
   ADD CONSTRAINT `possiede_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -360,20 +363,20 @@ ALTER TABLE `possiede`
   ADD CONSTRAINT `possiede_ibfk_3` FOREIGN KEY (`provincia`) REFERENCES `luogo_ristretta` (`provincia`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `stato`
+-- Limiti per la tabella `stato`
 --
 ALTER TABLE `stato`
   ADD CONSTRAINT `stato_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `valutazione`
+-- Limiti per la tabella `valutazione`
 --
 ALTER TABLE `valutazione`
   ADD CONSTRAINT `valutazione_ibfk_1` FOREIGN KEY (`codice_fiscale_valuta`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `valutazione_ibfk_2` FOREIGN KEY (`codice_fiscale_valutato`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `vive`
+-- Limiti per la tabella `vive`
 --
 ALTER TABLE `vive`
   ADD CONSTRAINT `vive_ibfk_1` FOREIGN KEY (`codice_fiscale`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
