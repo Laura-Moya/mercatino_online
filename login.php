@@ -4,7 +4,7 @@
   <body>
 
     <div class="container-registrazione">
-        <form class="" action="index.php" method="post">
+        <form action="check.php" method="POST">
           <table>
             <tr>
               <h2 class="title">Login</h2>
@@ -14,7 +14,6 @@
             </tr>
             <tr>
               <td> <input type="email" name="email"> </td>
-
             </tr>
             <tr>
               <td>Password </td>
@@ -31,6 +30,20 @@
 
           </table>
         </form>
+    </div>
+
+    <div class="errore">
+      <?php
+
+        if (isset($_POST["errore"]))
+        {
+          if ($_POST["errore"] == "login")
+            echo "La email dell'utente che hai inserito è errata";
+          if ($_POST["errore"] == "password")
+            echo "La password che hai inserito è errata";
+        }
+
+      ?>
     </div>
 
   </body>

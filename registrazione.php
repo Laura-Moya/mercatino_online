@@ -4,7 +4,7 @@
   <body>
 
     <div class="container-registrazione">
-        <form class="" action="index.php" method="post">
+        <form action="" method="">
           <table class="tabella-registrazione">
             <tr>
               <h2 class="title">Registrazione Profilo</h2>
