@@ -126,3 +126,10 @@ input {
   padding: 10px;
   border: 1px solid black;
 } */
+
+@media screen and (max-width: 800px) {
+  #sottocategorie {
+    background-color: white !important;
+
+  }
+}

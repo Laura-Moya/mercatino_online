@@ -23,8 +23,8 @@
             </tr>
             <tr>
               <td align="center">
-                <input class="btn btn-primary" type="submit" value="OK" />
-                <input class="btn btn-primary" type = "reset" value = "Cancella"/>
+                <input class="btn btn-primary btn-login " style="width: 48%;" type="submit" value="OK" />
+                <input class="btn btn-primary btn-login " style="width: 48%;" type = "reset" value = "Cancella"/>
               </td>
             </tr>
 

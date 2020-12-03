@@ -4,16 +4,16 @@
   <?php include "common/header.php";?>
 
   <body>
-    <?php include "common/navbar.php";?>
-    <!-- Percorso -->
-    <nav aria-label="breadcrumb">
+      <?php include "common/navbar.php";?>
+      <!-- Percorso -->
+      <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Annunci</li>
       </ol>
     </nav>
 
-    <div class="container-filtri-annunci">
+      <div class="container-filtri-annunci">
 
       <!-- Navbar Sottocategorie -->
       <nav class="navbar bg-light" id="sottocategorie">
