@@ -31,7 +31,7 @@
                 <label style="margin-right:0.5rem" for="venditore">Venditore </label>
                 <input type="radio" id="acquirente" name="tipo_utente" value="acquirente">
                 <label for="acquirente">Acquirente</label></td>
-                <td> <h6 class="destra" style="vertical-align: sub">Codice Fiscale</h6> <input class="destra" type="text" name="codice-fiscale"> </td>
+                <td> <h6 class="destra">Codice Fiscale</h6><input class="destra" type="text" name="codice-fiscale"> </td>
               </tr>
               <tr>
                 <td colspan="2" align="center"> <h6 style="margin-top: 0.5rem;">Carica una immagine per il tuo profilo</h6></td>

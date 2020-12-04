@@ -28,7 +28,6 @@ function isUser($cid,$login,$pwd)
     return $risultato;
 }
 
-
 // Funzione relative alle funzione degli annunci
 
 function leggiAnnunci($cid)
@@ -88,7 +87,7 @@ function stampaAnnunci($annunci)
 
 function inserireAnnuncio($cid, $codice, $nome_annuncio)
 {
-
+	
 }
 
 
