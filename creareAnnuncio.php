@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <?php include "common/header.php";?>
+  <link rel="stylesheet" href="common/selezionaCategoria.js">
   <body>
 
   <?php include "common/navbar.php";?>
 
   <div class="container-creare-annuncio" align="center">
+
       <form class="" action="" method="">
         <table class="">
           <tr>
@@ -32,31 +34,21 @@
           <!-- Dropdowns -->
           <tr>
             <td>
-              <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle form-size"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Categoria
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Elettrodomestici</a>
-                  <a class="dropdown-item" href="#">Hobby</a>
-                  <a class="dropdown-item" href="#">Foto e Video</a>
-                  <a class="dropdown-item" href="#">Abbigliamento</a>
-                </div>
+              <div class="">
+                <label for="validationCustom03">Categoria:</label>
+                <select class="form-control form-control-md" name="category" id="validationCustom03" onchange="ChangecatList()" required>
+                  <option value="">Seleziona... </option>
+                  <option value="Elettrodomestici">Elettrodomestici</option>
+                  <option value="Foto e Video">Foto e Video</option>
+                  <option value="Abbigliamento">Abbigliamento</option>
+                  <option value="Hobby">Hobby</option>
+                </select>
               </div>
             </td>
             <td>
-              <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle form-size" class=""href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Sottocategoria
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">xxxx</a>
-                  <a class="dropdown-item" href="#">xxxx</a>
-                  <a class="dropdown-item" href="#">xxxx</a>
-                  <a class="dropdown-item" href="#">xxxx</a>
-                </div>
+              <div class="">
+                <label for="validationCustom04">Sottocategoria:</label>
+                <select class="form-control form-control-md" id="validationCustom04" name="sottocategoria" required></select>
               </div>
             </td>
           </tr>
@@ -96,6 +88,32 @@
         </table>
       </form>
   </div>
+  <script type="text/javascript">
+    var sottocategorie = {};
+      sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro'];
+      sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro'];
+      sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro'];
+      sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro'];
 
+
+
+      function ChangecatList() {
+  var catList = document.getElementById("validationCustom03");
+  var sotList = document.getElementById("validationCustom04");
+  var selCat = catList.options[catList.selectedIndex].value;
+  while (sotList.options.length) {
+      sotList.remove(0);
+  }
+  var cats = sottocategorie[selCat];
+  if (cats) {
+      var i;
+      for (i = 0; i < cats.length; i++) {
+          var cat = new Option(cats[i], i);
+          sotList.options.add(cat);
+      }
+  }
+}
+
+  </script>
   </body>
 </html>
