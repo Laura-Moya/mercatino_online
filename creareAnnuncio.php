@@ -77,14 +77,14 @@
           <tr>
             <td colspan="2" align="center"><input type="file" name=""></td>
           </tr>
-            <!-- <tr>
-              <td align="center">
-                <input class="btn btn-primary" id="btn" type="submit" value="OK" />
-              </td>
-              <td align="center">
-                <input class="btn btn-primary" id="btn" type = "reset" value = "Cancella"/>
-              </td>
-            </tr> -->
+          <tr>
+            <td align="center">
+              <input class="btn btn-primary" id="btn" type="submit" value="OK" />
+            </td>
+            <td align="center">
+              <input class="btn btn-primary" id="btn" type = "reset" value = "Cancella"/>
+            </td>
+          </tr>
         </table>
       </form>
   </div>

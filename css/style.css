@@ -18,10 +18,26 @@ p {
   margin-left:1.5rem;
 }
 
+/* Stili navbar */
+
+#logo img.resized {
+  width: 200px;
+  height: auto;
+}
+
+
 .navbar {
   margin: 2rem 3rem 2rem 3rem;
   background-color: #FFFFFF;
+}/*
+
+.logo {
+  width: 47%;
 }
+
+.navbar-brand {
+  width: 12rem !important;
+} */
 
 /* Container search bar */
 .search-bar {
@@ -119,6 +135,7 @@ input {
 }
 
 #btn {
+  margin-top: 1rem;
   width: 100% !important;
 }
 

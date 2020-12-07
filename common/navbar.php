@@ -1,30 +1,35 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-light" id="prima_navbar">
-  <a class="navbar-brand" href="index.php">Mercatino</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- Search bar -->
-    <div class="search-bar">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <a class="navbar-brand" href="index.php"> <img src="./images/logo.png" style="width: 15rem;" id="logo" alt="logo"> </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <form class='navbar-form'>
+                <div class='input-group'>
+                  <input class='form-control' type='text' name='search' placeholder='Location' />
+                  <div class="">
+                    <button type='submit' class='btn btn-default'>
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i>Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-eye fa-lg icon-eye"></i></a>
+                </li>
+              </ul>
+            </div>
+        </div>
     </div>
-
-    <ul class="navbar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i>Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-eye fa-lg icon-eye"></i></a>
-      </li>
-    </ul>
-
-  </div>
 </nav>
 <!-- Indirizzo e Categorie -->
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -50,15 +55,6 @@
         <a class="nav-link" href="#">Abbigliamento</a>
       </li>
     </ul>
-
-
-
-    <!-- Linea di Divisione -->
-    <div class="linea"></div>
-
-
-
-
 
 
   </div>
