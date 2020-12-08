@@ -40,6 +40,9 @@
                 <td colspan="2" align="center"><input type="file" name=""></td>
               </tr>
               <tr>
+                <td> <p>Hai gia una account? <a href="index.php">Login!</a></p> </td>
+              </tr>
+              <tr>
                 <td align="center">
                   <input class="btn btn-primary" id="btn" type="submit" value="OK" />
 

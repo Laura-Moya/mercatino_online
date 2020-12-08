@@ -21,7 +21,23 @@
             <div class="col-sm-6 col-md-3 col-lg-3">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i>Login</a>
+                  <!-- LOGIN -->
+                  <a class="nav-link" onclick="openForm()"><i class="fas fa-sign-in-alt"></i>Accedi</a>
+                    <div class="form-popup container-registrazione" id="myForm">
+                      <form action="./check.php" method="POST">
+                      <h4>Il Tuo Mercatino Online</h4>
+
+                      <label for="email"><b>Email</b></label> <br/>
+                      <input type="text" placeholder="Immettere Email" name="email" required><br/>
+
+                      <label for="psw"><b>Password</b></label> <br/>
+                      <input type="password" placeholder="Immettere Password" name="password" required> <br/>
+                      <p>Non hai un account? <a href="./registrazione.php">Registrati!</a></p>
+
+                      <button type="submit" class="btn btn-primary btn-login">Accedi</button>
+                      <button type="button" class="btn btn-primary btn-login" onclick="closeForm()">Chiudi</button>
+                    </form>
+                  </div>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="fas fa-eye fa-lg icon-eye"></i></a>

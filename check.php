@@ -10,19 +10,6 @@
   if ($ris["status"]=="ok") {
     echo "Benvenuto " . $email;
   }
-
-  //
-  // if ($email != "21@gmail.com" || $password != "123")
-  // {
-  //     if ($email != "21@gmail.com") {
-  //       $parameter = "Location: login.php?errore=login&login=$email";
-  //     }
-  //     if ($password != "123") {
-  //       $parameter = "Location: login.php?errore=login&login=$password";
-  //     }
-  //
-  //     header($parameter);
-  // }
   else
 {
 ?>
