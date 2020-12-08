@@ -3,13 +3,23 @@
 
     <div class='container'>
         <div class='row'>
-            <div class="col-sm-12 col-md-3 col-lg-3">
-              <a class="navbar-brand" href="index.php"> <img src="./images/logo.png" style="width: 15rem;" id="logo" alt="logo"> </a>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6">
+          <table>
+                <tr>
+                  <div class="col-sm-12 col-md-3 col-lg-3">
+                  <td>
+
+                    <a class="navbar-brand" href="index.php"> <img src="./images/logo.png" style="width: 15rem;" id="logo" alt="logo"> </a>
+
+                  </td>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <td>
+
               <form class='navbar-form'>
                 <div class='input-group'>
-                  <input class='form-control' type='text' name='search' placeholder='Location' />
+                  <input type="text" placeholder="Search..">
+
                   <div class="">
                     <button type='submit' class='btn btn-default'>
                       <i class="fas fa-search"></i>
@@ -17,8 +27,10 @@
                   </div>
                 </div>
               </form>
-            </div>
-            <div class="col-sm-6 col-md-3 col-lg-3">
+          </td>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <td>
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <!-- LOGIN -->
@@ -43,8 +55,13 @@
                   <a class="nav-link" href="#"><i class="fas fa-eye fa-lg icon-eye"></i></a>
                 </li>
               </ul>
-            </div>
+
+          </td>
+          </div>
+        </tr>
         </div>
+      </table>
+
     </div>
 </nav>
 <!-- Indirizzo e Categorie -->
