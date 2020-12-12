@@ -34,6 +34,7 @@ function leggiAnnunci($cid)
 {
   $annunci = array();
   $risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+	$prodotto = array();
 
   if ($cid->connect_errno) {
     $risultato["status"] = "ko";
@@ -41,7 +42,7 @@ function leggiAnnunci($cid)
     return $risultato;
   }
 
-  $sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', nome_annuncio, nome_prodotto, foto, prezzo, categorie, sottocategorie, nuovo, provincia
+  $sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
           FROM annuncio, utente
           WHERE annuncio.venditore = utente.codice_fiscale;";
   $res=$cid->query($sql);
@@ -52,8 +53,11 @@ function leggiAnnunci($cid)
   }
 
   while ($row=$res->fetch_row()) {
-    $annunci[$row[0]] = $row[1];
-		echo $row[0];
+
+    $annunci[$row[0]] = $prodotto;
+		$prodotto[0] = $row[1];
+		$prodotto[1] = $row[4];
+
   }
 
   $risultato["contenuto"] = $annunci;
@@ -61,24 +65,31 @@ function leggiAnnunci($cid)
 
 }
 
-function stampaAnnunci($annunci)
+function stampaAnnunci($risultato)
 {
-	print_r( $annunci);
+
   echo "<div class=\"table-responsive\">";
 	echo "<table class=\"table text-center\">";
-	echo "<tr><th class=\"text-center\">Codice Prodotto</th>
-	          <th class=\"text-center\">Nome venditore</th>
-			  <th class=\"text-center\">Modifica</th>
-			  <th class=\"text-center\">Cancella</th>
+	echo "<tr><th class=\"text-center\">Codice</th>
+						<th class=\"text-center\">Nome annuncio</th>
+	          <th class=\"text-center\">Nome Venditore</th>
+					  <th class=\"text-center\">Modifica</th>
+					  <th class=\"text-center\">Cancella</th>
 			  </tr>";
-  foreach ($annunci as $codice => $nome) {
-    echo "<tr><td>$codice</td>
-		      <td>$nome</td>
+  foreach ($risultato["contenuto"] as $codice => $nome) {
+    echo "<tr><td>$codice</td>";
+
+					foreach ($annunci[$codice] as $key => $value) {
+						echo "$value";
+					}
+
+
+		echo	"<td>$nome</td>
 		      <td><a href=\"../backend/updateS.php?id=$codice\"><span class=\"glyphicon glyphicon-pencil\"></span></a></td>
 		      <td><a href=\"../backend/deleteS.php?id=$codice\"><span class=\"glyphicon glyphicon-remove\"></span></a></td>
           </tr>";
-              // bisogna implementare queste funzioni
-					print_r($nome);
+          // bisogna implementare queste funzioni
+
   }
 
   echo "</table>";
@@ -87,7 +98,7 @@ function stampaAnnunci($annunci)
 
 function inserireAnnuncio($cid, $codice, $nome_annuncio)
 {
-	
+
 }
 
 
