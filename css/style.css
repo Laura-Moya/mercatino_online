@@ -7,11 +7,9 @@ p#primo-piano {
   padding-left: 4.8rem; */
   font-size: 1.5rem;
   text-align: center !important;
-}
-
-p {
   margin-bottom: 2rem !important;
 }
+
 
 .destra {
   margin-left:1.5rem;
@@ -95,6 +93,9 @@ p {
 } */
 .immagine-profilo {
   width: auto;
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .info-profilo {
