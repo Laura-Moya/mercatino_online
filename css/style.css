@@ -48,8 +48,9 @@ p#primo-piano {
   margin-left: 9.7rem;
 }
 
-.icon-eye {
-  padding-left: 15px;
+.icon-eye#eye-prodotto {
+  /* padding-left: 15px; */
+  margin-right: 5px !important;
 }
 
 .linea {
@@ -207,6 +208,10 @@ form.example::after {
   content: "";
   clear: both;
   display: table;
+}
+
+.stessa-riga {
+  display: inline;
 }
 
 @media screen and (max-width: 800px) {

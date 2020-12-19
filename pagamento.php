@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
   <?php include "common/header.php";?>
+
   <body>
 
     <?php include "common/navbar.php";?>
@@ -11,21 +13,25 @@
           <img src="images/cellulare.jpg" style="width: 70%;" alt="immagine_profilo">
         </div>
         <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
-          <h1 class="nome-annuncio">Cellulare ajasnasjan dnaan aiak siaasnaiqn saisans qiqjs aiaksn aisnqs asiasjasjsa jaj aj</h1>
+          <h2>Stai per acquistare questo prodotto...</h2>
           <p class="nome-prodotto" style="margin-top: 1rem;">Cellulare nuovo Samsung Svy192</p>
-          <h2>Prezzo: 87.16€</h2>
           <p>Venditore: Valentina Maronese</p>
-          <p>Regione: </p>
-          <p>Provincia: </p>
-          <p>Nuovo: Si</p>
-          <p>Categoria: </p>
-          <p>Sottocategoria: </p>
-          <p>Stato: In vendita</p>
+          <div class="stessa-riga">
+            <p for="validationCustom03">Preferisce:</p>
+            <select style="width: 50% !important;" class="form-control form-control-md" name="category" id="validationCustom03" onchange="ChangecatList()" required>
+              <option value="">Seleziona... </option>
+              <option value="Ritiro a mano">Ritiro a mano</option>
+              <option value="Spedizione">Spedizione</option>
+            </select>
+          </div>
+
+          <h2>Prezzo: 87.16€</h2>
           <button class="btn btn-primary" type="button">Acquista ora</button>
           <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>
         </div>
       </div>
     </div>
+
 
   </body>
 
