@@ -10,6 +10,13 @@ p#primo-piano {
   margin-bottom: 2rem !important;
 }
 
+a {
+  color: #9863a9 !important;
+}
+
+a:hover {
+  color: #824f93 !important;
+}
 
 .destra {
   margin-left:1.5rem;
@@ -32,6 +39,10 @@ p#primo-piano {
   padding-right: auto;
 }
 
+#accedi {
+  margin-left: 5rem !important;
+}
+
 /* Container search bar */
 .search-bar {
   width: 80%;
@@ -44,7 +55,17 @@ p#primo-piano {
   margin-right: 1rem;
 }
 
+.fa-map-marker {
+  color: #9863a9;
+  margin-right: 0.6rem;
+}
+
 .second {
+  margin-left: 7rem;
+  text-align: right;
+}
+
+.terzo{
   margin-left: 9.7rem;
 }
 
@@ -133,6 +154,17 @@ input {
 
 #btn {
   width: 100% !important;
+
+}
+
+.btn {
+  background-color: #9863a9 !important;
+  border-color: #9863a9 !important;
+  color: white !important;
+}
+
+.btn:hover {
+  background-color: #824f93 !important;
 }
 
 #piu {
@@ -166,7 +198,8 @@ input {
   position: fixed;
   bottom: 0;
   right: 15px;
-  border: 3px solid #f1f1f1;
+  border: 3px solid black;
+  border-radius: 10px;
   z-index: 9;
   width: 20%;
   height: 55%;
@@ -192,7 +225,7 @@ form.example button {
   float: left;
   width: 20%;
   padding: 10px;
-  background: #2196F3;
+  background: #9863a9;
   color: white;
   font-size: 17px;
   border: 1px solid grey;
@@ -201,7 +234,7 @@ form.example button {
 }
 
 form.example button:hover {
-  background: #0b7dda;
+  background: #824f93;
 }
 
 form.example::after {

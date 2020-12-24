@@ -21,7 +21,7 @@
     <title>Mercatino Online</title>
   </head>
   <body>
-    <h2>Fuck you <?php echo $email?>!</h2>
+    <h2>Questo account non è stato registrato:  <?php echo $email?>!</h2>
   </body>
 </html>
 <?php

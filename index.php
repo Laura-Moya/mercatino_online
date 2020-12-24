@@ -15,7 +15,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown second">
+        <li class="nav-item dropdown terzo">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Stato
           </a>
@@ -24,7 +24,7 @@
             <a class="dropdown-item" href="#">Usato</a>
           </div>
         </li>
-        <li class="nav-item dropdown second">
+        <li class="nav-item dropdown terzo">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Prezzo
           </a>
@@ -35,7 +35,7 @@
             <a class="dropdown-item" href="#">€ 100 - ∞</a>
           </div>
         </li>
-        <li class="nav-item dropdown second">
+        <li class="nav-item dropdown terzo">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Valutazione
           </a>
@@ -74,7 +74,7 @@
             </a>
           </div>
         </li>
-        <li class="nav-item dropdown second">
+        <li class="nav-item dropdown terzo">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Luogo
           </a>
@@ -160,9 +160,17 @@
     </a>
   </div>
 
+  <script>
 
-<!-- include "common/footer.php"; -->
-  <script type="javascript" src="common/login.js"></script>
+    function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    }
+
+  </script>
 </body>
-
+<!-- include "common/footer.php"; -->
 </html>

@@ -2,6 +2,8 @@
   <meta charset="utf-8">
   <title>Mercatino Online</title>
   <link rel="stylesheet" href="./css/style.css">
+  <!-- JQuery -->
+  <script src="jquery-1.3.2.min.js" type="text/javascript"></script> 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <!-- JS -->
@@ -10,5 +12,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/d442b88e2f.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="common/pagare.js"></script>
 
 </head>

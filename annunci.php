@@ -5,13 +5,6 @@
 
   <body>
       <?php include "common/navbar.php";?>
-      <!-- Percorso -->
-      <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Annunci</li>
-      </ol>
-    </nav>
 
       <div class="container-filtri-annunci">
 
@@ -44,8 +37,8 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"> <a href="prodotto.php">Card title</a> </h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title"> <a href="prodotto.php">Cellulare nuovo Samsung Svy192</a> </h5>
+                <p class="card-text">Si vende cellulare usato.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
