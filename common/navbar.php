@@ -36,7 +36,7 @@
             </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-eye fa-lg icon-eye"></i></a>
+          <a class="nav-link" href="osservati.php"><i class="fas fa-eye fa-lg icon-eye"></i></a>
         </li>
       </ul>
     </div>
