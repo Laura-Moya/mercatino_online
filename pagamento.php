@@ -48,7 +48,6 @@
 
           <h2>Prezzo: 87.16€</h2>
           <button class="btn btn-primary" type="button">Acquista ora</button>
-          <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>
         </div>
       </div>
     </div>

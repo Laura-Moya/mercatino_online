@@ -64,13 +64,13 @@
         <a class="nav-link" href="annunci.php">Elettrodomestici</a>
       </li>
       <li class="nav-item second">
-        <a class="nav-link" href="#">Hobby</a>
+        <a class="nav-link" href="annunci.php">Hobby</a>
       </li>
       <li class="nav-item second">
-        <a class="nav-link" href="#">Foto e Video</a>
+        <a class="nav-link" href="annunci.php">Foto e Video</a>
       </li>
       <li class="nav-item second">
-        <a class="nav-link" href="#">Abbigliamento</a>
+        <a class="nav-link" href="annunci.php">Abbigliamento</a>
       </li>
     </ul>
 
