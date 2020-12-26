@@ -22,6 +22,8 @@
             <i class="fas fa-star fa-2x"></i>
           </div>
           <p class="prodotti-venduti-profilo"><a href="#">Prodotti acquistati</a>: 9</p>
+          <p class="prodotti-venduti-profilo"><a href="#">Prodotti osservati</a>: 5</p>
+
           <button class="btn btn-primary" type="button"> Diventa venditore!</button>
         </div>
       </div>
