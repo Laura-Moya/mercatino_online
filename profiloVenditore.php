@@ -24,7 +24,7 @@
           <p class="prodotti-venduti-profilo"><a href="#">Prodotti venduti</a>: 9</p>
           <p class="prodotti-in-vendita-profilo"><a href="#">Prodotti in vendita</a>: 4</p>
           <p class="prodotti-venduti-profilo"><a href="#">Prodotti acquistati</a>: 3</p>
-          <p class="prodotti-venduti-profilo"><a href="#">Prodotti osservati</a>: 5</p>
+          <p class="prodotti-venduti-profilo"><a href="osservati.php">Prodotti osservati</a>: 5</p>
           <button class="btn btn-primary" type="button" onclick="location.href='creareAnnuncio.php'"><i class="fas fa-plus" id="piu"></i> Aggiungi annuncio </button>
         </div>
       </div>
