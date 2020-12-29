@@ -11,7 +11,7 @@
           <img src="images/lisa2.jpg" style="width: 70%;" alt="immagine_profilo">
         </div>
         <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
-          <h1 class="nome-profilo">LISA</h1> <br/>
+          <h1 class="nome-profilo">LISA</h1>
           <h2 class="cognome-profilo">SIMPSON</h2>
           <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: lisaSimpson@gmail.com">lisaSimpson@gmail.com</a></p>
           <div class="valutazione-profilo">
