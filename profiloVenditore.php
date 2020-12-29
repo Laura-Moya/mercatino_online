@@ -35,7 +35,7 @@
 
     <!-- Annunci in vendita -->
     <div class="container">
-      <p id="primo-piano">I più osservati</p> <br/>
+      <p id="primo-piano">I più osservati</p>
       <div class="row">
         <div class="card" style="width: 16rem;">
           <img src="images/fornellino.jpg" class="card-img-top" alt="...">
