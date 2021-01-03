@@ -1,6 +1,33 @@
 
 <?php
 
+function checkMail($cid, $login)
+{
+	$risultato= array("msg"=>"","status"=>"ok");
+
+	$sql = "SELECT * FROM utente where email = '$login'";
+
+	$res = $cid->query($sql);
+	if ($res==null)
+ {
+		 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+		 $risultato["status"]="ko";
+		 $risultato["msg"]=$msg;
+ }elseif($res->num_rows==0 || $res->num_rows>1)
+ {
+		 $msg = "Login sbagliato";
+		 $risultato["status"]="ko";
+		 $risultato["msg"]=$msg;
+ }elseif($res->num_rows==1)
+ {
+	 $msg = "Login effettuato con successo";
+	 $risultato["status"]="ok";
+	 $risultato["msg"]=$msg;
+ }
+	 return $risultato;
+
+}
+
 function isUser($cid,$login,$pwd)
 {
 	$risultato= array("msg"=>"","status"=>"ok");
@@ -9,9 +36,9 @@ function isUser($cid,$login,$pwd)
    $sql = "SELECT * FROM utente where email = '$login' and password = '$pwd'";
 
    $res = $cid->query($sql);
-   	if ($res==null)
+   if ($res==null)
 	{
-	        $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+	    $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
 			$risultato["status"]="ko";
 			$risultato["msg"]=$msg;
 	}elseif($res->num_rows==0 || $res->num_rows>1)
@@ -21,7 +48,7 @@ function isUser($cid,$login,$pwd)
 			$risultato["msg"]=$msg;
 	}elseif($res->num_rows==1)
 	{
-	    $msg = "Login effettuato con successo";
+	  $msg = "Login effettuato con successo";
 		$risultato["status"]="ok";
 		$risultato["msg"]=$msg;
 	}

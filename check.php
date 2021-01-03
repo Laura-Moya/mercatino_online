@@ -6,24 +6,24 @@
   $email = $_POST["email"];
   $password = $_POST["password"];
 
-  $ris = isUser($cid, $email, $password);
-  if ($ris["status"]=="ok") {
-    echo "Benvenuto " . $email;
+  $ris = checkMail($cid, $email);
+  if ($ris["status"] == "ok")
+  {
+    $ris2 = isUser($cid, $email, $password);
+    if ($ris2["status"] == "ok") {
+      // Manca ricaricare la pagina
+      echo "Benvenuto " . $email;
+    }
+    else{
+      $parameter = "Location: index-errore.php?errore=password&login=$password";
+      header($parameter);
+    }
   }
   else
-{
-?>
+  {
+    $parameter = "Location: index-errore.php?errore=email&login=$email";
+    header($parameter);
+  }
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Mercatino Online</title>
-  </head>
-  <body>
-    <h2>Questo account non è stato registrato:  <?php echo $email?>!</h2>
-  </body>
-</html>
-<?php
-}
+
 ?>
