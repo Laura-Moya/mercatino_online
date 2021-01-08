@@ -12,6 +12,7 @@
     $ris2 = isUser($cid, $email, $password);
     if ($ris2["status"] == "ok") {
       // Manca ricaricare la pagina
+      //$_SESSION["logged"] = $email
       echo "Benvenuto " . $email;
     }
     else{
