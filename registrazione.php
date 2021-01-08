@@ -21,6 +21,7 @@ else
 	$dati["password"]="";
 	$dati["codice-fiscale"]="";
 	$dati["tipo_utente"]="acquirente";
+  $dati["immagine"]="";
 }
 
 ?>
@@ -66,7 +67,7 @@ else
                 <td colspan="2" align="center"> <h6 style="margin-top: 0.5rem;">Carica una immagine per il tuo profilo</h6></td>
               </tr>
               <tr>
-                <td colspan="2" align="center"><input type="file" name=""></td>
+                <td colspan="2" align="center"><input type="file" name="immagine" value="<?php  echo $dati["immagine"];?>"></td>
               </tr>
               <tr>
                 <td> <p>Hai già una account? <a href="index.php">Login!</a></p> </td>

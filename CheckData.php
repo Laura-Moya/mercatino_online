@@ -7,8 +7,7 @@ $email=$_GET["email"];
 $password=$_GET["password"];
 $codicefiscale=$_GET["codice-fiscale"];
 $tipoutente=$_GET["tipo_utente"];
-//$attivita=$_GET["attivita"];
-//$condizioni=$_GET["condizioni"];
+$immagine=$_GET["immagine"];
 
 
 if (empty($nome))
@@ -44,6 +43,15 @@ if (empty($password))
 $dati["password"]=$password;
 
 $dati["tipo_utente"]=$tipo_utente;
+
+if (empty($codicefiscale))
+{
+	$errore["codice-fiscale"]="5";
+  $dati["codice-fiscale"]="";
+}
+$dati["codice-fiscale"]=$codicefiscale;
+
+$dati["immagine"]=$immagine;
 
 
 if (!isset($_GET["attivita"]) || count($_GET["attivita"])==0)
