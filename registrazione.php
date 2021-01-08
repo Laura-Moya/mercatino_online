@@ -1,9 +1,9 @@
 <?php
 
-$tipoErrore = array("1"=>"nome non valido",
-                    "2" =>"cognome non valido",
-          					"3" =>"email non valida",
-          					"4" => "password non valida",
+$tipoErrore = array("1"=>"Nome non valido",
+                    "2" =>"Cognome non valido",
+          					"3" =>"Email non valida",
+          					"4" => "Password non valida",
           					"5" => "Codice fiscale non valido");
 $errore = array();
 $dati = array();
@@ -41,18 +41,18 @@ else
               <td> <h6 class="destra"> Cognome</h6> </td>
             </tr>
             <tr>
-              <td> <input style="margin-right:1.5rem;" type="text" name="nome"  value="<?php  echo $dati["nome"];?>"> <?php if (isset($errore["nome"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["nome"]] . "</span>"; ?>
+              <td> <input style="margin-right:1.5rem;" type="text" name="nome"  value="<?php  echo $dati["nome"];?>"> </br> <?php if (isset($errore["nome"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nome"]] . "</span>"; ?>
               </td>
-              <td> <input class="destra" type="text" name="cognome" value="<?php  echo $dati["cognome"];?>"> <?php if (isset($errore["cognome"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["cognome"]] . "</span>"; ?> </td>
+              <td> <input class="destra" type="text" name="cognome" value="<?php  echo $dati["cognome"];?>"> </br> <?php if (isset($errore["cognome"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["cognome"]] . "</span>"; ?> </td>
             </tr>
             <tr>
               <td> <h6>Email</h6> </td>
               <td> <h6 class="destra">Password</h6> </td>
             </tr>
             <tr>
-              <td> <input style="margin-right:1.5rem;" type="email" name="email" value="<?php  echo $dati["email"];?>"> <?php if (isset($errore["email"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["email"]] . "</span>"; ?>
+              <td> <input style="margin-right:1.5rem;" type="email" name="email" value="<?php  echo $dati["email"];?>"> </br> <?php if (isset($errore["email"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["email"]] . "</span>"; ?>
                </td>
-              <td><input class="destra" type="password" name="password" value="<?php  echo $dati["password"];?>"> <?php if (isset($errore["password"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["password"]] . "</span>"; ?> </td>
+              <td><input class="destra" type="password" name="password" value="<?php  echo $dati["password"];?>"> </br> <?php if (isset($errore["password"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["password"]] . "</span>"; ?> </td>
             </tr>
               <tr>
                 <td><h6>Seleziona tipo utente</h6>
@@ -60,7 +60,7 @@ else
                 <label style="margin-right:0.5rem" for="venditore">Venditore </label>
                 <input type="radio" id="acquirente" name="tipo_utente" value="acquirente" <?php echo $dati["tipo_utente"]=='acquirente'?"checked":"";?>>
                 <label for="acquirente">Acquirente</label></td>
-                <td> <h6 class="destra">Codice Fiscale</h6> <input class="destra" maxlength="16" type="text" name="codice-fiscale" value="<?php  echo $dati["codice-fiscale"];?>"> <?php if (isset($errore["codice-fiscale"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["codice-fiscale"]] . "</span>"; ?>
+                <td> <h6 class="destra">Codice Fiscale</h6> <input class="destra" maxlength="16" type="text" name="codice-fiscale" value="<?php  echo $dati["codice-fiscale"];?>"> </br> <?php if (isset($errore["codice-fiscale"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["codice-fiscale"]] . "</span>"; ?>
                 </td>
               </tr>
               <tr>

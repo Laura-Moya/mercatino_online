@@ -9,7 +9,6 @@ p#primo-piano {
   text-align: center !important;
   margin-bottom: 2rem !important;
 }
-
 a {
   color: #9863a9 !important;
 }
@@ -171,6 +170,10 @@ input {
   margin-right: 0.5rem !important;
 }
 
+.errore{
+  color: red ;
+}
+
 /* Creare Annuncio */
 
 .container-creare-annuncio {
@@ -209,7 +212,7 @@ input {
 /* Login Popup Errore */
 
 .form-popup-errore {
-  
+
 }
 
 /* Search bar style */

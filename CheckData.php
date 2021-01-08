@@ -53,32 +53,13 @@ $dati["codice-fiscale"]=$codicefiscale;
 
 $dati["immagine"]=$immagine;
 
-
-if (!isset($_GET["attivita"]) || count($_GET["attivita"])==0)
-{
-	$errore["attivita"]="4";
-	$dati["attivita"]=array();
-}
-else
-	$dati["attivita"]=$_GET["attivita"];
-
-if (!isset($_GET["condizioni"]))
-{
-	$errore["condizioni"]="5";
-	$dati["condizioni"]="";
-}
-else
-	$dati["condizioni"]=$_GET["condizioni"];
-
-
-
 if (count($errore)>0)
 {
-	header('location:datiUtente.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+	header('location:registrazione.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 }
 else
 {
-	header('location:datiUtente.php?status=ok&dati=' . serialize($dati));
+	header('location:registrazione.php?status=ok&dati=' . serialize($dati));
 }
 
 
