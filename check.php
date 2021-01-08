@@ -6,6 +6,26 @@
   $email = $_POST["email"];
   $password = $_POST["password"];
 
+  if (empty($email))
+  {
+  	$errore["email"]="1";
+  	$dati["email"]="";
+  }
+  else
+  {
+  	$dati["email"]=$email;
+  }
+
+  if (empty($password))
+  {
+  	$errore["password"]="2";
+  	$dati["password"]="";
+  }
+  else
+  {
+  	$dati["password"]=$password;
+  }
+
   $ris = checkMail($cid, $email);
   if ($ris["status"] == "ok")
   {
@@ -16,13 +36,13 @@
       echo "Benvenuto " . $email;
     }
     else{
-      $parameter = "Location: index-errore.php?errore=password&login=$password";
+      $parameter = "Location: index.php?errore=password&login=$password";
       header($parameter);
     }
   }
   else
   {
-    $parameter = "Location: index-errore.php?errore=email&login=$email";
+    $parameter = "Location: index.php?errore=email&login=$email";
     header($parameter);
   }
 
