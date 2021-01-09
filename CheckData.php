@@ -1,5 +1,8 @@
 <?php
 
+include_once "db/connect.php";
+include_once "common/funzioni.php";
+
 $dati=array();
 $nome=$_GET["nome"];
 $cognome=$_GET["cognome"];
@@ -61,6 +64,22 @@ else
 {
 	header('location:registrazione.php?status=ok&dati=' . serialize($dati));
 }
-
+$ris2 = checkMail($cid, $email, $password);
+	if ($ris2["status"] == "ok") {
+		$parameter = "Location: registrazione.php?errore=utentegiaregistrato";
+		header($parameter);
+	}
+	else{
+		$ris = newUser($cid, $nome, $cognome, $email, $password, $tipo_utente, $immagine, $codicefiscale);
+		if ($ris["status"] == "ok")
+			{
+				echo "Benvenuto " . $email;
+			}
+		else
+				{
+					$parameter = "Location: registrazione.php?errore=connectionbd";
+					header($parameter);
+				}
+	}
 
 ?>

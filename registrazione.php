@@ -20,7 +20,7 @@ else
 	$dati["email"]="";
 	$dati["password"]="";
 	$dati["codice-fiscale"]="";
-	$dati["tipo_utente"]="acquirente";
+	$dati["tipo_utente"]="";
   $dati["immagine"]="";
 }
 
@@ -56,9 +56,9 @@ else
             </tr>
               <tr>
                 <td><h6>Seleziona tipo utente</h6>
-                <input type="radio" id="venditore" name="tipo_utente" value="venditore"<?php echo $dati["tipo_utente"]=='venditore'?"checked":"";?>>
+                <input type="radio" id="venditore" name="venditore" value="venditore"<?php echo $dati["tipo_utente"]=='venditore'?"checked":"";?>>
                 <label style="margin-right:0.5rem" for="venditore">Venditore </label>
-                <input type="radio" id="acquirente" name="tipo_utente" value="acquirente" <?php echo $dati["tipo_utente"]=='acquirente'?"checked":"";?>>
+                <input type="radio" id="acquirente" name="acquirente" value="acquirente" <?php echo $dati["tipo_utente"]=='acquirente'?"checked":"";?>>
                 <label for="acquirente">Acquirente</label></td>
                 <td> <h6 class="destra">Codice Fiscale</h6> <input class="destra" maxlength="16" type="text" name="codice-fiscale" value="<?php  echo $dati["codice-fiscale"];?>"> </br> <?php if (isset($errore["codice-fiscale"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["codice-fiscale"]] . "</span>"; ?>
                 </td>

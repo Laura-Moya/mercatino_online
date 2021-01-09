@@ -123,10 +123,10 @@ function stampaAnnunci($risultato)
   echo "</div>";
 }
 
-function newUser($cid, $nome, $cognome, $email, $password, $tipo_utente, $immagine, $codicefiscale){
+function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagine, $codicefiscale){
 		$risultato= array("msg"=>"","status"=>"ok");
 		$sql= "INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `password`)
-					VALUES ('$codicefiscale', '$nome', '$cognome', '$email', '$immagine', '$tipo_utente', '$password')"
+					VALUES ('$codicefiscale', '$nome', '$cognome', '$login', '$immagine', '$tipo_utente', '$password')";
 
 		$res = $cid->query($sql);
 		if ($res==null)
@@ -135,22 +135,22 @@ function newUser($cid, $nome, $cognome, $email, $password, $tipo_utente, $immagi
 			 $risultato["status"]="ko";
 			 $risultato["msg"]=$msg;
 		 }
-		elseif (isUser($cid,$login,$pwd))
+		/*elseif (isUser($cid,$login,$pwd))
 		{
 			$msg ="Utente già registrato";
 			$risultato["status"]="ko";
 			$risultato["msg"]=$msg;
-		}
+		}*/
 		else
 		{
-			$msg = "Registrazione effettuata con successo"
+			$msg = "Registrazione effettuata con successo";
 			$risultato["status"]="ok";
 			$risultato["msg"]=$msg;
 		}
 		 return $risultato;
 
 	}
-}
+
 function inserireAnnuncio($cid, $codice, $nome_annuncio)
 {
 
