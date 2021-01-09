@@ -1,6 +1,6 @@
 <?php
 
-$tipoErrore = array("1"=>"Email non valida",
+$tipoErrore = array("1" =>"Email non valida",
                     "2" =>"Password non valida");
 $errore = array();
 $dati = array();
@@ -38,15 +38,15 @@ else
         <li class="nav-item">
           <!-- LOGIN -->
           <a class="nav-link" onclick="openForm()" style="cursor: pointer;" id="accedi"><i class="fas fa-sign-in-alt"></i>Accedi</a>
-            <div class="form-popup container-registrazione" id="myForm">  <?php if (isset($errore["email"]) || isset($errore["password"])) echo "<span class=\"errore\" style= display: \"block\">" . "</span>"; ?>
+            <div class="form-popup container-registrazione" id="myForm">
               <form action="./check.php" method="POST">
               <h4>Il Tuo Mercatino Online</h4>
 
               <label for="email"><b>Email</b></label> <br/>
-              <input type="text" placeholder="Immettere Email" name="email"  value="<?php  echo $dati["email"];?>"> </br> <?php if (isset($errore["email"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["email"]] . "</span>"; ?><br/>
+              <input type="text" placeholder="Immettere Email" name="email"  value="<?php  echo $dati["email"];?>"> </br> <?php if (isset($errore["email"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["email"]] . "</span>"; ?>
 
               <label for="psw"><b>Password</b></label> <br/>
-              <input type="password" placeholder="Immettere Password" name="password"  value="<?php  echo $dati["password"];?>"> </br> <?php if (isset($errore["password"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["password"]] . "</span>"; ?> <br/>
+              <input type="password" placeholder="Immettere Password" name="password"  value="<?php  echo $dati["password"];?>"> </br> <?php if (isset($errore["password"])) echo "<span class=\"errore\">" . $tipoErrore[$errore["password"]] . "</span>"; ?>
               <p>Non hai un account? <a href="./registrazione.php">Registrati!</a></p>
 
               <button type="submit" class="btn btn-primary btn-login">Accedi</button>

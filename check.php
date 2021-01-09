@@ -36,13 +36,13 @@
       echo "Benvenuto " . $email;
     }
     else{
-      $parameter = "Location: index.php?errore=password&login=$password";
+      $parameter = "Location: index.php?errore=password&password=$password";
       header($parameter);
     }
   }
   else
   {
-    $parameter = "Location: index.php?errore=email&login=$email";
+    $parameter = "Location: index.php?errore=email&email=$email";
     header($parameter);
   }
 
