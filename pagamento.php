@@ -18,7 +18,7 @@
           <p>Venditore: Valentina Maronese</p>
           <div class="stessa-riga">
             <p for="validationCustom03">Preferisce:</p>
-            <select style="width: 50% !important;" class="form-control form-control-md" name="category" id="validationCustom03" onchange="mostrare()" required>
+            <select style="width: 50% !important;" class="form-control form-control-md" name="" id="" onchange="mostrare()" required>
               <option value="">Seleziona... </option>
               <option value="ritiro_a_mano">Ritiro a mano</option>
               <option value="carta_credito">Spedizione</option>
@@ -27,7 +27,7 @@
 
           <div id="ritiro_a_mano">
             <p>Come vuoi pagare?</p>
-            <select style="width: 50% !important;" class="form-control form-control-md" name="category" id="validationCustom03" onchange="mostrare()" required>
+            <select style="width: 50% !important;" class="form-control form-control-md" name="" id="" onchange="mostrare()" required>
               <option value="">Seleziona... </option>
               <option value="contanti">Contanti</option>
               <option value="carta_credito">Carta di pagamento</option>

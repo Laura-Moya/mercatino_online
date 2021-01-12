@@ -64,8 +64,8 @@ else
 <!-- Indirizzo e Categorie -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div>
-    <p for="validationCustom03"><i class="fas fa-map-marker"></i>Indirizzo </p>
-    <select class="form-control form-control-md" id="validationCustom03" required>
+    <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
+    <select class="form-control form-control-md" id="aaa" required>
       <option value="">Via Pitteri, 56</option>
       <option value="">Via Dante Alighieri, 32</option>
     </select>
