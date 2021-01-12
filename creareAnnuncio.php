@@ -1,3 +1,25 @@
+<?php
+
+$tipoErrore = array("1"=>"Inserire il nome dell'annuncio",
+                    "2" =>"Inserire il nome del prodotto",
+          					"3" =>"Prezzo del prodotto non valido",);
+$errore = array();
+$dati = array();
+
+if (isset($_GET["status"]))
+{
+	if ($_GET["status"]=='ko') $errore=unserialize($_GET["errore"]);
+	$dati=unserialize($_GET["dati"]);
+}
+else
+{
+	$dati["nome_annuncio"]="";
+	$dati["nome_prodotto"]="";
+	$dati["prezzo"]="";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <?php include "common/header.php";?>
@@ -17,19 +39,25 @@
             <td colspan="2"><h6>Nome Annuncio</h6></td>
           </tr>
           <tr>
-            <td colspan="2"> <input class="form-size" type="text" name="nome_prodotto"> </td>
+            <td colspan="2"> <input class="form-size" type="text" name="nome_annuncio" value= "<?php  echo $dati["nome_annuncio"];?>"> </br>
+              <?php if (isset($errore["nome_annuncio"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nome_annuncio"]] . "</span>"; ?>
+             </td>
           </tr>
           <tr>
             <td colspan="2"> <h6> Nome Prodotto</h6> </td>
           </tr>
           <tr>
-            <td colspan="2"> <input class="form-size" type="text" name="nome_annuncio"> </td>
+            <td colspan="2"> <input class="form-size" type="text" name="nome_prodotto" value = "<?php  echo $dati["nome_prodotto"];?>"> </br>
+              <?php if (isset($errore["nome_prodotto"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nome_prodotto"]] . "</span>"; ?>
+             </td>
           </tr>
           <tr>
             <td colspan="2"><h6>Prezzo</h6></td>
           </tr>
           <tr>
-            <td colspan="2"> <input class="form-size" type="text" name="prezzo"> </td>
+            <td colspan="2"> <input class="form-size" type="text" name="prezzo" value = "<?php  echo $dati["prezzo"];?>"> </br>
+              <?php if (isset($errore["prezzo"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["prezzo"]] . "</span>"; ?>
+             </td>
           </tr>
           <!-- Dropdowns -->
           <tr>
