@@ -9,7 +9,7 @@ $cognome=$_GET["cognome"];
 $email=$_GET["email"];
 $password=$_GET["password"];
 $codicefiscale=$_GET["codice-fiscale"];
-$tipoutente=$_GET["tipo_utente"];
+$tipoutente=$_GET["tipoutente"];
 $immagine=$_GET["immagine"];
 
 
@@ -45,7 +45,7 @@ if (empty($password))
 }
 $dati["password"]=$password;
 
-$dati["tipo_utente"]=$tipo_utente;
+$dati["tipoutente"]=$tipoutente;
 
 if (empty($codicefiscale))
 {
@@ -70,7 +70,7 @@ $ris2 = checkMail($cid, $email, $password);
 		header($parameter);
 	}
 	else{
-		$ris = newUser($cid, $nome, $cognome, $email, $password, $tipo_utente, $immagine, $codicefiscale);
+		$ris = newUser($cid, $nome, $cognome, $email, $password, $tipoutente, $immagine, $codicefiscale);
 		if ($ris["status"] == "ok")
 			{
 				echo "Benvenuto " . $email;
