@@ -4,29 +4,29 @@ include_once "db/connect.php";
 include_once "common/funzioni.php";
 
 $dati=array();
-$nome_annuncio=$_GET["nome_annuncio"];
-$nome_prodotto=$_GET["nome_prodotto"];
+$nomeannuncio=$_GET["nomeannuncio"];
+$nomeprodotto=$_GET["nomeprodotto"];
 $prezzo=$_GET["prezzo"];
 
 
 
-if (empty($nome_annuncio))
+if (empty($nomeannuncio))
 {
-	$errore["nome_annuncio"]="1";
-	$dati["nome_annuncio"]="";
+	$errore["nomeannuncio"]="1";
+	$dati["nomeannuncio"]="";
 }
 else
 {
-	$dati["nome_annuncio"]=$nome_annuncio;
+	$dati["nomeannuncio"]=$nomeannuncio;
 }
 
-if (empty($nome_prodotto))
+if (empty($nomeprodotto))
 {
-	$errore["nome_prodotto"]="2";
-	$dati["nome_prodotto"]="";
+	$errore["nomeprodotto"]="2";
+	$dati["nomeprodotto"]="";
 }
 else
-	$dati["nome_prodotto"]=$nome_prodotto;
+	$dati["nomeprodotto"]=$nomeprodotto;
 
 if (empty($prezzo))
 {

@@ -160,17 +160,6 @@
     </a>
   </div>
 
-  <script>
-
-    function openForm() {
-    document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-    }
-
-  </script>
 </body>
 <!-- include "common/footer.php"; -->
 </html>

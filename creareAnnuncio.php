@@ -14,8 +14,8 @@ if (isset($_GET["status"]))
 }
 else
 {
-	$dati["nome_annuncio"]="";
-	$dati["nome_prodotto"]="";
+	$dati["nomeannuncio"]="";
+	$dati["nomeprodotto"]="";
 	$dati["prezzo"]="";
 }
 
@@ -50,15 +50,14 @@ else
     }
   }
   </script>
-  
+
   <!-- <link src="text/javascript" href="common/selezionaCategoria.js"> -->
   <body>
 
   <?php include "common/navbar.php";?>
 
   <div class="container-creare-annuncio" align="center">
-
-      <form class="" action="" method="">
+      <form class="" action="checkAnnuncio.php" method="GET">
         <table class="">
           <tr>
             <h2 class="title">Creare Annuncio</h2>
@@ -67,16 +66,15 @@ else
             <td colspan="2"><h6>Nome Annuncio</h6></td>
           </tr>
           <tr>
-            <td colspan="2"> <input class="form-size" type="text" name="nome_annuncio" value= "<?php  echo $dati["nome_annuncio"];?>"> </br>
-              <?php if (isset($errore["nome_annuncio"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nome_annuncio"]] . "</span>"; ?>
+            <td colspan="2"> <input class="form-size" type="text" name="nomeannuncio" value= "<?php  echo $dati["nomeannuncio"];?>"> </br> <?php if (isset($errore["nomeannuncio"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nomeannuncio"]] . "</span>"; ?>
              </td>
           </tr>
           <tr>
             <td colspan="2"> <h6> Nome Prodotto</h6> </td>
           </tr>
           <tr>
-            <td colspan="2"> <input class="form-size" type="text" name="nome_prodotto" value = "<?php  echo $dati["nome_prodotto"];?>"> </br>
-              <?php if (isset($errore["nome_prodotto"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nome_prodotto"]] . "</span>"; ?>
+            <td colspan="2"> <input class="form-size" type="text" name="nomeprodotto" value = "<?php  echo $dati["nomeprodotto"];?>"> </br>
+              <?php if (isset($errore["nomeprodotto"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nomeprodotto"]] . "</span>"; ?>
              </td>
           </tr>
           <tr>
@@ -121,9 +119,9 @@ else
             </td>
             <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
             <h6>Seleziona lo stato</h6>
-            <input type="radio" id="nuovo" name="stato_prodotto" value="nuovo">
+            <input type="radio" id="nuovo" name="statoprodotto" value="nuovo">
             <label style="margin-right:0.5rem" for="nuovo">Nuovo </label><br/>
-            <input type="radio" id="usato" name="stato_prodotto" value="usato">
+            <input type="radio" id="usato" name="statoprodotto" value="usato">
             <label for="usato">Usato</label>
             </td>
           </tr>

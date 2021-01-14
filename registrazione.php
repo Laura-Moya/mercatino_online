@@ -31,7 +31,7 @@ else
   <body>
 
     <div class="container-registrazione">
-        <form action="CheckData.php" method="GET">
+        <form action="CheckDataRegistrazione.php" method="GET">
           <table class="tabella-registrazione">
             <tr>
               <h2 class="title">Registrazione Profilo</h2>

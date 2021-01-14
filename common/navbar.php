@@ -97,5 +97,14 @@ else
   </div>
 
 </nav>
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>
