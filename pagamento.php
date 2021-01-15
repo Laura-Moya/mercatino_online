@@ -28,52 +28,23 @@
 
             <div class="paga">
               <h6 style="margin-top: 1rem;">Come vuoi pagare?</h6>
-              <input class="pagamento" type="radio" name="pagamento" value="contanti">
+              <input type="radio"  id="contanti" name="pagamento"/>
               <label style="margin-right:0.5rem" for="contanti">Contanti</label>
-              <input class="pagamento" type="radio" name="selezionaMetodo" value="carta_credito">
-              <label style="margin-right:0.5rem" for="carta_credito">Carta di pagamento</label>
+              <input type="radio"  id="carta" name="pagamento"/>
+              <label style="margin-right:0.5rem" for="carta">Carta di pagamento</label>
+            </div>
+
+
+            <div id="cartacredito">
+
+                <h6 style="margin-top: 1rem;">Inserisce i dati de la sua carta</h6>
+                <input type="text" name="intestatario" placeholder="Nome e cognome..."/><br/>
+                <input type="number" maxlength="16" name="numero_carta" placeholder="Numero di carta..."/><br/>
+                <input type="text" maxlength="5" name="data_scadenza" placeholder="mm/aa"/><br/>
+                <input type="number" maxlength="3" name="cvv" placeholder="CVV..."/>
+
             </div>
           </form>
-          <!-- <form>
-          <div class="stessa-riga" >
-            <h6>Preferisce:</h6>
-                <input type="radio" name="opcion" id="opcionA" />
-                <label style="margin-right:0.5rem" for="opcionA">Ritiro a mano </label>
-                <input type="radio" name="opcion" id="opcionB" />
-                <label style="margin-right:0.5rem" for="opcionB">Spedizione</label>
-            </div>
-
-              </form> -->
-            <!--
-            <select style="width: 50% !important;" class="form-control form-control-md" onchange="mostrareMetodo();" name="selezionaMetodo" required>
-              <option value="">Seleziona... </option>
-              <option value="ritiro_a_mano">Ritiro a mano</option>
-              <option value="carta_credito">Spedizione</option>
-            </select>   -->
-
-
-
-          <!-- <div id="ritiro_a_mano">
-
-            <select style="width: 50% !important;" class="form-control form-control-md" onchange="" required>
-              <option value="">Seleziona... </option>
-              <option value="contanti">Contanti</option>
-              <option value="carta_credito">Carta di pagamento</option>
-            </select>
-          </div> -->
-
-
-          <div id="carta_credito">
-            <form action="" method="">
-              <h6 style="margin-top: 1rem;">Inserisce i dati de la sua carta</h6>
-              <input type="text" name="intestatario" placeholder="Nome e cognome..."><br/>
-              <input type="number" maxlength="16" name="numero_carta" placeholder="Numero di carta..."><br/>
-              <input type="text" maxlength="5" name="data_scadenza" placeholder="mm/aa"><br/>
-              <input type="number" maxlength="3" name="cvv" placeholder="CVV...">
-
-            </form>
-          </div>
-
           <h2>Prezzo: 87.16€</h2>
           <button class="btn btn-primary" type="button">Acquista ora</button>
         </div>

@@ -222,18 +222,24 @@ input {
 }
 
 /* Metodo di Pagamento */
-.ciao{
-    margin-top: 2em;
-    width: 100%;
-    height: 50px;
-    background: blue;
-    border-radius: 10px;
-}
 
-#B:checked ~ .paga{
+.paga{
+  height: 0px;
+  visibility: hidden;
+}
+#A:checked ~ .paga{
+  height: auto;
   visibility: visible;
 }
 
+#cartacredito{
+  /* height: 0px;
+  visibility: hidden; */
+}
+
+#carta:checked ~ #cartacredito{
+    
+}
 
 form.example input[type=text] {
   padding: 10px;
