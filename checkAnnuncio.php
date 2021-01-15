@@ -38,10 +38,10 @@ $dati["prezzo"]=$prezzo;
 
 if (count($errore)>0)
 {
-	header('location:registrazione.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+	header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 }
 else
 {
-	header('location:registrazione.php?status=ok&dati=' . serialize($dati));
+	header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
 }
 ?>

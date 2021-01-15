@@ -222,10 +222,31 @@ input {
 }
 
 /* Metodo di Pagamento */
-
-#ritiro_a_mano {
-  display: none;
+.ciao{
+    margin-top: 2em;
+    width: 100%;
+    height: 50px;
+    background: pink;
+    border-radius: 10px;
+    transition: height .5s ease-in-out;
 }
+
+#opcionB:checked + .ciao{
+    visibility: collapse !important;
+}
+input{
+    display: none;
+}
+label{
+    margin: 0 2em;
+    padding: 1em 1.5em;
+    border-radius: 10px;
+    border: 2px solid salmon;
+}
+form input:checked + label{
+    background: antiquewhite;
+}
+
 
 form.example input[type=text] {
   padding: 10px;
