@@ -27,7 +27,9 @@ else
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <?php include "common/header.php";?>
+  <head>
+    <?php include "common/header.php";?>
+  </head>
   <body>
 
     <div class="container-registrazione">
@@ -56,9 +58,9 @@ else
             </tr>
               <tr>
                 <td><h6>Seleziona tipo utente</h6>
-                <input type="radio" id="venditore" name="venditore" value="venditore"<?php echo $dati["tipoutente"]=='venditore'?"checked":"";?>>
+                <input type="radio" id="venditore" name="tipoutente" value="venditore"<?php echo $dati["tipoutente"]=='venditore'?"checked":"";?>>
                 <label style="margin-right:0.5rem" for="venditore">Venditore </label>
-                <input type="radio" id="acquirente" name="acquirente" value="acquirente" <?php echo $dati["tipoutente"]=='acquirente'?"checked":"";?>>
+                <input type="radio" id="acquirente" name="tipoutente" value="acquirente" <?php echo $dati["tipoutente"]=='acquirente'?"checked":"";?>>
                 <label for="acquirente">Acquirente</label></td>
                 <td> <h6 class="destra">Codice Fiscale</h6> <input class="destra" maxlength="16" type="text" name="codice-fiscale" value="<?php  echo $dati["codice-fiscale"];?>"> </br> <?php if (isset($errore["codice-fiscale"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["codice-fiscale"]] . "</span>"; ?>
                 </td>

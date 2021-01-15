@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <?php include "common/header.php";?>
+  <head>
+    <?php include "common/header.php";?>
+  </head>
   <body>
 
     <?php include "common/navbar.php";?>
