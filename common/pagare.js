@@ -1,14 +1,12 @@
-function mostrare(id) {
-    if (id == "ritiro_a_mano") {
-      $("#ritiro_a_mano").show();
-      $("#carta_credito").hide();
-    }
 
-    if (id == "carta_credito") {
-        // document.getElementById("ritiro_a_mano").hide();
-        // document.getElementById("carta_credito").show();
-        $("#ritiro_a_mano").hide();
-        $("#carta_credito").show();
+// Mostrare Metodo di Pagamento
+function mostrareMetodo() {
+
+    if(document.getElementById("ritiro_a_mano").value == "ritiro_a_mano"){
+      document.getElementById("ritiro_a_mano").style.display="block";
     }
 
 }
+
+
+// function mostrareCarta()

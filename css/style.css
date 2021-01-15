@@ -221,6 +221,12 @@ input {
   box-sizing: border-box;
 }
 
+/* Metodo di Pagamento */
+
+#ritiro_a_mano {
+  display: none;
+}
+
 form.example input[type=text] {
   padding: 10px;
   font-size: 17px;
