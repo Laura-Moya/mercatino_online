@@ -226,25 +226,12 @@ input {
     margin-top: 2em;
     width: 100%;
     height: 50px;
-    background: pink;
+    background: blue;
     border-radius: 10px;
-    transition: height .5s ease-in-out;
 }
 
-#opcionB:checked + .ciao{
-    visibility: collapse !important;
-}
-input{
-    display: none;
-}
-label{
-    margin: 0 2em;
-    padding: 1em 1.5em;
-    border-radius: 10px;
-    border: 2px solid salmon;
-}
-form input:checked + label{
-    background: antiquewhite;
+#B:checked ~ .paga{
+  visibility: visible;
 }
 
 
