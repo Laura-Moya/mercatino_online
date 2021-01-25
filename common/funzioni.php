@@ -1,5 +1,6 @@
-
 <?php
+
+//Controlli login
 
 function checkMail($cid, $login)
 {
@@ -83,7 +84,7 @@ function leggiAnnunci($cid)
 
     $annunci[$row[0]] = $prodotto;
 		$prodotto[0] = $row[1];
-		$prodotto[1] = $row[4];
+		$prodotto[1] = $row[3];
 
   }
 
@@ -92,8 +93,7 @@ function leggiAnnunci($cid)
 
 }
 
-function stampaAnnunci($risultato)
-{
+function stampaAnnunci($risultato){
 
   echo "<div class=\"table-responsive\">";
 	echo "<table class=\"table text-center\">";
@@ -103,21 +103,19 @@ function stampaAnnunci($risultato)
 					  <th class=\"text-center\">Modifica</th>
 					  <th class=\"text-center\">Cancella</th>
 			  </tr>";
-  foreach ($risultato["contenuto"] as $codice => $nome) {
+
+  foreach ($risultato["contenuto"] as $codice => $prodotto) {
     echo "<tr><td>$codice</td>";
+	foreach ($prodotto as $codice => $value) {
+		echo	"<td>$value</td>";
 
-					foreach ($annunci[$codice] as $key => $value) {
-						echo "$value";
-					}
+	}
+	echo "</tr>";
+	}
 
 
-		echo	"<td>$nome</td>
-		      <td><a href=\"../backend/updateS.php?id=$codice\"><span class=\"glyphicon glyphicon-pencil\"></span></a></td>
-		      <td><a href=\"../backend/deleteS.php?id=$codice\"><span class=\"glyphicon glyphicon-remove\"></span></a></td>
-          </tr>";
           // bisogna implementare queste funzioni
 
-  }
 
   echo "</table>";
   echo "</div>";
@@ -135,12 +133,6 @@ function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagi
 			 $risultato["status"]="ko";
 			 $risultato["msg"]=$msg;
 		 }
-		/*elseif (isUser($cid,$login,$pwd))
-		{
-			$msg ="Utente già registrato";
-			$risultato["status"]="ko";
-			$risultato["msg"]=$msg;
-		}*/
 		else
 		{
 			$msg = "Registrazione effettuata con successo";
