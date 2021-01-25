@@ -227,19 +227,22 @@ input {
   height: 0px;
   visibility: hidden;
 }
+.cartacredito{
+  height: 0px;
+ visibility: hidden;
+}
 #A:checked ~ .paga{
   height: auto;
   visibility: visible;
 }
 
-#cartacredito{
-  /* height: 0px;
-  visibility: hidden; */
+
+
+#C:checked ~ .cartacredito{
+  height: auto;
+ visibility: visible;
 }
 
-#carta:checked ~ #cartacredito{
-    
-}
 
 form.example input[type=text] {
   padding: 10px;
