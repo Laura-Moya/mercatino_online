@@ -243,7 +243,18 @@ input {
  visibility: visible;
 }
 
-
+.labelpagamento{
+    margin-right:0.5rem;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    border: 2px solid #9863a9;
+}
+.inputpaga{
+    display: none;
+}
+.inputpaga:checked + .labelpagamento{
+    background: #d99eed;
+}
 
 form.example input[type=text] {
   padding: 10px;

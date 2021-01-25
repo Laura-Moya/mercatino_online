@@ -19,17 +19,17 @@
           <p>Venditore: Valentina Maronese</p>
           <div class="stessa-riga" >
           <h6>Preferisce:</h6>
-            <input type = "radio" id = "B" name ="AA" checked="checked"/>
-            <label style="margin-right:0.5rem" for = "B" > Spedizione </label>
-            <input type = "radio" id ="A" name ="AA"/>
-            <label style="margin-right:0.5rem" for = "A"> Ritiro a mano </label>
+            <input class="inputpaga" type = "radio" id = "B" name ="AA" checked="checked"/>
+            <label class="labelpagamento" for = "B" > Spedizione </label>
+            <input class="inputpaga" type = "radio" id ="A" name ="AA"/>
+            <label class="labelpagamento" for = "A"> Ritiro a mano </label>
 
             <div class="paga" >
               <h6 style="margin-top: 1rem;">Come vuoi pagare?</h6>
-              <input type="radio" name="P" onclick="closeDiv()" checked="checked"/>
-              <label style="margin-right:0.5rem">Contanti</label>
-              <input type="radio" name="P"onclick="openDiv()"/>
-              <label style="margin-right:0.5rem">Carta di pagamento</label>
+              <input class="inputpaga" type="radio" id="C" name="P" onclick="closeDiv()" checked="checked"/>
+              <label class="labelpagamento" for="C">Contanti</label>
+              <input class="inputpaga" type="radio" id= "CA" name="P"onclick="openDiv()"/>
+              <label class="labelpagamento"for="CA">Carta di pagamento</label>
             </div>
 
             <div id="cartacredito" style= "display:none">
