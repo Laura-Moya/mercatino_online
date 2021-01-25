@@ -223,25 +223,26 @@ input {
 
 /* Metodo di Pagamento */
 
-.paga{
+ .paga{
   height: 0px;
   visibility: hidden;
 }
+
 .cartacredito{
   height: 0px;
  visibility: hidden;
 }
+
 #A:checked ~ .paga{
   height: auto;
   visibility: visible;
 }
 
-
-
-#C:checked ~ .cartacredito{
+#B:checked ~ .cartacredito{
   height: auto;
  visibility: visible;
 }
+
 
 
 form.example input[type=text] {
