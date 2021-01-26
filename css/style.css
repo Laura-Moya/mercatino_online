@@ -228,8 +228,8 @@ input {
   visibility: hidden;
 }
 
-.cartacredito{
-  height: 0px;
+#cartacredito{
+ height: 0px;
  visibility: hidden;
 }
 
@@ -240,7 +240,7 @@ input {
 
 #B:checked ~ #cartacredito{
   height: auto;
- visibility: visible;
+  visibility: visible;
 }
 
 .labelpagamento{

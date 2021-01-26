@@ -19,20 +19,20 @@
           <p>Venditore: Valentina Maronese</p>
           <div class="stessa-riga" >
           <h6>Preferisce:</h6>
-            <input class="inputpaga" type = "radio" id = "B" name ="AA" checked="checked"/>
+            <input class="inputpaga" type = "radio" id = "B" name ="AA"/>
             <label class="labelpagamento" for = "B" > Spedizione </label>
             <input class="inputpaga" type = "radio" id ="A" name ="AA"/>
             <label class="labelpagamento" for = "A"> Ritiro a mano </label>
 
-            <div class="paga" >
+            <div class="paga">
               <h6 style="margin-top: 1rem;">Come vuoi pagare?</h6>
-              <input class="inputpaga" type="radio" id="C" name="P" onclick="closeDiv()" checked="checked"/>
+              <input class="inputpaga" type="radio" id="C" name="P" onclick="closeDiv()" />
               <label class="labelpagamento" for="C">Contanti</label>
               <input class="inputpaga" type="radio" id= "CA" name="P"onclick="openDiv()"/>
               <label class="labelpagamento"for="CA">Carta di pagamento</label>
             </div>
 
-            <div id="cartacredito" style= "display:none">
+            <div id="cartacredito">
                 <h6 style="margin-top: 1rem;">Inserisce i dati de la sua carta</h6>
                 <input type="text" name="intestatario" placeholder="Nome e cognome..."/><br/>
                 <input type="number" maxlength="16" name="numero_carta" placeholder="Numero di carta..."/><br/>
@@ -46,11 +46,13 @@
     </div>
     <script>
       function openDiv() {
-        document.getElementById("cartacredito").style.display = "block";
+        document.getElementById("cartacredito").style.visibility = "visible";
+        document.getElementById("cartacredito").style.height = "auto";
       }
 
       function closeDiv() {
-        document.getElementById("cartacredito").style.display = "none";
+        document.getElementById("cartacredito").style.visibility = "hidden";
+        document.getElementById("cartacredito").style.height = "0px";
       }
     </script>
 
