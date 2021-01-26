@@ -238,7 +238,7 @@ input {
   visibility: visible;
 }
 
-#B:checked ~ .cartacredito{
+#B:checked ~ #cartacredito{
   height: auto;
  visibility: visible;
 }
