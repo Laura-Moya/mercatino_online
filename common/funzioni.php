@@ -52,9 +52,12 @@ function isUser($cid,$login,$pwd)
 	  $msg = "Login effettuato con successo";
 		$risultato["status"]="ok";
 		$risultato["msg"]=$msg;
+
 	}
+
     return $risultato;
 }
+
 
 // Funzione relative alle funzione degli annunci
 
@@ -81,10 +84,9 @@ function leggiAnnunci($cid)
   }
 
   while ($row=$res->fetch_row()) {
-
-    $annunci[$row[0]] = $prodotto;
 		$prodotto[0] = $row[1];
 		$prodotto[1] = $row[3];
+		$annunci[$row[0]] = $prodotto;
 
   }
 

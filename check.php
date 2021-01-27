@@ -33,17 +33,21 @@
     if ($ris2["status"] == "ok") {
       // Manca ricaricare la pagina AJAX
       //$_SESSION["logged"] = $email
-      if (isset($_COOKIE["email"])) {
-    		 unset($_COOKIE['email']);
-    		 setcookie('user', null, -1, '/');
-      }
-      $cid->close();
-	    session_start();
-	    $_SESSION["utente"]=$email;
-	    $_SESSION["logged"]=true;
+      // if (isset($_COOKIE["email"])) {
+    	// 	 unset($_COOKIE['email']);
+    	// 	 setcookie('user', null, -1, '/');
+      // }
+      // $cid->close();
+	    // session_start();
+	    // $_SESSION["utente"]=$email;
+	    // $_SESSION["logged"]=true;
+      session_start();
+      $_SESSION["utente"] = $email;
+      $_SESSION["logged"]=true;
 
-	    header("Location: index.php?status=ok&msg=". urlencode($result["msg"]));
+	    header("Location: index.php");
       echo "Benvenuto " . $email;
+      exit();
     }
     else{
       $parameter = "Location: index.php?errore=password&password=$password";

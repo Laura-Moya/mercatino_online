@@ -1,5 +1,8 @@
 <?php
 
+  session_start();
+
+
 $tipoError = array("1" =>"Email non valida",
                     "2" =>"Password non valida");
 $error = array();
@@ -37,34 +40,44 @@ include "db/connect.php";
 
     <div class="col-sm-6 col-md-3 col-lg-3">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <?php
+        <?php
 
-            if ($cid)
-            {
+          if (isset($_SESSION["utente"]))
+          {
+            echo "<li class='nav-item'>";
+            echo "<a class='nav-link' style='cursor: pointer;' href='profiloVenditore.php'>Profilo</a>";
+            echo "</li>";
+            echo "<li class='nav-item'>";
+            echo "<a class='nav-link' style='cursor: pointer;' href='common/logout.php'>Logout</a>";
+            echo "</li>";
+          }
+          else {
+           echo "<li class='nav-item'>";
+           echo "<a class='nav-link' onclick='openForm()' style='cursor: pointer;' id='accedi'><i class='fas fa-sign-in-alt'></i>Accedi</a>";
+           echo "<div class='form-popup container-registrazione' id='myForm'>";
+           echo " <form action='./check.php' method='POST'>";
+           echo "<h4>Il Tuo Mercatino Online</h4>";
+           echo "<label for='email'><b>Email</b></label><br/>";
+           echo "<input type='text' placeholder='Immettere Email' name='email' value=";
+           $dat['email'];
+           echo "></br>";
+            if (isset($error['email'])) echo '<span class=\"error\'>' . $tipoerror[$error['email']] . "</span>";
+           echo "<label for='psw'><b>Password</b></label> <br/>";
+           echo "<input type='password' placeholder='Immettere Password' name='password' value=";
+           $dat["password"];
+           echo "></br>";
+           if (isset($error['password'])) echo "<span class=\'error\'>" . $tipoerror[$error['password']] . "</span>";
+           echo "<p>Non hai un account? <a href='./registrazione.php'>Registrati!</a></p>";
+           echo "<button type='submit' class='btn btn-primary btn-login'>Accedi</button>";
+           echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
+           echo "</form>";
+           echo "</div>";
+           echo "</li>";
+           }
+        ?>
 
-            }
+        <!-- LOGIN -->
 
-          ?>
-
-          <!-- LOGIN -->
-          <a class="nav-link" onclick="openForm()" style="cursor: pointer;" id="accedi"><i class="fas fa-sign-in-alt"></i>Accedi</a>
-            <div class="form-popup container-registrazione" id="myForm">
-              <form action="./check.php" method="POST">
-              <h4>Il Tuo Mercatino Online</h4>
-
-              <label for="email"><b>Email</b></label> <br/>
-              <input type="text" placeholder="Immettere Email" name="email"  value="<?php  echo $dat["email"];?>"> </br> <?php if (isset($error["email"])) echo "<span class=\"error\">" . $tipoerror[$error["email"]] . "</span>"; ?>
-
-              <label for="psw"><b>Password</b></label> <br/>
-              <input type="password" placeholder="Immettere Password" name="password"  value="<?php  echo $dat["password"];?>"> </br> <?php if (isset($error["password"])) echo "<span class=\"error\">" . $tipoerror[$error["password"]] . "</span>"; ?>
-              <p>Non hai un account? <a href="./registrazione.php">Registrati!</a></p>
-
-              <button type="submit" class="btn btn-primary btn-login">Accedi</button>
-              <button type="button" class="btn btn-primary btn-login" onclick="closeForm()">Chiudi</button>
-              </form>
-            </div>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="osservati.php"><i class="fas fa-eye fa-lg icon-eye"></i></a>
         </li>
