@@ -37,7 +37,7 @@ else
           <table class="tabella-registrazione">
             <tr>
 
-              <h2 class="title"><i class="icona fas fa-arrow-left"></i>Registrazione</h2>
+              <h2 class="title"><a href="index.php"><i class="icona fas fa-arrow-left"></i></a>Registrazione</h2>
             </tr>
             <tr>
               <td> <h6>Nome</h6>  </td>

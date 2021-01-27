@@ -58,6 +58,41 @@ function isUser($cid,$login,$pwd)
     return $risultato;
 }
 
+//funzione per leggere un annuncio
+function leggiAnnuncio($cid, $codice){
+	$prodotto= array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome, annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo
+				  FROM annuncio, stato, utente
+				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto";
+	$res=$cid->query($sql);
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+		while ($i<count($res->fetch_row())) {
+			$prodotto[$i] = $row[$i];
+			$i++;
+  }
+
+	$risultato["contenuto"] = $prodotto;
+	return $risultato;
+}
+
+function stampaAnnuncio($risultato){
+
+  foreach ($risultato["contenuto"] as $codice => $prodotto) {
+    echo "$codice";
+	}
+
+}
 
 // Funzione relative alle funzione degli annunci
 
@@ -115,10 +150,6 @@ function stampaAnnunci($risultato){
 	echo "</tr>";
 	}
 
-
-          // bisogna implementare queste funzioni
-
-
   echo "</table>";
   echo "</div>";
 }
@@ -149,6 +180,5 @@ function inserireAnnuncio($cid, $codice, $nome_annuncio)
 {
 
 }
-
 
 ?>

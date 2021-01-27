@@ -147,6 +147,7 @@ a:hover {
 }
 
 .icona {
+  cursor: pointer;
   margin-right: 6rem;
 }
 
