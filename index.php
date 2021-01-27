@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "db/connect.php";
+include "common/funzioni.php";
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -6,6 +11,28 @@
 <body>
   <?php include "common/navbar.php";?>
 
+  <div class="session">
+    <?php
+
+		if (!isset($_SESSION["logged"]))
+		{
+			echo "<div class=\"well\"><h1>Benvenuto nel tuo mercartino</h1></div>";
+		}
+		else
+		{
+			if (isset($_GET["op"]))
+			{
+				echo "<div class=\"well\">";
+				include "frontend/". $_GET["op"] . ".php";
+				echo "</div>";
+			}
+			elseif (!isset($_GET["status"]))
+			{
+				echo "<div class=\"well\"><h1>Per accedere al mercatino. Connettiti. ". $_SESSION["utente"] . "</h1></div>";
+			}
+		}
+		?>
+  </div>
   <!-- Navbar con i filtri -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light" id="categorie">
 

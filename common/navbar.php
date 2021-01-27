@@ -16,6 +16,8 @@ else
 	$dat["password"]="";
 }
 
+include "db/connect.php";
+
 ?>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-light" id="prima-navbar">
@@ -36,6 +38,15 @@ else
     <div class="col-sm-6 col-md-3 col-lg-3">
       <ul class="navbar-nav">
         <li class="nav-item">
+          <?php
+
+            if ($cid)
+            {
+
+            }
+
+          ?>
+
           <!-- LOGIN -->
           <a class="nav-link" onclick="openForm()" style="cursor: pointer;" id="accedi"><i class="fas fa-sign-in-alt"></i>Accedi</a>
             <div class="form-popup container-registrazione" id="myForm">
