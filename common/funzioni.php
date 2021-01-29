@@ -116,8 +116,9 @@ function leggiAnnunci($cid)
   }
 
   while ($row=$res->fetch_row()) {
-		$prodotto[0] = $row[1];
-		$prodotto[1] = $row[3];
+		for ($i=0; $i < 11 ; $i++) {
+			$prodotto[$i] = $row[$i];
+		}
 		$annunci[$row[0]] = $prodotto;
 
   }
