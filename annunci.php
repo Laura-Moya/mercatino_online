@@ -5,6 +5,12 @@
   </head>
   <body>
       <?php include "common/navbar.php";?>
+      <?php include "common/funzioni.php"; ?>
+      <?php
+
+        
+
+      ?>
 
       <div class="container-filtri-annunci">
 

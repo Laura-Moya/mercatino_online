@@ -20,6 +20,7 @@ if ($ris["status"] == "ko") {
   header('location: ../annunci.php?status=ko&op=error&msg=');
 }
 else {
+  echo "---";
   stampaAnnuncio($ris);
 }
 

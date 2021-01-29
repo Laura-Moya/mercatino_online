@@ -1,6 +1,6 @@
 <?php
 
-  session_start();
+session_start();
 
 
 $tipoError = array("1" =>"Email non valida",

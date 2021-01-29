@@ -70,28 +70,25 @@ function leggiAnnuncio($cid, $codice){
   }
 	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome, annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo
 				  FROM annuncio, stato, utente
-				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto";
+				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = $codice";
+
 	$res=$cid->query($sql);
+
 	if ($res == null) {
     $risultato["status"] = "ko";
     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
     return $risultato;
 	}
-		while ($i<count($res->fetch_row())) {
-			$prodotto[$i] = $row[$i];
-			$i++;
-  }
 
+	while ($row=$res->fetch_row()) {
+			for ($i=0; $i < 11 ; $i++) {
+				$prodotto[$i] = $row[$i];
+			}
+
+  }
+	// echo "$prodotto[0]";
 	$risultato["contenuto"] = $prodotto;
 	return $risultato;
-}
-
-function stampaAnnuncio($risultato){
-
-  foreach ($risultato["contenuto"] as $codice => $prodotto) {
-    echo "$codice";
-	}
-
 }
 
 // Funzione relative alle funzione degli annunci
