@@ -86,8 +86,40 @@ function leggiAnnuncio($cid, $codice){
 			}
 
   }
-	// echo "$prodotto[0]";
 	$risultato["contenuto"] = $prodotto;
+	return $risultato;
+}
+
+function leggiUtente($cid, $codicefiscale){
+	$utente= array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT utente.nome as 'NOME', utente.cognome as 'COGNOME', utente.email,
+					AVG((valutazione.serieta+valutazione.puntualita)/2) as 'VALUTAZIONE MEDIA'
+					FROM valutazione, utente
+					WHERE utente.codice_fiscale = valutazione.codice_fiscale_valutato and utente.codice_fiscale = $codicefiscale";
+
+	$res=$cid->query($sql);
+	echo "$res";
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+	echo "string3";
+	while ($row=$res->fetch_row()) {
+			for ($i=0; $i < 4 ; $i++) {
+				$utente[$i] = $row[$i];
+			}
+  }
+
+	$risultato["contenuto"] = $utente;
 	return $risultato;
 }
 
@@ -152,7 +184,8 @@ function stampaAnnunci($risultato){
   echo "</div>";
 }
 
-function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagine, $codicefiscale){
+function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagine, $codicefiscale)
+{
 		$risultato= array("msg"=>"","status"=>"ok");
 		$sql= "INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `password`)
 					VALUES ('$codicefiscale', '$nome', '$cognome', '$login', '$immagine', '$tipo_utente', '$password')";
@@ -172,7 +205,7 @@ function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagi
 		}
 		 return $risultato;
 
-	}
+}
 
 function inserireAnnuncio($cid, $codice, $nome_annuncio)
 {

@@ -1,33 +1,8 @@
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <?php include "common/header.php";?>
-  </head>
-  <body>
+    <?php include 'common/profilo.php'; ?>
 
-    <?php include "common/navbar.php";?>
-
-    <div class="container-profilo container">
-      <div class="row">
-        <div class="immagine-profilo col-sm-12 col-md-6 col-lg-4">
-          <img src="images/lisa2.jpg" style="width: 70%;" alt="immagine_profilo">
-        </div>
-        <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
-          <h1 class="nome-profilo">LISA</h1>
-          <h2 class="cognome-profilo">SIMPSON</h2>
-          <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: lisaSimpson@gmail.com">lisaSimpson@gmail.com</a></p>
-          <div class="valutazione-profilo">
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-          </div>
           <p class="prodotti-venduti-profilo"><a href="#">Prodotti venduti</a>: 9</p>
           <p class="prodotti-in-vendita-profilo"><a href="#">Prodotti in vendita</a>: 4</p>
-          <p class="prodotti-venduti-profilo"><a href="#">Prodotti acquistati</a>: 3</p>
-          <p class="prodotti-venduti-profilo"><a href="osservati.php">Prodotti osservati</a>: 5</p>
           <button class="btn btn-primary" type="button" onclick="location.href='creareAnnuncio.php'"><i class="fas fa-plus" id="piu"></i> Aggiungi annuncio </button>
         </div>
       </div>

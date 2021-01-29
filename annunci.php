@@ -11,7 +11,6 @@
         $risultato = leggiAnnunci($cid);
         $annunci = $risultato['contenuto'];
 
-
       ?>
 
       <div class="container-filtri-annunci">
@@ -141,7 +140,7 @@
 
 
           //Manca sistemare il numero di prodotti (farlo automatico)
-          for ($i=1; $i < 6 ; $i++) {
+          for ($i=1; $i < count($annunci) ; $i++) {
             $prodotto = $annunci[$i];
             echo '<div class="card mb-3" id="annunci" style="max-width: 770px;">';
               echo '<div class="row no-gutters">';
