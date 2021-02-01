@@ -8,9 +8,8 @@
   <?php
 
   //Funzione annunciOsservati
-  $risultato = annunciOsservati($cid, 'MYGLRA99P60Z131O');
+  $risultato = annunciOsservati($cid, 'MRNVNT96R63I577A');
   $annunci = $risultato['contenuto'];
-
   ?>
 
   <!-- I miei prodotti osservati -->
@@ -19,9 +18,10 @@
 
       <?php
         echo '<p id="primo-piano">I tuoi prodotti osservati</p>';
-        for ($i=0; $i < 3 ; $i++) {
+        echo '<div class="row">';
+
+        for ($i=0; $i < 2 ; $i++) {
           $prodotto = $annunci[$i];
-          echo '<div class="row">';
             echo '<div class="card" style="width: 16rem;">';
               echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
             echo '<div class="card-body">';
@@ -30,8 +30,9 @@
                 echo '<a href="#" class="btn btn-primary">'. $prodotto[2] . '</a>';
               echo '</div>';
             echo '</div>';
-          echo '</div>';
+
         }
+          echo '</div>';
       ?>
 
   </div>

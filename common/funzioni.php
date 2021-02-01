@@ -242,8 +242,9 @@ function leggiProdottiInVendita($cid, $codicefiscale)
 //Tutti i tuoi annunci osservati
 function annunciOsservati($cid, $codicefiscale)
 {
-	$annunciOsservati= array();
+	$annunci= array();
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+	$prodotto = array();
 
 	if ($cid->connect_errno) {
     $risultato["status"] = "ko";
@@ -266,8 +267,11 @@ function annunciOsservati($cid, $codicefiscale)
 			for ($i=0; $i < 3; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
+			$annunciOsservati[$row[0]]=$prodotto;
   }
-	$risultato["contenuto"] = $annunciOsservati;
+
+
+	$risultato["contenuto"] = $annunci;
 	return $risultato;
 }
 
