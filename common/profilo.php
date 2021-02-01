@@ -9,10 +9,18 @@
     <?php include 'funzioni.php'; ?>
     <?php
 
-      $risultato = leggiUtente($cid, 'MRNVNT96R63I577A');
+      //Funzione leggiUtente
+      $risultato = leggiUtente($cid, 'MYGLRA99P60Z131O');
       $utente = $risultato['contenuto'];
+      //Funzione leggiProdottiAcquistati
+      $risultato = leggiProdottiAcquistati($cid, 'MYGLRA99P60Z131O');
+      $prodottiAcquistati = $risultato['contenuto'];
+      //Funzione leggiProdottiOsservati
+      $risultato = leggiProdottiOsservati($cid, 'MYGLRA99P60Z131O');
+      $prodottiOsservati = $risultato['contenuto'];
 
-    ?>
+
+      ?>
 
     <div class="container-profilo container">
       <div class="row">
@@ -35,5 +43,5 @@
             echo '</div>';
           ?>
 
-          <p class="prodotti-venduti-profilo"><a href="#">Prodotti acquistati</a>: 3</p>
-          <p class="prodotti-venduti-profilo"><a href="osservati.php">Prodotti osservati</a>: 5</p>
+          <p class="prodotti-venduti-profilo"><a href="#">Prodotti acquistati:</a> <?php echo "$prodottiAcquistati[0]"; ?> </p>
+          <p class="prodotti-venduti-profilo"><a href="osservati.php">Prodotti osservati:</a> <?php echo "$prodottiOsservati[0]"; ?> </p>

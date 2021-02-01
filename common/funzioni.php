@@ -110,8 +110,6 @@ function leggiUtente($cid, $codicefiscale){
 	if ($res == null) {
     $risultato["status"] = "ko";
     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
-		$stampa = $risultato["msg"];
-		echo "$stampa";
     return $risultato;
 	}
 	while ($row=$res->fetch_row()) {
@@ -121,6 +119,121 @@ function leggiUtente($cid, $codicefiscale){
   }
 
 	$risultato["contenuto"] = $utente;
+	return $risultato;
+}
+
+function leggiProdottiVenduti($cid, $codicefiscale)
+{
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT DISTINCT COUNT(annuncio.nome_annuncio)
+					FROM annuncio, stato, utente
+					WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto
+								AND stato.stato = 'venduto' AND utente.codice_fiscale = '$codicefiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+	$row=$res->fetch_row();
+
+
+	$risultato["contenuto"] = $row;
+	return $risultato;
+}
+
+function leggiProdottiOsservati($cid, $codicefiscale)
+{
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT COUNT(osserva.prodotto)
+					FROM osserva
+					WHERE osserva.utente = '$codicefiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+	$row=$res->fetch_row();
+
+
+	$risultato["contenuto"] = $row;
+	return $risultato;
+}
+
+function leggiProdottiAcquistati($cid, $codicefiscale)
+{
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT COUNT(annuncio.acquirente)
+					FROM annuncio, stato
+					WHERE stato.prodotto = annuncio.codice
+								AND stato.stato = 'venduto' AND annuncio.acquirente = '$codicefiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+	$row=$res->fetch_row();
+
+
+	$risultato["contenuto"] = $row;
+	return $risultato;
+}
+
+function leggiProdottiInVendita($cid, $codicefiscale)
+{
+	$prodottiInVendita = array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT stato.prodotto, stato.data_ora FROM stato ORDER BY data_ora ASC";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+
+	$row=$res->fetch_row();
+	$prodottiInVendita[0] = $row[0];
+
+
+	$risultato["contenuto"] = $prodottiInVendita;
 	return $risultato;
 }
 
