@@ -20,6 +20,9 @@ else
 }
 
 include "db/connect.php";
+include 'funzioni.php';
+
+
 
 ?>
 <!-- Navbar -->
@@ -75,12 +78,22 @@ include "db/connect.php";
            echo "</li>";
            }
         ?>
-
-        <!-- LOGIN -->
-
         <li class="nav-item">
-          <a class="nav-link" href="osservati.php"><i class="fas fa-eye fa-lg icon-eye"></i></a>
+
+        <?php
+
+          if (isset($_SESSION["utente"])) {
+            echo '<a class="nav-link" href="osservati.php"><i class="fas fa-eye fa-lg icon-eye"></i></a>';
+          }
+          else
+          {
+            echo '<a class="nav-link" style="cursor:pointer;" onclick= notLogged();><i class="fas fa-eye fa-lg icon-eye"></i></a>';
+          }
+
+        ?>
         </li>
+
+
       </ul>
     </div>
 
@@ -128,6 +141,10 @@ include "db/connect.php";
 
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
+  }
+
+  function notLogged(){
+    alert("Non sei loggato");
   }
 </script>
 <!-- Linea di Divisione -->

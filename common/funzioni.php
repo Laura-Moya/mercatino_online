@@ -59,7 +59,8 @@ function isUser($cid,$login,$pwd)
 }
 
 //funzione per leggere un annuncio
-function leggiAnnuncio($cid, $codice){
+function leggiAnnuncio($cid, $codice)
+{
 	$prodotto= array();
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
 
@@ -90,7 +91,8 @@ function leggiAnnuncio($cid, $codice){
 	return $risultato;
 }
 
-function leggiUtente($cid, $codicefiscale){
+function leggiUtente($cid, $codicefiscale)
+{
 	$utente= array();
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
 
@@ -237,6 +239,38 @@ function leggiProdottiInVendita($cid, $codicefiscale)
 	return $risultato;
 }
 
+//Tutti i tuoi annunci osservati
+function annunciOsservati($cid, $codicefiscale)
+{
+	$annunciOsservati= array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+	$sql = "SELECT DISTINCT annuncio.nome_annuncio, annuncio.nome_prodotto, osserva.prodotto
+					FROM osserva, annuncio
+					WHERE osserva.prodotto = annuncio.codice AND osserva.utente = '$codicefiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+
+	while ($row=$res->fetch_row()) {
+			for ($i=0; $i < 3; $i++) {
+				$prodotto[$i] = $row[$i];
+			}
+  }
+	$risultato["contenuto"] = $annunciOsservati;
+	return $risultato;
+}
+
 // Funzione relative alle funzione degli annunci
 
 function leggiAnnunci($cid)
@@ -274,29 +308,6 @@ function leggiAnnunci($cid)
 
 }
 
-function stampaAnnunci($risultato){
-
-  echo "<div class=\"table-responsive\">";
-	echo "<table class=\"table text-center\">";
-	echo "<tr><th class=\"text-center\">Codice</th>
-						<th class=\"text-center\">Nome annuncio</th>
-	          <th class=\"text-center\">Nome Venditore</th>
-					  <th class=\"text-center\">Modifica</th>
-					  <th class=\"text-center\">Cancella</th>
-			  </tr>";
-
-  foreach ($risultato["contenuto"] as $codice => $prodotto) {
-    echo "<tr><td>$codice</td>";
-	foreach ($prodotto as $codice => $value) {
-		echo	"<td>$value</td>";
-
-	}
-	echo "</tr>";
-	}
-
-  echo "</table>";
-  echo "</div>";
-}
 
 function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagine, $codicefiscale)
 {

@@ -55,7 +55,7 @@
             </div>
           </div>
         </div>
-      </div>
+        </div>
 
         <!-- Navbar filtri -->
         <nav class="navbar bg-light" id="sottocategorie">
@@ -137,9 +137,6 @@
 
         <div class='annunci'>
         <?php
-
-
-          //Manca sistemare il numero di prodotti (farlo automatico)
           for ($i=1; $i < count($annunci) ; $i++) {
             $prodotto = $annunci[$i];
             echo '<div class="card mb-3" id="annunci" style="max-width: 770px;">';

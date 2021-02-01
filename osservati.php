@@ -5,44 +5,35 @@
   </head>
 <body>
   <?php include "common/navbar.php";?>
+  <?php
+
+  //Funzione annunciOsservati
+  $risultato = annunciOsservati($cid, 'MYGLRA99P60Z131O');
+  $annunci = $risultato['contenuto'];
+
+  ?>
 
   <!-- I miei prodotti osservati -->
   <div class="container">
-    <p id="primo-piano">I tuoi prodotti osservati</p>
-    <div class="row">
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
+
+
+      <?php
+        echo '<p id="primo-piano">I tuoi prodotti osservati</p>';
+        for ($i=0; $i < 3 ; $i++) {
+          $prodotto = $annunci[$i];
+          echo '<div class="row">';
+            echo '<div class="card" style="width: 16rem;">';
+              echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
+            echo '<div class="card-body">';
+                echo '<h5 class="card-title"> '. $prodotto[0] . ' </h5>';
+                echo '<p class="card-text">'. $prodotto[1] . '</p>';
+                echo '<a href="#" class="btn btn-primary">'. $prodotto[2] . '</a>';
+              echo '</div>';
+            echo '</div>';
+          echo '</div>';
+        }
+      ?>
+
   </div>
 
   <script>

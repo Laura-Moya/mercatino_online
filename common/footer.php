@@ -1,2 +1,2 @@
 
-<footer>All rights reserved 2020 Mercatino Online</footer>
+<footer>All rights reserved 2021 Mercatino Online</footer>
