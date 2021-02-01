@@ -103,13 +103,15 @@ function leggiUtente($cid, $codicefiscale){
 	$sql = "SELECT utente.nome as 'NOME', utente.cognome as 'COGNOME', utente.email,
 					AVG((valutazione.serieta+valutazione.puntualita)/2) as 'VALUTAZIONE MEDIA'
 					FROM valutazione, utente
-					WHERE utente.codice_fiscale = valutazione.codice_fiscale_valutato and utente.codice_fiscale = $codicefiscale";
+					WHERE utente.codice_fiscale = valutazione.codice_fiscale_valutato AND utente.codice_fiscale = '$codicefiscale'";
 
 	$res=$cid->query($sql);
-	echo "$res";
+
 	if ($res == null) {
     $risultato["status"] = "ko";
     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+		$stampa = $risultato["msg"];
+		echo "$stampa";
     return $risultato;
 	}
 	echo "string3";
