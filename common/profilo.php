@@ -22,13 +22,18 @@
         <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
           <h1 class="nome-profilo"> <?php echo Ucwords("$utente[0]"); ?> </h1>
           <h2 class="cognome-profilo"> <?php echo Ucwords("$utente[1]"); ?> </h2>
-          <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: lisaSimpson@gmail.com">lisaSimpson@gmail.com</a></p>
-          <div class="valutazione-profilo">
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-            <i class="fas fa-star fa-2x"></i>
-          </div>
+          <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: lisaSimpson@gmail.com"><?php echo "$utente[2]"; ?> </a></p>
+          <?php
+            echo '<div class="valutazione-profilo">';
+            for ($i=0; $i < round($utente[3]); $i++) {
+              echo '<i class="fas fa-star fa-2x"></i>';
+            }
+            $mancano = 5 - round($utente[3]);
+            for ($i=0; $i < $mancano; $i++) {
+              echo '<i class="far fa-star fa-2x"></i>';
+            }
+            echo '</div>';
+          ?>
+
           <p class="prodotti-venduti-profilo"><a href="#">Prodotti acquistati</a>: 3</p>
           <p class="prodotti-venduti-profilo"><a href="osservati.php">Prodotti osservati</a>: 5</p>

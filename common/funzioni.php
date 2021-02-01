@@ -114,7 +114,6 @@ function leggiUtente($cid, $codicefiscale){
 		echo "$stampa";
     return $risultato;
 	}
-	echo "string3";
 	while ($row=$res->fetch_row()) {
 			for ($i=0; $i < 4 ; $i++) {
 				$utente[$i] = $row[$i];
