@@ -265,16 +265,58 @@ function annunciOsservati($cid, $codicefiscale)
     return $risultato;
 	}
 
+	$i=0;
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 3; $i++) {
-				$prodotto[$i] = $row[$i];
-			}
-			$annunciOsservati[$row[0]]=$prodotto;
+		for ($j=0; $j < 3; $j++) {
+			$prodotto[$j] = $row[$j];
+		}
+		$annunciOsservati[$i]=$prodotto;
+		$i++;
   }
 
 	$risultato["contenuto"] = $annunciOsservati;
 	return $risultato;
 }
+
+//In primo piano
+function inPrimoPiano($cid)
+{
+	$primoPiano= array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+	$prodotto = array();
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+	$sql = "SELECT DISTINCT annuncio.nome_annuncio, annuncio.nome_prodotto, osserva.prodotto
+					FROM osserva, annuncio
+					WHERE osserva.prodotto = annuncio.codice
+					GROUP BY osserva.prodotto
+					ORDER BY COUNT(osserva.utente) DESC";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+
+	$i=0;
+	while ($row=$res->fetch_row()) {
+		for ($j=0; $j < 3; $j++) {
+			$prodotto[$j] = $row[$j];
+		}
+		$primoPiano[$i]=$prodotto;
+		$i++;
+  }
+
+	$risultato["contenuto"] = $primoPiano;
+	return $risultato;
+}
+
 
 // Funzione relative alle funzione degli annunci
 

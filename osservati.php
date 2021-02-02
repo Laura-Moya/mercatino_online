@@ -14,26 +14,23 @@
 
   <!-- I miei prodotti osservati -->
   <div class="container">
-
+  <p id="primo-piano">I tuoi prodotti osservati</p>
+    <div class="row">
       <?php
-        echo '<p id="primo-piano">I tuoi prodotti osservati</p>';
-        echo '<div class="row">';
-
         for ($i=0; $i < count($annunciOsservati) ; $i++) {
-          $prodotto = $annunciOsservati[$i];
-            echo '<div class="card" style="width: 16rem;">';
-              echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
-            echo '<div class="card-body">';
-                echo '<h5 class="card-title"> '. $prodotto[0] . ' </h5>';
-                echo '<p class="card-text">'. $prodotto[1] . '</p>';
-                echo '<a href="#" class="btn btn-primary">'. $prodotto[2] . '</a>';
+
+            $prodotto = $annunciOsservati[$i];
+              echo '<div class="card" style="width: 16rem;">';
+                echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
+                  echo '<div class="card-body">';
+                  echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';
+                  echo '<p class="card-text">'. Ucwords($prodotto[0]) . '</p>';
+                  echo '<a href="prodotto.php" class="btn btn-primary">Visualizza!</a>';
+                echo '</div>';
               echo '</div>';
-            echo '</div>';
-
         }
-          echo '</div>';
       ?>
-
+    </div>
   </div>
 
   <script>
