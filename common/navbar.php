@@ -2,7 +2,6 @@
 
 session_start();
 
-
 $tipoError = array("1" =>"Email non valida",
                     "2" =>"Password non valida");
 $error = array();
@@ -22,6 +21,8 @@ else
 include "db/connect.php";
 include "common/funzioni.php";
 
+
+$codice_fiscale = prendereCF($cid, $email);
 
 ?>
 <!-- Navbar -->

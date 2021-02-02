@@ -116,6 +116,7 @@ include "db/connect.php";
             echo'<h5 class="card-title">'. Ucwords($prodotto[1]) .'</h5>';
             echo'<p class="card-text">'. Ucwords($prodotto[0]) .'</p>';
             echo'<a href="prodotto.php" class="btn btn-primary">Visualizza!</a>';
+            echo'<a href="prodotto.php" style="margin-left: 0.5rem;" class="btn btn-primary"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i>Osserva</a>';
         echo'  </div>';
         echo'</div>';
       }

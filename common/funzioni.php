@@ -56,6 +56,36 @@ function isUser($cid,$login,$pwd)
     return $risultato;
 }
 
+function prendereCF($cid, $email)
+{
+	
+
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+	$sql = "SELECT utente.codice_fiscale
+					FROM utente
+					WHERE utente.email = '$email'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+
+	$row=$res->fetch_row();
+
+	$risultato["contenuto"] = $row;
+	return $risultato;
+
+}
+
 //funzione per leggere un annuncio
 function leggiAnnuncio($cid, $codice)
 {
@@ -175,7 +205,6 @@ function leggiProdottiOsservati($cid, $codicefiscale)
     return $risultato;
 	}
 	$row=$res->fetch_row();
-
 
 	$risultato["contenuto"] = $row;
 	return $risultato;

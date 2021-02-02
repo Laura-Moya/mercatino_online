@@ -5,43 +5,32 @@
   </head>
 <body>
   <?php include "common/navbar.php";?>
+  <?php
+
+    $risultato = inPrimoPiano($cid);
+    $primoPiano = $risultato['contenuto'];
+
+  ?>
 
   <!-- I miei prodotti osservati -->
   <div class="container">
     <p id="primo-piano">I prodotti in primo piano</p>
     <div class="row">
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card" style="width: 16rem;">
-        <img src="images/fornellino.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      <?php
+      for ($i=0; $i < count($primoPiano); $i++) {
+        $prodotto = $primoPiano[$i];
+        echo '<div class="card" style="width: 16rem;">';
+          echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
+          echo '<div class="card-body">';
+            echo'<h5 class="card-title">'. Ucwords($prodotto[1]) .'</h5>';
+            echo'<p class="card-text">'. Ucwords($prodotto[0]) .'</p>';
+            echo'<a href="prodotto.php" class="btn btn-primary">Visualizza!</a>';
+            echo'<a href="prodotto.php" style="margin-left: 0.5rem;" class="btn btn-primary"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i>Osserva</a>';
+        echo'  </div>';
+        echo'</div>';
+      }
+
+      ?>
     </div>
   </div>
 

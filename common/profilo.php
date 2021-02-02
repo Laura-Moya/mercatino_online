@@ -10,13 +10,13 @@
     <?php
 
       //Funzione leggiUtente
-      $risultato = leggiUtente($cid, 'MYGLRA99P60Z131O');
+      $risultato = leggiUtente($cid, $codice_fiscale);
       $utente = $risultato['contenuto'];
       //Funzione leggiProdottiAcquistati
-      $risultato = leggiProdottiAcquistati($cid, 'MYGLRA99P60Z131O');
+      $risultato = leggiProdottiAcquistati($cid, $codice_fiscale);
       $prodottiAcquistati = $risultato['contenuto'];
       //Funzione leggiProdottiOsservati
-      $risultato = leggiProdottiOsservati($cid, 'MYGLRA99P60Z131O');
+      $risultato = leggiProdottiOsservati($cid, $codice_fiscale);
       $prodottiOsservati = $risultato['contenuto'];
 
 
