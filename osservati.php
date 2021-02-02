@@ -7,9 +7,9 @@
   <?php include "common/navbar.php";?>
   <?php
 
-  //Funzione annunciOsservati
-  $risultato = annunciOsservati($cid, 'MRNVNT96R63I577A');
-  $annunci = $risultato['contenuto'];
+    //Funzione annunciOsservati
+    $risultato = annunciOsservati($cid, 'MRNVNT96R63I577A');
+    $annunciOsservati = $risultato['contenuto'];
   ?>
 
   <!-- I miei prodotti osservati -->
@@ -19,8 +19,8 @@
         echo '<p id="primo-piano">I tuoi prodotti osservati</p>';
         echo '<div class="row">';
 
-        for ($i=0; $i < 2 ; $i++) {
-          $prodotto = $annunci[$i];
+        for ($i=0; $i < count($annunciOsservati) ; $i++) {
+          $prodotto = $annunciOsservati[$i];
             echo '<div class="card" style="width: 16rem;">';
               echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
             echo '<div class="card-body">';

@@ -122,6 +122,7 @@ function leggiUtente($cid, $codicefiscale)
 	return $risultato;
 }
 
+//Conta prodotti venduti
 function leggiProdottiVenduti($cid, $codicefiscale)
 {
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
@@ -151,6 +152,7 @@ function leggiProdottiVenduti($cid, $codicefiscale)
 	return $risultato;
 }
 
+//Conta prodotti osservati
 function leggiProdottiOsservati($cid, $codicefiscale)
 {
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
@@ -179,6 +181,7 @@ function leggiProdottiOsservati($cid, $codicefiscale)
 	return $risultato;
 }
 
+//Conta prodotti acquistati
 function leggiProdottiAcquistati($cid, $codicefiscale)
 {
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
@@ -208,6 +211,7 @@ function leggiProdottiAcquistati($cid, $codicefiscale)
 	return $risultato;
 }
 
+//Conta prodotti in vendita
 function leggiProdottiInVendita($cid, $codicefiscale)
 {
 	$prodottiInVendita = array();
@@ -240,7 +244,7 @@ function leggiProdottiInVendita($cid, $codicefiscale)
 //Tutti i tuoi annunci osservati
 function annunciOsservati($cid, $codicefiscale)
 {
-	$annunci= array();
+	$annunciOsservati= array();
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
 	$prodotto = array();
 
@@ -268,8 +272,7 @@ function annunciOsservati($cid, $codicefiscale)
 			$annunciOsservati[$row[0]]=$prodotto;
   }
 
-
-	$risultato["contenuto"] = $annunci;
+	$risultato["contenuto"] = $annunciOsservati;
 	return $risultato;
 }
 
