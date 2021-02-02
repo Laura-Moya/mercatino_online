@@ -20,8 +20,7 @@ else
 }
 
 include "db/connect.php";
-include 'funzioni.php';
-
+include "common/funzioni.php";
 
 
 ?>

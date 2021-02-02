@@ -1,6 +1,6 @@
 <?php
 include "db/connect.php";
-include "common/funzioni.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

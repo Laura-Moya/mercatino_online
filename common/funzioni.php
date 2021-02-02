@@ -1,7 +1,5 @@
 <?php
 
-//Controlli login
-
 function checkMail($cid, $login)
 {
 	$risultato= array("msg"=>"","status"=>"ok");
@@ -10,21 +8,21 @@ function checkMail($cid, $login)
 
 	$res = $cid->query($sql);
 	if ($res==null)
- {
-		 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
-		 $risultato["status"]="ko";
+	 {
+			 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+			 $risultato["status"]="ko";
+			 $risultato["msg"]=$msg;
+	 }elseif($res->num_rows==0 || $res->num_rows>1)
+	 {
+			 $msg = "Login sbagliato";
+			 $risultato["status"]="ko";
+			 $risultato["msg"]=$msg;
+	 }elseif($res->num_rows==1)
+	 {
+		 $msg = "Login effettuato con successo";
+		 $risultato["status"]="ok";
 		 $risultato["msg"]=$msg;
- }elseif($res->num_rows==0 || $res->num_rows>1)
- {
-		 $msg = "Login sbagliato";
-		 $risultato["status"]="ko";
-		 $risultato["msg"]=$msg;
- }elseif($res->num_rows==1)
- {
-	 $msg = "Login effettuato con successo";
-	 $risultato["status"]="ok";
-	 $risultato["msg"]=$msg;
- }
+	 }
 	 return $risultato;
 
 }

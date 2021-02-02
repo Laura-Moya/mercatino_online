@@ -6,7 +6,7 @@
   <body>
 
     <?php include "common/navbar.php";?>
-    <?php include "common/funzioni.php" ?>
+  
     <?php
 
       $risultato = leggiAnnuncio($cid, 2);

@@ -21,7 +21,7 @@
     </div>
 
     <!-- Annunci osservati -->
-    <?php include 'common/osservati.php'; ?>
+    <?php include 'common/piuOsservati.php'; ?>
 
   </body>
 

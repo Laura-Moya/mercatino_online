@@ -6,7 +6,7 @@
   <body>
 
     <?php include "navbar.php";?>
-    <?php include 'funzioni.php'; ?>
+
     <?php
 
       //Funzione leggiUtente

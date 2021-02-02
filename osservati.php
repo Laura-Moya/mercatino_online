@@ -15,7 +15,6 @@
   <!-- I miei prodotti osservati -->
   <div class="container">
 
-
       <?php
         echo '<p id="primo-piano">I tuoi prodotti osservati</p>';
         echo '<div class="row">';
