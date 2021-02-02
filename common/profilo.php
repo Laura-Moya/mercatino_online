@@ -10,13 +10,13 @@
     <?php
 
       //Funzione leggiUtente
-      $risultato = leggiUtente($cid, $codice_fiscale);
+      $risultato = leggiUtente($cid, $codice_fiscale[0]);
       $utente = $risultato['contenuto'];
       //Funzione leggiProdottiAcquistati
-      $risultato = leggiProdottiAcquistati($cid, $codice_fiscale);
+      $risultato = leggiProdottiAcquistati($cid, $codice_fiscale[0]);
       $prodottiAcquistati = $risultato['contenuto'];
       //Funzione leggiProdottiOsservati
-      $risultato = leggiProdottiOsservati($cid, $codice_fiscale);
+      $risultato = leggiProdottiOsservati($cid, $codice_fiscale[0]);
       $prodottiOsservati = $risultato['contenuto'];
 
 

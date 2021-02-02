@@ -8,7 +8,7 @@
   <?php
 
     //Funzione annunciOsservati
-    $risultato = annunciOsservati($cid, 'MRNVNT96R63I577A');
+    $risultato = annunciOsservati($cid, $codice_fiscale[0]);
     $annunciOsservati = $risultato['contenuto'];
   ?>
 

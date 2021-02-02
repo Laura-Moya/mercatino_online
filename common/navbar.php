@@ -21,8 +21,12 @@ else
 include "db/connect.php";
 include "common/funzioni.php";
 
+if (isset($_SESSION["logged"])) {
+  $risultato = prendereCF($cid, $_SESSION["utente"]);
+  $codice_fiscale = $risultato['contenuto'];
+}
 
-$codice_fiscale = prendereCF($cid, $email);
+
 
 ?>
 <!-- Navbar -->

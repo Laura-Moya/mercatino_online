@@ -4,11 +4,11 @@
     <?php
 
       //Funzione leggiProdottiVenduti
-      $risultato = leggiProdottiVenduti($cid, 'MYGLRA99P60Z131O');
+      $risultato = leggiProdottiVenduti($cid, $codice_fiscale[0]);
       $prodottiVenduti = $risultato['contenuto'];
 
       //Funzione leggiProdottiInVendita
-      $risultato = leggiProdottiInVendita($cid, 'MYGLRA99P60Z131O');
+      $risultato = leggiProdottiInVendita($cid, $codice_fiscale[0]);
       $prodottiInVendita = $risultato['contenuto'];
 
      ?>
