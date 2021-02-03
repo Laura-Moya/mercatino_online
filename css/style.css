@@ -295,6 +295,11 @@ form.example::after {
   display: inline;
 }
 
+/* creaAnnuncio nuovo-usato */
+
+#riga{
+  display: inline-block;
+}
 @media screen and (max-width: 800px) {
   #sottocategorie {
     background-color: white !important;

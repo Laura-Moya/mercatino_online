@@ -92,14 +92,24 @@ else
             <input type="radio" id="Ristretta" name="visibilità" value="ristretta">
             <label for="Ristretta">Ristretta</label>
             </td>
-            <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
-            <h6>Seleziona lo stato</h6>
-            <input type="radio" id="nuovo" name="statoprodotto" value="nuovo">
-            <label style="margin-right:0.5rem" for="nuovo">Nuovo </label><br/>
-            <input type="radio" id="usato" name="statoprodotto" value="usato">
-            <label for="usato">Usato</label>
-            </td>
+
+
+              <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
+              <h6>Seleziona lo stato</h6>
+                <div id="riga">
+              <input class="inputpaga" type="radio" id="nuovo" name="statoprodotto" value="nuovo">
+              <label class ="labelpagamento" style="margin-right:0.5rem" for="nuovo">Nuovo </label><br/>
+              <input class="inputpaga" type="radio" id="usato" name="statoprodotto" value="usato">
+              <label class ="labelpagamento" for="usato">Usato</label>
+                </div>
+              </td>
+
           </tr>
+          <div class ="nuovo">
+            <input class="" type="checkbox" id="garanzia">
+            <label class ="" for="garanzia">Il prodotto ha una garanzia?</label><br/>
+          </div>
+
           <tr>
             <td colspan="2" align="center"> <h6 style="margin-top: 0.5rem;">Carica una immagine del tuo annuncio</h6></td>
           </tr>
