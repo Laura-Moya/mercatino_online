@@ -297,13 +297,21 @@ form.example::after {
 
 /* creaAnnuncio nuovo-usato */
 
- .tempogaranzia{
+#tempogaranzia{
   height: 0px;
   visibility: hidden;
 }
 #garanzia{
  height: 0px;
  visibility: hidden;
+}
+#tempousura{
+  height: 0px;
+  visibility: hidden;
+}
+#statousura{
+  height: 0px;
+  visibility: hidden;
 }
 /* #garanzia: checked ~ .tempogaranzia {
   height: auto;

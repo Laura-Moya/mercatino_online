@@ -94,40 +94,51 @@ else
             </td>
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
               <h6 >Seleziona lo stato</h6>
-              <input class="inputpaga" type="radio" id="N" name="SP" onclick="openDivGaranzia()"/>
+              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()"/>
               <label class ="labelpagamento" for="N" style="margin-right:0.5rem">Nuovo </label>
-              <input class="inputpaga" type="radio" id="U" name="SP" onclick="openDivUsura()"/>
+              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()"/>
               <label class ="labelpagamento" for="U">Usato</label>
               </td>
           </tr>
           <tr>
             <td colspan="2">
               <div id="garanzia">
-                <center><input class="" type="checkbox" id="G">
+                <center><input class="" type="checkbox" id="G" onclick="openDivTempoGar()">
                 <label class ="" for="G">Il prodotto ha una garanzia?</label><center></center>
               </div>
-              <div class="tempogaranzia">
-                <center><h6>Tempo di garanzia:</h6>
-                <input type="text" name="tempogaranzia" value=""/><center></center>
-              </div>
+              <tr>
+                <td colspan="2">
+                  <div id="tempogaranzia">
+                  <center><h6>Tempo di garanzia:</h6>
+                  <input type="text" name="tempogaranzia" value=""/><center></center>
+                </div>
+              </td>
+
+              </tr>
+
             </td>
           </tr>
           <tr>
-            <td>
-              <h6>Tempo di usura:</h6>
-              <input type="text" name="tempousura" value="">
-            </td>
-            <td>
-              <h6>Stato di usura:</h6>
-              <select class="form-control form-control-md" name="">
-                <option value="">Seleziona...</option>
-                <option value="Parianuovo">Pari a nuovo</option>
-                <option value="Buono">Buono</option>
-                <option value="Meglio">Meglio</option>
-                <option value="Usato">Usato</option>
+              <td>
+                <div id="tempousura">
+                <h6>Tempo di usura:</h6>
+                <input type="text" name="tempousura" value="">
+              </div>
 
-              </select>
-            </td>
+              </td>
+              <td>
+                <div id="statousura">
+                <h6>Stato di usura:</h6>
+                <select class="form-control form-control-md" name="">
+                  <option value="">Seleziona...</option>
+                  <option value="Parianuovo">Pari a nuovo</option>
+                  <option value="Buono">Buono</option>
+                  <option value="Meglio">Meglio</option>
+                  <option value="Usato">Usato</option>
+                </div>
+                </select>
+              </td>
+
           </tr>
           <tr>
 
@@ -148,15 +159,56 @@ else
       </form>
   </div>
   <script>
-    function openDivGaranzia() {
-      document.getElementByClassName("garanzia").style.visibility = "visible";
-      document.getElementByClassName("garanzia").style.height = "auto";
-    }
+  function ExecuteNuovo() {
+    openDivGaranzia();
+    closeDivUsura();
+    cancellareUsato();
 
-    // function closeDivGaranzia() {
-    //   document.getElementById("cartacredito").style.visibility = "hidden";
-    //   document.getElementById("cartacredito").style.height = "0px";
-    // }
+  }
+  function ExecuteUsato() {
+    openDivUsura();
+    closeDivGaranzia();
+
+  }
+  function openDivGaranzia() {
+    document.getElementById("garanzia").style.visibility = "visible";
+    document.getElementById("garanzia").style.height = "auto";
+  }
+  function closeDivUsura() {
+    document.getElementById("tempousura").style.visibility = "hidden";
+    document.getElementById("tempousura").style.height = "0px";
+    document.getElementById("statousura").style.visibility = "hidden";
+    document.getElementById("statousura").style.height = "0px";
+  }
+  function openDivTempoGar() {
+    if (document.getElementById("G").checked == true){
+      document.getElementById("tempogaranzia").style.visibility = "visible";
+      document.getElementById("tempogaranzia").style.height = "auto";
+    }
+    else {
+      document.getElementById("tempogaranzia").style.visibility = "hidden";
+      document.getElementById("tempogaranzia").style.height = "0px";
+    }
+  }
+  function cancellareUsato(){
+
+  }
+
+
+
+  function openDivUsura() {
+    document.getElementById("tempousura").style.visibility = "visible";
+    document.getElementById("tempousura").style.height = "auto";
+    document.getElementById("statousura").style.visibility = "visible";
+    document.getElementById("statousura").style.height = "auto";
+  }
+  function closeDivGaranzia() {
+    document.getElementById("garanzia").style.visibility = "hidden";
+    document.getElementById("garanzia").style.height = "0px";
+    document.getElementById("tempogaranzia").style.visibility = "hidden";
+    document.getElementById("tempogaranzia").style.height = "0px";
+  }
+
   </script>
 
   </body>
