@@ -94,26 +94,22 @@ else
             </td>
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
               <h6 >Seleziona lo stato</h6>
-              <input class="inputpaga" type="radio" id="nuovo" name="statoprodotto" />
-              <label class ="labelpagamento" style="margin-right:0.5rem" for="nuovo">Nuovo </label>
-              <input class="inputpaga" type="radio" id="usato" name="statoprodotto" />
-              <label class ="labelpagamento" for="usato">Usato</label>
+              <input class="inputpaga" type="radio" id="N" name="SP" onclick="openDivGaranzia()"/>
+              <label class ="labelpagamento" for="N" style="margin-right:0.5rem">Nuovo </label>
+              <input class="inputpaga" type="radio" id="U" name="SP" onclick="openDivUsura()"/>
+              <label class ="labelpagamento" for="U">Usato</label>
               </td>
           </tr>
           <tr>
             <td colspan="2">
-              <div class ="garanzia" >
-              <center><input class="" type="checkbox" id="garanzia">
-              <label class ="" for="garanzia">Il prodotto ha una garanzia?</label><center></center>
+              <div id="garanzia">
+                <center><input class="" type="checkbox" id="G">
+                <label class ="" for="G">Il prodotto ha una garanzia?</label><center></center>
               </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-                <div class="tempogaranzia">
-                  <center><h6>Tempo di garanzia:</h6>
-                  <input type="text" name="tempogaranzia" value=""><center></center>
-                </div>
+              <div class="tempogaranzia">
+                <center><h6>Tempo di garanzia:</h6>
+                <input type="text" name="tempogaranzia" value=""/><center></center>
+              </div>
             </td>
           </tr>
           <tr>
@@ -151,7 +147,17 @@ else
         </table>
       </form>
   </div>
-  <!-- <script src="common/selezionaCategoria.js"></script> -->
+  <script>
+    function openDivGaranzia() {
+      document.getElementByClassName("garanzia").style.visibility = "visible";
+      document.getElementByClassName("garanzia").style.height = "auto";
+    }
+
+    // function closeDivGaranzia() {
+    //   document.getElementById("cartacredito").style.visibility = "hidden";
+    //   document.getElementById("cartacredito").style.height = "0px";
+    // }
+  </script>
 
   </body>
 </html>

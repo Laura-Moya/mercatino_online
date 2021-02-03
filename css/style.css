@@ -297,19 +297,19 @@ form.example::after {
 
 /* creaAnnuncio nuovo-usato */
 
-
-.garanzia{
+ .tempogaranzia{
   height: 0px;
   visibility: hidden;
 }
-.tempogaranzia{
-  height: 0px;
-  visibility: hidden;
+#garanzia{
+ height: 0px;
+ visibility: hidden;
 }
-#nuovo:checked ~ .garanzia{
+/* #garanzia: checked ~ .tempogaranzia {
   height: auto;
   visibility: visible;
-}
+}  */
+
 @media screen and (max-width: 800px) {
   #sottocategorie {
     background-color: white !important;
