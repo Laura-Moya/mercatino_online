@@ -92,23 +92,49 @@ else
             <input type="radio" id="Ristretta" name="visibilità" value="ristretta">
             <label for="Ristretta">Ristretta</label>
             </td>
-
-            <div id="riga">
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
               <h6 >Seleziona lo stato</h6>
-              <input class="inputpaga" type="radio" id="nuovo" name="statoprodotto" value="nuovo">
+              <input class="inputpaga" type="radio" id="nuovo" name="statoprodotto" />
               <label class ="labelpagamento" style="margin-right:0.5rem" for="nuovo">Nuovo </label>
-              <input class="inputpaga" type="radio" id="usato" name="statoprodotto" value="usato">
+              <input class="inputpaga" type="radio" id="usato" name="statoprodotto" />
               <label class ="labelpagamento" for="usato">Usato</label>
               </td>
-            </div>
           </tr>
-          <div class ="nuovo">
-            <input class="" type="checkbox" id="garanzia">
-            <label class ="" for="garanzia">Il prodotto ha una garanzia?</label><br/>
-          </div>
-
           <tr>
+            <td colspan="2">
+              <div class ="garanzia" >
+              <center><input class="" type="checkbox" id="garanzia">
+              <label class ="" for="garanzia">Il prodotto ha una garanzia?</label><center></center>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+                <div class="tempogaranzia">
+                  <center><h6>Tempo di garanzia:</h6>
+                  <input type="text" name="tempogaranzia" value=""><center></center>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h6>Tempo di usura:</h6>
+              <input type="text" name="tempousura" value="">
+            </td>
+            <td>
+              <h6>Stato di usura:</h6>
+              <select class="form-control form-control-md" name="">
+                <option value="">Seleziona...</option>
+                <option value="Parianuovo">Pari a nuovo</option>
+                <option value="Buono">Buono</option>
+                <option value="Meglio">Meglio</option>
+                <option value="Usato">Usato</option>
+
+              </select>
+            </td>
+          </tr>
+          <tr>
+
             <td colspan="2" align="center"> <h6 style="margin-top: 0.5rem;">Carica una immagine del tuo annuncio</h6></td>
           </tr>
           <tr>
