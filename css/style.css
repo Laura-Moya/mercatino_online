@@ -299,6 +299,7 @@ form.example::after {
 
 #riga{
   display: inline-block;
+  align-self: right;
 }
 @media screen and (max-width: 800px) {
   #sottocategorie {

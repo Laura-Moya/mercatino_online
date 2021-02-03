@@ -93,17 +93,15 @@ else
             <label for="Ristretta">Ristretta</label>
             </td>
 
-
+            <div id="riga">
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
-              <h6>Seleziona lo stato</h6>
-                <div id="riga">
+              <h6 >Seleziona lo stato</h6>
               <input class="inputpaga" type="radio" id="nuovo" name="statoprodotto" value="nuovo">
-              <label class ="labelpagamento" style="margin-right:0.5rem" for="nuovo">Nuovo </label><br/>
+              <label class ="labelpagamento" style="margin-right:0.5rem" for="nuovo">Nuovo </label>
               <input class="inputpaga" type="radio" id="usato" name="statoprodotto" value="usato">
               <label class ="labelpagamento" for="usato">Usato</label>
-                </div>
               </td>
-
+            </div>
           </tr>
           <div class ="nuovo">
             <input class="" type="checkbox" id="garanzia">
