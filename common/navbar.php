@@ -24,6 +24,8 @@ include "common/funzioni.php";
 if (isset($_SESSION["logged"])) {
   $risultato = prendereCF($cid, $_SESSION["utente"]);
   $codice_fiscale = $risultato['contenuto'];
+  $risultato = prendereTipoUtente($cid, $_SESSION["utente"]);
+  $tipoutente = $risultato["contenuto"];
 }
 
 
@@ -52,7 +54,11 @@ if (isset($_SESSION["logged"])) {
           if (isset($_SESSION["utente"]))
           {
             echo "<li class='nav-item'>";
-            echo "<a class='nav-link' style='cursor: pointer;' href='profiloVenditore.php'>Profilo</a>";
+            if ($tipoutente[0] == "venditore"){
+              echo "<a class='nav-link' style='cursor: pointer;' href='profiloVenditore.php'>Profilo</a>";
+            } else {
+              echo "<a class='nav-link' style='cursor: pointer;' href='profiloAcquirente.php'>Profilo</a>";
+            }
             echo "</li>";
             echo "<li class='nav-item'>";
             echo "<a class='nav-link' style='cursor: pointer;' href='common/logout.php'>Logout</a>";
