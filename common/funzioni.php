@@ -58,7 +58,7 @@ function isUser($cid,$login,$pwd)
 
 function prendereCF($cid, $email)
 {
-	
+
 
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
 
@@ -388,6 +388,13 @@ function leggiAnnunci($cid)
 function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagine, $codicefiscale)
 {
 		$risultato= array("msg"=>"","status"=>"ok");
+
+		if ($cid->connect_errno) {
+	    $risultato["status"] = "ko";
+	    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+	    return $risultato;
+	  }
+
 		$sql= "INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `password`)
 					VALUES ('$codicefiscale', '$nome', '$cognome', '$login', '$immagine', '$tipo_utente', '$password')";
 
@@ -405,6 +412,35 @@ function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagi
 			$risultato["msg"]=$msg;
 		}
 		 return $risultato;
+
+}
+
+function osservare($cid, $prodotto, $codicefiscale){
+
+	$risultato= array("msg"=>"","status"=>"ok");
+
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+
+	$sql="INSERT INTO osserva (utente, prodotto) VALUES ('$codicefiscale','$prodotto')";
+
+	$res = $cid->query($sql);
+	if ($res==null)
+ {
+		 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+		 $risultato["status"]="ko";
+		 $risultato["msg"]=$msg;
+	 }
+	else
+	{
+		$msg = "Osserva effettuato con successo";
+		$risultato["status"]="ok";
+		$risultato["msg"]=$msg;
+	}
+	 return $risultato;
 
 }
 

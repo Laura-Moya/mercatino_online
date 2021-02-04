@@ -151,7 +151,7 @@
                     echo '<p class="card-text">Provenienza: ' . mb_strtoupper($prodotto[10]) . ' </p>';
                     echo '<h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ ' . $prodotto[6] . '</b></h4>';
                     echo '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>';
-                    echo '<button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
+                    echo '<button class="btn btn-primary" type="button" onclick = "osservare($cid, $prodotto[0], $codice_fiscale)"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
                   echo '</div>';
                 echo '</div>';
               echo '</div>';
