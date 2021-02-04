@@ -425,7 +425,7 @@ function osservare($cid, $prodotto, $codicefiscale){
 		return $risultato;
 	}
 
-	$sql="INSERT INTO osserva (utente, prodotto) VALUES ('$codicefiscale','$prodotto')";
+	$sql="INSERT INTO `osserva` (`utente`, `prodotto`) VALUES ('$codicefiscale','$prodotto')";
 
 	$res = $cid->query($sql);
 	if ($res==null)
