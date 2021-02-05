@@ -270,7 +270,6 @@ function leggiProdottiAcquistati($cid, $codicefiscale)
 //Conta prodotti in vendita
 function leggiProdottiInVendita($cid, $codicefiscale)
 {
-	$prodottiInVendita = array();
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
 
 	if ($cid->connect_errno) {
@@ -279,7 +278,12 @@ function leggiProdottiInVendita($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT stato.prodotto, stato.data_ora FROM stato ORDER BY data_ora ASC";
+	$sql = "SELECT COUNT(*)
+					FROM annuncio p, stato s
+					WHERE s.stato = 'in vendita' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND NOT EXISTS
+					(SELECT *
+         	FROM stato s2
+         	WHERE s2.stato = 'in vendita' AND p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
 
 	$res=$cid->query($sql);
 
@@ -290,10 +294,8 @@ function leggiProdottiInVendita($cid, $codicefiscale)
 	}
 
 	$row=$res->fetch_row();
-	$prodottiInVendita[0] = $row[0];
 
-
-	$risultato["contenuto"] = $prodottiInVendita;
+	$risultato["contenuto"] = $row;
 	return $risultato;
 }
 
