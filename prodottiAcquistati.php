@@ -37,10 +37,18 @@
 
     function valuta()
     {
-      let foo = prompt('Type here');
-let bar = confirm('Confirm or deny');
-console.log(foo, bar);
-      alert("<input></input>");
+      let puntualita = prompt('Valutazione della puntualità: ');
+      let serieta = prompt('Valutazione della serietà: ');
+      alert("Puntualità: " + puntualita + "\n" + "Serietà: " + serieta);
+      if (confirm('Sei sicuro della tua valutazione?')){
+          valuta($cid, $codicefiscaleValutato, $codicefiscaleValuta, serieta, puntualita);
+          window.location = "prodottiAcquistati.php";
+      }
+      // var a = prompt("A : ", "");
+      // var b = prompt("B : ", "");
+      // alert(a + "\n" + b);
+      // var name = prompt('What is your name?');
+      // alert('Hello ' + name + ', nice to see you!');
     }
 
   </script>

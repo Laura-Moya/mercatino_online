@@ -484,6 +484,7 @@ function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagi
 function osservare($cid, $prodotto, $codicefiscale){
 
 	$risultato= array("msg"=>"","status"=>"ok");
+	echo "ciao00";
 
 	if ($cid->connect_errno) {
 		$risultato["status"] = "ko";
@@ -492,6 +493,7 @@ function osservare($cid, $prodotto, $codicefiscale){
 	}
 
 	$sql="INSERT INTO `osserva` (`utente`, `prodotto`) VALUES ('$codicefiscale','$prodotto')";
+	echo "cia";
 
 	$res = $cid->query($sql);
 	if ($res==null)
@@ -499,6 +501,8 @@ function osservare($cid, $prodotto, $codicefiscale){
 		 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
 		 $risultato["status"]="ko";
 		 $risultato["msg"]=$msg;
+		 echo "ci";
+
 	 }
 	else
 	{
@@ -506,6 +510,7 @@ function osservare($cid, $prodotto, $codicefiscale){
 		$risultato["status"]="ok";
 		$risultato["msg"]=$msg;
 	}
+	echo "ciao";
 	 return $risultato;
 
 }
@@ -536,6 +541,36 @@ function diventaVenditore($cid, $codicefiscale)
 		$risultato["msg"]=$msg;
 	}
 	 return $risultato;
+}
+
+function valuta($cid, $codicefiscaleValutato, $codicefiscaleValuta, $serieta, $puntualita)
+{
+	$risultato= array("msg"=>"","status"=>"ok");
+
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+
+	$sql= "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
+				 VALUES ('$codicefiscaleValuta', '$codicefiscaleValutato', '$serieta', '$puntualita')";
+
+	$res = $cid->query($sql);
+	if ($res==null)
+ {
+		 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+		 $risultato["status"]="ko";
+		 $risultato["msg"]=$msg;
+	 }
+	else
+	{
+		$msg = "Valutazione effettuata con successo";
+		$risultato["status"]="ok";
+		$risultato["msg"]=$msg;
+	}
+
+	return $risultato;
 }
 
 function inserireAnnuncio($cid, $codice, $nome_annuncio)

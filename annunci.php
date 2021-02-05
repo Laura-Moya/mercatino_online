@@ -149,16 +149,16 @@
                     echo '<p class="card-text">Provenienza: ' . mb_strtoupper($prodotto[10]) . ' </p>';
                     echo '<h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ ' . $prodotto[6] . '</b></h4>';
                     echo '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>';
-<<<<<<< HEAD
+
                     echo'<button class="btn btn-primary" type="button" onclick="'?>
                     <?php osservare($cid,$prodotto[0],$codicefiscale[0]);?>
                     <?php echo'"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
                     echo '<i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
 
-=======
+
                     echo'<button class="btn btn-primary" type="button" onclick="' ?><?php osservare($cid, $prodotto[0], $codicefiscale[0]);?>
                     <?php echo'"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
->>>>>>> 9eb884e5ea1a6cc80000e23a65d151f72a07fe6e
+
                   echo '</div>';
                 echo '</div>';
               echo '</div>';
