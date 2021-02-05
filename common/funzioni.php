@@ -267,6 +267,43 @@ function leggiProdottiAcquistati($cid, $codicefiscale)
 	return $risultato;
 }
 
+function prodottiAcquistati($cid, $codicefiscale)
+{
+	$prodotti = array();
+	$prodotto = array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT annuncio.acquirente, annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice
+					FROM annuncio, stato
+					WHERE stato.prodotto = annuncio.codice
+								AND stato.stato = 'venduto' AND annuncio.acquirente = '$codicefiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+
+	while ($row=$res->fetch_row()) {
+			for ($i=0; $i < 4 ; $i++) {
+				$prodotto[$i] = $row[$i];
+			}
+			$prodotti[$row[3]] = $prodotto;
+  }
+
+	$risultato["contenuto"] = $prodotti;
+	return $risultato;
+}
+
+
 //Conta prodotti in vendita
 function leggiProdottiInVendita($cid, $codicefiscale)
 {
@@ -471,6 +508,34 @@ function osservare($cid, $prodotto, $codicefiscale){
 	}
 	 return $risultato;
 
+}
+
+function diventaVenditore($cid, $codicefiscale)
+{
+	$risultato= array("msg"=>"","status"=>"ok");
+
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+
+	$sql="UPDATE `utente` SET `tipo_utente` = 'venditore' WHERE `utente`.`codice_fiscale` = '$codicefiscale'";
+
+	$res = $cid->query($sql);
+	if ($res==null)
+ {
+		 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+		 $risultato["status"]="ko";
+		 $risultato["msg"]=$msg;
+	 }
+	else
+	{
+		$msg = "Diventa venditore effettuato con successo";
+		$risultato["status"]="ok";
+		$risultato["msg"]=$msg;
+	}
+	 return $risultato;
 }
 
 function inserireAnnuncio($cid, $codice, $nome_annuncio)

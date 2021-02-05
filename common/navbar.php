@@ -61,7 +61,7 @@ if (isset($_SESSION["logged"])) {
             }
             echo "</li>";
             echo "<li class='nav-item'>";
-            echo "<a class='nav-link' style='cursor: pointer;' href='common/logout.php'>Logout</a>";
+            echo "<a class='nav-link' style='cursor: pointer;' onclick='messaggioLogout()'>Logout</a>";
             echo "</li>";
           }
           else {
@@ -156,6 +156,13 @@ if (isset($_SESSION["logged"])) {
   function notLogged(){
     alert("Non sei loggato");
   }
+
+  function messaggioLogout(){
+    if (confirm('Sei sicuro che vuoi uscire?')) {
+        window.location = "common/logout.php";
+    }
+  }
+
 </script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>

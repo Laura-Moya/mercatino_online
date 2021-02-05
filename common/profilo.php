@@ -20,7 +20,7 @@
       $prodottiOsservati = $risultato['contenuto'];
 
 
-      ?>
+    ?>
 
     <div class="container-profilo container">
       <div class="row">
@@ -43,5 +43,5 @@
             echo '</div>';
           ?>
 
-          <p class="prodotti-venduti-profilo"><a href="#">Prodotti acquistati:</a> <?php echo "$prodottiAcquistati[0]"; ?> </p>
+          <p class="prodotti-venduti-profilo"><a href="./prodottiAcquistati.php">Prodotti acquistati:</a> <?php echo "$prodottiAcquistati[0]"; ?> </p>
           <p class="prodotti-venduti-profilo"><a href="osservati.php">Prodotti osservati:</a> <?php echo "$prodottiOsservati[0]"; ?> </p>
