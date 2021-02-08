@@ -7,8 +7,8 @@
       <?php include "common/navbar.php";?>
 
       <?php
-
-        $risultato = leggiAnnunci($cid);
+        $res = noFilter($cid);
+        $risultato = leggiAnnunci($cid, $res);
         $annunci = $risultato['contenuto'];
       ?>
 
@@ -58,78 +58,87 @@
         <!-- Navbar filtri -->
         <nav class="navbar bg-light" id="sottocategorie">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Stato
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Nuovo</a>
-                <a class="dropdown-item" href="#">Usato</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Prezzo
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">€ 0 - 20 </a>
-                <a class="dropdown-item" href="#">€ 20 - 50</a>
-                <a class="dropdown-item" href="#">€ 50 - 100</a>
-                <a class="dropdown-item" href="#">€ 100 - ∞</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Valutazione
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
-                  Più di
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
+            <form id="stato" action="annunci.php" method="post">
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Stato</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#" onclick="">Nuovo</a>
+                  <a class="dropdown-item" href="#" onclick="">Usato</a>
+                </div>
+              </li>
+            </form>
+            <form id="prezzo" action="annunci.php" method="post">
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Prezzo
                 </a>
-                <a class="dropdown-item" href="#">
-                  Più di
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">€ 0 - 20 </a>
+                  <a class="dropdown-item" href="#">€ 20 - 50</a>
+                  <a class="dropdown-item" href="#">€ 50 - 100</a>
+                  <a class="dropdown-item" href="#">€ 100 - ∞</a>
+                </div>
+              </li>
+            </form>
+            <form id="val" action="annunci.php" method="post">
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Valutazione
                 </a>
-                <a class="dropdown-item" href="#">
-                  Più di
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">
+                    Più di
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    Più di
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    Più di
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    Più di
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </a>
+                </div>
+              </li>
+            </form>
+            <form id="luogo" action="annunci.php" method="post">
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Luogo
                 </a>
-                <a class="dropdown-item" href="#">
-                  Più di
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Luogo
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Nella mia provincia</a>
-                <a class="dropdown-item" href="#">Nella mia regione</a>
-              </div>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Nella mia provincia</a>
+                  <a class="dropdown-item" href="#">Nella mia regione</a>
+                </div>
+              </li>
+            </form>
+            <form class="ordina" action="annunci.php" method="post">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ordina per</a>
+              </li>
+            </form>
 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Ordina per</a>
-            </li>
           </ul>
         </nav>
 

@@ -26,6 +26,12 @@ if (isset($_SESSION["logged"])) {
   $codice_fiscale = $risultato['contenuto'];
   $risultato = prendereTipoUtente($cid, $_SESSION["utente"]);
   $tipoutente = $risultato["contenuto"];
+  $risultato = prendereIndirizzi($cid, $codice_fiscale[0]);
+  $indirizzi = $risultato['contenuto'];
+  echo "<script>";
+  echo 'IndirizzoVisible();';
+  echo "</script>";
+
 }
 
 
@@ -110,11 +116,16 @@ if (isset($_SESSION["logged"])) {
 </nav>
 <!-- Indirizzo e Categorie -->
 <nav class="navbar navbar-expand-lg navbar-light">
-  <div>
+
+  <div id ="indi" style= "visibility: hidden;">
     <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
-    <select class="form-control form-control-md" id="aaa" required>
-      <option value="">Via Pitteri, 56</option>
-      <option value="">Via Dante Alighieri, 32</option>
+    <select class="form-control form-control-md" id="aaa">
+      <?php
+        for ($i=0; $i < count($indirizzi);$i++){
+          $indirizzo = $indirizzi[$i];
+          echo '<option value=""> '. Ucwords($indirizzo[1]).'</option>';
+        }
+       ?>
     </select>
   </div>
 
@@ -163,6 +174,10 @@ if (isset($_SESSION["logged"])) {
     }
   }
 
+  function IndirizzoVisible(){
+    document.getElementById("indi").style.visibility = "visible";
+
+  }
 </script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>

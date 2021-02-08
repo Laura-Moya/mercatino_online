@@ -58,10 +58,7 @@ function isUser($cid,$login,$pwd)
 
 function prendereCF($cid, $email)
 {
-
-
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
-
 	if ($cid->connect_errno) {
     $risultato["status"] = "ko";
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
@@ -86,6 +83,39 @@ function prendereCF($cid, $email)
 
 }
 
+function prendereIndirizzi ($cid, $codice_fiscale){
+	$utente = array();
+	$indirizzi = array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+	$sql = "SELECT *
+					FROM vive
+					WHERE vive.codice_fiscale = '$codice_fiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+		return $risultato;
+	}
+	$j=0;
+	while ($row=$res->fetch_row()) {
+		for ($i=0; $i < 5 ; $i++) {
+			$utente[$i] = $row[$i];
+		}
+		$indirizzi[$j] = $utente;
+		$j++;
+	}
+
+	$risultato["contenuto"] = $indirizzi;
+	return $risultato;
+
+}
 function prendereTipoUtente($cid, $email)
 {
 	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
@@ -415,7 +445,7 @@ function inPrimoPiano($cid)
 
 // Funzione relative alle funzione degli annunci
 
-function leggiAnnunci($cid)
+function leggiAnnunci($cid,$res)
 {
   $annunci = array();
   $risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
@@ -427,10 +457,14 @@ function leggiAnnunci($cid)
     return $risultato;
   }
 
-  $sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
-          FROM annuncio, utente
-          WHERE annuncio.venditore = utente.codice_fiscale;";
-  $res=$cid->query($sql);
+	if (isset($_POST['stato'])){
+		$res = filtroStato($cid,$stato,$res);
+	}
+	$sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
+					FROM annuncio, utente
+					WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice IN $res";
+	$res=$cid->query($sql);
+
   if ($res == null) {
     $risultato["status"] = "ko";
     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
@@ -578,4 +612,31 @@ function inserireAnnuncio($cid, $codice, $nome_annuncio)
 
 }
 
+// Queste funzioni daranno come risultato solo la query da mettere in leggeAnnunci (filtri vari)
+
+function noFilter($cid){
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+	$sql = "SELECT annuncio.codice
+					FROM annuncio, utente
+					WHERE annuncio.venditore = utente.codice_fiscale";
+	$res=$cid->query($sql);
+	return $res;
+}
+function filtroStato ($cid, $stato, $res){
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+	$sql = "SELECT annuncio.codice
+					FROM annuncio
+					WHERE annuncio.nuovo = '$stato' AND annuncio.codice IN ($res)";
+
+	$res=$cid->query($sql);
+	return $res;
+}
 ?>

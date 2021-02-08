@@ -8,7 +8,18 @@
     <?php include "navbar.php";?>
 
     <?php
-
+      if (!isset($_SESSION['utente'])){
+        echo '<div class="jumbotron jumbotron-fluid">';
+        echo '<div class="container"> ';
+        echo '<h1 class="display-4">Non sei loggato</h1>';
+        echo '<p class="lead">Non puoi accedere a questa pagina se non sei loggato, clicca "accedi" per procedere con il login</p>';
+        echo '<p class="lead">';
+        echo '<a class="btn btn-primary btn-lg" onclick="openForm()" role="button">Accedi</a>';
+        echo '</p>';
+        echo '</div>';
+        echo '</div>';
+        exit;
+      }
       //Funzione leggiUtente
       $risultato = leggiUtente($cid, $codice_fiscale[0]);
       $utente = $risultato['contenuto'];
