@@ -26,15 +26,36 @@
                   echo '<div class="card-body">';
                   echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[2]) . '</p>';
-                  echo '<a onclick="valuta($cid, $codicefiscaleValutato, $codicefiscaleValuta)" class="btn btn-primary">Valuta transizione</a>';
+                  echo '<a onclick="openForm()" class="btn btn-primary">Valuta transizione</a>';
+
                 echo '</div>';
               echo '</div>';
         }
       ?>
+      <div class='form-popup container-registrazione' id='valuta'>
+      <form action='./check.php' method='POST'>
+      <h4>Valuta transazione</h4>
+      <label ><b>Puntalità</b></label><br/>
+      <input type='text'>
+      <label for='psw'><b>Serietà</b></label> <br/>
+      <input type="text">
+      <button type='submit' class='btn btn-primary btn-login'>Valuta</button>
+      <button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>
+      </form>
+      </div>
     </div>
   </div>
+  <script>
+    function openForm() {
+      document.getElementById("valuta").style.display = "block";
+    }
 
+    function closeForm() {
+      document.getElementById("valuta").style.display = "none";
+    }
+  </script>
 
 </body>
+
 <!-- include "common/footer.php"; -->
 </html>
