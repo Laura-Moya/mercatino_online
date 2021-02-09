@@ -7,8 +7,8 @@
       <?php include "common/navbar.php";?>
 
       <?php
-        $res = noFilter($cid);
-        $risultato = leggiAnnunci($cid, $res);
+        // $res = noFilter($cid);
+        $risultato = leggiAnnunci($cid);
         $annunci = $risultato['contenuto'];
       ?>
 

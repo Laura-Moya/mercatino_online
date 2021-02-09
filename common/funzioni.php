@@ -445,45 +445,74 @@ function inPrimoPiano($cid)
 
 // Funzione relative alle funzione degli annunci
 
-function leggiAnnunci($cid,$res)
+function leggiAnnunci($cid)
 {
   $annunci = array();
   $risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
 	$prodotto = array();
-
   if ($cid->connect_errno) {
     $risultato["status"] = "ko";
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
     return $risultato;
   }
-
-	if (isset($_POST['stato'])){
-		$res = filtroStato($cid,$stato,$res);
-	}
-	$sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
-					FROM annuncio, utente
-					WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice IN $res";
-	$res=$cid->query($sql);
-
+  $sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
+          FROM annuncio, utente
+          WHERE annuncio.venditore = utente.codice_fiscale;";
+  $res=$cid->query($sql);
   if ($res == null) {
     $risultato["status"] = "ko";
     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
     return $risultato;
   }
-
   while ($row=$res->fetch_row()) {
 		for ($i=0; $i < 11 ; $i++) {
 			$prodotto[$i] = $row[$i];
 		}
 		$annunci[$row[0]] = $prodotto;
-
   }
-
   $risultato["contenuto"] = $annunci;
   return $risultato;
-
 }
 
+// function leggiAnnunci($cid,$res)
+// {
+//   $annunci = array();
+//   $risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+// 	$prodotto = array();
+//
+//   if ($cid->connect_errno) {
+//     $risultato["status"] = "ko";
+//     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+//     return $risultato;
+//   }
+//
+// 	if (isset($_POST['stato'])){
+// 		$res = filtroStato($cid,$stato,$res);
+// 	}
+// 	$sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
+// 					FROM annuncio, utente
+// 					WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice IN $res";
+// 	$res=$cid->query($sql);
+//
+//   if ($res == null) {
+//     $risultato["status"] = "ko";
+//     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+//     return $risultato;
+//   }
+//
+//   while ($row=$res->fetch_row()) {
+// 		for ($i=0; $i < 11 ; $i++) {
+// 			$prodotto[$i] = $row[$i];
+// 		}
+// 		$annunci[$row[0]] = $prodotto;
+//
+//   }
+//
+//   $risultato["contenuto"] = $annunci;
+//   return $risultato;
+//
+// }
+//
 
 function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagine, $codicefiscale)
 {
@@ -614,29 +643,29 @@ function inserireAnnuncio($cid, $codice, $nome_annuncio)
 
 // Queste funzioni daranno come risultato solo la query da mettere in leggeAnnunci (filtri vari)
 
-function noFilter($cid){
-	if ($cid->connect_errno) {
-		$risultato["status"] = "ko";
-		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
-		return $risultato;
-	}
-	$sql = "SELECT annuncio.codice
-					FROM annuncio, utente
-					WHERE annuncio.venditore = utente.codice_fiscale";
-	$res=$cid->query($sql);
-	return $res;
-}
-function filtroStato ($cid, $stato, $res){
-	if ($cid->connect_errno) {
-		$risultato["status"] = "ko";
-		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
-		return $risultato;
-	}
-	$sql = "SELECT annuncio.codice
-					FROM annuncio
-					WHERE annuncio.nuovo = '$stato' AND annuncio.codice IN ($res)";
-
-	$res=$cid->query($sql);
-	return $res;
-}
+// function noFilter($cid){
+// 	if ($cid->connect_errno) {
+// 		$risultato["status"] = "ko";
+// 		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+// 		return $risultato;
+// 	}
+// 	$sql = "SELECT annuncio.codice
+// 					FROM annuncio, utente
+// 					WHERE annuncio.venditore = utente.codice_fiscale";
+// 	$res=$cid->query($sql);
+// 	return $res;
+// }
+// function filtroStato ($cid, $stato, $res){
+// 	if ($cid->connect_errno) {
+// 		$risultato["status"] = "ko";
+// 		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+// 		return $risultato;
+// 	}
+// 	$sql = "SELECT annuncio.codice
+// 					FROM annuncio
+// 					WHERE annuncio.nuovo = '$stato' AND annuncio.codice IN ($res)";
+//
+// 	$res=$cid->query($sql);
+// 	return $res;
+// }
 ?>
