@@ -11,7 +11,8 @@
 
       $risultato = leggiAnnuncio($cid, 2);
       $prodotto = $risultato['contenuto'];
-
+      $risultato = contaOsservatori($cid, 2);
+      $osservatori = $risultato['contenuto'];
     ?>
 
     <div class="container-profilo container">
@@ -21,7 +22,7 @@
         </div>
         <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
           <h1 class="nome-annuncio"> <?php echo Ucwords("$prodotto[0]"); ?> </h1>
-          <a> Questo prodotto è osservato da 23 persone!</a>
+          <a> Questo prodotto è osservato da <?php echo "$osservatori[0]"; ?> persone! </a>
           <p class="nome-prodotto" style="margin-top: 1rem;"> <?php echo Ucwords("$prodotto[1]"); ?> </p>
           <h2>Prezzo: € <?php echo "$prodotto[2]"; ?> </h2>
           <p>Venditore: <?php echo Ucwords("$prodotto[3]") . Ucwords(" $prodotto[4]"); ?></p>

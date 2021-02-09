@@ -25,7 +25,7 @@ else
 <html lang="en" dir="ltr">
   <head>
     <?php include "common/header.php";?>
-      <script type="text/javascript" src="common/selezionaCategoria.js"></script>
+      <script type="text/javascript" src="common/funzioni.js"></script>
   </head>
   <body>
 
@@ -170,8 +170,8 @@ else
   function openDivGaranzia() {
     document.getElementById("garanzia").style.visibility = "visible";
     document.getElementById("garanzia").style.height = "auto";
-    document.getElementById("tempousura").reset();
-    document.getElementById("statousura").reset();
+    // document.getElementById("tempousura").reset();
+    // document.getElementById("statousura").reset();
   }
   function closeDivUsura() {
     document.getElementById("tempousura").style.visibility = "hidden";
@@ -193,8 +193,6 @@ else
   function cancellareUsato(){
 
   }
-
-
 
   function openDivUsura() {
     document.getElementById("tempousura").style.visibility = "visible";

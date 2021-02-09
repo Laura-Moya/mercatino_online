@@ -160,21 +160,17 @@
                     echo '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>';
 
                     echo'<button class="btn btn-primary" type="button" onclick="'?>
-                    <?php osservare($cid,$prodotto[0],$codicefiscale[0]);?>
+                    <?php osservare($cid,$prodotto[0],$codice_fiscale[0]);?>
                     <?php echo'"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
-                    echo '<i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
 
-
-                    echo'<button class="btn btn-primary" type="button" onclick="' ?><?php osservare($cid, $prodotto[0], $codicefiscale[0]);?>
-                    <?php echo'"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
 
                   echo '</div>';
                 echo '</div>';
               echo '</div>';
             echo '</div>';
           }
-        ?>
 
+?>
         </div>
 
 

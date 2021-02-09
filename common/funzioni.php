@@ -154,7 +154,7 @@ function leggiAnnuncio($cid, $codice)
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
     return $risultato;
   }
-	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome, annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo
+	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome, annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.codice
 				  FROM annuncio, stato, utente
 				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = $codice";
 
@@ -167,7 +167,7 @@ function leggiAnnuncio($cid, $codice)
 	}
 
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 11 ; $i++) {
+			for ($i=0; $i < 12 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 
@@ -547,7 +547,6 @@ function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagi
 function osservare($cid, $prodotto, $codicefiscale){
 
 	$risultato= array("msg"=>"","status"=>"ok");
-	echo "ciao00";
 
 	if ($cid->connect_errno) {
 		$risultato["status"] = "ko";
@@ -556,7 +555,6 @@ function osservare($cid, $prodotto, $codicefiscale){
 	}
 
 	$sql="INSERT INTO `osserva` (`utente`, `prodotto`) VALUES ('$codicefiscale','$prodotto')";
-	echo "cia";
 
 	$res = $cid->query($sql);
 	if ($res==null)
@@ -564,7 +562,6 @@ function osservare($cid, $prodotto, $codicefiscale){
 		 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
 		 $risultato["status"]="ko";
 		 $risultato["msg"]=$msg;
-		 echo "ci";
 
 	 }
 	else
@@ -573,13 +570,13 @@ function osservare($cid, $prodotto, $codicefiscale){
 		$risultato["status"]="ok";
 		$risultato["msg"]=$msg;
 	}
-	echo "ciao";
 	 return $risultato;
 
 }
 
 function diventaVenditore($cid, $codicefiscale)
 {
+	echo "ciao";
 	$risultato= array("msg"=>"","status"=>"ok");
 
 	if ($cid->connect_errno) {
@@ -606,7 +603,7 @@ function diventaVenditore($cid, $codicefiscale)
 	 return $risultato;
 }
 
-function valuta($cid, $codicefiscaleValutato, $codicefiscaleValuta, $serieta, $puntualita)
+function valuta_php($cid, $codicefiscaleValutato, $codicefiscaleValuta, $serieta, $puntualita)
 {
 	$risultato= array("msg"=>"","status"=>"ok");
 
@@ -639,6 +636,32 @@ function valuta($cid, $codicefiscaleValutato, $codicefiscaleValuta, $serieta, $p
 function inserireAnnuncio($cid, $codice, $nome_annuncio)
 {
 
+}
+
+function contaOsservatori($cid, $codice){
+	$risultato= array("msg"=>"","status"=>"ok");
+
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+
+	$sql="SELECT COUNT(*)
+				FROM `osserva`
+				WHERE osserva.prodotto ='$codice' ";
+
+	$res = $cid->query($sql);
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+
+	$row=$res->fetch_row();
+
+	$risultato["contenuto"] = $row;
+	return $risultato;
 }
 
 // Queste funzioni daranno come risultato solo la query da mettere in leggeAnnunci (filtri vari)

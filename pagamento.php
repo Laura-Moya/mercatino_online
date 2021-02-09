@@ -2,7 +2,6 @@
 <html lang="en" dir="ltr">
   <head>
     <?php include "common/header.php";?>
-      <script type="text/javascript" src="common/pagare.js"></script>
       </head>
   <body>
 

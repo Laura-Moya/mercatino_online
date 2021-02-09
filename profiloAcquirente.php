@@ -1,7 +1,6 @@
-    <?php include 'common/profilo.php'; ?>
-
-          <button class="btn btn-primary" type="button" onclick="diventaVenditore(<?php$cid;?>,'<?php$codice_fiscale;?>');">Diventa venditore!</button>
-
+    <?php include 'common/profilo.php';
+          echo '<button class="btn btn-primary" type="button" onclick="diventaVenditore('.$cid.' , '.$codice_fiscale[0].')">Diventa venditore!</button>';
+          ?>
         </div>
       </div>
     </div>

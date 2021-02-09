@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <?php include "common/header.php";?>
+      <script type="text/javascript" src="common/funzioni.js"></script>
   </head>
 <body>
   <?php include "common/navbar.php";?>
@@ -25,7 +26,7 @@
                   echo '<div class="card-body">';
                   echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[2]) . '</p>';
-                  echo '<a onclick="valuta()" class="btn btn-primary">Valuta transizione</a>';
+                  echo '<a onclick="valuta($cid, $codicefiscaleValutato, $codicefiscaleValuta)" class="btn btn-primary">Valuta transizione</a>';
                 echo '</div>';
               echo '</div>';
         }
@@ -33,25 +34,7 @@
     </div>
   </div>
 
-  <script>
 
-    function valuta()
-    {
-      let puntualita = prompt('Valutazione della puntualità: ');
-      let serieta = prompt('Valutazione della serietà: ');
-      alert("Puntualità: " + puntualita + "\n" + "Serietà: " + serieta);
-      if (confirm('Sei sicuro della tua valutazione?')){
-          valuta($cid, $codicefiscaleValutato, $codicefiscaleValuta, serieta, puntualita);
-          window.location = "prodottiAcquistati.php";
-      }
-      // var a = prompt("A : ", "");
-      // var b = prompt("B : ", "");
-      // alert(a + "\n" + b);
-      // var name = prompt('What is your name?');
-      // alert('Hello ' + name + ', nice to see you!');
-    }
-
-  </script>
 </body>
 <!-- include "common/footer.php"; -->
 </html>
