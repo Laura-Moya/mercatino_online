@@ -28,13 +28,7 @@ if (isset($_SESSION["logged"])) {
   $tipoutente = $risultato["contenuto"];
   $risultato = prendereIndirizzi($cid, $codice_fiscale[0]);
   $indirizzi = $risultato['contenuto'];
-  echo "<script>";
-  echo 'IndirizzoVisible();';
-  echo "</script>";
-
 }
-
-
 
 ?>
 <!-- Navbar -->
@@ -117,14 +111,24 @@ if (isset($_SESSION["logged"])) {
 <!-- Indirizzo e Categorie -->
 <nav class="navbar navbar-expand-lg navbar-light">
 
-  <div id ="indi" style= "visibility: hidden;">
-    <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
-    <select class="form-control form-control-md" id="aaa">
-      <?php
-        for ($i=0; $i < count($indirizzi);$i++){
-          $indirizzo = $indirizzi[$i];
-          echo '<option value=""> '. Ucwords($indirizzo[1]).'</option>';
+  <div id ="indi">
+    <?php
+      echo '<p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>';
+      echo '<select class="form-control form-control-md" id="aaa">';
+        if (!isset($_SESSION["utente"])) {
+          echo '<script type="text/javascript">';
+          echo 'document.getElementById("indi").style.visibility = "hidden";';
+          echo '</script>';
         }
+        else {
+
+          for ($i=0; $i < count($indirizzi);$i++){
+            $indirizzo = $indirizzi[$i];
+            echo '<option value=""> '. Ucwords($indirizzo[1]).'</option>';
+          }
+        }
+        echo '</select>';
+
        ?>
     </select>
   </div>
@@ -174,10 +178,6 @@ if (isset($_SESSION["logged"])) {
     }
   }
 
-  function IndirizzoVisible(){
-    document.getElementById("indi").style.visibility = "visible";
-
-  }
 </script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>
