@@ -318,6 +318,10 @@ form.example::after {
   visibility: visible;
 }  */
 
+/* Valutazioni popup */
+.valuta-popup{
+  padding:0rem 2rem;
+}
 @media screen and (max-width: 800px) {
   #sottocategorie {
     background-color: white !important;

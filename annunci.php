@@ -145,39 +145,29 @@
         <div class='annunci'>
         <?php
           for ($i=1; $i < count($annunci) ; $i++) {
-            $prodotto = $annunci[$i];
-              echo '<div class="card mb-3" id="annunci" style="max-width: 770px;">';
-              echo '<div class="row no-gutters">';
-                echo '<div class="col-md-4">';
-                  echo '<img src="images/cellulare.jpg" class="card-img">';
-                echo '</div>';
-                echo '<div class="col-md-8">';
-                  echo '<div class="card-body">';
-                    echo '<h2 class="card-title"> <a href="prodotto.php">' . Ucwords($prodotto[4]) . '</a></h2>';
-                    echo '<p class="card-text">' . Ucwords($prodotto[3]) . '</p>';
-                    echo '<p class="card-text">Provenienza: ' . mb_strtoupper($prodotto[10]) . ' </p>';
-                    echo '<h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ ' . $prodotto[6] . '</b></h4>';
-                    echo '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>';
-
-                    echo'<button class="btn btn-primary" type="button" onclick="'?>
-                    <?php osservare($cid,$prodotto[0],$codice_fiscale[0]);?>
-                    <?php echo'"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>';
-
-
-                  echo '</div>';
-                echo '</div>';
-              echo '</div>';
-            echo '</div>';
-          }
-
-?>
+            $prodotto = $annunci[$i]; ?>
+              <div class="card mb-3" id="annunci" style="max-width: 770px;">
+              <div class="row no-gutters">
+              <div class="col-md-4">
+                  <img src="images/cellulare.jpg" class="card-img">
+              </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h2 class="card-title"> <a href="prodotto.php"><?php echo Ucwords("$prodotto[4]")  ?></a></h2>
+                    <p class="card-text"> <?php echo Ucwords("$prodotto[3]") ?></p>
+                    <p class="card-text">Provenienza: <?php echo mb_strtoupper("$prodotto[10]") ?> </p>
+                    <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo "$prodotto[6]" ?> </b></h4>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <button class="btn btn-primary" type="button" onclick="
+                    <?php osservare($cid,$prodotto[0],$codice_fiscale[0]);?>"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+          <?php } ?>
         </div>
 
-
-
-
     </div>
-
 
   </body>
 
