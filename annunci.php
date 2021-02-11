@@ -12,7 +12,6 @@
         $annunci = $risultato['contenuto'];
       ?>
 
-
       <div class="container-filtri-annunci">
       <!-- Navbar Sottocategorie -->
       <nav class="navbar bg-light" id="sottocategorie">

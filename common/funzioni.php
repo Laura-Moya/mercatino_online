@@ -156,7 +156,7 @@ function leggiAnnuncio($cid, $codice)
   }
 	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome, annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.codice
 				  FROM annuncio, stato, utente
-				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = $codice";
+				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = '$codice'";
 
 	$res=$cid->query($sql);
 
