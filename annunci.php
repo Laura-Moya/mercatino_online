@@ -10,6 +10,37 @@
         // $res = noFilter($cid);
         $risultato = leggiAnnunci($cid);
         $annunci = $risultato['contenuto'];
+
+        if (isset($_POST['submit-search2'])){
+          $search = $mysqli_real_escape_string($cid,$_POST['search2']);
+          $sql = "SELECT * FROM annuncio WHERE nome_annuncio LIKE '%$search%' OR nome_prodotto LIKE '%$search%'";
+          $result = mysqli_query($cid,$sql);
+          $queryResult = mysqli_num_rows($result);
+
+          if ($queryResult > 0) {
+            while($row=mysqli_fetch_assoc($result)){?>
+              <div class="card mb-3" id="annunci" style="max-width: 770px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                      <img src="images/cellulare.jpg" class="card-img">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h2 class="card-title"> <a href="prodotto.php"><?php echo Ucwords("$row['nome_prodotto']")  ?></a></h2>
+                      <p class="card-text"> <?php echo Ucwords("$row['nome_annuncio']") ?></p>
+                      <p class="card-text">Provenienza: <?php echo mb_strtoupper("$row['provincia']") ?> </p>
+                      <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo "$row['prezzo']" ?> </b></h4>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php }
+          } else {
+            echo "Non sono presenti annunci con questa parola chiave";
+          }
+        }
       ?>
 
       <div class="container-filtri-annunci">
@@ -143,30 +174,7 @@
         </nav>
 
         <div class='annunci'>
-        <?php
-          for ($i=1; $i < count($annunci) ; $i++) {
-            $prodotto = $annunci[$i];
-            $codiceProdotto = $prodotto[0];
-            ?>
-              <div class="card mb-3" id="annunci" style="max-width: 770px;">
-              <div class="row no-gutters">
-              <div class="col-md-4">
-                  <img src="images/cellulare.jpg" class="card-img">
-              </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h2 class="card-title"> <a href="prodotto.php?codiceProdotto='.prodotto[0].'"><?php echo Ucwords("$prodotto[4]")  ?></a></h2>
-                    <p class="card-text"> <?php echo Ucwords("$prodotto[3]") ?></p>
-                    <p class="card-text">Provenienza: <?php echo mb_strtoupper("$prodotto[10]") ?> </p>
-                    <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo "$prodotto[6]" ?> </b></h4>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button class="btn btn-primary" type="button" onclick="
-                    <?php osservare($cid,$prodotto[0],$codice_fiscale[0]);?>"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i> Osserva</button>
-                  </div>
-                </div>
-              </div>
-              </div>
-          <?php } ?>
+
         </div>
 
     </div>
