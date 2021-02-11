@@ -40,7 +40,7 @@ if (isset($_SESSION["logged"])) {
 
     <div class="col-sm-6 col-md-6 col-lg-6">
 
-      <form class="example" action="/search.php" method="POST" style="margin:auto;max-width:450px">
+      <form class="example" action="./annunci.php" method="POST" style="margin:auto;max-width:450px">
         <input type="text" placeholder="Cerca..." name="search2">
         <button type="submit" name="submit-search2"><i class="fa fa-search"></i></button>
       </form>

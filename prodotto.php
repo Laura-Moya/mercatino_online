@@ -8,11 +8,13 @@
     <?php include "common/navbar.php";?>
 
     <?php
-      echo "Sto ricevendo una variabile:  ".$_GET["codiceProdotto"] .", el codice del prodotto";
-      $risultato = leggiAnnuncio($cid, $codiceProdotto);
+    $codice = mysqli_real_escape_string($cid, $_GET['codice']);
+
+      $risultato = leggiAnnuncio($cid, $codice);
       $prodotto = $risultato['contenuto'];
-      $risultato = contaOsservatori($cid, $codiceProdotto);
+      $risultato = contaOsservatori($cid, $codice);
       $osservatori = $risultato['contenuto'];
+
     ?>
 
     <div class="container-profilo container">
