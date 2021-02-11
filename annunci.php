@@ -145,7 +145,9 @@
         <div class='annunci'>
         <?php
           for ($i=1; $i < count($annunci) ; $i++) {
-            $prodotto = $annunci[$i]; ?>
+            $prodotto = $annunci[$i];
+            $codiceProdotto = $prodotto[0];
+            ?>
               <div class="card mb-3" id="annunci" style="max-width: 770px;">
               <div class="row no-gutters">
               <div class="col-md-4">
@@ -153,7 +155,7 @@
               </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h2 class="card-title"> <a href="prodotto.php"><?php echo Ucwords("$prodotto[4]")  ?></a></h2>
+                    <h2 class="card-title"> <a href="prodotto.php?codiceProdotto='.prodotto[0].'"><?php echo Ucwords("$prodotto[4]")  ?></a></h2>
                     <p class="card-text"> <?php echo Ucwords("$prodotto[3]") ?></p>
                     <p class="card-text">Provenienza: <?php echo mb_strtoupper("$prodotto[10]") ?> </p>
                     <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo "$prodotto[6]" ?> </b></h4>

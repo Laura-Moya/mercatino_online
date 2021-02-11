@@ -1,5 +1,5 @@
     <?php include 'common/profilo.php';
-          echo '<button class="btn btn-primary" type="button" onclick="diventaVenditore('.$cid.' , '.$codice_fiscale[0].')">Diventa venditore!</button>';
+          echo '<button class="btn btn-primary" type="button" onclick="diventaVenditore($cid,$codice_fiscale[0])">Diventa venditore!</button>';
           ?>
         </div>
       </div>

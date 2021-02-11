@@ -8,10 +8,10 @@
     <?php include "common/navbar.php";?>
 
     <?php
-
-      $risultato = leggiAnnuncio($cid, 2);
+      echo "Sto ricevendo una variabile:  ".$_GET["codiceProdotto"] .", el codice del prodotto";
+      $risultato = leggiAnnuncio($cid, $codiceProdotto);
       $prodotto = $risultato['contenuto'];
-      $risultato = contaOsservatori($cid, 2);
+      $risultato = contaOsservatori($cid, $codiceProdotto);
       $osservatori = $risultato['contenuto'];
     ?>
 
