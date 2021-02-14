@@ -5,7 +5,7 @@
   </head>
 <body>
   <?php include "common/navbar.php";
-
+  
 $codiceFiscaleElimina = $_GET["codiceFiscale"];
 $query = "DELETE FROM `utente` WHERE `utente`.`codice_fiscale` = '$codiceFiscaleElimina'";
 
@@ -14,7 +14,7 @@ $data = mysqli_query($cid, $query);
 if ($data) {
   session_unset();
   session_destroy();
-  header("Location: index.php?codicefiscaleeliminato=$codiceFiscaleElimina");
+  header("Location: index.php?codicefiscaleeliminato=" . $codiceFiscaleElimina);
 }
 else {
   header("Location: index.php?errore=erroreDiConessione");
