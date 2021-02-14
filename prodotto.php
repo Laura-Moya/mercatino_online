@@ -8,7 +8,7 @@
     <?php include "common/navbar.php";?>
 
     <?php
-    $codice = mysqli_real_escape_string($cid, $_GET['codice']);
+      $codice = mysqli_real_escape_string($cid, $_GET['codice']);
 
       $risultato = leggiAnnuncio($cid, $codice);
       $prodotto = $risultato['contenuto'];

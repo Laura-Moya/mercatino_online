@@ -18,19 +18,23 @@
     <div class="row">
       <?php
       for ($i=0; $i < count($primoPiano); $i++) {
-        $prodotto = $primoPiano[$i];
-        echo '<div class="card" style="width: 16rem;">';
-          echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
-          echo '<div class="card-body">';
-            echo'<h5 class="card-title">'. Ucwords($prodotto[1]) .'</h5>';
-            echo'<p class="card-text">'. Ucwords($prodotto[0]) .'</p>';
-            echo'<a href="prodotto.php" class="btn btn-primary">Visualizza!</a>';
-            echo'<a href="prodotto.php" style="margin-left: 0.5rem;" class="btn btn-primary"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i>Osserva</a>';
-        echo'  </div>';
-        echo'</div>';
-      }
+        $prodotto = $primoPiano[$i];?>
+        <form action="prodotto.php" method="get">
+          <div class="card" style="width: 16rem;">
+           <img src="images/fornellino.jpg" class="card-img-top" alt="...">
+           <div class="card-body">
+             <h5 class="card-title"> <?php echo Ucwords("$prodotto[1]"); ?> </h5>
+             <p class="card-text"> <?php echo Ucwords("$prodotto[0]"); ?> </p>
+             <a href="prodotto.php?codice= <?php echo "$prodotto[2]"; ?>" class="btn btn-primary">Visualizza!</a>
+             <a href="prodotto.php" style="margin-left: 0.5rem;" class="btn btn-primary"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i>Osserva</a>
+           </div>
+          </div>
+        </form>
 
-      ?>
+
+      <?php } ?>
+
+
     </div>
   </div>
 

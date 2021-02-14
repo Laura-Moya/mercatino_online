@@ -154,7 +154,8 @@ function leggiAnnuncio($cid, $codice)
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
     return $risultato;
   }
-	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome, annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.codice
+	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome,
+								 annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.codice, annuncio.venditore
 				  FROM annuncio, stato, utente
 				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = '$codice'";
 
@@ -167,7 +168,7 @@ function leggiAnnuncio($cid, $codice)
 	}
 
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 12 ; $i++) {
+			for ($i=0; $i < 13 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 
