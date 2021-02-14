@@ -12,15 +12,15 @@ $serieta = $_POST["serieta"];
 $puntualita = $_POST["puntualita"];
 
 $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
-          VALUES ('$codicefiscaleValuta', '$codicefiscaleValutato', '$serieta', '$puntualita')";
+          VALUES ('$codiceFiscaleValuta', '$codiceFiscaleValutato', '$serieta', '$puntualita')";
 
 $data = mysqli_query($cid, $query);
 
 if ($data) {
-  header("Location: profiloVenditore.php");
+  header("Location: prodottiAcquistati.php?messaggio=valutazioneok");
 }
 else {
-  echo "Problems";
+header("Location: prodottiAcquistati.php?errore=errore");
 }
 
 ?>
