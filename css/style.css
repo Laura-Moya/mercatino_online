@@ -130,7 +130,7 @@ a:hover {
 }
 
 .eliminaAccount {
-  text-align: end;
+  float: right;
   margin: 1.5rem;
 }
 
@@ -215,6 +215,22 @@ input {
   z-index: 9;
   width: 20%;
   height: 55%;
+  text-align: center;
+}
+
+/* popup elimina account */
+
+.form-popup2 {
+  display: none;
+  background-color: #f1f1f1;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid black;
+  border-radius: 10px;
+  z-index: 9;
+  width: 30%;
+  height: 20%;
   text-align: center;
 }
 

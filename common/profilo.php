@@ -33,7 +33,7 @@
 
     ?>
     <!-- Popup eliminaAccount -->
-    <div class='form-popup container-registrazione' id='eliminaAccount'>
+    <div class='form-popup2 container-registrazione' id='eliminaAccount'>
       <form action='eliminaAccount.php' method='get'>
       <h4>Sei sicuro di voler eliminare l'account? </h4>
 
@@ -43,7 +43,7 @@
     </div>
 
     <span class="eliminaAccount">
-      <button class="btn btn-primary" type="submit"><a style="color: white !important; padding: 1rem;" onclick='openForm()'>Elimina account</a> </button>
+      <button class="btn btn-primary" type="submit" ><a style="color: white !important; padding: 1rem;" onclick='openForm()'>Elimina account</a> </button>
     </span>
     <div class="container-profilo container">
       <div class="row">
