@@ -15,8 +15,7 @@ include "db/connect.php";
     $primoPiano = $risultato['contenuto'];
 
     if (isset($_GET['Message'])) {
-    echo '<script type="text/javascript">alert("Benvenuto nel tuo mercatino online! La tua registrazione è andata a buon fine, buono shopping!");</script>';
-
+      echo '<script type="text/javascript">alert("Benvenuto nel tuo mercatino online! La tua registrazione è andata a buon fine, buono shopping!");</script>';
     }
   ?>
 

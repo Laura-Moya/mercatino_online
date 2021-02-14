@@ -32,8 +32,18 @@
 
 
     ?>
-    <form class="" action="eliminaAccount.php" method="post">
-      <button class="btn btn-primary" type="submit"><a style="color: white !important; padding: 1rem;" href="eliminaAccount.php?codiceFiscale=<?php echo $codice_fiscale[0];?>">Elimina account</a> </button>
+    <!-- Popup eliminaAccount -->
+    <div class='form-popup container-registrazione' id='eliminaAccount'>
+      <form action='eliminaAccount.php?codiceFiscale=<?php echo $codice_fiscale[0];?>' method='get'>
+      <h4>Sei sicuro di voler eliminare l'account? </h4>
+
+      <button type='submit' class='btn btn-primary btn-login' >OK</button>
+      <button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>
+      </form>
+    </div>
+
+    <form class="eliminaAccount">
+      <button class="btn btn-primary" type="submit"><a style="color: white !important; padding: 1rem;" onclick='openForm()'>Elimina account</a> </button>
     </form>
     <div class="container-profilo container">
       <div class="row">
@@ -58,3 +68,14 @@
 
           <p class="prodotti-venduti-profilo"><a href="./prodottiAcquistati.php">Prodotti acquistati:</a> <?php echo "$prodottiAcquistati[0]"; ?> </p>
           <p class="prodotti-venduti-profilo"><a href="osservati.php">Prodotti osservati:</a> <?php echo "$prodottiOsservati[0]"; ?> </p>
+
+
+          <script>
+            function openForm() {
+              document.getElementById("eliminaAccount").style.display = "block";
+            }
+
+            function closeForm() {
+              document.getElementById("eliminaAccount").style.display = "none";
+            }
+          </script>

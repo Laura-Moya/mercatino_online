@@ -129,6 +129,11 @@ a:hover {
   margin-bottom: 2rem !important;
 }
 
+.eliminaAccount {
+  text-align: end;
+  margin: 1.5rem;
+}
+
 /* Icons */
 .fa-star {
   color: #f1c40f;
