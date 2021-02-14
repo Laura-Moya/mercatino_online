@@ -23,7 +23,11 @@ else
 	$dati["tipoutente"]="";
   $dati["immagine"]="";
 }
-
+if (isset($_GET['errore'])) {
+  if ($_GET['errore'] == 'utentegiaregistrato') {
+  echo '<script type="text/javascript">alert("Utente già registrato, utilizzare una mail e un codice fiscale differenti");</script>';
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -77,8 +81,7 @@ else
               </tr>
               <tr>
                 <td align="center">
-                  <input class="btn btn-primary" id="btn" type="submit" value="OK" />
-
+                  <input class="btn btn-primary" id="btn" type="submit" value="OK" name ="okreg"/>
                 </td>
                 <td align="center">
                   <input class="btn btn-primary" id="btn" type = "reset" value = "Cancella"/>

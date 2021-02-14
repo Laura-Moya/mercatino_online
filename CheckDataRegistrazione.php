@@ -73,12 +73,17 @@ $ris2 = checkMail($cid, $email, $password);
 		$ris = newUser($cid, $nome, $cognome, $email, $password, $tipoutente, $immagine, $codicefiscale);
 		if ($ris["status"] == "ok")
 			{
-				echo "Benvenuto " . $email;
+				session_start();
+	      $_SESSION["utente"] = $email;
+	      $_SESSION["logged"]=true;
+
+		    header("Location: index.php?Message=Benvenuto");
 			}
 		else
 				{
 					$parameter = "Location: registrazione.php?errore=connectionbd";
 					header($parameter);
+
 				}
 	}
 

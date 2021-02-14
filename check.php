@@ -37,7 +37,6 @@
       $_SESSION["logged"]=true;
 
 	    header("Location: index.php");
-      echo "Benvenuto " . $email;
       exit();
     }
     else{

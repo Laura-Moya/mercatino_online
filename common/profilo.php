@@ -32,7 +32,9 @@
 
 
     ?>
-
+    <form class="" action="eliminaAccount.php" method="post">
+      <button class="btn btn-primary" type="submit"><a style="color: white !important; padding: 1rem;" href="eliminaAccount.php?codiceFiscale=<?php echo $codice_fiscale[0];?>">Elimina account</a> </button>
+    </form>
     <div class="container-profilo container">
       <div class="row">
         <div class="immagine-profilo col-sm-12 col-md-6 col-lg-4">

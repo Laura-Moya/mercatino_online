@@ -14,6 +14,10 @@ include "db/connect.php";
     $risultato = inPrimoPiano($cid);
     $primoPiano = $risultato['contenuto'];
 
+    if (isset($_GET['Message'])) {
+    echo '<script type="text/javascript">alert("Benvenuto nel tuo mercatino online! La tua registrazione è andata a buon fine, buono shopping!");</script>';
+
+    }
   ?>
 
   <div class="session">
