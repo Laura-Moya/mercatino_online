@@ -12,10 +12,9 @@ $query = "DELETE FROM `utente` WHERE `utente`.`codice_fiscale` = '$codiceFiscale
 $data = mysqli_query($cid, $query);
 
 if ($data) {
-  session_start();
   session_unset();
   session_destroy();
-  header("Location: index.php");
+  header("Location: index.php?codicefiscaleeliminato=$codiceFiscaleElimina");
 }
 else {
   header("Location: index.php?errore=erroreDiConessione");

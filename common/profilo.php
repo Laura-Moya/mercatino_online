@@ -42,9 +42,9 @@
       </form>
     </div>
 
-    <form class="eliminaAccount">
+    <span class="eliminaAccount">
       <button class="btn btn-primary" type="submit"><a style="color: white !important; padding: 1rem;" onclick='openForm()'>Elimina account</a> </button>
-    </form>
+    </span>
     <div class="container-profilo container">
       <div class="row">
         <div class="immagine-profilo col-sm-12 col-md-6 col-lg-4">
