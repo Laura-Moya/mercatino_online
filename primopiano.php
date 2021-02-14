@@ -26,7 +26,6 @@
              <h5 class="card-title"> <?php echo Ucwords("$prodotto[1]"); ?> </h5>
              <p class="card-text"> <?php echo Ucwords("$prodotto[0]"); ?> </p>
              <a href="prodotto.php?codice= <?php echo "$prodotto[2]"; ?>" class="btn btn-primary">Visualizza!</a>
-             <a href="prodotto.php" style="margin-left: 0.5rem;" class="btn btn-primary"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i>Osserva</a>
            </div>
           </div>
         </form>

@@ -26,7 +26,7 @@
                   echo '<div class="card-body">';
                   echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[2]) . '</p>';
-                  echo '<a href="valutazione.php" class="btn btn-primary">Valuta transizione</a>';
+                  echo '<a href="valutazione.php?codice='. $prodotto[3].'" class="btn btn-primary">Valuta transizione</a>';
 
                 echo '</div>';
               echo '</div>';

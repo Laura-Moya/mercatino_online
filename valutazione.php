@@ -31,7 +31,7 @@
 
               <label ><b>Puntalità</b></label><br/>
               <div class="valuta-popup">
-                <select class="form-control form-control-sm" required>
+                <select class="form-control form-control-sm" style="width: 40px;" required>
                   <option name="puntualita" value="1">1</option>
                   <option name="puntualita" value="2">2</option>
                   <option name="puntualita" value="3">3</option>
