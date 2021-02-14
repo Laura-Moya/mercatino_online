@@ -6,10 +6,14 @@
 <body>
   <?php include "common/navbar.php";
 
-$codiceFiscaleValuta = $_POST["codiceFiscaleValuta"];
-$codiceFiscaleValutato = $_POST["codiceFiscaleValutato"];
-$serieta = $_POST["serieta"];
-$puntualita = $_POST["puntualita"];
+$codiceFiscaleValuta = $_GET["codiceFiscaleValuta"];
+$codiceFiscaleValutato = $_GET["codiceFiscaleValutato"];
+$serieta = $_GET["serieta"];
+$puntualita = $_GET["puntualita"];
+echo "$serieta </br>";
+echo "$puntualita </br>";
+echo "$codiceFiscaleValuta </br>";
+echo "$codiceFiscaleValutato";
 
 $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
           VALUES ('$codiceFiscaleValuta', '$codiceFiscaleValutato', '$serieta', '$puntualita')";
