@@ -16,65 +16,28 @@
       <!-- Navbar Sottocategorie -->
       <?php
           $sottocategorie = array();
-          $sottocategorie['elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro1'];
-          $sottocategorie['fotoevideo'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro2'];
-          $sottocategorie['abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro3'];
-          $sottocategorie['hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro4'];
+          $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro1'];
+          $sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro2'];
+          $sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro3'];
+          $sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro4'];
 
           if (isset($_GET['cat'])){
-              if ($_GET['cat']== 'elettrodomestici'){?>
+              $cat = $_GET['cat'];
+               ?>
                 <nav class="navbar bg-light" id="sottocategorie">
                   <ul class="navbar-nav">
                   <?php
-                for ($i=0; $i < count($sottocategorie['elettrodomestici']) ; $i++) {
-                  $sotcat = $sottocategorie['elettrodomestici'];?>
+                for ($i=0; $i < 5 ; $i++) {
+                  $sotcat = $sottocategorie[$cat];?>
                   <li class="nav-item">
-                    <a class="nav-link" href="annunci.php?cat=elettrodomestici&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
-                  </li>
-                <?php
-                }
-              }
-              if ($_GET['cat']== 'fotoevideo'){?>
-                <nav class="navbar bg-light" id="sottocategorie">
-                  <ul class="navbar-nav">
-                  <?php
-                for ($i=0; $i < count($sottocategorie['fotoevideo']) ; $i++) {
-                  $sotcat = $sottocategorie['fotoevideo'];?>
-                  <li class="nav-item">
-                    <a class="nav-link" href="annunci.php?cat=fotoevideo&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
-                  </li>
-                <?php
-                }
-              }
-              if ($_GET['cat']== 'abbigliamento'){?>
-                <nav class="navbar bg-light" id="sottocategorie">
-                  <ul class="navbar-nav">
-                  <?php
-                for ($i=0; $i < count($sottocategorie['abbigliamento']) ; $i++) {
-                  $sotcat = $sottocategorie['abbigliamento'];?>
-                  <li class="nav-item">
-                    <a class="nav-link" href="annunci.php?cat=abbigliamento&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
-                  </li>
-                <?php
-                }
-              }
-              if ($_GET['cat']== 'hobby'){?>
-                <nav class="navbar bg-light" id="sottocategorie">
-                  <ul class="navbar-nav">
-                  <?php
-                for ($i=0; $i < count($sottocategorie['hobby']) ; $i++) {
-                  $sotcat = $sottocategorie['hobby'];?>
-                  <li class="nav-item">
-                    <a class="nav-link" href="annunci.php?cat=hobby&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
+                    <a class="nav-link" href="annunci.php?cat=<?php echo "$cat"; ?>&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
                   </li>
                 <?php
                 }
               }
 
               ?></ul>
-            </nav><?php
-            }
-      ?>
+            </nav>
       <!-- <nav class="navbar bg-light" id="sottocategorie">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -212,35 +175,10 @@
               $queryResult = mysqli_num_rows($result);
             }
             if (isset($_GET['cat'])){
-               if ($_GET['cat'] == "elettrodomestici"){
-                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'elettrodomestici'";
+                $cat = $_GET['cat'];
+                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = '$cat'";
                  $result = mysqli_query($cid,$sql);
                  $queryResult = mysqli_num_rows($result);
-               }
-
-            }
-            if (isset($_GET['cat'])){
-               if ($_GET['cat'] == "hobby"){
-                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'hobby'";
-                 $result = mysqli_query($cid,$sql);
-                 $queryResult = mysqli_num_rows($result);
-               }
-
-            }
-            if (isset($_GET['cat'])){
-               if ($_GET['cat'] == "fotoevideo"){
-                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'fotoevideo'";
-                 $result = mysqli_query($cid,$sql);
-                 $queryResult = mysqli_num_rows($result);
-               }
-
-            }
-            if (isset($_GET['cat'])){
-               if ($_GET['cat'] == "abbigliamento"){
-                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'abbigliamento'";
-                 $result = mysqli_query($cid,$sql);
-                 $queryResult = mysqli_num_rows($result);
-               }
 
             }
             if (isset($_GET['sottocat'])){

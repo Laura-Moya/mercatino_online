@@ -17,6 +17,7 @@
   <p id="primo-piano">I tuoi prodotti osservati</p>
     <div class="row">
       <?php
+    
         for ($i=0; $i < count($annunciOsservati) ; $i++) {
 
             $prodotto = $annunciOsservati[$i];
