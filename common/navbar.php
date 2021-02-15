@@ -137,21 +137,21 @@ if (isset($_SESSION["logged"])) {
     <span class="navbar-toggler-icon"></span>
   </button>
 
-<form class="" action="./annunci.php" method="post">
+<form class="" action="./annunci.php" method="get">
   <div class="collapse navbar-collapse" id="navbarSupportedContent1">
 
     <ul class="navbar-nav second">
       <li class="nav-item ">
-        <a type="submit" class="nav-link" href="annunci.php?cat=elettrodomestici">Elettrodomestici</a>
+        <a type="submit" class="nav-link" href="annunci.php?cat=elettrodomestici" >Elettrodomestici</a>
       </li>
       <li class="nav-item second">
-        <a class="nav-link" href="annunci.php">Hobby</a>
+        <a type="submit" class="nav-link" href="annunci.php?cat=hobby">Hobby</a>
       </li>
       <li class="nav-item second">
-        <a class="nav-link" href="annunci.php">Foto e Video</a>
+        <a type="submit" class="nav-link" href="annunci.php?cat=fotoevideo">Foto e Video</a>
       </li>
       <li class="nav-item second">
-        <a class="nav-link" href="annunci.php">Abbigliamento</a>
+        <a type="submit" class="nav-link" href="annunci.php?cat=abbigliamento">Abbigliamento</a>
       </li>
     </ul>
 

@@ -149,6 +149,39 @@
               $sql = "SELECT * FROM annuncio WHERE nome_annuncio LIKE '%$search%' OR nome_prodotto LIKE '%$search%'";
               $result = mysqli_query($cid,$sql);
               $queryResult = mysqli_num_rows($result);
+            }
+            if (isset($_GET['cat'])){
+               if ($_GET['cat'] == "elettrodomestici"){
+                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'elettrodomestici'";
+                 $result = mysqli_query($cid,$sql);
+                 $queryResult = mysqli_num_rows($result);
+               }
+
+            }
+            if (isset($_GET['cat'])){
+               if ($_GET['cat'] == "hobby"){
+                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'hobby'";
+                 $result = mysqli_query($cid,$sql);
+                 $queryResult = mysqli_num_rows($result);
+               }
+
+            }
+            if (isset($_GET['cat'])){
+               if ($_GET['cat'] == "fotoevideo"){
+                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'fotoevideo'";
+                 $result = mysqli_query($cid,$sql);
+                 $queryResult = mysqli_num_rows($result);
+               }
+
+            }
+            if (isset($_GET['cat'])){
+               if ($_GET['cat'] == "abbigliamento"){
+                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = 'abbigliamento'";
+                 $result = mysqli_query($cid,$sql);
+                 $queryResult = mysqli_num_rows($result);
+               }
+
+            }
 
               echo "Sono usciti " .$queryResult . " risultati!";
               if ($queryResult > 0) {
@@ -176,11 +209,8 @@
               } else {
                 echo "Non sono presenti annunci con questa parola chiave";
               }
-            } elseif (isset($_POST['elettrodomestici'])){
-              // if ($_POST['elettrodomestici'] == "elettrodomestici"){
-                echo "ciao";
-              // }
-            }
+
+
 
           ?>
         </div>
