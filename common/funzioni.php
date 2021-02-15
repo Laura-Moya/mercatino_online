@@ -547,6 +547,36 @@ function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagi
 
 }
 
+function newIndirizzo($cid, $nuovaVia, $nuovoComune, $nuovaRegione, $nuovaProvincia)
+{
+		$risultato= array("msg"=>"","status"=>"ok");
+
+		if ($cid->connect_errno) {
+	    $risultato["status"] = "ko";
+	    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+	    return $risultato;
+	  }
+
+		$sql= "INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`)
+		         VALUES ('$nuovaVia', '$nuovoComune', '$nuovaRegione', '$nuovaProvincia')";
+
+		$res = $cid->query($sql);
+		if ($res==null)
+	 {
+			 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+			 $risultato["status"]="ko";
+			 $risultato["msg"]=$msg;
+		 }
+		else
+		{
+			$msg = "Indirizzo aggiunto con successo";
+			$risultato["status"]="ok";
+			$risultato["msg"]=$msg;
+		}
+		 return $risultato;
+
+}
+
 function osservare($cid, $prodotto, $codicefiscale){
 
 	$risultato= array("msg"=>"","status"=>"ok");

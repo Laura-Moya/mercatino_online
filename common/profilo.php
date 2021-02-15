@@ -42,8 +42,31 @@
       </form>
     </div>
 
-    <span class="eliminaAccount">
+    <!-- Popup aggiungiIndirizzo -->
+    <div class='form-popup3 container-registrazione' id='aggiungiIndirizzo'>
+      <form action='aggiungiIndirizzo.php' method='POST'>
+      <h4>Aggiungi un nuovo indirizzo!</h4>
+
+      <label>Nuova Via: </label>
+      <input type="text" name="nuovaVia">
+      <label>Nuovo Comune: </label>
+      <input type="text" name="nuovoComune">
+      <label>Nuova Regione:</label>
+      <input type="text" name="nuovaRegione">
+      <label>Nuova Provincia: </label>
+      <input type="text" name="nuovaProvincia" maxlength="2"></br>
+
+      <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;"
+              href="aggiungiIndirizzo.php?indirizzo=<?php echo '$_POST["nuovaVia"]'; ?>">OK </a></button>
+      <button type='button' class='btn btn-primary btn-login' onclick='closeFormIndirizzo()'>Chiudi</button>
+      </form>
+    </div>
+
+    <span class="eliminaAccount additional-btn">
       <button class="btn btn-primary" type="submit" ><a style="color: white !important; padding: 1rem;" onclick='openForm()'>Elimina account</a> </button>
+    </span>
+    <span class="aggiungiIndirizzo additional-btn">
+      <button class="btn btn-primary" type="submit" ><a style="color: white !important; padding: 1rem;" onclick='openFormIndirizzo()'>Aggiungi un indirizzo</a> </button>
     </span>
     <div class="container-profilo container">
       <div class="row">
@@ -77,5 +100,13 @@
 
             function closeForm() {
               document.getElementById("eliminaAccount").style.display = "none";
+            }
+
+            function openFormIndirizzo() {
+              document.getElementById("aggiungiIndirizzo").style.display = "block";
+            }
+
+            function closeFormIndirizzo() {
+              document.getElementById("aggiungiIndirizzo").style.display = "none";
             }
           </script>

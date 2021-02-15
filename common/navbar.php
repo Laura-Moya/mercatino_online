@@ -150,9 +150,7 @@ if (isset($_SESSION["logged"])) {
           <a type="submit" class="nav-link" href="annunci.php?cat=<?php echo "$categorie[$i]" ;?>"><?php echo "$categorie[$i]"; ?></a>
         </li>
       <?php } ?>
-
     </ul>
-
   </div>
 </form>
 

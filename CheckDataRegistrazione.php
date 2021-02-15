@@ -64,27 +64,28 @@ else
 {
 	header('location:registrazione.php?status=ok&dati=' . serialize($dati));
 }
-$ris2 = checkMail($cid, $email, $password);
-	if ($ris2["status"] == "ok") {
+	$ris2 = checkMail($cid, $email, $password);
+	if ($ris2["status"] == "ok")
+	{
 		$parameter = "Location: registrazione.php?errore=utentegiaregistrato";
 		header($parameter);
 	}
-	else{
+	else
+	{
 		$ris = newUser($cid, $nome, $cognome, $email, $password, $tipoutente, $immagine, $codicefiscale);
 		if ($ris["status"] == "ok")
-			{
-				session_start();
-	      $_SESSION["utente"] = $email;
-	      $_SESSION["logged"]=true;
+		{
+			session_start();
+			$_SESSION["utente"] = $email;
+			$_SESSION["logged"]=true;
 
-		    header("Location: index.php?Message=Benvenuto");
-			}
+			header("Location: index.php?Message=Benvenuto");
+		}
 		else
-				{
-					$parameter = "Location: registrazione.php?errore=connectionbd";
-					header($parameter);
-
-				}
+		{
+			$parameter = "Location: registrazione.php?errore=connectionbd";
+			header($parameter);
+		}
 	}
 
 ?>

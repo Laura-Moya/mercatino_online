@@ -129,9 +129,9 @@ a:hover {
   margin-bottom: 2rem !important;
 }
 
-.eliminaAccount {
+.additional-btn {
   float: right;
-  margin: 1.5rem;
+  margin: 1.2rem;
 }
 
 /* Icons */
@@ -231,6 +231,22 @@ input {
   z-index: 9;
   width: 30%;
   height: 20%;
+  text-align: center;
+}
+
+/* popup aggiunge indirizzo */
+
+.form-popup3 {
+  display: none;
+  background-color: #f1f1f1;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid black;
+  border-radius: 10px;
+  z-index: 9;
+  width: 20%;
+  height: 70%;
   text-align: center;
 }
 

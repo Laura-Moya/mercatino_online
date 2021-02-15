@@ -39,12 +39,12 @@
               echo '<p>Garanzia: '. $res = $prodotto[13]==1 ? "Si" : "No".'</p>';
               if ($res=="Si"){
                 echo '<p>Tempo garanzia: '. Ucwords("$prodotto[14]").'</p>';
-            }
+              }
             } else {
               echo '<p>Stato usura: '. Ucwords("$prodotto[15]").'</p>';
               echo '<p>Tempo usura: '.  Ucwords("$prodotto[16]").'</p>';
             }
-            
+
              ?>
             <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php'">Acquista ora</button>
             <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
