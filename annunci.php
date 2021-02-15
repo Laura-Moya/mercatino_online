@@ -176,7 +176,12 @@
               } else {
                 echo "Non sono presenti annunci con questa parola chiave";
               }
+            } elseif (isset($_POST['elettrodomestici'])){
+              // if ($_POST['elettrodomestici'] == "elettrodomestici"){
+                echo "ciao";
+              // }
             }
+
           ?>
         </div>
 
