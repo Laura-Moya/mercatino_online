@@ -53,7 +53,7 @@
         <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
           <h1 class="nome-profilo"> <?php echo Ucwords("$utente[0]"); ?> </h1>
           <h2 class="cognome-profilo"> <?php echo Ucwords("$utente[1]"); ?> </h2>
-          <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: lisaSimpson@gmail.com"><?php echo "$utente[2]"; ?> </a></p>
+          <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: <?php echo "$utente[2]"; ?>"><?php echo "$utente[2]"; ?> </a></p>
           <?php
             echo '<div class="valutazione-profilo">';
             for ($i=0; $i < round($utente[3]); $i++) {
