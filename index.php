@@ -28,15 +28,15 @@ include "db/connect.php";
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent2" >
+      <ul class="navbar-nav mr-auto" style="margin:auto;">
         <li class="nav-item dropdown terzo">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Stato
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Nuovo</a>
-            <a class="dropdown-item" href="#">Usato</a>
+            <a class="dropdown-item" href="annunci.php?stato=nuovo">Nuovo</a>
+            <a class="dropdown-item" href="annunci.php?stato=usato">Usato</a>
           </div>
         </li>
         <li class="nav-item dropdown terzo">
@@ -44,51 +44,13 @@ include "db/connect.php";
             Prezzo
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">€ 0 - 20 </a>
-            <a class="dropdown-item" href="#">€ 20 - 50</a>
-            <a class="dropdown-item" href="#">€ 50 - 100</a>
-            <a class="dropdown-item" href="#">€ 100 - ∞</a>
+            <a class="dropdown-item" href="annunci.php?prezzo=1">€ 0 - 20 </a>
+            <a class="dropdown-item" href="annunci.php?prezzo=2">€ 20 - 50</a>
+            <a class="dropdown-item" href="annunci.php?prezzo=3">€ 50 - 100</a>
+            <a class="dropdown-item" href="annunci.php?prezzo=4">€ 100 - ∞</a>
           </div>
         </li>
-        <li class="nav-item dropdown terzo">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Valutazione
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">
-              Più di
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </a>
-            <a class="dropdown-item" href="#">
-              Più di
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-            </a>
-            <a class="dropdown-item" href="#">
-              Più di
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-            </a>
-            <a class="dropdown-item" href="#">
-              Più di
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-            </a>
-          </div>
-        </li>
+
         <li class="nav-item dropdown terzo">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Luogo
