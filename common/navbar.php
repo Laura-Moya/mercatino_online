@@ -112,25 +112,26 @@ if (isset($_SESSION["logged"])) {
 <nav class="navbar navbar-expand-lg navbar-light">
 
   <div id ="indi">
-    <?php
-      echo '<p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>';
-      echo '<select class="form-control form-control-md" id="aaa">';
-        if (!isset($_SESSION["utente"])) {
-          echo '<script type="text/javascript">';
-          echo 'document.getElementById("indi").style.visibility = "hidden";';
-          echo '</script>';
-        }
-        else {
-
-          for ($i=0; $i < count($indirizzi);$i++){
-            $indirizzo = $indirizzi[$i];
-            echo '<option value=""> '. Ucwords($indirizzo[1]).'</option>';
+      <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
+      <form class="" action="annunci.php" method="POST">
+        <select type="submit" class="form-control form-control-md" id="aaa" name="indirizzo">
+          <?php
+          if (!isset($_SESSION["utente"])) {
+            echo '<script type="text/javascript">';
+            echo 'document.getElementById("indi").style.visibility = "hidden";';
+            echo '</script>';
           }
-        }
-        echo '</select>';
+          else {
 
-       ?>
-    </select>
+            for ($i=0; $i < count($indirizzi);$i++){
+              $indirizzo = $indirizzi[$i];
+              echo '<option value="'. $indirizzo[1].'"> '. Ucwords($indirizzo[1]).'</option>';
+            }
+          }
+         ?>
+       </select>
+      </form>
+
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
