@@ -6,19 +6,20 @@
 <body>
   <?php include "common/navbar.php";
 
-$codiceFiscaleValuta = $_GET["codiceFiscaleValuta"];
-$codiceFiscaleValutato = $_GET["codiceFiscaleValutato"];
-$serieta = $_GET["serieta"];
-$puntualita = $_GET["puntualita"];
-echo "$serieta </br>";
+$puntualita = $_POST['puntualita'];
+$serieta = $_POST['serieta'];
+
 echo "$puntualita </br>";
-echo "$codiceFiscaleValuta </br>";
+echo "$serieta </br>";
 echo "$codiceFiscaleValutato";
 
 $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
-          VALUES ('$codiceFiscaleValuta', '$codiceFiscaleValutato', '$serieta', '$puntualita')";
+          VALUES ('$codice_fiscale[0]', '$codiceFiscaleValutato', '$serieta', '$puntualita')";
 
+echo "ciao";
+echo "$query";
 $data = mysqli_query($cid, $query);
+echo "$data";
 
 if ($data) {
   header("Location: prodottiAcquistati.php?messaggio=valutazioneok");
