@@ -14,7 +14,68 @@
 
       <div class="container-filtri-annunci">
       <!-- Navbar Sottocategorie -->
-      <nav class="navbar bg-light" id="sottocategorie">
+      <?php
+          $sottocategorie = array();
+          $sottocategorie['elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro1'];
+          $sottocategorie['fotoevideo'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro2'];
+          $sottocategorie['abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro3'];
+          $sottocategorie['hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro4'];
+
+          if (isset($_GET['cat'])){
+              if ($_GET['cat']== 'elettrodomestici'){?>
+                <nav class="navbar bg-light" id="sottocategorie">
+                  <ul class="navbar-nav">
+                  <?php
+                for ($i=0; $i < count($sottocategorie['elettrodomestici']) ; $i++) {
+                  $sotcat = $sottocategorie['elettrodomestici'];?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="annunci.php?cat=elettrodomestici&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
+                  </li>
+                <?php
+                }
+              }
+              if ($_GET['cat']== 'fotoevideo'){?>
+                <nav class="navbar bg-light" id="sottocategorie">
+                  <ul class="navbar-nav">
+                  <?php
+                for ($i=0; $i < count($sottocategorie['fotoevideo']) ; $i++) {
+                  $sotcat = $sottocategorie['fotoevideo'];?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="annunci.php?cat=fotoevideo&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
+                  </li>
+                <?php
+                }
+              }
+              if ($_GET['cat']== 'abbigliamento'){?>
+                <nav class="navbar bg-light" id="sottocategorie">
+                  <ul class="navbar-nav">
+                  <?php
+                for ($i=0; $i < count($sottocategorie['abbigliamento']) ; $i++) {
+                  $sotcat = $sottocategorie['abbigliamento'];?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="annunci.php?cat=abbigliamento&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
+                  </li>
+                <?php
+                }
+              }
+              if ($_GET['cat']== 'hobby'){?>
+                <nav class="navbar bg-light" id="sottocategorie">
+                  <ul class="navbar-nav">
+                  <?php
+                for ($i=0; $i < count($sottocategorie['hobby']) ; $i++) {
+                  $sotcat = $sottocategorie['hobby'];?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="annunci.php?cat=hobby&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
+                  </li>
+                <?php
+                }
+              }
+
+              ?></ul>
+            </nav><?php
+            }
+      ?>
+      <!-- <nav class="navbar bg-light" id="sottocategorie">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#">Aspirapolveri</a>
@@ -32,7 +93,7 @@
             <a class="nav-link" href="#">Altro</a>
           </li>
         </ul>
-      </nav>
+      </nav> -->
 
       <!-- Elenco annunci -->
         <div class='annunci' style = "visibility: hidden;">
@@ -182,6 +243,12 @@
                }
 
             }
+            if (isset($_GET['sottocat'])){
+                $sotcat = $_GET['sottocat'];
+                 $sql = "SELECT * FROM annuncio WHERE annuncio.sottocategorie = '$sotcat'";
+                 $result = mysqli_query($cid,$sql);
+                 $queryResult = mysqli_num_rows($result);
+               }
 
               echo "Sono usciti " .$queryResult . " risultati!";
               if ($queryResult > 0) {
@@ -206,8 +273,6 @@
                     </div>
 
                 <?php }
-              } else {
-                echo "Non sono presenti annunci con questa parola chiave";
               }
 
 

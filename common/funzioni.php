@@ -665,31 +665,30 @@ function contaOsservatori($cid, $codice){
 	return $risultato;
 }
 
-// Queste funzioni daranno come risultato solo la query da mettere in leggeAnnunci (filtri vari)
-
-// function noFilter($cid){
-// 	if ($cid->connect_errno) {
-// 		$risultato["status"] = "ko";
-// 		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
-// 		return $risultato;
-// 	}
-// 	$sql = "SELECT annuncio.codice
-// 					FROM annuncio, utente
-// 					WHERE annuncio.venditore = utente.codice_fiscale";
-// 	$res=$cid->query($sql);
-// 	return $res;
-// }
-// function filtroStato ($cid, $stato, $res){
-// 	if ($cid->connect_errno) {
-// 		$risultato["status"] = "ko";
-// 		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
-// 		return $risultato;
-// 	}
-// 	$sql = "SELECT annuncio.codice
-// 					FROM annuncio
-// 					WHERE annuncio.nuovo = '$stato' AND annuncio.codice IN ($res)";
+// function leggiSottocategorie ($cid, $categoria){
+// 	$risultato= array("msg"=>"","status"=>"ok");
 //
-// 	$res=$cid->query($sql);
-// 	return $res;
+// 	if ($cid->connect_errno) {
+// 		$risultato["status"] = "ko";
+// 		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+// 		return $risultato;
+// 	}
+//
+// 	$sql="SELECT
+// 				FROM `osserva`
+// 				WHERE osserva.prodotto ='$codice' ";
+//
+// 	$res = $cid->query($sql);
+// 	if ($res == null) {
+//     $risultato["status"] = "ko";
+//     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+//     return $risultato;
+// 	}
+//
+// 	$row=$res->fetch_row();
+//
+// 	$risultato["contenuto"] = $row;
+// 	return $risultato;
+// }
 // }
 ?>
