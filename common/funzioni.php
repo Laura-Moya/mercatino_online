@@ -383,7 +383,7 @@ function leggiProdottiEliminati($cid, $codicefiscale)
 
 	$sql = "SELECT COUNT(*)
 					FROM annuncio p, stato s
-					WHERE s.stato = 'in vendita' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND NOT EXISTS
+					WHERE s.stato = 'eliminato' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND NOT EXISTS
 					(SELECT *
          	FROM stato s2
          	WHERE s2.stato = 'eliminato' AND p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
@@ -456,7 +456,7 @@ function prodottiVenduti($cid, $codicefiscale)
 	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore
 					FROM annuncio, stato
 					WHERE stato.prodotto = annuncio.codice
-								AND stato.stato = 'venduti' AND annuncio.venditore = '$codicefiscale'";
+								AND stato.stato = 'venduto' AND annuncio.venditore = '$codicefiscale'";
 
 	$res=$cid->query($sql);
 

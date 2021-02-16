@@ -49,10 +49,13 @@
               echo '<div class="card" style="width: 16rem;">';
                 echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
-                  echo '<form class="" action="stati.php" method="get">';
+                  echo '<form class="" action="stati.php " method="get">';
                   echo '<h5 class="card-title"><a href="prodotto.php?codice='. $prodotto[2].'"> '. Ucwords($prodotto[0]) . ' </a></h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[1]) . '</p>';
                   echo '<a href="stati.php?stato=invendita&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
+                  echo '</form>';
+                  echo '<form class="" action="eliminaAnnuncio.php " method="get">';
+                  echo '<a href="eliminaAnnuncio.php?codice='. $prodotto[2].'" class="btn btn-primary" >Elimina annuncio</a>';
                   echo '</form>';
                 echo '</div>';
               echo '</div>';
