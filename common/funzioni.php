@@ -370,6 +370,38 @@ function leggiProdottiInVendita($cid, $codicefiscale)
 	return $risultato;
 }
 
+//Conta prodotti eliminati
+function leggiProdottiEliminati($cid, $codicefiscale)
+{
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT COUNT(*)
+					FROM annuncio p, stato s
+					WHERE s.stato = 'in vendita' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND NOT EXISTS
+					(SELECT *
+         	FROM stato s2
+         	WHERE s2.stato = 'eliminato' AND p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+
+	$row=$res->fetch_row();
+
+	$risultato["contenuto"] = $row;
+	return $risultato;
+}
+
 //Prodotti in prodottiInVendita
 function prodottiInVendita($cid, $codicefiscale)
 {
