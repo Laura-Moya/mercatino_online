@@ -11,10 +11,10 @@ $sql="SELECT * FROM `stato` WHERE stato.prodotto = '$codice'";
 $data = mysqli_query($cid, $sql);
 
 if ($data) {
-  header("Location: prodottiInVendita.php");
+  header("Location:prodottiInVendita.php");
 }
 else {
-  header("Location: index.php?errore=erroreDiConessione");
+  header("Location:index.php?errore=erroreDiConessione");
 }
 
 ?>
