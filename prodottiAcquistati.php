@@ -39,15 +39,7 @@
 
     </div>
   </div>
-  <script>
-    function openForm() {
-      document.getElementById("valuta").style.display = "block";
-    }
-
-    function closeForm() {
-      document.getElementById("valuta").style.display = "none";
-    }
-  </script>
+  
 
 </body>
 

@@ -14,7 +14,7 @@
      ?>
 
           <p class="prodotti-venduti-profilo"><a href="#">Prodotti venduti:</a> <?php echo "$prodottiVenduti[0]"; ?> </p>
-          <p class="prodotti-in-vendita-profilo"><a href="#">Prodotti in vendita:</a> <?php echo "$prodottiInVendita[0]"; ?>  </p>
+          <p class="prodotti-in-vendita-profilo"><a href="prodottiInVendita.php">Prodotti in vendita:</a> <?php echo "$prodottiInVendita[0]"; ?>  </p>
           <button class="btn btn-primary" type="button" onclick="location.href='creareAnnuncio.php'"><i class="fas fa-plus" id="piu"></i> Aggiungi annuncio </button>
         </div>
       </div>

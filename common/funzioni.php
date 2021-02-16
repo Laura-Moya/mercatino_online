@@ -300,6 +300,7 @@ function leggiProdottiAcquistati($cid, $codicefiscale)
 	return $risultato;
 }
 
+
 function prodottiAcquistati($cid, $codicefiscale)
 {
 	$prodotti = array();
@@ -368,6 +369,45 @@ function leggiProdottiInVendita($cid, $codicefiscale)
 	$risultato["contenuto"] = $row;
 	return $risultato;
 }
+
+//Prodotti in prodottiInVendita
+function prodottiInVendita($cid, $codicefiscale)
+{
+	$prodotti = array();
+	$prodotto = array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore
+					FROM annuncio, stato
+					WHERE stato.prodotto = annuncio.codice
+								AND stato.stato = 'in vendita' AND annuncio.venditore = '$codicefiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+$j=0;
+	while ($row=$res->fetch_row()) {
+			for ($i=0; $i < 4 ; $i++) {
+				$prodotto[$i] = $row[$i];
+			}
+			$prodotti[$j] = $prodotto;
+			$j++;
+  }
+
+	$risultato["contenuto"] = $prodotti;
+	return $risultato;
+}
+
 
 //Tutti i tuoi annunci osservati
 function annunciOsservati($cid, $codicefiscale)
