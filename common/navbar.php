@@ -143,13 +143,13 @@ if (isset($_SESSION["logged"])) {
 
     <ul class="navbar-nav second">
       <?php
-      $categorie = array();
-      $categorie = ['Elettrodomestici', 'Hobby', 'Foto e Video', 'Abbigliamento'];
-      for ($i=0; $i < 4 ; $i++) {?>
-        <li class="nav-item second">
-          <a type="submit" class="nav-link" href="annunci.php?cat=<?php echo '$categorie[$i]' ;?>"><?php echo "$categorie[$i]"; ?></a>
-        </li>
-      <?php}?>
+      $categorie = array("Elettrodomestici", "Hobby", "Foto e Video", "Abbigliamento");
+      for ($i=0; $i < 4 ; $i++) {
+        echo '<li class="nav-item second">';
+          echo '<a type="submit" class="nav-link" href="annunci.php?cat='. "$categorie[$i]".'">'. "$categorie[$i]".'</a>';
+        echo '</li>';
+      }
+      ?>
     </ul>
   </div>
 </form>
