@@ -9,7 +9,7 @@
   <?php
 
     //Funzione annunciOsservati
-    $risultato = prodottiInVendita($cid, $codice_fiscale[0]);
+    $risultato = prodottiVenduti($cid, $codice_fiscale[0]);
     $prodotti = $risultato['contenuto'];
 
 
@@ -39,7 +39,7 @@
   </div>
   <!-- I miei prodotti osservati -->
   <div class="container">
-  <p id="primo-piano">I tuoi annunci</p>
+  <p id="primo-piano">I tuoi annunci eliminati</p>
     <div class="row">
 
       <?php
@@ -52,7 +52,7 @@
                   echo '<form class="" action="stati.php" method="get">';
                   echo '<h5 class="card-title"><a href="prodotto.php?codice='. $prodotto[2].'"> '. Ucwords($prodotto[0]) . ' </a></h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[1]) . '</p>';
-                  echo '<a href="stati.php?stato=invendita&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
+                  echo '<a href="stati.php?stato=eliminato&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
                   echo '</form>';
                 echo '</div>';
               echo '</div>';
@@ -63,7 +63,7 @@
   </div>
   <script>
   function load(){
-    if ((document.referrer.match("http://localhost/mercatino_online/prodottiInVendita.php?"))!= null){
+    if ((document.referrer.match("http://localhost/mercatino_online/prodottiVenduti.php?"))!= null){
       openForm();
     }
 

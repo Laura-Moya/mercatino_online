@@ -7,11 +7,15 @@
   <?php include "common/navbar.php";
 
 $codice = $_GET["codice"];
-$sql="SELECT * FROM `stato` WHERE stato.prodotto = '$codice'";
-$data = mysqli_query($cid, $sql);
+$stato = $_GET["stato"];
 
-if ($data) {
+
+if ($stato=="invendita") {
   header("Location:prodottiInVendita.php?codice=".$codice);
+} elseif ($stato=="eliminato") {
+  header("Location:prodottiEliminati.php?codice=".$codice);
+}elseif ($stato=="venduto") {
+  header("Location:prodottiVenduti.php?codice=".$codice);
 }
 else {
   header("Location:index.php?errore=erroreDiConessione");

@@ -439,6 +439,44 @@ $j=0;
 	$risultato["contenuto"] = $prodotti;
 	return $risultato;
 }
+//Prodotti in prodotti eliminati
+function prodottiEliminati($cid, $codicefiscale)
+{
+	$prodotti = array();
+	$prodotto = array();
+	$risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
+
+	if ($cid->connect_errno) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+    return $risultato;
+  }
+
+	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore
+					FROM annuncio, stato
+					WHERE stato.prodotto = annuncio.codice
+								AND stato.stato = 'eliminato' AND annuncio.venditore = '$codicefiscale'";
+
+	$res=$cid->query($sql);
+
+	if ($res == null) {
+    $risultato["status"] = "ko";
+    $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
+    return $risultato;
+	}
+$j=0;
+	while ($row=$res->fetch_row()) {
+			for ($i=0; $i < 4 ; $i++) {
+				$prodotto[$i] = $row[$i];
+			}
+			$prodotti[$j] = $prodotto;
+			$j++;
+  }
+
+	$risultato["contenuto"] = $prodotti;
+	return $risultato;
+}
+
 
 
 //Tutti i tuoi annunci osservati
