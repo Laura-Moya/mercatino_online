@@ -66,29 +66,28 @@ if (isset($_SESSION["logged"])) {
           }
           else {
           ?>
-            // Login Popup
+             <!-- Login Popup -->
            <li class='nav-item'>
            <a class='nav-link' onclick='openForm()' style='cursor: pointer;' id='accedi'><i class='fas fa-sign-in-alt'></i>Accedi</a>
            <div class='form-popup container-registrazione' id='myForm'>
             <form action='./check.php' method='POST'>
            <h4>Il Tuo Mercatino Online</h4>
            <label for='email'><b>Email</b></label><br/>
-           <input type='text' placeholder='Immettere Email' value= <?php echo "$dat['email']";?> name='email'></br>
+           <input type='text' placeholder='Immettere Email' value= "<?php echo $dat['email'];?>" name='email'></br>
            <?php
               if (isset($error['email'])) echo '<span class=\"error\'>' . $tipoerror[$error['email']] . "</span>";
               echo "<label for='psw'><b>Password</b></label> <br/>";
               echo "<input type='password' placeholder='Immettere Password' name='password' value=";
               $dat["password"];
-              echo "></br>";            if (isset($error['password'])) echo "<span class=\'error\'>" . $tipoerror[$error['password']] . "</span>";
+              echo "></br>";
+              if (isset($error['password'])) echo "<span class=\'error\'>" . $tipoerror[$error['password']] . "</span>";
               echo "<p>Non hai un account? <a href='./registrazione.php'>Registrati!</a></p>";
               echo "<button type='submit' class='btn btn-primary btn-login'>Accedi</button>";
               echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
-
-           ?>
-           </form>
-           </div>
-           </li>
-           }
+             echo '</form>';
+             echo '</div>';
+             echo '</li>';
+      }
         ?>
         <li class="nav-item">
 
