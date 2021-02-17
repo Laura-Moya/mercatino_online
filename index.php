@@ -16,6 +16,8 @@ include "db/connect.php";
 
     if (isset($_GET['Message'])) {
       echo '<script type="text/javascript">alert("Benvenuto nel tuo mercatino online! La tua registrazione è andata a buon fine, buono shopping!");</script>';
+    } elseif (isset($_GET["acquisto"])) {
+      echo '<script type="text/javascript">alert("Il tuo acquisto è andato a buon fine! Continua lo shopping!")</script>';
     }
   ?>
 

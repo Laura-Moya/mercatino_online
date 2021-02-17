@@ -12,7 +12,11 @@
      $prodotto = $risultato['contenuto'];
 
      if (isset($_GET["errore"])){
-       echo '<script type="text/javascript">alert("Immettere tutti i campi della carta di pagamento")</script>';
+       if ($_GET["errore"]=="campivuoti") {
+         echo '<script type="text/javascript">alert("Immettere tutti i campi della carta di pagamento")</script>';
+       } elseif ($_GET["errore"]=="campierrati"){
+         echo '<script type="text/javascript">alert("I campi immessi per il pagamento non sono corretti")</script>';
+       }
      }
     ?>
 
@@ -44,9 +48,9 @@
             <div id="cartacredito">
                 <h6 style="margin-top: 1rem;">Inserisce i dati de la sua carta</h6>
                 <input type="text" name="intestatario" placeholder="Nome e cognome..."/><br/>
-                <input type="number" maxlength="16" name="numero_carta" placeholder="Numero di carta..."/><br/>
-                <input type="text" maxlength="5" name="data_scadenza" placeholder="mm/aa"/><br/>
-                <input type="number" maxlength="3" name="cvv" placeholder="CVV..."/>
+                <input type="number" name="numero_carta" placeholder="Numero di carta..."/><br/>
+                <input type="month" maxlength="5" name="data_scadenza" placeholder="mm/aa"/><br/>
+                <input type="number" name="cvv" placeholder="CVV..."/>
             </div>
             <h2 id="prezzo" >Prezzo: € <?php echo "$prodotto[2]"; ?></h2>
             <button class="btn btn-primary" type="submit" >Acquista ora</button>
