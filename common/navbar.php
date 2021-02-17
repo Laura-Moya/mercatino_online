@@ -177,26 +177,27 @@ if (isset($_SESSION["logged"])) {
   }
 
   $(document).ready(function() {
-    $("#myForm").click(function(){
+    $("#myForm").on('click', function(){
       var email = $("#email").val();
       var password = $("#password").val();
 
       if (email == "" || password == "")
         alert("Pls check ur inputs");
-        $.ajax(
-          {
-            url: "navbar.php",
-            data: {
-              login: 1,
-              emailPHP: email,
-              passwordPHP: password
-            },
-            success: function(response) {
-              console.log(response);
-            }
-          }
-        );
 
+      $.ajax(
+        {
+          url: "navbar.php",
+          data: {
+            login: 1,
+            emailPHP: email,
+            passwordPHP: password
+          },
+          success: function(response) {
+            console.log(response);
+          },
+          dataType: 'text'
+        }
+      );
     });
   });
 </script>
