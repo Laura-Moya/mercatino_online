@@ -70,7 +70,7 @@ if (isset($_SESSION["logged"])) {
            <li class='nav-item'>
            <a class='nav-link' onclick='openForm()' style='cursor: pointer;' id='accedi'><i class='fas fa-sign-in-alt'></i>Accedi</a>
            <div class='form-popup container-registrazione' id='myForm'>
-            <form action='./check.php' method='POST'>
+            <form action='./login.php' method='POST'>
            <h4>Il Tuo Mercatino Online</h4>
            <label for='email'><b>Email</b></label><br/>
            <input type='text' placeholder='Immettere Email' value= "<?php echo $dat['email'];?>" name='email' id="email"></br>
@@ -80,9 +80,12 @@ if (isset($_SESSION["logged"])) {
               echo "<input type='password' placeholder='Immettere Password' id='password' name='password' value=";
               $dat["password"];
               echo " ></br>";
+              ?>
+              <div class="" id="ack"></div>
+              <?php
               if (isset($error['password'])) echo "<span class=\'error\'>" . $tipoerror[$error['password']] . "</span>";
               echo "<p>Non hai un account? <a href='./registrazione.php'>Registrati!</a></p>";
-              echo "<button type='button' class='btn btn-primary btn-login'>Accedi</button>";
+              echo "<button id='submit' class='btn btn-primary btn-login' >Accedi</button>";
               echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
              echo '</form>';
              echo '</div>';
@@ -175,30 +178,43 @@ if (isset($_SESSION["logged"])) {
         window.location = "common/logout.php";
     }
   }
+  function login(){
+      $("button#submit").click(function(){
+        var email = $("#email").val();
+        var password = $("#password").val();
 
-  $(document).ready(function() {
-    $("#myForm").click(function(){
-      var email = $("#email").val();
-      var password = $("#password").val();
-
-      if (email == "" || password == "")
-        alert("Pls check ur inputs");
-        $.ajax(
-          {
-            url: "navbar.php",
-            data: {
-              login: 1,
-              emailPHP: email,
-              passwordPHP: password
-            },
-            success: function(response) {
-              console.log(response);
-            }
+        if (email == "" || password == "")
+          $("div#ack").html("Campi vuoti, immettere email e password");
+        else
+          $.post($("myForm")).attr("action"),
+          $("#myForm:input").serializeArray(),
+          function (data) {
+              $("div#ack").html(data);
           }
-        );
+          $("#myForm").submit(function(){
+            return false;
+          });
 
-    });
-  });
+      });
+
+
+          //
+          // $.ajax(
+          //   {
+          //     url: "navbar.php",
+          //     data: {
+          //       login: 1,
+          //       emailPHP: email,
+          //       passwordPHP: password
+          //     },
+          //     success: function(response) {
+          //       console.log(response);
+          //     }
+          //   }
+          // );
+
+  }
+
 </script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>
