@@ -32,9 +32,6 @@
       </div>
     </div>
 
-    <!-- Annunci osservati -->
-    <?php include 'common/piuOsservati.php'; ?>
-
   </body>
 
   <!-- include "common/footer.php"; -->

@@ -80,12 +80,9 @@ if (isset($_SESSION["logged"])) {
               echo "<input type='password' placeholder='Immettere Password' id='password' name='password' value=";
               $dat["password"];
               echo " ></br>";
-              ?>
-              <div class="" id="ack"></div>
-              <?php
               if (isset($error['password'])) echo "<span class=\'error\'>" . $tipoerror[$error['password']] . "</span>";
               echo "<p>Non hai un account? <a href='./registrazione.php'>Registrati!</a></p>";
-              echo "<button id='submit' class='btn btn-primary btn-login' >Accedi</button>";
+              echo "<button  class='btn btn-primary btn-login'  onclick='login()'>Accedi</button>";
               echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
              echo '</form>';
              echo '</div>';
@@ -178,71 +175,29 @@ if (isset($_SESSION["logged"])) {
         window.location = "common/logout.php";
     }
   }
-<<<<<<< HEAD
   function login(){
-      $("button#submit").click(function(){
+
         var email = $("#email").val();
         var password = $("#password").val();
 
         if (email == "" || password == "")
-          $("div#ack").html("Campi vuoti, immettere email e password");
-        else
-          $.post($("myForm")).attr("action"),
-          $("#myForm:input").serializeArray(),
-          function (data) {
-              $("div#ack").html(data);
-          }
-          $("#myForm").submit(function(){
-            return false;
-          });
-
-      });
-
-
-          //
-          // $.ajax(
-          //   {
-          //     url: "navbar.php",
-          //     data: {
-          //       login: 1,
-          //       emailPHP: email,
-          //       passwordPHP: password
-          //     },
-          //     success: function(response) {
-          //       console.log(response);
-          //     }
-          //   }
-          // );
+          alert("Pls check ur inputs");
+          $.ajax(
+            {
+              url: "navbar.php",
+              data: {
+                login: 1,
+                emailPHP: email,
+                passwordPHP: password
+              },
+              success: function(response) {
+                console.log(response);
+              }
+            }
+          );
 
   }
 
-=======
-
-  $(document).ready(function() {
-    $("#myForm").on('click', function(){
-      var email = $("#email").val();
-      var password = $("#password").val();
-
-      if (email == "" || password == "")
-        alert("Pls check ur inputs");
-
-      $.ajax(
-        {
-          url: "navbar.php",
-          data: {
-            login: 1,
-            emailPHP: email,
-            passwordPHP: password
-          },
-          success: function(response) {
-            console.log(response);
-          },
-          dataType: 'text'
-        }
-      );
-    });
-  });
->>>>>>> 82ff68ee27da5028031558264b1a2338fa888cca
 </script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>

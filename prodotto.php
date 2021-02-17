@@ -46,7 +46,7 @@
             }
 
              ?>
-            <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php'">Acquista ora</button>
+            <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
             <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
 
           </div>
