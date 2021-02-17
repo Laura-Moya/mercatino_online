@@ -181,7 +181,22 @@ if (isset($_SESSION["logged"])) {
       var email = $("#email").val();
       var password = $("#password").val();
 
-      console.log(email, password);
+      if (email == "" || password == "")
+        alert("Pls check ur inputs");
+        $.ajax(
+          {
+            url: "navbar.php",
+            data: {
+              login: 1,
+              emailPHP: email,
+              passwordPHP: password
+            },
+            success: function(response) {
+              console.log(response);
+            }
+          }
+        );
+
     });
   });
 </script>
