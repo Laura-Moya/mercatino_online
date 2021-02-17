@@ -20,7 +20,7 @@ echo "ciao";
 echo "$query";
 $data = mysqli_query($cid, $query);
 echo "$data";
-
+  (isset($_SESSION["utente"])& isset($_POST['send']))
 if ($data) {
   header("Location: prodottiAcquistati.php?messaggio=valutazioneok");
 }
