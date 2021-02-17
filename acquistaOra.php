@@ -1,4 +1,11 @@
-<?php
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <?php include "common/header.php";?>
+  </head>
+<body>
+  <?php include "db/connect.php";
   $codice=$_GET["codice"];
   if(isset($_POST['AA'])){
     $preferisce = $_POST['AA'];
