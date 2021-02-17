@@ -11,8 +11,6 @@ $nuovoComune = $_POST["nuovoComune"];
 $nuovaRegione = $_POST["nuovaRegione"];
 $nuovaProvincia = $_POST["nuovaProvincia"];
 
-echo "$nuovaVia  $nuovoComune  $nuovaRegione  $nuovaProvincia";
-
 $res = newIndirizzo($cid, $nuovaVia, $nuovoComune, $nuovaRegione, $nuovaProvincia);
 
 if ($res["status"] == "ok")

@@ -51,10 +51,10 @@
       <input type="text" name="nuovaVia">
       <label>Nuovo Comune: </label>
       <input type="text" name="nuovoComune">
-      <label>Nuova Regione:</label>
-      <input type="text" name="nuovaRegione">
       <label>Nuova Provincia: </label>
-      <input type="text" name="nuovaProvincia" maxlength="2"></br>
+      <input type="text" name="nuovaProvincia" maxlength="2">
+      <label>Nuova Regione:</label>
+      <input type="text" name="nuovaRegione"></br>
 
       <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;"
               href="aggiungiIndirizzo.php?indirizzo=<?php echo '$_POST["nuovaVia"]'; ?>">OK </a></button>
