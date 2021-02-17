@@ -73,16 +73,16 @@ if (isset($_SESSION["logged"])) {
             <form action='./check.php' method='POST'>
            <h4>Il Tuo Mercatino Online</h4>
            <label for='email'><b>Email</b></label><br/>
-           <input type='text' placeholder='Immettere Email' value= "<?php echo $dat['email'];?>" name='email'></br>
+           <input type='text' placeholder='Immettere Email' value= "<?php echo $dat['email'];?>" name='email' id="email"></br>
            <?php
               if (isset($error['email'])) echo '<span class=\"error\'>' . $tipoerror[$error['email']] . "</span>";
               echo "<label for='psw'><b>Password</b></label> <br/>";
-              echo "<input type='password' placeholder='Immettere Password' name='password' value=";
+              echo "<input type='password' placeholder='Immettere Password' id='password' name='password' value=";
               $dat["password"];
-              echo "></br>";
+              echo " ></br>";
               if (isset($error['password'])) echo "<span class=\'error\'>" . $tipoerror[$error['password']] . "</span>";
               echo "<p>Non hai un account? <a href='./registrazione.php'>Registrati!</a></p>";
-              echo "<button type='submit' class='btn btn-primary btn-login'>Accedi</button>";
+              echo "<button type='button' class='btn btn-primary btn-login'>Accedi</button>";
               echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
              echo '</form>';
              echo '</div>';
@@ -177,7 +177,12 @@ if (isset($_SESSION["logged"])) {
   }
 
   $(document).ready(function() {
-    console.log("page ready");
+    $("#myForm").click(function(){
+      var email = $("#email").val();
+      var password = $("#password").val();
+
+      console.log(email, password);
+    });
   });
 </script>
 <!-- Linea di Divisione -->
