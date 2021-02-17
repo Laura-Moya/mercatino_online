@@ -176,6 +176,9 @@ if (isset($_SESSION["logged"])) {
     }
   }
 
+  $(document).ready(function() {
+    console.log("page ready");
+  });
 </script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>
