@@ -22,7 +22,7 @@
 
       <?php
       $codice = $_GET['codice'];
-      $sql="SELECT * FROM `stato` WHERE stato.prodotto = '$codice'";
+      $sql="SELECT * FROM `stato` WHERE stato.prodotto = '$codice' ORDER By stato.data_ora";
       $data = mysqli_query($cid, $sql);
 
       while ($row=$data->fetch_row()) {
@@ -39,7 +39,7 @@
   </div>
   <!-- I miei prodotti osservati -->
   <div class="container">
-  <p id="primo-piano">I tuoi annunci</p>
+  <p id="primo-piano">I tuoi annunci in vendita</p>
     <div class="row">
 
       <?php
@@ -55,7 +55,7 @@
                   echo '<a href="stati.php?stato=invendita&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
                   echo '</form>';
                   echo '<form class="" action="eliminaAnnuncio.php " method="get">';
-                  echo '<a href="eliminaAnnuncio.php?codice='. $prodotto[2].'" class="btn btn-primary" >Elimina annuncio</a>';
+                  echo '<a style="margin: 1rem 2.1rem; background-color: red !important; " href="eliminaAnnuncio.php?codice='. $prodotto[2].'" class="btn btn-primary" >Elimina annuncio</a>';
                   echo '</form>';
                 echo '</div>';
               echo '</div>';

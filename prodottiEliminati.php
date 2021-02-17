@@ -22,7 +22,7 @@
 
       <?php
       $codice = $_GET['codice'];
-      $sql="SELECT * FROM `stato` WHERE stato.prodotto = '$codice'";
+      $sql="SELECT * FROM `stato` WHERE stato.prodotto = '$codice' ORDER By stato.data_ora";
       $data = mysqli_query($cid, $sql);
 
       while ($row=$data->fetch_row()) {
@@ -53,6 +53,9 @@
                   echo '<h5 class="card-title"><a href="prodotto.php?codice='. $prodotto[2].'"> '. Ucwords($prodotto[0]) . ' </a></h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[1]) . '</p>';
                   echo '<a href="stati.php?stato=eliminato&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
+                  echo '</form>';
+                  echo '<form class="" action="rimettiInVendita.php " method="get">';
+                  echo '<a style="margin: 1rem 2.1rem;" href="rimettiInVendita.php?codice='. $prodotto[2].'" class="btn btn-primary" >Rimetti in vendita!</a>';
                   echo '</form>';
                 echo '</div>';
               echo '</div>';

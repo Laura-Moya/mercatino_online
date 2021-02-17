@@ -7,11 +7,11 @@
   <?php include "common/navbar.php";
 
 $codice = $_GET["codice"];
-$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'eliminato', current_timestamp())";
+$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'in vendita', current_timestamp())";
 $data = mysqli_query($cid, $query);
 
 if ($data) {
-  header("Location:profiloVenditore.php?eliminato=ok");
+  header("Location:profiloVenditore.php?invendita=ok");
 }
 else {
   echo "Problems";

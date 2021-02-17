@@ -224,9 +224,9 @@ function leggiProdottiVenduti($cid, $codicefiscale)
   }
 
 	$sql = "SELECT DISTINCT COUNT(annuncio.nome_annuncio)
-					FROM annuncio, stato, utente
-					WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto
-								AND stato.stato = 'venduto' AND utente.codice_fiscale = '$codicefiscale'";
+					FROM annuncio, stato s, utente
+					WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = s.prodotto
+								AND s.stato = 'venduto' AND utente.codice_fiscale = '$codicefiscale' ";
 
 	$res=$cid->query($sql);
 
@@ -351,10 +351,13 @@ function leggiProdottiInVendita($cid, $codicefiscale)
 
 	$sql = "SELECT COUNT(*)
 					FROM annuncio p, stato s
-					WHERE s.stato = 'in vendita' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND NOT EXISTS
-					(SELECT *
-         	FROM stato s2
-         	WHERE s2.stato = 'in vendita' AND p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
+					WHERE s.stato = 'in vendita' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND p.codice NOT IN
+								(SELECT s.prodotto
+								FROM stato s2
+								WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
+
+
+
 
 	$res=$cid->query($sql);
 
@@ -383,10 +386,11 @@ function leggiProdottiEliminati($cid, $codicefiscale)
 
 	$sql = "SELECT COUNT(*)
 					FROM annuncio p, stato s
-					WHERE s.stato = 'eliminato' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND NOT EXISTS
-					(SELECT *
-         	FROM stato s2
-         	WHERE s2.stato = 'eliminato' AND p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
+					WHERE s.stato = 'eliminato' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND p.codice NOT IN
+								(SELECT s.prodotto
+								FROM stato s2
+								WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
+
 
 	$res=$cid->query($sql);
 
@@ -415,10 +419,12 @@ function prodottiInVendita($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore
-					FROM annuncio, stato
-					WHERE stato.prodotto = annuncio.codice
-								AND stato.stato = 'in vendita' AND annuncio.venditore = '$codicefiscale'";
+	$sql = "SELECT DISTINCT p.nome_prodotto, p.nome_annuncio, p.codice, p.venditore, s.stato, s.data_ora
+					FROM annuncio p, stato s
+					WHERE s.stato = 'in vendita' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND p.codice NOT IN
+								(SELECT s.prodotto
+								FROM stato s2
+								WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
 
 	$res=$cid->query($sql);
 
@@ -453,10 +459,9 @@ function prodottiVenduti($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore
-					FROM annuncio, stato
-					WHERE stato.prodotto = annuncio.codice
-								AND stato.stato = 'venduto' AND annuncio.venditore = '$codicefiscale'";
+	$sql = "SELECT DISTINCT p.nome_prodotto, p.nome_annuncio, p.codice, p.venditore
+					FROM annuncio p, stato s
+					WHERE s.prodotto = p.codice AND s.stato = 'venduto' AND p.venditore = '$codicefiscale' ";
 
 	$res=$cid->query($sql);
 
@@ -491,10 +496,13 @@ function prodottiEliminati($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore
-					FROM annuncio, stato
-					WHERE stato.prodotto = annuncio.codice
-								AND stato.stato = 'eliminato' AND annuncio.venditore = '$codicefiscale'";
+	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore, s.stato, s.data_ora
+					FROM annuncio , stato s
+					WHERE s.stato = 'eliminato' AND annuncio.codice = s.prodotto AND annuncio.venditore = '$codicefiscale' 	AND annuncio.codice NOT IN
+						(SELECT s.prodotto
+						FROM stato s2
+						WHERE annuncio.codice = s2.prodotto and s.data_ora < s2.data_ora)";
+
 
 	$res=$cid->query($sql);
 

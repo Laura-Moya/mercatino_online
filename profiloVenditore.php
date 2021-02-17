@@ -15,6 +15,13 @@
       $risultato = leggiProdottiEliminati($cid, $codice_fiscale[0]);
       $prodottiEliminati = $risultato['contenuto'];
 
+      if (isset($_GET['eliminato'])) {
+        echo '<script type="text/javascript">alert("Il tuo annuncio è stato eliminato con successo");</script>';
+      }
+      if (isset($_GET['invendita'])) {
+        echo '<script type="text/javascript">alert("Il tuo annuncio è stato rimesso in vendita con successo");</script>';
+      }
+
      ?>
 
           <p class="prodotti-venduti-profilo"><a href="prodottiVenduti.php">Prodotti venduti:</a> <?php echo "$prodottiVenduti[0]"; ?> </p>
