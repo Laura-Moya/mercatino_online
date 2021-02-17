@@ -178,6 +178,7 @@ if (isset($_SESSION["logged"])) {
         window.location = "common/logout.php";
     }
   }
+<<<<<<< HEAD
   function login(){
       $("button#submit").click(function(){
         var email = $("#email").val();
@@ -215,6 +216,33 @@ if (isset($_SESSION["logged"])) {
 
   }
 
+=======
+
+  $(document).ready(function() {
+    $("#myForm").on('click', function(){
+      var email = $("#email").val();
+      var password = $("#password").val();
+
+      if (email == "" || password == "")
+        alert("Pls check ur inputs");
+
+      $.ajax(
+        {
+          url: "navbar.php",
+          data: {
+            login: 1,
+            emailPHP: email,
+            passwordPHP: password
+          },
+          success: function(response) {
+            console.log(response);
+          },
+          dataType: 'text'
+        }
+      );
+    });
+  });
+>>>>>>> 82ff68ee27da5028031558264b1a2338fa888cca
 </script>
 <!-- Linea di Divisione -->
 <div class="linea"></div>
