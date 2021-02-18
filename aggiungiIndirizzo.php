@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <?php include "common/header.php";?>
-  </head>
-<body>
-  <?php include "common/navbar.php";
+
+    <?php
+    session_start();
+
+    include "common/header.php";
+    include "db/connect.php";
+    include "common/funzioni.php";
 
 $nuovaVia = $_POST["nuovaVia"];
 $nuovoComune = $_POST["nuovoComune"];

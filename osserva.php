@@ -4,14 +4,13 @@
     <?php include "common/header.php";?>
   </head>
 <body>
-  <?php include "common/navbar.php";
+  <?php include "db/connect.php";
 
 $prodotto = $_GET["codice"];
 $cf = $_GET["codicefiscale"];
 $query = "INSERT INTO `osserva` (`utente`, `prodotto`) VALUES ('$cf', '$prodotto')";
 
 $data = mysqli_query($cid, $query);
-echo $data;
 if ($data) {
   header("Location: prodotto.php?codice=$prodotto");
 }
