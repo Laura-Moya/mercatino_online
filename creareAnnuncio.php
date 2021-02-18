@@ -85,7 +85,7 @@ else
           <tr>
             <td style="width: 50%">
             <h6>Seleziona la visibilità</h6>
-            <input type="radio" id="Pubblica" name="visibilita" value="pubblica">
+            <input type="radio" id="Pubblica" name="visibilita" value="pubblica" checked="checked">
             <label style="margin-right:0.5rem" for="Pubblica">Pubblica </label><br/>
             <input type="radio" id="Privata" name="visibilita" value="privata">
             <label for="Privata">Privata </label><br/>
@@ -94,16 +94,16 @@ else
             </td>
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
               <h6 >Seleziona lo stato</h6>
-              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()"/>
+              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()" value="nuovo"/>
               <label class ="labelpagamento" for="N" style="margin-right:0.5rem">Nuovo </label>
-              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()"/>
+              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "usato"/>
               <label class ="labelpagamento" for="U">Usato</label>
               </td>
           </tr>
           <tr>
             <td colspan="2">
               <div id="garanzia">
-                <center><input class="" type="checkbox" id="G" onclick="openDivTempoGar()">
+                <center><input class="" type="checkbox" id="G" onclick="openDivTempoGar()" name="garanzia" value="1">
                 <label class ="" for="G">Il prodotto ha una garanzia?</label><center></center>
               </div>
               <tr>
