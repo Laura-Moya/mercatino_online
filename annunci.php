@@ -200,7 +200,8 @@
             $queryResult = mysqli_num_rows($result);
               echo "<h5 style = 'margin-left: 3rem;'>Sono usciti " .$queryResult . " risultati!</h5>";
               if ($queryResult > 0) {
-                while($row=mysqli_fetch_assoc($result)){                  
+                while($row=mysqli_fetch_assoc($result)){
+                  if ($row["acquirente"]==null){?>
                     <div class="card mb-3" id="annunci" style="max-width: 770px;">
                       <div class="row no-gutters">
                         <div class="col-md-4">
@@ -219,12 +220,9 @@
                         </div>
                       </div>
                     </div>
-
                 <?php }
+                }
               }
-
-
-
           ?>
         </div>
 

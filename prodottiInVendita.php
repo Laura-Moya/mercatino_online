@@ -16,7 +16,7 @@
   ?>
   <!-- popup stati -->
   <div class='form-popup3 container-registrazione' id='stati' >
-    <div class="" style="padding: 50% 0;">
+    <div class="">
       <h4>Stati del prodotto:</h4>
       <div class="" style="padding-bottom: 1rem;">
 
