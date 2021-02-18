@@ -636,46 +636,6 @@ function leggiAnnunci($cid)
   return $risultato;
 }
 
-// function leggiAnnunci($cid,$res)
-// {
-//   $annunci = array();
-//   $risultato = array("status"=> "ok", "msg"=>"", "contenuto"=>"");
-// 	$prodotto = array();
-//
-//   if ($cid->connect_errno) {
-//     $risultato["status"] = "ko";
-//     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
-//     return $risultato;
-//   }
-//
-// 	if (isset($_POST['stato'])){
-// 		$res = filtroStato($cid,$stato,$res);
-// 	}
-// 	$sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
-// 					FROM annuncio, utente
-// 					WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice IN $res";
-// 	$res=$cid->query($sql);
-//
-//   if ($res == null) {
-//     $risultato["status"] = "ko";
-//     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
-//     return $risultato;
-//   }
-//
-//   while ($row=$res->fetch_row()) {
-// 		for ($i=0; $i < 11 ; $i++) {
-// 			$prodotto[$i] = $row[$i];
-// 		}
-// 		$annunci[$row[0]] = $prodotto;
-//
-//   }
-//
-//   $risultato["contenuto"] = $annunci;
-//   return $risultato;
-//
-// }
-//
-
 function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagine, $codicefiscale)
 {
 		$risultato= array("msg"=>"","status"=>"ok");
@@ -857,30 +817,27 @@ function contaOsservatori($cid, $codice){
 	return $risultato;
 }
 
-// function leggiSottocategorie ($cid, $categoria){
-// 	$risultato= array("msg"=>"","status"=>"ok");
-//
-// 	if ($cid->connect_errno) {
-// 		$risultato["status"] = "ko";
-// 		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
-// 		return $risultato;
-// 	}
-//
-// 	$sql="SELECT
-// 				FROM `osserva`
-// 				WHERE osserva.prodotto ='$codice' ";
-//
-// 	$res = $cid->query($sql);
-// 	if ($res == null) {
-//     $risultato["status"] = "ko";
-//     $risultato["msg"] = "Errore nella esecuzione della interrogazione " . $cid->error;
-//     return $risultato;
-// 	}
-//
-// 	$row=$res->fetch_row();
-//
-// 	$risultato["contenuto"] = $row;
-// 	return $risultato;
-// }
-// }
+function prodottoOsservato ( $cid, $codicefiscale, $codice){
+	$risultato= array("msg"=>"","status"=>"ok");
+
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+
+	$sql="SELECT * FROM `osserva` WHERE osserva.prodotto='$codice' AND osserva.utente='$codicefiscale'";
+
+	$res = $cid->query($sql);
+	if ($res == null) {
+		$oss = 0;
+		$risultato["contenuto"] = $oss;
+    return $risultato;
+	} else {
+		$oss = 1;
+	}
+	$risultato["contenuto"] = $oss;
+	return $risultato;
+}
+
 ?>

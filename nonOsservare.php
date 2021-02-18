@@ -13,7 +13,11 @@ $query = "DELETE FROM `osserva` WHERE `osserva`.`utente` = '$cf' AND `osserva`.`
 
 $data = mysqli_query($cid, $query);
 if ($data) {
-  header("Location: osservati.php?nonosservare=ok");
+  if (isset($_GET["prodotto"])){
+    header("Location: prodotto.php?nonosservare=ok&codice=".$prodotto);
+  } else{
+    header("Location: osservati.php?nonosservare=ok");
+  }
 }
 else {
   echo "Problems";

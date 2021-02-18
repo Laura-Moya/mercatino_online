@@ -14,7 +14,8 @@
       $prodotto = $risultato['contenuto'];
       $risultato = contaOsservatori($cid, $codice);
       $osservatori = $risultato['contenuto'];
-
+      $risultato = prodottoOsservato($cid,$codice_fiscale[0], $codice);
+      $osservato = $risultato['contenuto'];
     ?>
     <div class='form-popup3 container-registrazione' id='stati' >
       <div class="">
@@ -71,9 +72,13 @@
 
              } else {?>
                <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
+               <?php if ($osservato == 1) {
+                 echo '<a href="nonOsservare.php?codice='. $codice .'&codicefiscale='.$codice_fiscale[0].'&prodotto=on" class="btn btn-primary">Non osservare più</a>';
+               } else {?>
                <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
              <?php
            }
+         }
            ?>
           </div>
         </div>
