@@ -57,25 +57,6 @@
             </ul>
           </nav>
 
-      <!-- <nav class="navbar bg-light" id="sottocategorie">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Aspirapolveri</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Caffettiere</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Tostapane</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Frullatori</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Altro</a>
-          </li>
-        </ul>
-      </nav> -->
       <!-- Elenco annunci -->
         <div class='annunci'>
         <div class="card mb-3" id="annunci" style="max-width: 770px;">
@@ -219,7 +200,7 @@
             $queryResult = mysqli_num_rows($result);
               echo "<h5 style = 'margin-left: 3rem;'>Sono usciti " .$queryResult . " risultati!</h5>";
               if ($queryResult > 0) {
-                while($row=mysqli_fetch_assoc($result)){?>
+                while($row=mysqli_fetch_assoc($result)){                  
                     <div class="card mb-3" id="annunci" style="max-width: 770px;">
                       <div class="row no-gutters">
                         <div class="col-md-4">

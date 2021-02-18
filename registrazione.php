@@ -48,9 +48,11 @@ if (isset($_GET['errore'])) {
               <td> <h6 class="destra"> Cognome</h6> </td>
             </tr>
             <tr>
-              <td> <input style="margin-right:1.5rem;" type="text" name="nome"  value="<?php  echo $dati["nome"];?>"> </br> <?php if (isset($errore["nome"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nome"]] . "</span>"; ?>
+              <td> <input style="margin-right:1.5rem;" type="text" name="nome"  value="<?php  echo $dati["nome"];?>"> </br> <?php if (isset($errore["nome"]))
+              echo "<span class=\"errore\">" . $tipoErrore[$errore["nome"]] . "</span>"; ?>
               </td>
-              <td> <input class="destra" type="text" name="cognome" value="<?php  echo $dati["cognome"];?>"> </br> <?php if (isset($errore["cognome"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["cognome"]] . "</span>"; ?> </td>
+              <td> <input class="destra" type="text" name="cognome" value="<?php  echo $dati["cognome"];?>"> </br> <?php if (isset($errore["cognome"]))
+              echo "<span class=\"errore destra\">" . $tipoErrore[$errore["cognome"]] . "</span>"; ?> </td>
             </tr>
             <tr>
               <td> <h6>Email</h6> </td>

@@ -4,7 +4,7 @@
     <?php include "common/header.php";?>
   </head>
 <body>
-  <?php include "common/navbar.php";
+  <?php include "db/connect.php";
 
 $codice = $_GET["codice"];
 $query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'eliminato', current_timestamp())";

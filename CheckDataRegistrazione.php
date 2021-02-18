@@ -62,8 +62,6 @@ if (count($errore)>0)
 }
 else
 {
-	header('location:registrazione.php?status=ok&dati=' . serialize($dati));
-}
 	$ris2 = checkMail($cid, $email, $password);
 	if ($ris2["status"] == "ok")
 	{
@@ -79,13 +77,16 @@ else
 			$_SESSION["utente"] = $email;
 			$_SESSION["logged"]=true;
 
+			echo "ok";
 			header("Location: index.php?Message=Benvenuto");
 		}
 		else
 		{
+			echo "errore";
 			$parameter = "Location: registrazione.php?errore=connectionbd";
 			header($parameter);
 		}
 	}
+}
 
 ?>
