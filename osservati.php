@@ -10,6 +10,10 @@
     //Funzione annunciOsservati
     $risultato = annunciOsservati($cid, $codice_fiscale[0]);
     $annunciOsservati = $risultato['contenuto'];
+
+    if (isset($_GET['nonosservare'])) {
+      echo '<script type="text/javascript">alert("Annuncio rimosso dai tuoi prodotti osservati");</script>';
+    }
   ?>
 
   <!-- I miei prodotti osservati -->
@@ -17,19 +21,19 @@
   <p id="primo-piano">I tuoi prodotti osservati</p>
     <div class="row">
       <?php
-    
+
         for ($i=0; $i < count($annunciOsservati) ; $i++) {
 
-            $prodotto = $annunciOsservati[$i];
-              echo '<div class="card" style="width: 16rem;">';
-                echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
-                  echo '<div class="card-body">';
-                  echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';
-                  echo '<p class="card-text">'. Ucwords($prodotto[0]) . '</p>';
-                  echo '<a href="prodotto.php" class="btn btn-primary">Non osservare più</a>';
-                echo '</div>';
-              echo '</div>';
-        }
+            $prodotto = $annunciOsservati[$i];?>
+              <div class="card" style="width: 16rem;">
+                <img src="images/fornellino.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                  <h5 class="card-title"> <?php echo Ucwords($prodotto[1]); ?> </h5>
+                  <p class="card-text"><?php echo Ucwords($prodotto[0]); ?></p>
+                  <a href="nonOsservare.php?codice=<?php echo $prodotto[2]; ?>&codicefiscale=<?php echo $codice_fiscale[0];?>" class="btn btn-primary">Non osservare più</a>
+                </div>
+              </div>
+      <?php  }
       ?>
     </div>
   </div>
