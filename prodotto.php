@@ -16,6 +16,27 @@
       $osservatori = $risultato['contenuto'];
 
     ?>
+    <div class='form-popup3 container-registrazione' id='stati' >
+      <div class="">
+        <h4>Stati del prodotto:</h4>
+        <div class="" style="padding-bottom: 1rem;">
+
+        <?php
+        $sql="SELECT * FROM `stato` WHERE stato.prodotto = '$codice' ORDER By stato.data_ora";
+        $data = mysqli_query($cid, $sql);
+
+        while ($row=$data->fetch_row()) {
+          echo Ucwords($row[1])." </br>";
+        }
+        ?>
+      </div>
+    </div>
+
+
+        <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;" href="#">OK </a></button>
+        <button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>
+      </div>
+
     <form class="" action="osserva.php" method="get">
       <div class="container-profilo container">
         <div class="row">
@@ -45,15 +66,30 @@
               echo '<p>Tempo usura: '.  Ucwords("$prodotto[16]").'</p>';
             }
 
-             ?>
-            <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
-            <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
+             if ($prodotto[12]==$codice_fiscale[0]){
+               echo '<a class="btn btn-primary" onclick="openForm()">Visualizza stati del prodotto</a>';
 
+             } else {?>
+               <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
+               <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
+             <?php
+           }
+           ?>
           </div>
         </div>
       </div>
 
     </form>
+<script>
+    function openForm() {
+
+      document.getElementById("stati").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("stati").style.display = "none";
+    }
+  </script>
 
   </body>
 
