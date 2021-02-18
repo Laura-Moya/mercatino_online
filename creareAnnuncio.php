@@ -3,7 +3,11 @@
 
 $tipoErrore = array("1"=>"Inserire il nome dell'annuncio",
                     "2" =>"Inserire il nome del prodotto",
-          					"3" =>"Prezzo del prodotto non valido",);
+          					"3" =>"Prezzo del prodotto non valido",
+                    "4" => "Stato del prodotto non specificato",
+                    "5" => "Tempo garanzia vuoto",
+                    "6" => "Tempo di usura vuoto",
+                    "7" => "Campi di prodotto usato vuoti");
 $errore = array();
 $dati = array();
 
@@ -129,7 +133,7 @@ else
               <td>
                 <div id="statousura">
                 <h6>Stato di usura:</h6>
-                <select class="form-control form-control-md" name="">
+                <select class="form-control form-control-md" name="statoUsura">
                   <option value="">Seleziona...</option>
                   <option value="Parianuovo">Pari a nuovo</option>
                   <option value="Buono">Buono</option>
