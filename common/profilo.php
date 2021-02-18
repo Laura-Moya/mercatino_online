@@ -44,7 +44,7 @@
 
     <!-- Popup aggiungiIndirizzo -->
     <div class='form-popup3 container-registrazione' id='aggiungiIndirizzo'>
-      <form action='../aggiungiIndirizzo.php' method='POST'>
+      <form action='./aggiungiIndirizzo.php?codicefiscale=<?php $codice_fiscale[0] ?>' method='POST'>
       <h4>Aggiungi un nuovo indirizzo!</h4>
 
       <label>Nuova Via: </label>
@@ -58,7 +58,7 @@
 
       <!-- <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;"
               href="aggiungiIndirizzo.php">OK </a></button> -->
-      <input type="submit" name="invia" value="invia">
+      <input type="submit" class='btn btn-primary btn-login' style="margin: 0px !important;" name="invia" value="invia">
       <button type='button' class='btn btn-primary btn-login' onclick='closeFormIndirizzo()'>Chiudi</button>
       </form>
     </div>

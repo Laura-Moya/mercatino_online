@@ -706,7 +706,7 @@ function newUser($cid, $nome, $cognome, $login, $password, $tipo_utente, $immagi
 
 }
 
-function newIndirizzo($cid, $nuovaVia, $nuovoComune, $nuovaRegione, $nuovaProvincia)
+function newIndirizzo($cid, $nuovaVia, $nuovoComune, $nuovaProvincia, $nuovaRegione)
 {
 		$risultato= array("msg"=>"","status"=>"ok");
 
@@ -717,10 +717,10 @@ function newIndirizzo($cid, $nuovaVia, $nuovoComune, $nuovaRegione, $nuovaProvin
 	  }
 
 		$sql= "INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`)
-		         VALUES ('$nuovaVia', '$nuovoComune', '$nuovaRegione', '$nuovaProvincia')";
+		         VALUES ('$nuovaVia', '$nuovoComune', '$nuovaProvincia', '$nuovaRegione')";
 
 		$res = $cid->query($sql);
-		if ($res==null)
+		if (!$res)
 	 {
 			 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
 			 $risultato["status"]="ko";
