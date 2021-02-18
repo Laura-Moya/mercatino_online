@@ -720,16 +720,17 @@ function newIndirizzo($cid, $nuovaVia, $nuovoComune, $nuovaProvincia, $nuovaRegi
 		         VALUES ('$nuovaVia', '$nuovoComune', '$nuovaProvincia', '$nuovaRegione')";
 
 		$res = $cid->query($sql);
-		if (!$res)
+		if ($res)
 	 {
-			 $msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
-			 $risultato["status"]="ko";
-			 $risultato["msg"]=$msg;
+		 $msg = "Indirizzo aggiunto con successo";
+		 $risultato["status"]="ok";
+		 $risultato["msg"]=$msg;
+
 		 }
 		else
 		{
-			$msg = "Indirizzo aggiunto con successo";
-			$risultato["status"]="ok";
+			$msg = "Si sono verificati i seguenti errori:<br/>" . $res->error;
+			$risultato["status"]="ko";
 			$risultato["msg"]=$msg;
 		}
 		 return $risultato;
