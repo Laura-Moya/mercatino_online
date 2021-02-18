@@ -15,10 +15,11 @@ include "db/connect.php";
     $primoPiano = $risultato['contenuto'];
 
     if (isset($_GET['Message'])) {
-      if ($_GET["message"]=="nuovoIndirizzoAggiunto"){
+      if ($_GET["Message"]=="nuovoIndirizzoAggiunto"){
         echo '<script type="text/javascript">alert("Nuovo indirizzo aggiunto");</script>';
+      }else {
+        echo '<script type="text/javascript">alert("Benvenuto nel tuo mercatino online! La tua registrazione è andata a buon fine, buono shopping!");</script>';
       }
-      echo '<script type="text/javascript">alert("Benvenuto nel tuo mercatino online! La tua registrazione è andata a buon fine, buono shopping!");</script>';
     } elseif (isset($_GET["acquisto"])) {
       if ($_GET["acquisto"]=="contanti"){
         echo '<script type="text/javascript">alert("Il tuo acquisto è andato a buon fine! La transizione verrà effettuata a mano e potrai pagare tramite contanti. Continua lo shopping!")</script>';
