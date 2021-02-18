@@ -326,11 +326,13 @@ function prodottiAcquistati($cid, $codicefiscale)
     return $risultato;
 	}
 
+	$j = 0;
 	while ($row=$res->fetch_row()) {
 			for ($i=0; $i < 4 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
-			$prodotti[$row[3]] = $prodotto;
+			$prodotti[$j] = $prodotto;
+			$j++;
   }
 
 	$risultato["contenuto"] = $prodotti;

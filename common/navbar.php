@@ -149,8 +149,7 @@ if (isset($_SESSION["logged"])) {
         echo '<li class="nav-item second">';
           echo '<a type="submit" class="nav-link" href="annunci.php?cat='. "$categorie[$i]".'">'. "$categorie[$i]".'</a>';
         echo '</li>';
-      }
-      ?>
+      }?>
     </ul>
   </div>
 </form>

@@ -22,7 +22,7 @@
   <p id="primo-piano">I tuoi acquisti</p>
     <div class="row">
       <?php
-        for ($i=1; $i <= count($prodotti) ; $i++) {
+        for ($i=1; $i < count($prodotti) ; $i++) {
 
             $prodotto = $prodotti[$i];
               echo '<div class="card" style="width: 16rem;">';
@@ -39,7 +39,7 @@
 
     </div>
   </div>
-  
+
 
 </body>
 

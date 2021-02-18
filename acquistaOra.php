@@ -6,7 +6,10 @@
   </head>
 <body>
   <?php include "db/connect.php";
+
+
   $codice=$_GET["codice"];
+  $codicefiscale = $_GET["codfisc"];
   if(isset($_POST['AA'])){
     $preferisce = $_POST['AA'];
   }
@@ -47,15 +50,24 @@
               $data = mysqli_query($cid, $query);
 
               if ($data) {
+                $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
+                $res = mysqli_query($cid, $sql);
+                if ($res) {
                 header("Location: index.php?acquisto=ok");
+                }
               }
+
             }
           } else {
             $query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'venduto', current_timestamp())";
             $data = mysqli_query($cid, $query);
 
             if ($data) {
-            header("Location: index.php?acquisto=contanti");
+              $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
+              $res = mysqli_query($cid, $sql);
+              if ($res) {
+              header("Location: index.php?acquisto=ok");
+              }
             }
           }
       }
@@ -74,7 +86,11 @@
         $data = mysqli_query($cid, $query);
 
         if ($data) {
-        header("Location: index.php?acquisto=spedizione");
+          $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
+          $res = mysqli_query($cid, $sql);
+          if ($res) {
+          header("Location: index.php?acquisto=ok");
+          }
         }
       }
     }
