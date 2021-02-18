@@ -4,23 +4,21 @@
     <?php include "common/header.php";?>
   </head>
 <body>
-  <?php include "common/navbar.php";
+  <?php include "db/connect.php";
 
 $puntualita = $_POST['puntualita'];
 $serieta = $_POST['serieta'];
+$codiceFiscaleValutato = $_GET["codiceFiscaleValutato"];
+$codicefiscalevaluta = $_GET["codicefiscalevaluta"];
 
 echo "$puntualita </br>";
 echo "$serieta </br>";
 echo "$codiceFiscaleValutato";
 
 $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
-          VALUES ('$codice_fiscale[0]', '$codiceFiscaleValutato', '$serieta', '$puntualita')";
-
-echo "ciao";
-echo "$query";
+          VALUES ('$codicefiscalevaluta', '$codiceFiscaleValutato', '$serieta', '$puntualita')";
 $data = mysqli_query($cid, $query);
-echo "$data";
-  (isset($_SESSION["utente"])& isset($_POST['send']))
+
 if ($data) {
   header("Location: prodottiAcquistati.php?messaggio=valutazioneok");
 }

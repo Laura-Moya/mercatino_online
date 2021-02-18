@@ -170,14 +170,16 @@ else
   function openDivGaranzia() {
     document.getElementById("garanzia").style.visibility = "visible";
     document.getElementById("garanzia").style.height = "auto";
-    // document.getElementById("tempousura").reset();
-    // document.getElementById("statousura").reset();
+
   }
   function closeDivUsura() {
+
     document.getElementById("tempousura").style.visibility = "hidden";
     document.getElementById("tempousura").style.height = "0px";
     document.getElementById("statousura").style.visibility = "hidden";
     document.getElementById("statousura").style.height = "0px";
+    document.getElementById("tempousura").reset();
+    document.getElementById("statousura").reset();
 
   }
   function openDivTempoGar() {
@@ -205,6 +207,8 @@ else
     document.getElementById("garanzia").style.height = "0px";
     document.getElementById("tempogaranzia").style.visibility = "hidden";
     document.getElementById("tempogaranzia").style.height = "0px";
+    document.getElementById("tempousura").reset();
+    document.getElementById("statousura").reset();
   }
 
   </script>

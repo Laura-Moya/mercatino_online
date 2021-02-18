@@ -27,10 +27,10 @@
             <h4 class="nome-annuncio"> <?php echo Ucwords("$prodotto[0]"); ?> </h4>
             <h4 class="nome-prodotto" style="margin-top: 1rem;"> <?php echo Ucwords("$prodotto[1]"); ?> </h4>
 
-            <form action='valuta.php' method='POST'>
+            <form action='valuta.php?codiceFiscaleValutato=<?php echo "$prodotto[12]";?>&codicefiscalevaluta=<?php echo "$codice_fiscale[0]"; ?>' method='POST'>
 
               <label ><b>Puntalità</b></label><br/>
-              <select class="form-control form-control-sm" name="puntualita" style="width: 15% !important;" required>
+              <select class="form-control form-control-sm" name="puntualita" id="puntualita" style="width: 15% !important;" required>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -39,7 +39,7 @@
               </select>
 
               <label for='psw'><b>Serietà</b></label> <br/>
-              <select class="form-control form-control-sm" name="serieta" style="width: 15% !important;" required>
+              <select class="form-control form-control-sm" name="serieta" id="serieta" style="width: 15% !important;" required>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -49,9 +49,7 @@
 
               <button type='button' class='btn btn-primary btn-login'> <a style="color: white !important;" href="prodottiAcquistati.php">Torna ai tuoi acquisti</a></button>
 
-              <button type='submit' class='btn btn-primary btn-login'>
-                <a style="color: white !important;" href="valuta.php?codiceFiscaleValutato=<?php echo "$prodotto[12]";?>">Valuta</a>
-              </button>
+              <button type='submit' class='btn btn-primary btn-login'>Valuta</button>
             </form>
 
           </div>

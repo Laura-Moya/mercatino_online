@@ -28,7 +28,7 @@
               <div class="card" style="width: 16rem;">
                 <img src="images/fornellino.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                  <h5 class="card-title"> <?php echo Ucwords($prodotto[1]); ?> </h5>
+                  <h5 class="card-title"><a href="prodotto.php?codice=<?php echo $prodotto[2]; ?>"> <?php echo Ucwords($prodotto[1]); ?> </a></h5>
                   <p class="card-text"><?php echo Ucwords($prodotto[0]); ?></p>
                   <a href="nonOsservare.php?codice=<?php echo $prodotto[2]; ?>&codicefiscale=<?php echo $codice_fiscale[0];?>" class="btn btn-primary">Non osservare più</a>
                 </div>

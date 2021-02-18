@@ -205,7 +205,7 @@
                     <div class="card mb-3" id="annunci" style="max-width: 770px;">
                       <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="images/cellulare.jpg" class="card-img">
+                            <img src="<?php echo $row['foto']; ?>" class="card-img">
                         </div>
                         <div class="col-md-8">
                           <div class="card-body">

@@ -12,7 +12,7 @@
     $risultato = prodottiAcquistati($cid, $codice_fiscale[0]);
     $prodotti = $risultato['contenuto'];
 
-    if (isset($_POST['messaggio'])) {
+    if (isset($_GET['messaggio'])) {
       echo '<script type="text/javascript">alert("La tua valutazione è stata effettuata con successo, grazie per la collaborazione!");</script>';
     }
   ?>
