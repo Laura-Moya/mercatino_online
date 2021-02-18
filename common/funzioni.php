@@ -829,15 +829,20 @@ function prodottoOsservato ( $cid, $codicefiscale, $codice){
 	$sql="SELECT * FROM `osserva` WHERE osserva.prodotto='$codice' AND osserva.utente='$codicefiscale'";
 
 	$res = $cid->query($sql);
-	if ($res == null) {
+
+	$row=$res->fetch_row();
+
+
+	if ($row == null) {
 		$oss = 0;
 		$risultato["contenuto"] = $oss;
+
     return $risultato;
 	} else {
 		$oss = 1;
+		$risultato["contenuto"] = $oss;
+		return $risultato;
 	}
-	$risultato["contenuto"] = $oss;
-	return $risultato;
 }
 
 ?>
