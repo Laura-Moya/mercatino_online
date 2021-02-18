@@ -85,11 +85,11 @@ else
           <tr>
             <td style="width: 50%">
             <h6>Seleziona la visibilità</h6>
-            <input type="radio" id="Pubblica" name="visibilità" value="pubblica">
+            <input type="radio" id="Pubblica" name="visibilita" value="pubblica">
             <label style="margin-right:0.5rem" for="Pubblica">Pubblica </label><br/>
-            <input type="radio" id="Privata" name="visibilità" value="privata">
+            <input type="radio" id="Privata" name="visibilita" value="privata">
             <label for="Privata">Privata </label><br/>
-            <input type="radio" id="Ristretta" name="visibilità" value="ristretta">
+            <input type="radio" id="Ristretta" name="visibilita" value="ristretta">
             <label for="Ristretta">Ristretta</label>
             </td>
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">

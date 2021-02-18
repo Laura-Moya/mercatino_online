@@ -7,8 +7,11 @@ $dati=array();
 $nomeannuncio=$_GET["nomeannuncio"];
 $nomeprodotto=$_GET["nomeprodotto"];
 $prezzo=$_GET["prezzo"];
+$categoria = $_GET["category"];
+$sottocategoria = $_GET["sottocategoria"];
+$visibilita = $_GET["visibilita"];
 
-
+echo $sottocategoria;
 
 if (empty($nomeannuncio))
 {
@@ -36,12 +39,13 @@ if (empty($prezzo))
 $dati["prezzo"]=$prezzo;
 
 
-if (count($errore)>0)
-{
-	header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
-}
-else
-{
-	header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
-}
+
+// if (count($errore)>0)
+// {
+// 	header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+// }
+// else
+// {
+// 	header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
+// }
 ?>
