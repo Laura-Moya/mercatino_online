@@ -2,19 +2,46 @@
 <html lang="en" dir="ltr">
   <head>
     <?php include "common/header.php";?>
+    <script>
+    var flag = true;
+    if(flag){
+    $(document).ready(function(){
+
+        document.getElementById('indirizzoSelezionato').submit();
+        flag = false;
+
+       }
+
+      // alert("Hello, world!");
+
+      // $(#indirizzoSelezionato).submit();
+      // break;
+      exit();
+    });
+    </script>
+
   </head>
   <body>
       <?php include "common/navbar.php";?>
 
       <?php
+      if(isset($_POST["indirizzo"])){
+        $indirizzo = $_POST["indirizzo"];
+        $result_explode = explode('|', $indirizzo);
+        echo "via: ". $result_explode[0]."<br />";
+        echo "comune: ". $result_explode[1]."<br />";
+        echo "provicia: ". $result_explode[2]."<br />";
+        echo "regione: ". $result_explode[3]."<br />";
         // $res = noFilter($cid);
         $risultato = leggiAnnunci($cid);
         $annunci = $risultato['contenuto'];
+      }
       ?>
 
       <div class="container-filtri-annunci">
       <!-- Navbar Sottocategorie -->
       <?php
+
           $sottocategorie = array();
           $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro1'];
           $sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro2'];
@@ -124,7 +151,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Stato</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="annunci.php?stato=nuovo">Nuovo</a>
+                  <a class="dropdown-item" href="annunci.php?stato=nuovo" >Nuovo</a>
                   <a class="dropdown-item" href="annunci.php?stato=usato" >Usato</a>
                 </div>
               </li>
@@ -148,8 +175,8 @@
                   Luogo
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="annunci.php">Nella mia provincia</a>
-                  <a class="dropdown-item" href="#">Nella mia regione</a>
+                  <a class="dropdown-item" href="annunci.php?luogo=provincia" onchange="">Nella mia provincia</a>
+                  <a class="dropdown-item" href="annunci.php?luogo=regione" onclick="$('#indirizzoSelezionato').submit();">Nella mia regione</a>
                 </div>
               </li>
             </form>
@@ -195,6 +222,20 @@
                     break;
                 }
                }
+               if(isset($_POST["luogo"])){
+                //  if(isset($_POST["indirizzo"])){
+                //    $provincia = $_POST["indirizzo"];
+                //    $result_explode = explode('|', $indirizzo);
+                //    echo "via: ". $result_explode[0]."<br />";
+                //    echo "comune: ". $result_explode[1]."<br />";
+                //    echo "provicia: ". $result_explode[2]."<br />";
+                //    echo "regione: ". $result_explode[3]."<br />";
+                //   $sql = "SELECT * FROM annuncio WHERE annuncio.provincia = '$provincia'";
+                //
+                // }
+               }
+
+
 
             $result = mysqli_query($cid,$sql);
             $queryResult = mysqli_num_rows($result);

@@ -114,8 +114,10 @@ if (isset($_SESSION["logged"])) {
 
   <div id ="indi">
       <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
-      <form class="" action="annunci.php" method="POST">
-        <select type="submit" class="form-control form-control-md" id="aaa" name="indirizzo">
+      <form method="post" id="indirizzoSelezionato">
+        <select type="submit" class="form-control form-control-md" id="indirizzoSel" name="indirizzo" onchange="$('#indirizzoSelezionato').submit();">
+          <option value="" > Seleziona... </option>';
+
           <?php
           if (!isset($_SESSION["utente"])) {
             echo '<script type="text/javascript">';
@@ -126,11 +128,12 @@ if (isset($_SESSION["logged"])) {
 
             for ($i=0; $i < count($indirizzi);$i++){
               $indirizzo = $indirizzi[$i];
-              echo '<option value="'. $indirizzo[1].'"> '. Ucwords($indirizzo[1]).'</option>';
+              echo '<option value="'. $indirizzo[1] .'|'. $indirizzo[2] .'|'. $indirizzo[3] .'|'. $indirizzo[4] .'" > '. Ucwords($indirizzo[1]).'</option>';
             }
           }
          ?>
        </select>
+
       </form>
 
   </div>
@@ -196,6 +199,7 @@ if (isset($_SESSION["logged"])) {
           );
 
   }
+  
 
 </script>
 <!-- Linea di Divisione -->
