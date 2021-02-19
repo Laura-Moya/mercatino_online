@@ -3,7 +3,7 @@
 include_once "db/connect.php";
 include_once "common/funzioni.php";
 
-
+$errore = array();
 $dati=array();
 $nomeannuncio=$_GET["nomeannuncio"];
 $nomeprodotto=$_GET["nomeprodotto"];
@@ -12,30 +12,19 @@ $categoria = $_GET["category"];
 $sottocategoria = $_GET["sottocategoria"];
 $visibilita = $_GET["visibilita"];
 $nuovousato = $_GET["SP"];
-
 if (isset($_GET["garanzia"])) {
 	$garanzia = $_GET["garanzia"];
 }
 else $garanzia = 0;
-
-echo "$garanzia";
-
 $tempogaranzia = $_GET["tempogaranzia"];
 $tempoUsura = $_GET["tempousura"];
 $statoUsura = $_GET["statoUsura"];
-
-echo "caca";
-echo "\nTempo garanzia: $tempogaranzia";
-// echo "$statoUsura";
 
 $sottocategorie = array();
 $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro'];
 $sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro'];
 $sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro'];
 $sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro'];
-
-
-echo "$nuovousato";
 
 $sottoCat = $sottocategorie[$categoria];
 
@@ -65,18 +54,20 @@ $sottoCat = $sottocategorie[$categoria];
 	}
 	else $dati["prezzo"]=$prezzo;
 
+	if (empty($visibilita))
+	{
+		$dati["visibilita"]="";
+		echo $visibilita;
+
+	}
+	else $dati["visibilita"]=$visibilita;
 
 	if (empty($nuovousato)) {
 		$errore["SP"]="4";
 	  $dati["SP"]="";
-	}
-	else{
-		echo "-----------";
-		echo "$tempoUsura";
-		echo "-----------";
-		echo "$statoUsura";
-			//Controllo di Nuovo
-			if ($nuovousato="nuovo") {
+	}else{
+			if ($nuovousato=="nuovo") {
+				$dati["SP"]="nuovo";
 				if ($garanzia==0) {
 					$tempogaranzia = "";
 				}
@@ -88,25 +79,23 @@ $sottoCat = $sottocategorie[$categoria];
 					else $dati["tempogaranzia"]=$tempogaranzia;
 				}
 			}
-			//Controllo di Usato
-
-			else {
-				if (empty($tempoUsura)) {
+			if ($nuovousato=="usato") {
+				$dati["SP"]="usato";
+				if ($tempoUsura=="") {
 					$errore["tempousura"]="6";
 					$dati["tempousura"]="";
-				}
-				elseif (empty($statoUsura)) {
-					$errore["statoUsura"]="7";
-					$dati["statoUsura"] = "";
-				}
-				elseif(!empty($tempoUsura)) {
+				} else {
 					$dati["tempousura"] = $tempoUsura;
 				}
-				elseif (!empty($statoUsura)) {
-					$dati["statoUsura"] = $statoUsura;
+					if ($statoUsura=="") {
+						$errore["statoUsura"]="7";
+						$dati["statoUsura"] = "";
+					} else {
+						$dati["statoUsura"] = $statoUsura;
+					}
 				}
 			}
-		}
+
 
 		if (count($errore)>0)
 		{

@@ -4,10 +4,10 @@
 $tipoErrore = array("1"=>"Inserire il nome dell'annuncio",
                     "2" =>"Inserire il nome del prodotto",
           					"3" =>"Prezzo del prodotto non valido",
-                    "4" => "Stato del prodotto non specificato",
-                    "5" => "Tempo garanzia vuoto",
-                    "6" => "Tempo di usura vuoto",
-                    "7" => "Stato usato vuoti");
+                    "4" =>"Stato del prodotto non specificato",
+                    "5" =>"Tempo di garanzia del prodotto non specificato",
+                    "6" =>"Tempo di usura del prodotto non specificato",
+                    "7" =>"Stato del prodotto usato non specificato");
 $errore = array();
 $dati = array();
 
@@ -43,6 +43,8 @@ else
             <?php
               if (isset($errore["tempousura"]))
                 echo "<span class=\"errore\">" . $tipoErrore[$errore["tempousura"]] . "</span>";
+              if (isset($errore["statoUsura"]))
+                echo "<span class=\"errore\">" . $tipoErrore[$errore["statoUsura"]] . "</span>";
               if (isset($errore["tempogaranzia"]))
                 echo "<span class=\"errore\">" . $tipoErrore[$errore["tempogaranzia"]] . "</span>";
             ?>
