@@ -101,6 +101,10 @@ if (isset($_SESSION["logged"])) {
             echo '<a class="nav-link" style="cursor:pointer;" onclick= notLogged();><i class="fas fa-eye fa-lg icon-eye"></i></a>';
           }
 
+          if(isset($_POST["indirizzo"])){
+            $indirizzo = $_POST["indirizzo"];
+            $result_explode = explode('|', $indirizzo);
+          }
         ?>
         </li>
 
@@ -116,7 +120,7 @@ if (isset($_SESSION["logged"])) {
       <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
       <form method="post" id="indirizzoSelezionato">
         <select type="submit" class="form-control form-control-md" id="indirizzoSel" name="indirizzo" onchange="$('#indirizzoSelezionato').submit();">
-          <option value="" > Seleziona... </option>';
+          <option value="<?php  $result_explode[0] |  $result_explode[1] |  $result_explode[2] |  $result_explode[3]?>" > <?php echo $result_explode[0]; ?> </option>';
 
           <?php
           if (!isset($_SESSION["utente"])) {
@@ -199,7 +203,7 @@ if (isset($_SESSION["logged"])) {
           );
 
   }
-  
+
 
 </script>
 <!-- Linea di Divisione -->
