@@ -3,6 +3,8 @@
 include_once "db/connect.php";
 include_once "common/funzioni.php";
 
+$codicefiscale = $_GET["codicefiscale"];
+
 $errore = array();
 $dati=array();
 $nomeannuncio=$_GET["nomeannuncio"];
@@ -11,7 +13,10 @@ $prezzo=$_GET["prezzo"];
 $categoria = $_GET["category"];
 $sottocategoria = $_GET["sottocategoria"];
 $visibilita = $_GET["visibilita"];
-$nuovousato = $_GET["SP"];
+if (isset($_GET["SP"])) {
+	$nuovousato = $_GET["SP"];
+}
+else $nuovousato = "";
 if (isset($_GET["garanzia"])) {
 	$garanzia = $_GET["garanzia"];
 }
@@ -95,11 +100,11 @@ $sottoCat = $sottocategorie[$categoria];
 					}
 				}
 			}
-
+echo $codicefiscale;
 
 		if (count($errore)>0)
 		{
-			header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			// header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
 		else
 		{

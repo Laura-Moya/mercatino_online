@@ -33,10 +33,11 @@ else
   </head>
   <body>
 
-  <?php include "common/navbar.php";?>
+  <?php include "common/navbar.php";
+  echo "$codice_fiscale[0]";?>
 
   <div class="container-creare-annuncio" align="center">
-      <form class="" action="checkAnnuncio.php" method="GET">
+      <form action='checkAnnuncio.php?codicefiscale=<?php echo "$codice_fiscale[0]"; ?>' method="GET">
         <table class="">
           <tr>
             <h2 class="title">Creare Annuncio</h2>
