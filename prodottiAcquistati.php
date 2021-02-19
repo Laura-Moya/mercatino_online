@@ -26,7 +26,7 @@
 
             $prodotto = $prodotti[$i];
               echo '<div class="card" style="width: 16rem;">';
-                echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
+                echo '<img src="'. $prodotto[4] .'" style="height: 10rem; width: revert;" class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
                   echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[2]) . '</p>';

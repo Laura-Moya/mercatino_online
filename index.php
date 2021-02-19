@@ -89,7 +89,7 @@ include "db/connect.php";
       for ($i=0; $i < 4; $i++) {
         $prodotto = $primoPiano[$i];
         echo '<div class="card" style="width: 16rem;">';
-          echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
+          echo '<img src="'. $prodotto[3] .'" style="height: 10rem; width: revert;"  class="card-img-top" alt="...">';
           echo '<div class="card-body">';
             echo'<h5 class="card-title">'. Ucwords($prodotto[1]) .'</h5>';
             echo'<p class="card-text">'. Ucwords($prodotto[0]) .'</p>';

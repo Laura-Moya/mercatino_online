@@ -47,7 +47,7 @@
 
             $prodotto = $prodotti[$i];
               echo '<div class="card" style="width: 16rem;">';
-                echo '<img src="images/fornellino.jpg" class="card-img-top" alt="...">';
+                echo '<img src="'. $prodotto[6] .'" style="height: 10rem; width: revert;" class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
                   echo '<form class="" action="stati.php " method="get">';
                   echo '<h5 class="card-title"><a href="prodotto.php?codice='. $prodotto[2].'"> '. Ucwords($prodotto[0]) . ' </a></h5>';

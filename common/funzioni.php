@@ -157,7 +157,7 @@ function leggiAnnuncio($cid, $codice)
 	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome,
 								 annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie,
 								 annuncio.nuovo, annuncio.codice, annuncio.venditore, annuncio.garanzia, annuncio.copertura_garanzia,
-								 annuncio.tempo_usura, annuncio.stato_usura
+								 annuncio.tempo_usura, annuncio.stato_usura, annuncio.foto
 				  FROM annuncio, stato, utente
 				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = '$codice'";
 
@@ -170,7 +170,7 @@ function leggiAnnuncio($cid, $codice)
 	}
 
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 17 ; $i++) {
+			for ($i=0; $i < 18 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 
@@ -313,7 +313,7 @@ function prodottiAcquistati($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT annuncio.acquirente, annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice
+	$sql = "SELECT annuncio.acquirente, annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.foto
 					FROM annuncio, stato
 					WHERE stato.prodotto = annuncio.codice
 								AND stato.stato = 'venduto' AND annuncio.acquirente = '$codicefiscale'";
@@ -328,7 +328,7 @@ function prodottiAcquistati($cid, $codicefiscale)
 
 	$j = 0;
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 4 ; $i++) {
+			for ($i=0; $i < 5 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 			$prodotti[$j] = $prodotto;
@@ -421,7 +421,7 @@ function prodottiInVendita($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT DISTINCT p.nome_prodotto, p.nome_annuncio, p.codice, p.venditore, s.stato, s.data_ora
+	$sql = "SELECT DISTINCT p.nome_prodotto, p.nome_annuncio, p.codice, p.venditore, s.stato, s.data_ora, p.foto
 					FROM annuncio p, stato s
 					WHERE s.stato = 'in vendita' AND p.codice = s.prodotto AND p.venditore = '$codicefiscale' AND p.codice NOT IN
 								(SELECT s.prodotto
@@ -437,7 +437,7 @@ function prodottiInVendita($cid, $codicefiscale)
 	}
 $j=0;
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 4 ; $i++) {
+			for ($i=0; $i <= 6 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 			$prodotti[$j] = $prodotto;
@@ -461,7 +461,7 @@ function prodottiVenduti($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT DISTINCT p.nome_prodotto, p.nome_annuncio, p.codice, p.venditore
+	$sql = "SELECT DISTINCT p.nome_prodotto, p.nome_annuncio, p.codice, p.venditore, p.foto
 					FROM annuncio p, stato s
 					WHERE s.prodotto = p.codice AND s.stato = 'venduto' AND p.venditore = '$codicefiscale' ";
 
@@ -474,7 +474,7 @@ function prodottiVenduti($cid, $codicefiscale)
 	}
 $j=0;
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 4 ; $i++) {
+			for ($i=0; $i < 5 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 			$prodotti[$j] = $prodotto;
@@ -498,7 +498,7 @@ function prodottiEliminati($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore, s.stato, s.data_ora
+	$sql = "SELECT DISTINCT annuncio.nome_prodotto, annuncio.nome_annuncio, annuncio.codice, annuncio.venditore, s.stato, s.data_ora, annuncio.foto
 					FROM annuncio , stato s
 					WHERE s.stato = 'eliminato' AND annuncio.codice = s.prodotto AND annuncio.venditore = '$codicefiscale' 	AND annuncio.codice NOT IN
 						(SELECT s.prodotto
@@ -515,7 +515,7 @@ function prodottiEliminati($cid, $codicefiscale)
 	}
 $j=0;
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 4 ; $i++) {
+			for ($i=0; $i <= 6 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 			$prodotti[$j] = $prodotto;
@@ -540,7 +540,7 @@ function annunciOsservati($cid, $codicefiscale)
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
     return $risultato;
   }
-	$sql = "SELECT DISTINCT annuncio.nome_annuncio, annuncio.nome_prodotto, osserva.prodotto
+	$sql = "SELECT DISTINCT annuncio.nome_annuncio, annuncio.nome_prodotto, osserva.prodotto, annuncio.foto
 					FROM osserva, annuncio
 					WHERE osserva.prodotto = annuncio.codice AND osserva.utente = '$codicefiscale'";
 
@@ -554,7 +554,7 @@ function annunciOsservati($cid, $codicefiscale)
 
 	$i=0;
 	while ($row=$res->fetch_row()) {
-		for ($j=0; $j < 3; $j++) {
+		for ($j=0; $j < 4; $j++) {
 			$prodotto[$j] = $row[$j];
 		}
 		$annunciOsservati[$i]=$prodotto;
@@ -577,7 +577,7 @@ function inPrimoPiano($cid)
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
     return $risultato;
   }
-	$sql = "SELECT DISTINCT annuncio.nome_annuncio, annuncio.nome_prodotto, osserva.prodotto
+	$sql = "SELECT DISTINCT annuncio.nome_annuncio, annuncio.nome_prodotto, osserva.prodotto, annuncio.foto
 					FROM osserva, annuncio
 					WHERE osserva.prodotto = annuncio.codice
 					GROUP BY osserva.prodotto
@@ -593,7 +593,7 @@ function inPrimoPiano($cid)
 
 	$i=0;
 	while ($row=$res->fetch_row()) {
-		for ($j=0; $j < 3; $j++) {
+		for ($j=0; $j < 4; $j++) {
 			$prodotto[$j] = $row[$j];
 		}
 		$primoPiano[$i]=$prodotto;

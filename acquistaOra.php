@@ -10,6 +10,7 @@
 
   $codice=$_GET["codice"];
   $codicefiscale = $_GET["codfisc"];
+
   if(isset($_POST['AA'])){
     $preferisce = $_POST['AA'];
   }
@@ -71,7 +72,8 @@
             }
           }
       }
-    } else {
+    }
+    }else {
       $intestatario = $_POST["intestatario"];
       $numero_carta = $_POST["numero_carta"];
       $data_scadenza = $_POST["data_scadenza"];
@@ -93,7 +95,6 @@
           }
         }
       }
-    }
   }
 
 

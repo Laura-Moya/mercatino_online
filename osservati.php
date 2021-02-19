@@ -25,8 +25,8 @@
         for ($i=0; $i < count($annunciOsservati) ; $i++) {
 
             $prodotto = $annunciOsservati[$i];?>
-              <div class="card" style="width: 16rem;">
-                <img src="images/fornellino.jpg" class="card-img-top" alt="...">
+              <div class="card"  style="">
+                <img src="<?php echo $prodotto[3]; ?>" style="height: 10rem; width: revert;" class="card-img-top" alt="...">
                   <div class="card-body">
                   <h5 class="card-title"><a href="prodotto.php?codice=<?php echo $prodotto[2]; ?>"> <?php echo Ucwords($prodotto[1]); ?> </a></h5>
                   <p class="card-text"><?php echo Ucwords($prodotto[0]); ?></p>
