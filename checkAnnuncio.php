@@ -3,27 +3,27 @@
 include_once "db/connect.php";
 include_once "common/funzioni.php";
 
-$codicefiscale = $_GET["codicefiscale"];
 
 $errore = array();
 $dati=array();
-$nomeannuncio=$_GET["nomeannuncio"];
-$nomeprodotto=$_GET["nomeprodotto"];
-$prezzo=$_GET["prezzo"];
-$categoria = $_GET["category"];
-$sottocategoria = $_GET["sottocategoria"];
-$visibilita = $_GET["visibilita"];
-if (isset($_GET["SP"])) {
-	$nuovousato = $_GET["SP"];
+$nomeannuncio=$_POST["nomeannuncio"];
+$nomeprodotto=$_POST["nomeprodotto"];
+$prezzo=$_POST["prezzo"];
+$categoria = $_POST["category"];
+$sottocategoria = $_POST["sottocategoria"];
+$visibilita = $_POST["visibilita"];
+if (isset($_POST["SP"])) {
+	$nuovousato = $_POST["SP"];
 }
 else $nuovousato = "";
-if (isset($_GET["garanzia"])) {
-	$garanzia = $_GET["garanzia"];
+if (isset($_POST["garanzia"])) {
+	$garanzia = $_POST["garanzia"];
 }
 else $garanzia = 0;
-$tempogaranzia = $_GET["tempogaranzia"];
-$tempoUsura = $_GET["tempousura"];
-$statoUsura = $_GET["statoUsura"];
+$tempogaranzia = $_POST["tempogaranzia"];
+$tempoUsura = $_POST["tempousura"];
+$statoUsura = $_POST["statoUsura"];
+$codicefiscale = $_GET["codicefiscale"];
 
 $sottocategorie = array();
 $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro'];
@@ -100,19 +100,19 @@ $sottoCat = $sottocategorie[$categoria];
 					}
 				}
 			}
-echo $codicefiscale;
 
 		if (count($errore)>0)
 		{
-			// header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
 		else
 		{
-			// $sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`,
-			// 																`nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
-			// 																 `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
-			// 				VALUES (NULL, '$codice_fiscale[0]', '', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, 'privata', '', '')";
-      // $data = mysqli_query($cid, $sql);
-			// header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
+			// VALUES (NULL, 'MRRCLS06S13H501K', 'aldo moro 76', 'bologna', 'emilia romagna', 'bo', 'si vende cellulare usato', 'Philips 480', NULL, '500', '1', NULL, NULL, NULL, NULL, NULL, 'pubblica', 'Foto e Video', 'Altro2');
+			$sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`,
+																			`nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
+																			 `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
+							VALUES (NULL, '$codice_fiscale[0]', '', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, 'privata', '', '')";
+      $data = mysqli_query($cid, $sql);
+			header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
 		}
 ?>
