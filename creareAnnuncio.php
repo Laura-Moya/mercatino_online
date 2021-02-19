@@ -6,7 +6,8 @@ $tipoErrore = array("1"=>"Inserire il nome dell'annuncio",
           					"3" =>"Prezzo del prodotto non valido",
                     "4" => "Stato del prodotto non specificato",
                     "5" => "Tempo garanzia vuoto",
-                    "6" => "Campi di prodotto usato vuoti");
+                    "6" => "Tempo di usura vuoto",
+                    "7" => "Stato usato vuoti");
 $errore = array();
 $dati = array();
 
@@ -39,15 +40,18 @@ else
         <table class="">
           <tr>
             <h2 class="title">Creare Annuncio</h2>
-            <?php if (isset($errore["tempousura"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["tempousura"]] . "</span>"; ?>
-            <?php if (isset($errore["tempogaranzia"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["tempogaranzia"]] . "</span>"; ?>
+            <?php
+              if (isset($errore["tempousura"]))
+                echo "<span class=\"errore\">" . $tipoErrore[$errore["tempousura"]] . "</span>";
+              if (isset($errore["tempogaranzia"]))
+                echo "<span class=\"errore\">" . $tipoErrore[$errore["tempogaranzia"]] . "</span>";
+            ?>
           </tr>
           <tr>
             <td colspan="2"><h6>Nome Annuncio</h6></td>
           </tr>
           <tr>
-            <td colspan="2"> <input class="form-size" type="text" name="nomeannuncio" value= "<?php  echo $dati["nomeannuncio"];?>"> </br>
-              <?php if (isset($errore["nomeannuncio"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nomeannuncio"]] . "</span>"; ?>
+            <td colspan="2"> <input class="form-size" type="text" name="nomeannuncio" value= "<?php  echo $dati["nomeannuncio"];?>"> </br> <?php if (isset($errore["nomeannuncio"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nomeannuncio"]] . "</span>"; ?>
              </td>
           </tr>
           <tr>
@@ -98,25 +102,14 @@ else
             <input type="radio" id="Ristretta" name="visibilita" value="ristretta">
             <label for="Ristretta">Ristretta</label>
             </td>
-
-            <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
-            <h6 >Seleziona lo stato</h6>
-            <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()" value="nuovo"/>
-            <label class ="labelpagamento" for="N" style="margin-right:0.5rem">Nuovo </label>
-            <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "usato"/>
-            <label class ="labelpagamento" for="U">Usato</label>
-            </td>
+              <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
+              <h6 >Seleziona lo stato</h6>
+              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()" value="nuovo"/>
+              <label class ="labelpagamento" for="N" style="margin-right:0.5rem">Nuovo </label>
+              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "usato"/>
+              <label class ="labelpagamento" for="U">Usato</label>
+              </td>
           </tr>
-
-          <tr>
-            <td>
-            </td>
-            <td>
-              <?php if (isset($errore["SP"]))  echo "<div class=\"errore\">" . $tipoErrore[$errore["SP"]] . "</div>"; ?>
-
-            </td>
-          </tr>
-
           <tr>
             <td colspan="2">
               <div id="garanzia">
@@ -139,12 +132,12 @@ else
               <td>
                 <div id="tempousura">
                 <h6>Tempo di usura:</h6>
-                <input type="text" name="tempousura" id="tempousura_input">
+                <input type="text" name="tempousura" id="tempousura_input" value="">
               </div>
 
               </td>
               <td>
-                <div id="statoUsura">
+                <div id="statousura">
                 <h6>Stato di usura:</h6>
                 <select class="form-control form-control-md" name="statoUsura" id="statousura_input">
                   <option value="">Seleziona...</option>
@@ -196,6 +189,8 @@ else
     document.getElementById("tempousura").style.height = "0px";
     document.getElementById("statousura").style.visibility = "hidden";
     document.getElementById("statousura").style.height = "0px";
+	//document.getElementById("tempousura").reset();
+    //document.getElementById("statousura").reset();
 
   }
   function openDivTempoGar() {
@@ -225,6 +220,8 @@ else
     document.getElementById("garanzia").style.height = "0px";
     document.getElementById("tempogaranzia").style.visibility = "hidden";
     document.getElementById("tempogaranzia").style.height = "0px";
+    //document.getElementById("tempousura").reset();
+    //document.getElementById("statousura").reset();
   }
 
   </script>
