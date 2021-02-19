@@ -114,7 +114,7 @@ else
                 <td colspan="2">
                   <div id="tempogaranzia">
                   <center><h6>Tempo di garanzia:</h6>
-                  <input type="text" name="tempogaranzia" value=""/><center></center>
+                  <input type="text" name="tempogaranzia" id="tempogaranzia_input" value=""/><center></center>
                 </div>
               </td>
 
@@ -126,14 +126,14 @@ else
               <td>
                 <div id="tempousura">
                 <h6>Tempo di usura:</h6>
-                <input type="text" name="tempousura" value="">
+                <input type="text" name="tempousura" id="tempousura_input" value="">
               </div>
 
               </td>
               <td>
                 <div id="statousura">
                 <h6>Stato di usura:</h6>
-                <select class="form-control form-control-md" name="statoUsura">
+                <select class="form-control form-control-md" name="statoUsura" id="statousura_input">
                   <option value="">Seleziona...</option>
                   <option value="Parianuovo">Pari a nuovo</option>
                   <option value="Buono">Buono</option>
@@ -177,13 +177,14 @@ else
 
   }
   function closeDivUsura() {
-
+	document.getElementById("tempousura_input").value = '';
+    document.getElementById("statousura_input").value = '';
     document.getElementById("tempousura").style.visibility = "hidden";
     document.getElementById("tempousura").style.height = "0px";
     document.getElementById("statousura").style.visibility = "hidden";
     document.getElementById("statousura").style.height = "0px";
-    document.getElementById("tempousura").reset();
-    document.getElementById("statousura").reset();
+	//document.getElementById("tempousura").reset();
+    //document.getElementById("statousura").reset();
 
   }
   function openDivTempoGar() {
@@ -207,12 +208,14 @@ else
     document.getElementById("statousura").style.height = "auto";
   }
   function closeDivGaranzia() {
+	document.getElementById("G").checked = false;
+    document.getElementById("tempogaranzia_input").value = '';
     document.getElementById("garanzia").style.visibility = "hidden";
     document.getElementById("garanzia").style.height = "0px";
     document.getElementById("tempogaranzia").style.visibility = "hidden";
     document.getElementById("tempogaranzia").style.height = "0px";
-    document.getElementById("tempousura").reset();
-    document.getElementById("statousura").reset();
+    //document.getElementById("tempousura").reset();
+    //document.getElementById("statousura").reset();
   }
 
   </script>
