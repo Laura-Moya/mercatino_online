@@ -3,20 +3,14 @@
   <head>
     <?php include "common/header.php";?>
     <script>
+
     var flag = true;
-    if(flag){
+
     $(document).ready(function(){
 
         document.getElementById('indirizzoSelezionato').submit();
-        flag = false;
 
-       }
-
-      // alert("Hello, world!");
-
-      // $(#indirizzoSelezionato).submit();
-      // break;
-      exit();
+      window.stop();
     });
     </script>
 
