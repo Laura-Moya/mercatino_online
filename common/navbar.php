@@ -30,6 +30,15 @@ if (isset($_SESSION["logged"])) {
   $indirizzi = $risultato['contenuto'];
 }
 
+
+if(isset($_POST["indirizzo"])){
+  $indirizzo = $_POST["indirizzo"];
+  $result_explode = explode('|', $indirizzo);
+  $risultato = leggiAnnunci($cid);
+  $annunci = $risultato['contenuto'];
+  $_SESSION["indirizzo"] = $result_explode;
+}
+
 ?>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-light" id="prima-navbar">
@@ -115,12 +124,14 @@ if (isset($_SESSION["logged"])) {
 </nav>
 <!-- Indirizzo e Categorie -->
 <nav class="navbar navbar-expand-lg navbar-light">
-
+<?php
+$indirizzoscelto = $_SESSION["indirizzo"];
+?>
   <div id ="indi">
       <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
       <form method="post" id="indirizzoSelezionato">
         <select type="submit" class="form-control form-control-md" id="indirizzoSel" name="indirizzo" onchange="$('#indirizzoSelezionato').submit();">
-          <option value="<?php  $result_explode[0] |  $result_explode[1] |  $result_explode[2] |  $result_explode[3]?>" > <?php echo $result_explode[0]; ?> </option>';
+          <option value="" ><?php echo Ucwords($indirizzoscelto[0]);  ?>  </option>';
 
           <?php
           if (!isset($_SESSION["utente"])) {
