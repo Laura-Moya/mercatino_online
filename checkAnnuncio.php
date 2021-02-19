@@ -86,6 +86,7 @@ $sottoCat = $sottocategorie[$categoria];
 				if (empty($tempoUsura) || empty($statoUsura)) {
 					$errore["tempousura"]="6";
 					$dati["tempousura"]="";
+					$dati["statoUsura"] = "";
 				}
 				else {
 					$dati["tempousura"] = $tempoUsura;
