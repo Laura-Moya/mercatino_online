@@ -12,10 +12,18 @@ $categoria = $_GET["category"];
 $sottocategoria = $_GET["sottocategoria"];
 $visibilita = $_GET["visibilita"];
 $nuovousato = $_GET["SP"];
-$garanzia = $_GET["garanzia"];
+
+if (isset($_GET["garanzia"])) {
+	$garanzia = $_GET["garanzia"];
+}
+else $garanzia = 0;
+
 $tempogaranzia = $_GET["tempogaranzia"];
 $tempoUsura = $_GET["tempousura"];
 $statoUsura = $_GET["statoUsura"];
+
+echo "caca";
+echo "$statoUsura";
 
 $sottocategorie = array();
 $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro'];
@@ -24,12 +32,9 @@ $sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', '
 $sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro'];
 
 
-echo $sottocategoria;
-echo $tempogaranzia;
-echo $categoria;
+echo "$nuovousato";
 
 $sottoCat = $sottocategorie[$categoria];
-echo $sottoCat[$sottocategoria];
 
 
 	if (empty($nomeannuncio))
@@ -64,8 +69,8 @@ echo $sottoCat[$sottocategoria];
 	}
 	else{
 			//Controllo di Nuovo
-			if ($dati["SP"]=1) {
-				if (empty($garanzia)) {
+			if ($nuovousato="nuovo") {
+				if ($garanzia==0) {
 					$tempogaranzia = "";
 				}
 				else {
@@ -79,11 +84,11 @@ echo $sottoCat[$sottocategoria];
 			//Controllo di Usato
 			else {
 				if (empty($tempoUsura) || empty($statoUsura)) {
-					$errore["tempogaranzia"]="7";
-					$dati["tempogaranzia"]="";
+					$errore["tempousura"]="6";
+					$dati["tempousura"]="";
 				}
 				else {
-					$dati["tempoUsura"] = $tempoUsura;
+					$dati["tempousura"] = $tempoUsura;
 					$dati["statoUsura"] = $statoUsura;
 				}
 			}
@@ -91,7 +96,7 @@ echo $sottoCat[$sottocategoria];
 
 		if (count($errore)>0)
 		{
-			header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			// header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
 		else
 		{
@@ -100,6 +105,6 @@ echo $sottoCat[$sottocategoria];
 																			 `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
 							VALUES (NULL, '', '', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, 'privata', '', '')";
       $data = mysqli_query($cid, $sql);
-			header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
+			// header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
 		}
 ?>

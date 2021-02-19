@@ -125,7 +125,13 @@ if(isset($_POST["indirizzo"])){
 <!-- Indirizzo e Categorie -->
 <nav class="navbar navbar-expand-lg navbar-light">
 <?php
-$indirizzoscelto = $_SESSION["indirizzo"];
+if (isset($_SESSION["indirizzo"])) {
+  $indirizzoscelto = $_SESSION["indirizzo"];
+}
+else {
+  $indirizzoscelto = array();
+  $indirizzoscelto[0] = "";
+}
 ?>
   <div id ="indi">
       <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
