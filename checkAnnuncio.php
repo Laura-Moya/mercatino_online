@@ -27,7 +27,6 @@ $codicefiscale = $_GET["codicefiscale"];
 
 if (isset($_SESSION["indirizzo"])) {
 	$indirizzoAttuale = $_SESSION["indirizzo"];
-	print_r($indirizzoAttuale);
 }
 else $errore["indirizzo"] = "8";
 
@@ -96,8 +95,9 @@ $sottoCat = $sottoCat[$sottocategoria];
 					else $dati["tempogaranzia"]=$tempogaranzia;
 				}
 			}
-			if ($nuovousato=="0") {
+			if ($nuovousato=="2") {
 				$dati["SP"]="usato";
+				$nuovousato="0";
 				if ($tempoUsura=="") {
 					$errore["tempousura"]="6";
 					$dati["tempousura"]="";
@@ -124,10 +124,6 @@ $sottoCat = $sottoCat[$sottocategoria];
 			$comune = $indirizzoAttuale[1];
 			$provincia = $indirizzoAttuale[2];
 			$regione = $indirizzoAttuale[3];
-			echo $via;
-			echo $comune;
-			echo $regione;
-			echo $provincia;
 
 
 			$sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
@@ -135,12 +131,9 @@ $sottoCat = $sottoCat[$sottocategoria];
 							VALUES (NULL, '$codicefiscale', '$via', '$comune', '$regione', '$provincia',
 											'$nomeannuncio', '$nomeprodotto', '$foto', '$prezzo', '$nuovousato', '$tempoUsura', '$statoUsura',' $garanzia',
 											'$tempogaranzia', NULL, '$visibilita', '$categoria', '$sottoCat')";
-			echo '</br>'.$sql;
       $data = mysqli_query($cid, $sql);
 
-			print_r($data);
 			if ($data) {
-				echo "hey";
 				$sql="SELECT codice
 							FROM `annuncio`
 							WHERE venditore ='$codicefiscale' AND via = '$via' AND comune='$comune' AND regione='$regione' AND provincia='$provincia' AND
@@ -149,22 +142,17 @@ $sottoCat = $sottoCat[$sottocategoria];
 							  visibilita='$visibilita'AND categorie='$categoria' AND sottocategorie='$sottoCat'";
 				$res = mysqli_query($cid, $sql);
 				$codice=$res->fetch_row();
-				echo "</br>";
-				echo "$sottoCat";
-				echo "</br>";
-				echo $sql;
+
 				$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice[0]', 'in vendita', current_timestamp())";
 				$data = mysqli_query($cid, $query);
-				echo "</br>";
-				print_r($data);
+
 				if ($data) {
-					echo "hey2";
 					header('location:prodottiInVendita.php?nuovoannuncio=ok');
 				}
 				else {
-					echo "problems2";
+					header('location:creareAnnuncio.php?status=ko&error=connectionDB');
 				}
 			}
-			else "Problems";
+			header('location:creareAnnuncio.php?status=ko&error=connectionDB');
 		}
 ?>

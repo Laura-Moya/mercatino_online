@@ -109,9 +109,9 @@ else
             </td>
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
               <h6 >Seleziona lo stato</h6>
-              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()" value="1"/>
+              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()" value="1"/ >
               <label class ="labelpagamento" for="N" style="margin-right:0.5rem">Nuovo </label>
-              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "0"/>
+              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "2"/>
               <label class ="labelpagamento" for="U">Usato</label>
               </td>
           </tr>
@@ -146,7 +146,7 @@ else
                 <h6>Stato di usura:</h6>
                 <select class="form-control form-control-md" name="statoUsura" id="statousura_input">
                   <option value="">Seleziona...</option>
-                  <option value="Parianuovo">Pari a nuovo</option>
+                  <option value="Pari a nuovo">Pari a nuovo</option>
                   <option value="Buono">Buono</option>
                   <option value="Meglio">Meglio</option>
                   <option value="Usato">Usato</option>
