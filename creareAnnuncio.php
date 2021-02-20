@@ -109,9 +109,9 @@ else
             </td>
               <td style="width: 50%; vertical-align: top; padding-left: 3.2rem;">
               <h6 >Seleziona lo stato</h6>
-              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()" value="nuovo"/>
+              <input class="inputpaga" type="radio" id="N" name="SP" onclick="ExecuteNuovo()" value="1"/>
               <label class ="labelpagamento" for="N" style="margin-right:0.5rem">Nuovo </label>
-              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "usato"/>
+              <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "0"/>
               <label class ="labelpagamento" for="U">Usato</label>
               </td>
           </tr>

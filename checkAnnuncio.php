@@ -82,7 +82,7 @@ $sottoCat = $sottocategorie[$categoria];
 		$errore["SP"]="4";
 	  $dati["SP"]="";
 	}else{
-			if ($nuovousato=="nuovo") {
+			if ($nuovousato=="1") {
 				$dati["SP"]="nuovo";
 				if ($garanzia==0) {
 					$tempogaranzia = "";
@@ -95,7 +95,7 @@ $sottoCat = $sottocategorie[$categoria];
 					else $dati["tempogaranzia"]=$tempogaranzia;
 				}
 			}
-			if ($nuovousato=="usato") {
+			if ($nuovousato=="0") {
 				$dati["SP"]="usato";
 				if ($tempoUsura=="") {
 					$errore["tempousura"]="6";
@@ -121,8 +121,8 @@ $sottoCat = $sottocategorie[$categoria];
 
 			$via = $indirizzoAttuale[0];
 			$comune = $indirizzoAttuale[1];
-			$regione = $indirizzoAttuale[2];
-			$provincia = $indirizzoAttuale[3];
+			$provincia = $indirizzoAttuale[2];
+			$regione = $indirizzoAttuale[3];
 			echo $via;
 			echo $comune;
 			echo $regione;
@@ -134,21 +134,31 @@ $sottoCat = $sottocategorie[$categoria];
 							VALUES (NULL, '$codicefiscale', '$via', '$comune', '$regione', '$provincia',
 											'$nomeannuncio', '$nomeprodotto', '$foto', '$prezzo', '$nuovousato', '$tempoUsura', '$statoUsura',' $garanzia',
 											'$tempogaranzia', NULL, '$visibilita', '$categoria', '$sottocategoria')";
+			echo '</br>'.$sql;
       $data = mysqli_query($cid, $sql);
+
 			print_r($data);
 			if ($data) {
 				echo "hey";
-
-				$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'in vendita', current_timestamp())";
-				$data = mysqli_query($cid, $query);
-				if ($data) {
-					echo "hey2";
+				$sql="SELECT codice
+							FROM `annuncio`
+							WHERE venditore ='$codicefiscale' AND via = '$via' AND comune='$comune' AND regione='$regione' AND provincia='$provincia' AND
+							 nome_annuncio= '$nomeannuncio' AND nome_prodotto= '$nomeprodotto' AND foto= '$foto' AND prezzo='$prezzo'AND nuovo='$nuovousato' AND
+							 tempo_usura='$tempoUsura' AND stato_usura='$statoUsura' AND garanzia='$garanzia' AND copertura_garanzia='$tempogaranzia' AND
+							  visibilita='$visibilita'AND categorie='$categoria' AND sottocategorie='$sottocategoria'";
+				$res = mysqli_query($cid, $sql);
+				$codice=$res->fetch_row();
+				echo $codice[0].'ciao';
+				// $query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'in vendita', current_timestamp())";
+				// $data = mysqli_query($cid, $query);
+				// if ($data) {
+				// 	echo "hey2";
 
 			// 		// header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
-				}
-				else {
-					echo "problems2";
-				}
+				// }
+				// else {
+				// 	echo "problems2";
+				// }
 			}
 			else "Problems";
 		}
