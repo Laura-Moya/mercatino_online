@@ -115,7 +115,7 @@ $sottoCat = $sottoCat[$sottocategoria];
 
 		if (count($errore)>0)
 		{
-			// header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
 		else
 		{
@@ -149,13 +149,17 @@ $sottoCat = $sottoCat[$sottocategoria];
 							  visibilita='$visibilita'AND categorie='$categoria' AND sottocategorie='$sottoCat'";
 				$res = mysqli_query($cid, $sql);
 				$codice=$res->fetch_row();
+				echo "</br>";
+				echo "$sottoCat";
+				echo "</br>";
+				echo $sql;
 				$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice[0]', 'in vendita', current_timestamp())";
 				$data = mysqli_query($cid, $query);
 				echo "</br>";
 				print_r($data);
 				if ($data) {
 					echo "hey2";
-					// header('location:prodottiInVendita.php?nuovoannuncio=ok');
+					header('location:prodottiInVendita.php?nuovoannuncio=ok');
 				}
 				else {
 					echo "problems2";
