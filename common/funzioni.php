@@ -157,7 +157,7 @@ function leggiAnnuncio($cid, $codice)
 	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome,
 								 annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie,
 								 annuncio.nuovo, annuncio.codice, annuncio.venditore, annuncio.garanzia, annuncio.copertura_garanzia,
-								 annuncio.tempo_usura, annuncio.stato_usura, annuncio.foto
+								 annuncio.tempo_usura, annuncio.stato_usura, annuncio.foto, annuncio.acquirente
 				  FROM annuncio, stato, utente
 				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = '$codice'";
 
@@ -170,7 +170,7 @@ function leggiAnnuncio($cid, $codice)
 	}
 
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 18 ; $i++) {
+			for ($i=0; $i < 19 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 
