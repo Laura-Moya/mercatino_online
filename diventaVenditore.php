@@ -4,7 +4,7 @@
     <?php include "common/header.php";?>
   </head>
 <body>
-  <?php include "common/navbar.php";
+  <?php include "db/connect.php";
 
 $codiceFiscaleDiventa = $_GET["codiceFiscale"];
 $query = "UPDATE `utente` SET `tipo_utente` = 'venditore' WHERE `utente`.`codice_fiscale` = '$codiceFiscaleDiventa'";
