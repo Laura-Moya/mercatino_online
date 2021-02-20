@@ -157,7 +157,7 @@ function leggiAnnuncio($cid, $codice)
 	$sql = "SELECT annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.prezzo, utente.nome, utente.cognome,
 								 annuncio.regione, annuncio.comune, stato.stato, annuncio.categorie, annuncio.sottocategorie,
 								 annuncio.nuovo, annuncio.codice, annuncio.venditore, annuncio.garanzia, annuncio.copertura_garanzia,
-								 annuncio.tempo_usura, annuncio.stato_usura, annuncio.foto, annuncio.acquirente
+								 annuncio.tempo_usura, annuncio.stato_usura, annuncio.foto, annuncio.acquirente, annuncio.visibilita
 				  FROM annuncio, stato, utente
 				  WHERE annuncio.venditore = utente.codice_fiscale AND annuncio.codice = stato.prodotto AND annuncio.codice = '$codice'";
 
@@ -170,7 +170,7 @@ function leggiAnnuncio($cid, $codice)
 	}
 
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 19 ; $i++) {
+			for ($i=0; $i < 20 ; $i++) {
 				$prodotto[$i] = $row[$i];
 			}
 
@@ -617,7 +617,9 @@ function leggiAnnunci($cid)
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
     return $risultato;
   }
-  $sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio, annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie, annuncio.nuovo, annuncio.provincia
+  $sql = "SELECT annuncio.codice, utente.nome AS 'NOME', utente.cognome AS 'COGNOME', annuncio.nome_annuncio,
+	 				annuncio.nome_prodotto, annuncio.foto, annuncio.prezzo, annuncio.categorie, annuncio.sottocategorie,
+					annuncio.nuovo, annuncio.provincia, annuncio.visibilita, annuncio.regione
           FROM annuncio, utente
           WHERE annuncio.venditore = utente.codice_fiscale;";
   $res=$cid->query($sql);
@@ -627,7 +629,7 @@ function leggiAnnunci($cid)
     return $risultato;
   }
   while ($row=$res->fetch_row()) {
-		for ($i=0; $i < 11 ; $i++) {
+		for ($i=0; $i < 13 ; $i++) {
 			$prodotto[$i] = $row[$i];
 		}
 		$annunci[$row[0]] = $prodotto;

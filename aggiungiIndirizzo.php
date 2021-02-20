@@ -4,10 +4,10 @@
     include "db/connect.php";
     include "common/funzioni.php";
 
-    $nuovaVia = $_POST["nuovaVia"];
-    $nuovoComune = $_POST["nuovoComune"];
-    $nuovaRegione = $_POST["nuovaRegione"];
-    $nuovaProvincia = $_POST["nuovaProvincia"];
+    $nuovaVia = Ucwords($_POST["nuovaVia"]);
+    $nuovoComune = Ucwords($_POST["nuovoComune"]);
+    $nuovaRegione = Ucwords($_POST["nuovaRegione"]);
+    $nuovaProvincia = strtoupper($_POST["nuovaProvincia"]) ;
     $codicefiscale = $_GET["codicefiscale"];
 
 

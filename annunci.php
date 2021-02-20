@@ -6,8 +6,6 @@
   <body>
       <?php include "common/navbar.php";?>
 
-
-
       <div class="container-filtri-annunci">
       <!-- Navbar Sottocategorie -->
       <?php
@@ -90,6 +88,10 @@
                       echo "<h4>Annunci superiori ai 100 euro</h4>";
                       break;
                   }
+                 }
+                 if (isset($_POST['submit-search2'])){
+                   $search = mysqli_real_escape_string($cid,$_POST['search2']);
+                   echo '<h4>'. Ucwords($search).'</h4>';
                  }
                ?>
             </div>
@@ -195,29 +197,54 @@
 
             $result = mysqli_query($cid,$sql);
             $queryResult = mysqli_num_rows($result);
-              echo "<h5 style = 'margin-left: 3rem;'>Sono usciti " .$queryResult . " risultati!</h5>";
               if ($queryResult > 0) {
                 while($row=mysqli_fetch_assoc($result)){
-                  if ($row["acquirente"]==null){?>
-                    <div class="card mb-3" id="annunci" style="max-width: 770px;">
-                      <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="<?php echo $row['foto']; ?>" class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                          <div class="card-body">
-                            <?php
-                            echo '<h2 class="card-title"> <a href="prodotto.php?codice='.$row["codice"].'"> '.Ucwords($row["nome_prodotto"]).' </a></h2>';
-                            ?>
-                            <p class="card-text"> <?php echo Ucwords($row['nome_annuncio']) ?></p>
-                            <p class="card-text">Provenienza: <?php echo mb_strtoupper($row['provincia']) ?> </p>
-                            <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo $row['prezzo'] ?> </b></h4>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  if ($row["acquirente"]==null){
+                    if ($row["visibilita"]=="pubblica"){?>
+                      <div class="card mb-3" id="annunci" style="max-width: 770px;">
+                        <div class="row no-gutters">
+                          <div class="col-md-4">
+                              <img src="<?php echo $row['foto']; ?>" class="card-img">
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <?php
+                              echo '<h2 class="card-title"> <a href="prodotto.php?codice='.$row["codice"].'"> '.Ucwords($row["nome_prodotto"]).' </a></h2>';
+                              ?>
+                              <p class="card-text"> <?php echo Ucwords($row['nome_annuncio']) ?></p>
+                              <p class="card-text">Provenienza: <?php echo mb_strtoupper($row['provincia']) ?> </p>
+                              <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo $row['prezzo'] ?> </b></h4>
+                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                <?php }
+                    <?php }
+                    if ($row["visibilita"]=="ristretta"){
+                      if(isset($indirizzoscelto)){
+                        if ($indirizzoscelto[3]==$row["regione"]){?>
+                        <div class="card mb-3" id="annunci" style="max-width: 770px;">
+                          <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="<?php echo $row['foto']; ?>" class="card-img">
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <?php
+                                echo '<h2 class="card-title"> <a href="prodotto.php?codice='.$row["codice"].'"> '.Ucwords($row["nome_prodotto"]).' </a></h2>';
+                                ?>
+                                <p class="card-text"> <?php echo Ucwords($row['nome_annuncio']) ?></p>
+                                <p class="card-text">Provenienza: <?php echo mb_strtoupper($row['provincia']) ?> </p>
+                                <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo $row['prezzo'] ?> </b></h4>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                <?php   }
+                      }
+                    }
+                  }
                 }
               }
           ?>
