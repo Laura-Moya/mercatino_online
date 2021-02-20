@@ -54,8 +54,11 @@
                   echo '<p class="card-text">'. Ucwords($prodotto[1]) . '</p>';
                   echo '<a href="stati.php?stato=venduto&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
                   echo '</form>';
+                  echo '<form class="" action="valutazione.php" method="get">';
+                  echo '<a href="valutazione.php?codice='. $prodotto[2].'" class="btn btn-primary" style="margin: 1rem 2.1rem;">Valuta transizione</a>';
+                  echo '</form>';
                   echo '<form class="" action="rimettiInVendita.php " method="get">';
-                  echo '<a style="margin: 1rem 2.1rem;" href="rimettiInVendita.php?codice='. $prodotto[2].'" class="btn btn-primary" >Rimetti in vendita!</a>';
+                  echo '<a style="margin: 0rem 2.1rem;" href="rimettiInVendita.php?codice='. $prodotto[2].'" class="btn btn-primary" >Rimetti in vendita!</a>';
                   echo '</form>';
                 echo '</div>';
               echo '</div>';

@@ -25,7 +25,7 @@
         for ($i=0; $i < count($prodotti) ; $i++) {
 
             $prodotto = $prodotti[$i];
-              echo '<div class="card" style="width: 16rem;">';
+              echo '<div class="card" style="width: 16rem; margin-top:0px;">';
                 echo '<img src="'. $prodotto[4] .'" style="height: 10rem; width: revert;" class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
                   echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';

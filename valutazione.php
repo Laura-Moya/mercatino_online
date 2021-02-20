@@ -20,7 +20,7 @@
       <div class="container-profilo container">
         <div class="row">
           <div class="immagine-profilo col-sm-12 col-md-6 col-lg-4">
-            <img src="images/cellulare.jpg" style="width: 70%;" alt="immagine_profilo">
+            <img src="<?php echo $prodotto["17"]; ?>" style="width: 100%;" alt="immagine_profilo">
           </div>
           <div class="info-profilo col-sm-12 col-md-6 col-lg-8">
             <h1>Valuta transazione</h1>

@@ -88,9 +88,9 @@ a:hover {
 }
 
 .card {
-  margin-bottom: 1rem !important; */
+  margin-bottom: 1rem !important;
   width: 25%;
-  margin-top:0px;
+  margin-top:0px !important;
   margin: auto;
   align-items: center;
 }
