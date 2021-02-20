@@ -30,7 +30,7 @@
           <h2 class="nome-prodotto" style="margin-top: 1rem;"><?php echo Ucwords("$prodotto[1]"); ?></h2>
           <p>Venditore: <?php echo Ucwords("$prodotto[3]") . Ucwords(" $prodotto[4]"); ?></p>
           <div class="stessa-riga" >
-          <form class="" action="acquistaOra.php?codice= <?php echo "$codice"; ?>&codfisc=<?php echo "$codice_fiscale[0]"; ?>" method="post">
+          <form class="" action="acquistaOra.php?codice= <?php echo "$codice"; ?>&codfisc=<?php echo "$codice_fiscale[0]"; ?>&venditore=<?php echo "$prodotto[12]"; ?>" method="post">
             <h6>Preferisce:</h6>
               <input class="inputpaga" type = "radio" id = "B" name ="AA" value="spedizione"/>
               <label class="labelpagamento" for = "B"> Spedizione </label>

@@ -10,6 +10,7 @@
 
   $codice=$_GET["codice"];
   $codicefiscale = $_GET["codfisc"];
+  $venditore = $_GET["venditore"];
 
   if(isset($_POST['AA'])){
     $preferisce = $_POST['AA'];
@@ -17,7 +18,6 @@
   else {
     $preferisce = NULL;
   }
-
   if($preferisce != NULL)
   {
     if($preferisce != "spedizione")
@@ -59,7 +59,7 @@
                   $mail=$res->fetch_row();
                   echo $mail[0];
                   mail('$mail[0]', 'Prodotto acquistato', 'Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!');
-                // header("Location: index.php?acquisto=ok");
+                header("Location: index.php?acquisto=ok");
                 }
               }
 
@@ -77,7 +77,7 @@
                 $mail=$res->fetch_row();
                 echo $mail[0];
                 mail('$mail[0]', 'Prodotto acquistato', 'Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!');
-              // header("Location: index.php?acquisto=ok");
+              header("Location: index.php?acquisto=ok");
               }
             }
           }
@@ -101,12 +101,12 @@
           $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
           $res = mysqli_query($cid, $sql);
           if ($res) {
-            $sql="SELECT email FROM `utente` WHERE codice_fiscale = '$codicefiscale'";
+            $sql="SELECT email FROM `utente` WHERE codice_fiscale = '$venditore'";
             $res = mysqli_query($cid, $sql);
             $mail=$res->fetch_row();
             echo $mail[0];
             mail('$mail[0]', 'Prodotto acquistato', 'Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!');
-            // header("Location: index.php?acquisto=ok");
+            header("Location: index.php?acquisto=ok");
           }
         }
       }
