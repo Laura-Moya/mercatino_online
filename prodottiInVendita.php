@@ -12,7 +12,9 @@
     $risultato = prodottiInVendita($cid, $codice_fiscale[0]);
     $prodotti = $risultato['contenuto'];
 
-
+    if (isset($_GET['nuovoannuncio'])) {
+        echo '<script type="text/javascript">alert("Il tuo prodotto è ora in vendita!");</script>';
+    }
   ?>
   <!-- popup stati -->
   <div class='form-popup3 container-registrazione' id='stati' >

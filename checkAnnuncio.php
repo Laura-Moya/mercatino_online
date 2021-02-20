@@ -45,6 +45,7 @@ $sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', '
 $sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro'];
 
 $sottoCat = $sottocategorie[$categoria];
+$sottoCat = $sottoCat[$sottocategoria];
 
 
 	if (empty($nomeannuncio))
@@ -133,7 +134,7 @@ $sottoCat = $sottocategorie[$categoria];
 								`copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
 							VALUES (NULL, '$codicefiscale', '$via', '$comune', '$regione', '$provincia',
 											'$nomeannuncio', '$nomeprodotto', '$foto', '$prezzo', '$nuovousato', '$tempoUsura', '$statoUsura',' $garanzia',
-											'$tempogaranzia', NULL, '$visibilita', '$categoria', '$sottocategoria')";
+											'$tempogaranzia', NULL, '$visibilita', '$categoria', '$sottoCat')";
 			echo '</br>'.$sql;
       $data = mysqli_query($cid, $sql);
 
@@ -145,20 +146,20 @@ $sottoCat = $sottocategorie[$categoria];
 							WHERE venditore ='$codicefiscale' AND via = '$via' AND comune='$comune' AND regione='$regione' AND provincia='$provincia' AND
 							 nome_annuncio= '$nomeannuncio' AND nome_prodotto= '$nomeprodotto' AND foto= '$foto' AND prezzo='$prezzo'AND nuovo='$nuovousato' AND
 							 tempo_usura='$tempoUsura' AND stato_usura='$statoUsura' AND garanzia='$garanzia' AND copertura_garanzia='$tempogaranzia' AND
-							  visibilita='$visibilita'AND categorie='$categoria' AND sottocategorie='$sottocategoria'";
+							  visibilita='$visibilita'AND categorie='$categoria' AND sottocategorie='$sottoCat'";
 				$res = mysqli_query($cid, $sql);
 				$codice=$res->fetch_row();
-				echo $codice[0].'ciao';
-				// $query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'in vendita', current_timestamp())";
-				// $data = mysqli_query($cid, $query);
-				// if ($data) {
-				// 	echo "hey2";
-
-			// 		// header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
-				// }
-				// else {
-				// 	echo "problems2";
-				// }
+				$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice[0]', 'in vendita', current_timestamp())";
+				$data = mysqli_query($cid, $query);
+				echo "</br>";
+				print_r($data);
+				if ($data) {
+					echo "hey2";
+					// header('location:prodottiInVendita.php?nuovoannuncio=ok');
+				}
+				else {
+					echo "problems2";
+				}
 			}
 			else "Problems";
 		}
