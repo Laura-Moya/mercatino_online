@@ -27,7 +27,15 @@ include "db/connect.php";
         echo '<script type="text/javascript">alert("Il tuo acquisto è andato a buon fine! Per i termini di spedizione verrai contattato tramite mail dal tuo venditore. Continua lo shopping!")</script>';
       } else {
         echo '<script type="text/javascript">alert("Il tuo acquisto è andato a buon fine! Mettiti in contatto con il venditore per stabilire come effettuare il ritiro a mano. Continua lo shopping!")</script>';
-
+      }
+    }
+    //Errore del login
+    if (isset($_GET["errore"])) {
+      if ($_GET["errore"] == "password") {
+        echo '<script type="text/javascript">alert("La password che hai inserito è sbagliata")</script>';
+      }
+      if ($_GET["errore"] == "email") {
+        echo '<script type="text/javascript">alert("Email o password errate")</script>';
       }
     }
   ?>
