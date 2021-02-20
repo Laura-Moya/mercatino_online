@@ -2,7 +2,7 @@
 
 include_once "db/connect.php";
 include_once "common/funzioni.php";
-
+session_start();
 
 $errore = array();
 $dati=array();
@@ -24,6 +24,19 @@ $tempogaranzia = $_POST["tempogaranzia"];
 $tempoUsura = $_POST["tempousura"];
 $statoUsura = $_POST["statoUsura"];
 $codicefiscale = $_GET["codicefiscale"];
+
+if (isset($_SESSION["indirizzo"])) {
+	$indirizzoAttuale = $_SESSION["indirizzo"];
+}
+else $errore["indirizzo"] = "8";
+
+//Per prendere l'indirizzo della foto
+if ($_POST["foto"]!="") {
+	$foto = "images/" . $_POST["foto"];
+}
+else $foto = "images/Not-Available.png";
+
+echo "$foto";
 
 $sottocategorie = array();
 $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro'];
@@ -62,8 +75,6 @@ $sottoCat = $sottocategorie[$categoria];
 	if (empty($visibilita))
 	{
 		$dati["visibilita"]="";
-		echo $visibilita;
-
 	}
 	else $dati["visibilita"]=$visibilita;
 
@@ -103,16 +114,22 @@ $sottoCat = $sottocategorie[$categoria];
 
 		if (count($errore)>0)
 		{
-			header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			// header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
 		else
 		{
+			$via = $indirizzoAttuale[0];
+			$comune = $indirizzoAttuale[1];
+			$regione = $indirizzoAttuale[2];
+			$provincia = $indirizzoAttuale[3];
 			// VALUES (NULL, 'MRRCLS06S13H501K', 'aldo moro 76', 'bologna', 'emilia romagna', 'bo', 'si vende cellulare usato', 'Philips 480', NULL, '500', '1', NULL, NULL, NULL, NULL, NULL, 'pubblica', 'Foto e Video', 'Altro2');
 			$sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`,
 																			`nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
 																			 `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
-							VALUES (NULL, '$codice_fiscale[0]', '', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, 'privata', '', '')";
+							VALUES (NULL, '$codice_fiscale[0]', '$via', '$comune', '$regione', '$provincia',
+											'$nomeannuncio', '$nomeprodotto', $foto, '$prezzo', '$nuovousato', $tempoUsura, $statoUsura, $garanzia,
+											$tempogaranzia, NULL, '$visibilita', '$categoria', '$sottocategoria')";
       $data = mysqli_query($cid, $sql);
-			header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
+			// header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
 		}
 ?>

@@ -7,7 +7,8 @@ $tipoErrore = array("1"=>"Inserire il nome dell'annuncio",
                     "4" =>"Stato del prodotto non specificato",
                     "5" =>"Tempo di garanzia del prodotto non specificato",
                     "6" =>"Tempo di usura del prodotto non specificato",
-                    "7" =>"Stato del prodotto usato non specificato");
+                    "7" =>"Stato del prodotto usato non specificato",
+                    "8" => "Indicare un indirizzo predefinito");
 $errore = array();
 $dati = array();
 
@@ -42,11 +43,13 @@ else
             <h2 class="title">Creare Annuncio</h2>
             <?php
               if (isset($errore["tempousura"]))
-                echo "<span class=\"errore\">" . $tipoErrore[$errore["tempousura"]] . "</span>";
+                echo "<div class=\"errore\">" . $tipoErrore[$errore["tempousura"]] . "</div>";
               if (isset($errore["statoUsura"]))
-                echo "<span class=\"errore\">" . $tipoErrore[$errore["statoUsura"]] . "</span>";
+                echo "<div class=\"errore\">" . $tipoErrore[$errore["statoUsura"]] . "</div>";
               if (isset($errore["tempogaranzia"]))
-                echo "<span class=\"errore\">" . $tipoErrore[$errore["tempogaranzia"]] . "</span>";
+                echo "<div class=\"errore\">" . $tipoErrore[$errore["tempogaranzia"]] . "</div>";
+              if (isset($errore["indirizzo"]))
+                echo "<div class=\"errore\">" . $tipoErrore[$errore["indirizzo"]] . "</div>";
             ?>
           </tr>
           <tr>
@@ -157,7 +160,7 @@ else
             <td colspan="2" align="center"> <h6 style="margin-top: 0.5rem;">Carica una immagine del tuo annuncio</h6></td>
           </tr>
           <tr>
-            <td colspan="2" align="center"><input type="file" name=""></td>
+            <td colspan="2" align="center"><input type="file" name="foto"></td>
           </tr>
           <tr>
             <td align="center">
