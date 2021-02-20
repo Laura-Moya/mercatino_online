@@ -221,7 +221,7 @@
                       </div>
                     <?php }
                     if ($row["visibilita"]=="ristretta"){
-                      if(isset($indirizzoscelto)){
+                      if(isset($_SESSION["indirizzo"])){
                         if ($indirizzoscelto[3]==$row["regione"]){?>
                         <div class="card mb-3" id="annunci" style="max-width: 770px;">
                           <div class="row no-gutters">
