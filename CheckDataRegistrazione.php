@@ -12,7 +12,10 @@ $codicefiscale=$_GET["codice-fiscale"];
 $tipoutente=$_GET["tipoutente"];
 $immagine=$_GET["immagine"];
 
-
+if ($_GET["immagine"]!="") {
+	$immagine = "images/" . $_GET["immagine"];
+}
+else $immagine = "images/user.png";
 if (empty($nome))
 {
 	$errore["nome"]="1";

@@ -190,7 +190,7 @@ function leggiUtente($cid, $codicefiscale)
     return $risultato;
   }
 
-	$sql = "SELECT utente.nome as 'NOME', utente.cognome as 'COGNOME', utente.email,
+	$sql = "SELECT utente.nome as 'NOME', utente.cognome as 'COGNOME', utente.email, utente.immagine,
 					AVG((valutazione.serieta+valutazione.puntualita)/2) as 'VALUTAZIONE MEDIA'
 					FROM valutazione, utente
 					WHERE utente.codice_fiscale = valutazione.codice_fiscale_valutato AND utente.codice_fiscale = '$codicefiscale'";
@@ -203,7 +203,7 @@ function leggiUtente($cid, $codicefiscale)
     return $risultato;
 	}
 	while ($row=$res->fetch_row()) {
-			for ($i=0; $i < 4 ; $i++) {
+			for ($i=0; $i < 5 ; $i++) {
 				$utente[$i] = $row[$i];
 			}
   }
