@@ -27,6 +27,7 @@ $codicefiscale = $_GET["codicefiscale"];
 
 if (isset($_SESSION["indirizzo"])) {
 	$indirizzoAttuale = $_SESSION["indirizzo"];
+	print_r($indirizzoAttuale);
 }
 else $errore["indirizzo"] = "8";
 
@@ -36,7 +37,6 @@ if ($_POST["foto"]!="") {
 }
 else $foto = "images/Not-Available.png";
 
-echo "$foto";
 
 $sottocategorie = array();
 $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro'];
@@ -114,32 +114,37 @@ $sottoCat = $sottocategorie[$categoria];
 
 		if (count($errore)>0)
 		{
-			echo "ciao1";
-			header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			// header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
 		else
-		{			echo "ciao2";
+		{
 
 			$via = $indirizzoAttuale[0];
 			$comune = $indirizzoAttuale[1];
 			$regione = $indirizzoAttuale[2];
 			$provincia = $indirizzoAttuale[3];
+			echo $via;
+			echo $comune;
+			echo $regione;
+			echo $provincia;
 
-			$sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`,
-																			`nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
-																			 `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
+
+			$sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
+								`copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
 							VALUES (NULL, '$codicefiscale', '$via', '$comune', '$regione', '$provincia',
-											'$nomeannuncio', '$nomeprodotto', $foto, '$prezzo', '$nuovousato', $tempoUsura, $statoUsura, $garanzia,
-											$tempogaranzia, NULL, '$visibilita', '$categoria', '$sottocategoria')";
-
+											'$nomeannuncio', '$nomeprodotto', '$foto', '$prezzo', '$nuovousato', '$tempoUsura', '$statoUsura',' $garanzia',
+											'$tempogaranzia', NULL, '$visibilita', '$categoria', '$sottocategoria')";
       $data = mysqli_query($cid, $sql);
 			print_r($data);
-			echo "hey";
 			if ($data) {
+				echo "hey";
+
 				$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'in vendita', current_timestamp())";
 				$data = mysqli_query($cid, $query);
 				if ($data) {
-					header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
+					echo "hey2";
+
+			// 		// header('location:creareAnnuncio.php?status=ok&dati=' . serialize($dati));
 				}
 				else {
 					echo "problems2";
