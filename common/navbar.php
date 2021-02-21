@@ -84,19 +84,17 @@ if(isset($_POST["indirizzo"])){
            <label for='email'><b>Email</b></label><br/>
            <input type='text' placeholder='Immettere Email' value= "<?php echo $dat['email'];?>" name='email' id="email"></br>
            <?php
-              if (isset($error['email'])) echo '<span class=\"error\'>' . $tipoerror[$error['email']] . "</span>";
-              echo "<label for='psw'><b>Password</b></label> <br/>";
+              echo "<label for='psw'><b>Password</b></label>";
               echo "<input type='password' placeholder='Immettere Password' id='password' name='password' value=";
               $dat["password"];
               echo " ></br>";
-              if (isset($error['password'])) echo "<span class=\'error\'>" . $tipoerror[$error['password']] . "</span>";
               echo "<p>Non hai un account? <a href='./registrazione.php'>Registrati!</a></p>";
               echo "<button  class='btn btn-primary btn-login'  onclick='login()'>Accedi</button>";
               echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
              echo '</form>';
              echo '</div>';
              echo '</li>';
-      }
+           }
         ?>
         <li class="nav-item">
 
@@ -205,7 +203,7 @@ else {
         var password = $("#password").val();
 
         if (email == "" || password == "")
-          alert("Pls check ur inputs");
+          alert("Inserire tutti i campi");
           $.ajax(
             {
               url: "navbar.php",

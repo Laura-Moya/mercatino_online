@@ -48,7 +48,11 @@
         for ($i=0; $i < count($prodotti) ; $i++) {
 
             $prodotto = $prodotti[$i];
+<<<<<<< HEAD
               echo '<div class="card" style="width:16rem; margin-top:0px !important;">';
+=======
+              echo '<div class="card" style="width: 16rem; margin-top:0px !important;">';
+>>>>>>> 7c46d22355c43fd8c2734e77a8fc2bea4991290d
                 echo '<img src="'. $prodotto[6] .'" style="height: 10rem; width: revert;" class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
                   echo '<form class="" action="stati.php " method="get">';
