@@ -22,17 +22,3 @@ function ChangecatList() {
         }
     }
 }
-
-function valuta(cid, codicefiscaleValutato, codicefiscaleValuta)
-{
-  let puntualita = prompt('Valutazione della puntualità: ');
-  let serieta = prompt('Valutazione della serietà: ');
-  alert("Puntualità: " + puntualita + "\n" + "Serietà: " + serieta);
-  if (confirm('Sei sicuro della tua valutazione?')){
-    console.log(codicefiscaleValutato);
-    console.log(cid);
-
-      valuta_php(cid, codicefiscaleValutato, codicefiscaleValuta, serieta, puntualita);
-      window.location = "prodottiAcquistati.php";
-  }
-}
