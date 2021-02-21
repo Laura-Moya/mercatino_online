@@ -94,7 +94,7 @@ if(isset($_POST["indirizzo"])){
              echo '</form>';
              echo '</div>';
              echo '</li>';
-           }    
+           }
         ?>
         <li class="nav-item">
 
@@ -203,7 +203,7 @@ else {
         var password = $("#password").val();
 
         if (email == "" || password == "")
-          alert("Pls check ur inputs");
+          alert("Inserire tutti i campi");
           $.ajax(
             {
               url: "navbar.php",
