@@ -38,10 +38,10 @@ else $foto = "images/Not-Available.png";
 
 
 $sottocategorie = array();
-$sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro'];
-$sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro'];
-$sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro'];
-$sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro'];
+$sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altri elettrodomestici'];
+$sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori fotografici', 'Telecamere', 'Microfoni', 'Altro da foto e video'];
+$sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro da abbigliamento'];
+$sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro da hobby'];
 
 $sottoCat = $sottocategorie[$categoria];
 $sottoCat = $sottoCat[$sottocategoria];
@@ -115,7 +115,7 @@ $sottoCat = $sottoCat[$sottocategoria];
 
 		if (count($errore)>0)
 		{
-			header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			header('location:creareAnnuncio.php?status=ko3&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
 		else
 		{
@@ -150,9 +150,10 @@ $sottoCat = $sottoCat[$sottocategoria];
 					header('location:prodottiInVendita.php?nuovoannuncio=ok');
 				}
 				else {
-					header('location:creareAnnuncio.php?status=ko&error=connectionDB');
+					header('location:creareAnnuncio.php?status=ko1&errore=' . serialize($errore). '&dati=' . serialize($dati));
 				}
-			}
-			header('location:creareAnnuncio.php?status=ko&error=connectionDB');
+			} else{
+			header('location:creareAnnuncio.php?status=ko2&errore=' . serialize($errore). '&dati=' . serialize($dati));
 		}
+	}
 ?>

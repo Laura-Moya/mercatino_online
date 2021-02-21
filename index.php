@@ -69,8 +69,8 @@ include "db/connect.php";
             Luogo
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Nella mia provincia</a>
-            <a class="dropdown-item" href="#">Nella mia regione</a>
+            <a class="dropdown-item" href="annunci.php?luogo=provincia">Nella mia provincia</a>
+            <a class="dropdown-item" href="annunci.php?luogo=regione">Nella mia regione</a>
           </div>
         </li>
       </ul>

@@ -11,10 +11,10 @@
       <?php
 
           $sottocategorie = array();
-          $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altro1'];
-          $sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori', 'Telecamere', 'Microfoni', 'Altro2'];
-          $sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro3'];
-          $sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro4'];
+          $sottocategorie['Elettrodomestici'] = ['Aspirapolveri', 'Caffettiere', 'Tostapane', 'Frullatori', 'Altri elettrodomestici'];
+          $sottocategorie['Foto e Video'] = ['Macchine fotografiche', 'Accessori fotografici', 'Telecamere', 'Microfoni', 'Altro da foto e video'];
+          $sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'Altro da abbigliamento'];
+          $sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Reviste', 'Altro da hobby'];
 
           if (isset($_GET['cat'])){
             $cat = $_GET['cat'];
@@ -134,7 +134,7 @@
             </form>
             <form id="luogo" action="annunci.php" method="post">
               <li class="nav-item">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Luogo
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -149,6 +149,7 @@
 
         <div class='annunci'>
           <?php
+
             if (isset($_POST['submit-search2'])){
               $search = mysqli_real_escape_string($cid,$_POST['search2']);
               $sql = "SELECT * FROM annuncio WHERE nome_annuncio LIKE '%$search%' OR nome_prodotto LIKE '%$search%'";
@@ -185,13 +186,19 @@
                     break;
                 }
                }
-               if(isset($_GET["luogo"])){
-                 if ($_GET["luogo"]=="provincia"){
-                   $sql = "SELECT * FROM annuncio WHERE annuncio.provincia = '$indirizzoscelto[2]'";
-                 } elseif ($_GET["luogo"]=="regione"){
-                   $sql = "SELECT * FROM annuncio WHERE annuncio.regione = '$indirizzoscelto[3]'";
+
+                 if(isset($_GET["luogo"])){
+                   if (isset($_SESSION["indirizzo"])){
+                     if ($_GET["luogo"]=="provincia"){
+                       $sql = "SELECT * FROM annuncio WHERE annuncio.provincia = '$indirizzoscelto[2]'";
+                     } elseif ($_GET["luogo"]=="regione"){
+                       $sql = "SELECT * FROM annuncio WHERE annuncio.regione = '$indirizzoscelto[3]'";
+                     }
+                  } else {
+                     $sql = "SELECT * FROM annuncio WHERE annuncio.regione = ''";
                  }
                }
+
 
 
 
@@ -246,6 +253,8 @@
                     }
                   }
                 }
+              } else {
+                echo "<h4> Non sono presenti annunci con questo filtro </h4>";
               }
           ?>
         </div>
