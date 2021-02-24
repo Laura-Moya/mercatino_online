@@ -50,7 +50,7 @@ $dati["password"]=$password;
 
 $dati["tipoutente"]=$tipoutente;
 
-if (empty($codicefiscale))
+if (empty($codicefiscale) || (strlen($codicefiscale)!=16))
 {
 	$errore["codice-fiscale"]="5";
   $dati["codice-fiscale"]="";

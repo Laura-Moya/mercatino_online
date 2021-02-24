@@ -69,7 +69,7 @@ if (isset($_GET['errore'])) {
                 <label style="margin-right:0.5rem" for="venditore">Venditore </label>
                 <input type="radio" id="acquirente" name="tipoutente" value="acquirente">
                 <label for="acquirente">Acquirente</label></td>
-                <td> <h6 class="destra">Codice Fiscale</h6> <input class="destra" maxlength="16" type="text" name="codice-fiscale" value="<?php  echo $dati["codice-fiscale"];?>"> </br> <?php if (isset($errore["codice-fiscale"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["codice-fiscale"]] . "</span>"; ?>
+                <td> <h6 class="destra">Codice Fiscale</h6> <input class="destra" minlength="16" maxlength="16" type="text" name="codice-fiscale" value="<?php  echo $dati["codice-fiscale"];?>"> </br> <?php if (isset($errore["codice-fiscale"])) echo "<span class=\"errore destra\">" . $tipoErrore[$errore["codice-fiscale"]] . "</span>"; ?>
                 </td>
               </tr>
               <tr>

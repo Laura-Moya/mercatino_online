@@ -4,8 +4,8 @@
     <?php include "common/header.php";?>
   </head>
 <body>
-  <?php include "common/navbar.php";
-  
+  <?php include "db/connect.php";
+
 $codiceFiscaleElimina = $_GET["codiceFiscale"];
 $query = "DELETE FROM `utente` WHERE `utente`.`codice_fiscale` = '$codiceFiscaleElimina'";
 
