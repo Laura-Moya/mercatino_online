@@ -54,12 +54,13 @@
                 $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
                 $res = mysqli_query($cid, $sql);
                 if ($res) {
-                  $sql="SELECT email FROM `utente` WHERE codice_fiscale = '$codicefiscale'";
+                  $sql="SELECT email FROM `utente` WHERE codice_fiscale = '$venditore'";
                   $res = mysqli_query($cid, $sql);
                   $mail=$res->fetch_row();
-                  echo $mail[0];
-                  mail('$mail[0]', 'Prodotto acquistato', 'Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!');
-                header("Location: index.php?acquisto=ok");
+                  $message = "Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!";
+                  $headers = "From: mariapatricianunez96@gmail.com";
+                  $email = mail("$mail[0]", "Prodotto Acquistato", $message, $headers);
+                  header("Location: index.php?acquisto=ok");
                 }
               }
 
@@ -72,11 +73,12 @@
               $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
               $res = mysqli_query($cid, $sql);
               if ($res) {
-                $sql="SELECT email FROM `utente` WHERE codice_fiscale = '$codicefiscale'";
+                $sql="SELECT email FROM `utente` WHERE codice_fiscale = '$venditore'";
                 $res = mysqli_query($cid, $sql);
                 $mail=$res->fetch_row();
-                echo $mail[0];
-                mail('$mail[0]', 'Prodotto acquistato', 'Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!');
+                $message = "Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!";
+                $headers = "From: mariapatricianunez96@gmail.com";
+                $email = mail("$mail[0]", "Prodotto Acquistato", $message, $headers);
               header("Location: index.php?acquisto=ok");
               }
             }
@@ -104,8 +106,9 @@
             $sql="SELECT email FROM `utente` WHERE codice_fiscale = '$venditore'";
             $res = mysqli_query($cid, $sql);
             $mail=$res->fetch_row();
-            echo $mail[0];
-            mail('$mail[0]', 'Prodotto acquistato', 'Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!');
+            $message = "Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!";
+            $headers = "From: mariapatricianunez96@gmail.com";
+            $email = mail("$mail[0]", "Prodotto Acquistato", $message, $headers);
             header("Location: index.php?acquisto=ok");
           }
         }
