@@ -48,9 +48,9 @@
             <div id="cartacredito">
                 <h6 style="margin-top: 1rem;">Inserisce i dati de la sua carta</h6>
                 <input type="text" name="intestatario" placeholder="Nome e cognome..."/><br/>
-                <input type="number" name="numero_carta" placeholder="Numero di carta..."/><br/>
-                <input type="month" maxlength="5" name="data_scadenza" placeholder="mm/aa"/><br/>
-                <input type="number" name="cvv" placeholder="CVV..."/>
+                <input type="text" name="numero_carta" maxlength="16" minlength="16" placeholder="Numero di carta..."/><br/>
+                <input type="month" name="data_scadenza" placeholder="mm/aa"/><br/>
+                <input type="text" maxlength="3" minlength="3" name="cvv" placeholder="CVV..."/>
             </div>
             <h2 id="prezzo" >Prezzo: € <?php echo "$prodotto[2]"; ?></h2>
             <button class="btn btn-primary" type="submit" >Acquista ora</button>
