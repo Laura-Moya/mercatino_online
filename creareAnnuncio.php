@@ -8,7 +8,8 @@ $tipoErrore = array("1"=>"Inserire il nome dell'annuncio",
                     "5" =>"Tempo di garanzia del prodotto non specificato",
                     "6" =>"Tempo di usura del prodotto non specificato",
                     "7" =>"Stato del prodotto usato non specificato",
-                    "8" => "Indicare un indirizzo predefinito");
+                    "8" => "Indicare un indirizzo predefinito",
+                    "9" => "Errore DB");
 $errore = array();
 $dati = array();
 

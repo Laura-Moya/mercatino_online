@@ -113,47 +113,49 @@ $sottoCat = $sottoCat[$sottocategoria];
 				}
 			}
 
-		if (count($errore)>0)
-		{
-			header('location:creareAnnuncio.php?status=ko3&errore=' . serialize($errore). '&dati=' . serialize($dati));
-		}
-		else
-		{
+
 
 			$via = $indirizzoAttuale[0];
 			$comune = $indirizzoAttuale[1];
 			$provincia = $indirizzoAttuale[2];
 			$regione = $indirizzoAttuale[3];
 
+				$sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
+									`copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
+								VALUES (NULL, '$codicefiscale', '$via', '$comune', '$regione', '$provincia',
+												'$nomeannuncio', '$nomeprodotto', '$foto', '$prezzo', '$nuovousato', '$tempoUsura', '$statoUsura',' $garanzia',
+												'$tempogaranzia', NULL, '$visibilita', '$categoria', '$sottoCat')";
+	      $data = mysqli_query($cid, $sql);
 
-			$sql = "INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`,
-								`copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`)
-							VALUES (NULL, '$codicefiscale', '$via', '$comune', '$regione', '$provincia',
-											'$nomeannuncio', '$nomeprodotto', '$foto', '$prezzo', '$nuovousato', '$tempoUsura', '$statoUsura',' $garanzia',
-											'$tempogaranzia', NULL, '$visibilita', '$categoria', '$sottoCat')";
-      $data = mysqli_query($cid, $sql);
+					if ($data) {
+						$sql="SELECT codice
+									FROM `annuncio`
+									WHERE venditore ='$codicefiscale' AND via = '$via' AND comune='$comune' AND regione='$regione' AND provincia='$provincia' AND
+									 nome_annuncio= '$nomeannuncio' AND nome_prodotto= '$nomeprodotto' AND foto= '$foto' AND prezzo='$prezzo'AND nuovo='$nuovousato' AND
+									 tempo_usura='$tempoUsura' AND stato_usura='$statoUsura' AND garanzia='$garanzia' AND copertura_garanzia='$tempogaranzia' AND
+									  visibilita='$visibilita'AND categorie='$categoria' AND sottocategorie='$sottoCat'";
+						$res = mysqli_query($cid, $sql);
+						$codice=$res->fetch_row();
+						echo $codice[0];
+						echo $sql;
 
-			if ($data) {
-				$sql="SELECT codice
-							FROM `annuncio`
-							WHERE venditore ='$codicefiscale' AND via = '$via' AND comune='$comune' AND regione='$regione' AND provincia='$provincia' AND
-							 nome_annuncio= '$nomeannuncio' AND nome_prodotto= '$nomeprodotto' AND foto= '$foto' AND prezzo='$prezzo'AND nuovo='$nuovousato' AND
-							 tempo_usura='$tempoUsura' AND stato_usura='$statoUsura' AND garanzia='$garanzia' AND copertura_garanzia='$tempogaranzia' AND
-							  visibilita='$visibilita'AND categorie='$categoria' AND sottocategorie='$sottoCat'";
-				$res = mysqli_query($cid, $sql);
-				$codice=$res->fetch_row();
-
-				$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice[0]', 'in vendita', current_timestamp())";
-				$data = mysqli_query($cid, $query);
-
-				if ($data) {
-					header('location:prodottiInVendita.php?nuovoannuncio=ok');
+					if ($codice[0]!=""){
+						$query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice[0]', 'in vendita', current_timestamp())";
+						$data = mysqli_query($cid, $query);
+					} else {
+						$errore["db"]="9";
+					}
 				}
-				else {
-					header('location:creareAnnuncio.php?status=ko1&errore=' . serialize($errore). '&dati=' . serialize($dati));
-				}
-			} else{
-			header('location:creareAnnuncio.php?status=ko2&errore=' . serialize($errore). '&dati=' . serialize($dati));
-		}
-	}
+
+
+
+			if (count($errore)>0)
+			{
+				header('location:creareAnnuncio.php?status=ko3&errore=' . serialize($errore). '&dati=' . serialize($dati));
+			}
+			else
+			{
+				header('location:prodottiInVendita.php?nuovoannuncio=ok');
+			}
+
 ?>
