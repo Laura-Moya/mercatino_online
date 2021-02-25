@@ -5,7 +5,6 @@ sottocategorie['Abbigliamento'] = ['Vestiti', 'Borse', 'Accessori', 'Scarpe', 'A
 sottocategorie['Hobby'] = ['Giocattoli', 'Film e DVD', 'Musica', 'Libri e Riviste', 'Altro da hobby'];
 
 
-
 function ChangecatList() {
     var catList = document.getElementById("validationCustom03");
     var sotList = document.getElementById("validationCustom04");

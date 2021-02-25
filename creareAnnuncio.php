@@ -93,7 +93,7 @@ else
             <td>
               <div class="">
                 <label for="validationCustom04">Sottocategoria:</label>
-                <select class="form-control form-control-md" id="validationCustom04" name="sottocategoria" required></select>
+                <select class="form-control form-control-md"  id="validationCustom04" name="sottocategoria" required></select>
               </div>
             </td>
           </tr>
