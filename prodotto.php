@@ -37,7 +37,7 @@
 
 
         <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;" href="#">OK </a></button>
-        <button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>
+        <button type='button' class='btn btn-primary btn-login' onclick='closeStati()'>Chiudi</button>
       </div>
 
     <form class="" action="osserva.php" method="get">
@@ -54,7 +54,6 @@
             <p>Venditore: <?php echo Ucwords("$prodotto[3]") . Ucwords(" $prodotto[4]"); ?></p>
             <p>Regione: <?php echo Ucwords("$prodotto[5]"); ?></p>
             <p>Comune: <?php echo Ucwords("$prodotto[6]"); ?></p>
-            <p>Stato: <?php echo Ucwords("$prodotto[7]"); ?></p>
             <p>Categoria: <?php echo "$prodotto[8]"; ?></p>
             <p>Sottocategoria: <?php echo "$prodotto[9]"; ?></p>
             <p>Nuovo: <?php $ris = $prodotto[10]==1 ? "Si" : "No"; echo "$ris"; ?></p>
@@ -70,7 +69,7 @@
             }
             if (isset($_SESSION["utente"])){
               if ($prodotto[12]==$codice_fiscale[0]){
-                echo '<a class="btn btn-primary" onclick="openForm()">Visualizza stati del prodotto</a>';
+                echo '<a class="btn btn-primary" onclick="openStati()">Visualizza stati del prodotto</a>';
 
               } else {?>
                 <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
@@ -91,12 +90,12 @@
       </div>
     </form>
 <script>
-    function openForm() {
+    function openStati() {
 
       document.getElementById("stati").style.display = "block";
     }
 
-    function closeForm() {
+    function closeStati() {
       document.getElementById("stati").style.display = "none";
     }
   </script>
