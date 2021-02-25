@@ -43,14 +43,11 @@ else
           <tr>
             <h2 class="title">Creare Annuncio</h2>
             <?php
-              if (isset($errore["tempousura"]))
-                echo "<div class=\"errore\">" . $tipoErrore[$errore["tempousura"]] . "</div>";
-              if (isset($errore["statoUsura"]))
-                echo "<div class=\"errore\">" . $tipoErrore[$errore["statoUsura"]] . "</div>";
-              if (isset($errore["tempogaranzia"]))
-                echo "<div class=\"errore\">" . $tipoErrore[$errore["tempogaranzia"]] . "</div>";
-              if (isset($errore["indirizzo"]))
-                echo "<div class=\"errore\">" . $tipoErrore[$errore["indirizzo"]] . "</div>";
+              if (isset($errore["tempousura"])) echo "<div class=\"errore\">" . $tipoErrore[$errore["tempousura"]] . "</div>";
+              if (isset($errore["statoUsura"])) echo "<div class=\"errore\">" . $tipoErrore[$errore["statoUsura"]] . "</div>";
+              if (isset($errore["tempogaranzia"])) echo "<div class=\"errore\">" . $tipoErrore[$errore["tempogaranzia"]] . "</div>";
+              if (isset($errore["indirizzo"])) echo "<div class=\"errore\">" . $tipoErrore[$errore["indirizzo"]] . "</div>";
+
             ?>
           </tr>
           <tr>
@@ -115,6 +112,9 @@ else
               <input class="inputpaga" type="radio" id="U" name="SP" onclick="ExecuteUsato()" value = "2"/>
               <label class ="labelpagamento" for="U">Usato</label>
               </td>
+          </tr>
+          <tr>
+            <td colspan="2"><center><?php if (isset($errore["SP"])) echo "<div class=\"errore\">" . $tipoErrore[$errore["SP"]] . "</div>"; ?><center></td>
           </tr>
           <tr>
             <td colspan="2">

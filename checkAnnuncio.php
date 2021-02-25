@@ -27,8 +27,12 @@ $codicefiscale = $_GET["codicefiscale"];
 
 if (isset($_SESSION["indirizzo"])) {
 	$indirizzoAttuale = $_SESSION["indirizzo"];
+	if (empty($indirizzoAttuale)) {
+		$errore["indirizzo"] = "8";
+	}
+} else {
+	$errore["indirizzo"] = "8";
 }
-else $errore["indirizzo"] = "8";
 
 //Per prendere l'indirizzo della foto
 if ($_POST["foto"]!="") {
@@ -151,7 +155,7 @@ $sottoCat = $sottoCat[$sottocategoria];
 
 			if (count($errore)>0)
 			{
-				header('location:creareAnnuncio.php?status=ko3&errore=' . serialize($errore). '&dati=' . serialize($dati));
+				header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 			}
 			else
 			{
