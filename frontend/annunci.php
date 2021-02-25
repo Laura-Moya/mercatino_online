@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
   <body>
-      <?php include "common/navbar.php";?>
+      <?php include "../common/navbar.php";?>
 
       <div class="container-filtri-annunci">
       <!-- Navbar Sottocategorie -->
@@ -96,7 +96,7 @@
                ?>
             </div>
             <div class="col-md-4">
-                <img src="images/logo.png" class="card-img">
+                <img src="../images/logo.png" class="card-img">
             </div>
           </div>
         </div>

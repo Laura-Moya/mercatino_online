@@ -49,7 +49,7 @@ if(isset($_POST["indirizzo"])){
 
     <div class="col-sm-6 col-md-6 col-lg-6">
 
-      <form class="example" action="../annunci.php" method="POST" style="margin:auto;max-width:450px">
+      <form class="example" action="../frontend/annunci.php" method="POST" style="margin:auto;max-width:450px">
         <input type="text" placeholder="Cerca..." name="search2">
         <button type="submit" name="submit-search2"><i class="fa fa-search"></i></button>
       </form>
@@ -88,7 +88,7 @@ if(isset($_POST["indirizzo"])){
               echo "<input type='password' placeholder='Immettere Password' id='password' name='password' value=";
               $dat["password"];
               echo " ></br>";
-              echo "<p>Non hai un account? <a href='../registrazione.php'>Registrati!</a></p>";
+              echo "<p>Non hai un account? <a href='../frontend/registrazione.php'>Registrati!</a></p>";
               echo "<button  class='btn btn-primary btn-login'  onclick='login()'>Accedi</button>";
               echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
              echo '</form>';
@@ -169,7 +169,7 @@ else {
       $categorie = array("Elettrodomestici", "Hobby", "Foto e Video", "Abbigliamento");
       for ($i=0; $i < 4 ; $i++) {
         echo '<li class="nav-item second">';
-          echo '<a type="submit" class="nav-link" href="/annunci.php?cat='. "$categorie[$i]".'">'. "$categorie[$i]".'</a>';
+          echo '<a type="submit" class="nav-link" href="../frontend/annunci.php?cat='. "$categorie[$i]".'">'. "$categorie[$i]".'</a>';
         echo '</li>';
       }
       ?>

@@ -1,6 +1,6 @@
     <?php include '../common/profilo.php';?>
         <form class="" action="../backend/diventaVenditore.php?codiceFiscale=<?php echo $codice_fiscale[0];?>" method="get">
-          <button class="btn btn-primary" type="submit"><a style="color: white !important;" >Diventa venditore!</a> </button>
+          <input class="btn btn-primary" type="submit" value="Diventa Venditore!"/>
         </form>
 
         </div>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
   <body>
 
-    <?php include "common/navbar.php";?>
+    <?php include "../common/navbar.php";?>
 
     <?php
       $codice = mysqli_real_escape_string($cid, $_GET['codice']);
@@ -40,7 +40,7 @@
         <button type='button' class='btn btn-primary btn-login' onclick='closeStati()'>Chiudi</button>
       </div>
 
-    <form class="" action="osserva.php" method="get">
+    <form class="" action="../backend/osserva.php" method="get">
       <div class="container-profilo container">
         <div class="row">
           <div class="immagine-profilo col-sm-12 col-md-6 col-lg-4">
@@ -74,9 +74,9 @@
               } else {?>
                 <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
                 <?php if ($osservato == 1) {
-                  echo '<a href="nonOsservare.php?codice='. $codice .'&codicefiscale='.$codice_fiscale[0].'&prodotto=on" class="btn btn-primary">Non osservare più</a>';
+                  echo '<a href="../backend/nonOsservare.php?codice='. $codice .'&codicefiscale='.$codice_fiscale[0].'&prodotto=on" class="btn btn-primary">Non osservare più</a>';
                 } else {?>
-                <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
+                <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="../backend/osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
               <?php
             }
           }

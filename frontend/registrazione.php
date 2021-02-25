@@ -32,16 +32,16 @@ if (isset($_GET['errore'])) {
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
   <body>
 
     <div class="container-registrazione">
-        <form action="CheckDataRegistrazione.php" method="GET">
+        <form action="../backend/CheckDataRegistrazione.php" method="GET">
           <table class="tabella-registrazione">
             <tr>
 
-              <h2 class="title"><a href="index.php"><i class="icona fas fa-arrow-left"></i></a>Registrazione</h2>
+              <h2 class="title"><a href="../frontend/index.php"><i class="icona fas fa-arrow-left"></i></a>Registrazione</h2>
             </tr>
             <tr>
               <td> <h6>Nome</h6>  </td>
@@ -79,7 +79,7 @@ if (isset($_GET['errore'])) {
                 <td colspan="2" align="center"><input type="file" name="immagine" value="<?php  echo $dati["immagine"];?>"></td>
               </tr>
               <tr>
-                <td> <p>Hai già una account? <a href="index.php">Login!</a></p> </td>
+                <td> <p>Hai già una account? <a href="../frontend/index.php">Login!</a></p> </td>
               </tr>
               <tr>
                 <td align="center">

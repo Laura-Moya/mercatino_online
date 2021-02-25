@@ -5,9 +5,13 @@
   </head>
 <body>
   <?php include "../db/connect.php";
+        include "../common/funzioni.php";
 
-$codiceFiscaleDiventa = $_GET["codiceFiscale"];
-$query = "UPDATE `utente` SET `tipo_utente` = 'venditore' WHERE `utente`.`codice_fiscale` = '$codiceFiscaleDiventa'";
+
+session_start();
+$risultato = prendereCF($cid, $_SESSION["utente"]);
+$codiceFiscaleDiventa = $risultato['contenuto'];
+$query = "UPDATE `utente` SET `tipo_utente` = 'venditore' WHERE `utente`.`codice_fiscale` = '$codiceFiscaleDiventa[0]'";
 
 $data = mysqli_query($cid, $query);
 

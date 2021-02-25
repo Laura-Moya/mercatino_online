@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
 <body>
-  <?php include "db/connect.php";
+  <?php include "../db/connect.php";
   session_start();
 
 
@@ -16,10 +16,10 @@ $data = mysqli_query($cid, $query);
 if ($data) {
   session_unset();
   session_destroy();
-  header("Location: index.php?accounteliminato=ok");
+  header("Location: ../frontend/index.php?accounteliminato=ok");
 }
 else {
-  header("Location: index.php?errore=erroreDiConessione");
+  header("Location: ../frontend/index.php?errore=erroreDiConessione");
 }
 
 ?>

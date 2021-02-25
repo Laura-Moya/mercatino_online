@@ -1,7 +1,7 @@
 <?php
 
-include_once "db/connect.php";
-include_once "common/funzioni.php";
+include_once "../db/connect.php";
+include_once "../common/funzioni.php";
 
 $dati=array();
 $nome=$_GET["nome"];
@@ -15,7 +15,7 @@ $immagine=$_GET["immagine"];
 if ($_GET["immagine"]!="") {
 	$immagine = "images/" . $_GET["immagine"];
 }
-else $immagine = "images/user.png";
+else $immagine = "../images/user.png";
 if (empty($nome))
 {
 	$errore["nome"]="1";
@@ -61,14 +61,14 @@ $dati["immagine"]=$immagine;
 
 if (count($errore)>0)
 {
-	header('location:registrazione.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+	header('Location: ../frontend/registrazione.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 }
 else
 {
 	$ris2 = checkMail($cid, $email, $password);
 	if ($ris2["status"] == "ok")
 	{
-		$parameter = "Location: registrazione.php?errore=utentegiaregistrato";
+		$parameter = "Location: ../frontend/registrazione.php?errore=utentegiaregistrato";
 		header($parameter);
 	}
 	else
@@ -81,12 +81,12 @@ else
 			$_SESSION["logged"]=true;
 
 			echo "ok";
-			header("Location: index.php?Message=Benvenuto");
+			header("Location: ../frontend/index.php?Message=Benvenuto");
 		}
 		else
 		{
 			echo "errore";
-			$parameter = "Location: registrazione.php?errore=connectionbd";
+			$parameter = "Location: ../frontend/registrazione.php?errore=connectionbd";
 			header($parameter);
 		}
 	}
