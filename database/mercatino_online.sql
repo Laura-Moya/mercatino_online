@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 21, 2021 alle 17:16
+-- Creato il: Feb 25, 2021 alle 22:20
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -46,7 +46,7 @@ CREATE TABLE `annuncio` (
   `acquirente` varchar(16) DEFAULT NULL,
   `visibilita` enum('privata','pubblica','ristretta') NOT NULL DEFAULT 'privata',
   `categorie` enum('Elettrodomestici','Foto e Video','Abbigliamento','Hobby') NOT NULL,
-  `sottocategorie` enum('Aspirapolveri','Caffettiere','Tostapane','Frullattori','Altro','Macchine fotografiche','Accessori per hobby','Telecamere','Microfoni','Altro da hobby','Vestiti','Borse','Scarpe','Accessori','Altro da abbigliamento','Giocattoli','Film e DVD','Musica','Libre e Riviste','Altro da hobby') NOT NULL
+  `sottocategorie` enum('Aspirapolveri','Caffettiere','Tostapane','Frullattori','Altri elettrodomestici','Macchine fotografiche','Accessori fotografici','Telecamere','Microfoni','Altro da foto e video','Vestiti','Borse','Scarpe','Accessori','Altro da abbigliamento','Giocattoli','Film e DVD','Musica','Libri e Riviste','Altro da hobby') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -55,17 +55,22 @@ CREATE TABLE `annuncio` (
 
 INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`) VALUES
 (1, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'vendesi aspirapolvere', 'folletto 3pro', 'images/folletto.jpg', 200, 1, NULL, NULL, 1, 'due anni', NULL, 'pubblica', 'Elettrodomestici', 'Aspirapolveri'),
-(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'microonde', 'Samsung', 'images/microonde.jpg', 80, 1, NULL, NULL, 1, '7 anni', NULL, 'pubblica', 'Elettrodomestici', ''),
-(3, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'si vende cellulare usato', 'huawei p20 lite', 'images/huawei.jpg', 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'Hobby', ''),
-(4, 'MYGLRA99P60Z131O', 'scarlatti 33', 'Buccinasco', 'Lombardia', 'MI', 'si vende televisione ', 'Sony G14', 'images/tv-sony.jpg', 750, 0, '4 mesi', 'pari a nuovo', NULL, NULL, NULL, 'pubblica', 'Foto e Video', ''),
+(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'microonde', 'Samsung', 'images/microonde.jpg', 80, 1, NULL, NULL, 1, '7 anni', 'MRNVNT96R63I577A', 'pubblica', 'Elettrodomestici', 'Aspirapolveri'),
+(3, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'si vende cellulare usato', 'huawei p20 lite', 'images/huawei.jpg', 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'pubblica', 'Hobby', 'Altro da hobby'),
+(4, 'MYGLRA99P60Z131O', 'scarlatti 33', 'Buccinasco', 'Lombardia', 'MI', 'si vende televisione ', 'Sony G14', 'images/tv-sony.jpg', 750, 0, '4 mesi', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'Foto e Video', 'Altro da foto e video'),
 (5, 'MRRCLS06S13H501K', 'aldo moro 76', 'Bologna', 'Emilia Romagna', 'BO', 'Vendesi DVD dei primi 6 film di Star Wars - originali', 'DVD star wars - cofanetto completo', 'images/dvd-starwars.jpg', 10, 1, NULL, NULL, 0, NULL, NULL, 'pubblica', 'Hobby', 'Film e DVD'),
 (6, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'Vendesi macchina fotografica vintage', 'Polaroid 580', 'images/polaroid.jpg', 150, 0, '20 anni', 'buono', NULL, NULL, 'MRNVNT96R63I577A', 'pubblica', 'Foto e Video', 'Macchine fotografiche'),
-(7, 'tzzzambornilllll', 'via mulino bianco', 'Pavia', 'Lombardia', 'PV', 'Caffettiera di design in super sconto', 'Caffettiera La conica by Alessi', 'images/caffettiera-conica.jpg', 15, 1, '', '', 1, '2 mesi', NULL, 'ristretta', 'Elettrodomestici', 'Caffettiere'),
+(7, 'tzzzambornilllll', 'via mulino bianco', 'Pavia', 'Lombardia', 'PV', 'Caffettiera di design in super sconto', 'Caffettiera La conica by Alessi', 'images/caffettiera-conica.jpg', 15, 1, '', '', 1, '2 mesi', 'GLNRNI95E57F205P', 'pubblica', 'Elettrodomestici', 'Caffettiere'),
 (8, 'tzzzambornilllll', 'via Gonin', 'Roma', 'Lazio', 'RO', 'Vendesi come nuovi vinili di Levante', 'Album Magmamemoria di Levante in vinile', 'images/levante-vinili.jpg', 40, 0, '1 mese', 'pari a nuovo', 0, '', NULL, 'pubblica', 'Hobby', 'Musica'),
 (9, 'MRRCLS06S13H501K', 'Via I Maggio 12', 'Bergamo', 'Lombardia', 'BG', 'Bellissima maglietta da uomo - Onda di Hokustai ', 'T-shirt the wave by Hokusai, black', 'images/tshirt-wave.jpg', 20, 1, '', '', 0, '', NULL, 'pubblica', 'Abbigliamento', 'Vestiti'),
 (10, 'MRRCLS06S13H501K', 'Via I Maggio 12', 'Bergamo', 'Lombardia', 'BG', 'Vendesi zaino Eastpack praticamente mai usato', 'Zaino Eastpack - Galaxy design', 'images/zaino-eastpack-galaxy.jpg', 30, 0, '3 anni', 'buono', 0, '', NULL, 'pubblica', 'Abbigliamento', 'Borse'),
 (11, 'MRRCLS06S13H501K', 'Via I Maggio 12', 'Bergamo', 'Lombardia', 'BG', 'Microfono compatto, essenziale, completo, di alta qualità', 'LIAM&DAAN - Mini Microfono Cardioide', 'images/mini-microfono.jpg', 50, 1, '', '', 1, '2 anni', NULL, 'ristretta', 'Foto e Video', 'Microfoni'),
-(12, 'MRRCLS06S13H501K', 'Via I Maggio 12', 'Bergamo', 'Lombardia', 'BG', 'Collana oro ben tenuta ', 'Fine doppia collana oro 750 con fantasia', 'images/gold-blog.jpg', 150, 0, '3 anni', 'usato', 0, '', NULL, 'ristretta', 'Abbigliamento', '');
+(12, 'MRRCLS06S13H501K', 'Via I Maggio 12', 'Bergamo', 'Lombardia', 'BG', 'Collana oro ben tenuta ', 'Fine doppia collana oro 750 con fantasia', 'images/gold-blog.jpg', 150, 0, '3 anni', 'usato', 0, '', NULL, 'ristretta', 'Abbigliamento', 'Accessori'),
+(13, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'LED Studi Anello Luce per Make Up', 'Anello Luce con Treppiede per Make Up con Telecomando Bluetooth', 'images/anello-luce.jpg', 25, 1, '', '', 0, '', NULL, 'ristretta', 'Foto e Video', 'Accessori fotografici'),
+(14, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Libro Usato Bellissimo', 'Venuto al mondo - Margaret Mazzantini', 'images/venuto-al-mondo-margaret-mazzantini.png', 8, 0, '3 anni', 'meglio', 0, '', NULL, 'pubblica', 'Hobby', 'Libri e Riviste'),
+(15, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Grande classico in ottime condizioni', 'Cime Tempestose - Emily Bronte', 'images/812WFlUxpsL.jpg', 5, 0, '3 anni', 'buono', 0, '', NULL, 'privata', 'Hobby', 'Libri e Riviste'),
+(16, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Gonna usata poco ', 'Gonna di velluto taglia M', 'images/gonna.jpeg', 10, 0, '2 anni', 'buono', 0, '', NULL, 'pubblica', 'Abbigliamento', 'Altro da abbigliamento'),
+(42, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', '', '', 'images/Not-Available.png', 0, 0, '', '', 0, '', NULL, 'pubblica', 'Foto e Video', 'Macchine fotografiche');
 
 -- --------------------------------------------------------
 
@@ -102,6 +107,7 @@ INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
 ('Via I Maggio 12', 'Bergamo', 'BG', 'Lombardia'),
 ('via iv', 'Zibido', 'MI', 'Lombardia'),
 ('via mulino bianco', 'Pavia', 'PV', 'Lombardia'),
+('Via Mulino Bianco 13', 'Cusago', 'MI', 'Lombardia'),
 ('via stradi', 'Corsico', 'MI', 'Lombardia'),
 ('via stradivari', 'Corsico', 'Lo', 'MI'),
 ('via stradivari', 'Corsico', 'MI', 'Lombardia'),
@@ -144,7 +150,9 @@ CREATE TABLE `osserva` (
 --
 
 INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
-('MRNVNT96R63I577A', 3),
+('GLNRNI95E57F205P', 1),
+('GLNRNI95E57F205P', 5),
+('GLNRNI95E57F205P', 8),
 ('MRNVNT96R63I577A', 4),
 ('MRRCLS06S13H501K', 1),
 ('MRRCLS06S13H501K', 2),
@@ -212,6 +220,7 @@ INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (2, 'venduto', '2020-11-19 11:33:30'),
 (2, 'venduto', '2021-02-18 14:03:30'),
 (2, 'venduto', '2021-02-18 18:44:15'),
+(2, 'venduto', '2021-02-21 18:50:39'),
 (2, 'eliminato', '2021-02-17 13:43:52'),
 (2, 'eliminato', '2021-02-17 16:19:30'),
 (3, 'in vendita', '2021-02-17 12:56:32'),
@@ -223,6 +232,7 @@ INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (3, 'eliminato', '2021-02-17 13:00:42'),
 (3, 'eliminato', '2021-02-19 10:06:11'),
 (4, 'in vendita', '2021-02-17 21:34:02'),
+(4, 'eliminato', '2021-02-21 20:03:42'),
 (5, 'in vendita', '2021-02-21 12:29:08'),
 (5, 'venduto', '2021-02-18 14:54:16'),
 (6, 'in vendita', '2021-02-20 11:03:56'),
@@ -231,13 +241,21 @@ INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (7, 'in vendita', '2021-02-21 12:28:12'),
 (7, 'venduto', '2021-02-20 17:40:06'),
 (7, 'venduto', '2021-02-20 18:06:58'),
+(7, 'venduto', '2021-02-25 22:17:01'),
 (8, 'in vendita', '2021-02-20 13:05:56'),
 (8, 'in vendita', '2021-02-21 12:28:18'),
 (8, 'venduto', '2021-02-20 15:10:45'),
 (9, 'in vendita', '2021-02-21 13:36:01'),
 (10, 'in vendita', '2021-02-21 13:50:54'),
 (11, 'in vendita', '2021-02-21 14:12:14'),
-(12, 'in vendita', '2021-02-21 14:40:09');
+(12, 'in vendita', '2021-02-21 14:40:09'),
+(13, 'in vendita', '2021-02-25 13:38:08'),
+(13, 'in vendita', '2021-02-25 18:17:43'),
+(13, 'venduto', '2021-02-25 13:39:02'),
+(14, 'in vendita', '2021-02-25 18:05:44'),
+(15, 'in vendita', '2021-02-25 18:12:02'),
+(16, 'in vendita', '2021-02-25 18:17:25'),
+(42, 'in vendita', '2021-02-25 22:19:39');
 
 -- --------------------------------------------------------
 
@@ -260,6 +278,9 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `password`) VALUES
+('1234567890987654', 'valentina', 'maronese', 'valentina@maro.com', 'images/user.png', '', '1234'),
+('eeeeeeeeeeeeeeee', 'valentina', 'ciao', 'ciao@vale.it', 'images/user.png', 'acquirente', '1234'),
+('GLNRNI95E57F205P', 'Irene', 'Galiano', 'irn.galiano@gmail.com', 'images/irene.jpg', 'venditore', '1234'),
 ('LSMRNhoskjdfskjd', 'lisa', 'maronese', 'lisa@maronese.com', 'images/Lisa-maronese.jpg', 'acquirente', '1234'),
 ('MRABND67RR3ACYY9', 'Maria', 'Biondi', 'maria@biondi.com', 'images/DSC_0092.JPG', 'acquirente', '1234'),
 ('MRNVNT96R63I577A', 'Valentina', 'Maronese', 'valentina@maronese.com', 'images/DSC_0153.JPG', 'acquirente', '1234'),
@@ -290,7 +311,8 @@ INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `
 ('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '1', '3'),
 ('tzzzambornilllll', 'pieroooooooooooo', '5', '4'),
 ('pieroooooooooooo', 'tzzzambornilllll', '2', '3'),
-('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '3', '4');
+('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '3', '4'),
+('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '3', '5');
 
 -- --------------------------------------------------------
 
@@ -311,6 +333,7 @@ CREATE TABLE `vive` (
 --
 
 INSERT INTO `vive` (`codice_fiscale`, `via`, `comune`, `provincia`, `regione`) VALUES
+('GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'MI', 'Lombardia'),
 ('MRNVNT96R63I577A', 'galileo galilei 3', 'stresa', 'vb', 'piemonte'),
 ('MRNVNT96R63I577A', 'scarlatti 33', 'Buccinasco', 'MI', 'Lombardia'),
 ('MRNVNT96R63I577A', 'via dante alighieri', 'Palermo', 'PA', 'Sicilia'),
@@ -409,7 +432,7 @@ ALTER TABLE `vive`
 -- AUTO_INCREMENT per la tabella `annuncio`
 --
 ALTER TABLE `annuncio`
-  MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Limiti per le tabelle scaricate
