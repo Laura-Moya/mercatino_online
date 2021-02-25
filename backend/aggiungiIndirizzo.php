@@ -1,8 +1,8 @@
 
     <?php
-    include "common/header.php";
-    include "db/connect.php";
-    include "common/funzioni.php";
+    include "../common/header.php";
+    include "../db/connect.php";
+    include "../common/funzioni.php";
 
     $nuovaVia = Ucwords($_POST["nuovaVia"]);
     $nuovoComune = Ucwords($_POST["nuovoComune"]);
@@ -20,17 +20,17 @@
 
       if ($data)
       {
-        $parameter = "Location: index.php?Message=nuovoIndirizzoAggiunto";
+        $parameter = "Location: ../frontend/index.php?Message=nuovoIndirizzoAggiunto";
         header($parameter);
       }
       else
       {
-          header("Location: index.php?errore=erroreDB2");
+          header("Location: ../frontend/index.php?errore=erroreDB2");
       }
     }
     else
     {
-        header("Location: index.php?errore=erroreDB");
+        header("Location: ../frontend/index.php?errore=erroreDB");
     }
 
 

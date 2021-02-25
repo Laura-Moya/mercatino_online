@@ -24,10 +24,10 @@ if ($codicefiscalevaluta == $acquirente){
   $data = mysqli_query($cid, $query);
 
   if ($data) {
-    header("Location: prodottiAcquistati.php?messaggio=valutazioneok");
+    header("Location: ../prodottiAcquistati.php?messaggio=valutazioneok");
   }
   else {
-  header("Location: prodottiAcquistati.php?errore=errore");
+  header("Location: ../prodottiAcquistati.php?errore=errore");
   }
 } else {
   $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
@@ -35,10 +35,10 @@ if ($codicefiscalevaluta == $acquirente){
   $data = mysqli_query($cid, $query);
 
   if ($data) {
-    header("Location: prodottiAcquistati.php?messaggio=valutazioneok");
+    header("Location: ../prodottiAcquistati.php?messaggio=valutazioneok");
   }
   else {
-  header("Location: prodottiAcquistati.php?errore=errore");
+  header("Location: ../prodottiAcquistati.php?errore=errore");
 }
 }
 

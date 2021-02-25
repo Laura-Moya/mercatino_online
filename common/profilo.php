@@ -44,7 +44,7 @@
 
     <!-- Popup aggiungiIndirizzo -->
     <div class='form-popup3 container-registrazione' id='aggiungiIndirizzo'>
-      <form action='./aggiungiIndirizzo.php?codicefiscale=<?php echo "$codice_fiscale[0]"; ?>' method='POST'>
+      <form action='../backend/aggiungiIndirizzo.php?codicefiscale=<?php echo "$codice_fiscale[0]"; ?>' method='POST'>
       <h4>Aggiungi un nuovo indirizzo!</h4>
 
       <label>Nuova Via: </label>

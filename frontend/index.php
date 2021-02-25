@@ -1,14 +1,14 @@
 <?php
-include "db/connect.php";
+include '../db/connect.php';
 
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
 <body>
-  <?php include "common/navbar.php";?>
+  <?php include "../common/navbar.php";?>
   <?php
 
     $risultato = inPrimoPiano($cid);

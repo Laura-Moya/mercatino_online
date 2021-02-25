@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
 <body>
-  <?php include "common/navbar.php";?>
+  <?php include "../common/navbar.php";?>
   <?php
 
     //Funzione annunciOsservati
@@ -30,7 +30,7 @@
                   <div class="card-body">
                   <h5 class="card-title"><a href="prodotto.php?codice=<?php echo $prodotto[2]; ?>"> <?php echo Ucwords($prodotto[1]); ?> </a></h5>
                   <p class="card-text"><?php echo Ucwords($prodotto[0]); ?></p>
-                  <a href="nonOsservare.php?codice=<?php echo $prodotto[2]; ?>&codicefiscale=<?php echo $codice_fiscale[0];?>" class="btn btn-primary">Non osservare più</a>
+                  <a href="../backend/nonOsservare.php?codice=<?php echo $prodotto[2]; ?>&codicefiscale=<?php echo $codice_fiscale[0];?>" class="btn btn-primary">Non osservare più</a>
                 </div>
               </div>
       <?php  }

@@ -36,7 +36,7 @@ if (isset($_SESSION["indirizzo"])) {
 
 //Per prendere l'indirizzo della foto
 if ($_POST["foto"]!="") {
-	$foto = "images/" . $_POST["foto"];
+	$foto = "../images/" . $_POST["foto"];
 }
 else $foto = "images/Not-Available.png";
 

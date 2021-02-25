@@ -18,8 +18,8 @@ else
 	$dat["password"]="";
 }
 
-include "db/connect.php";
-include "common/funzioni.php";
+include "../db/connect.php";
+include "../common/funzioni.php";
 
 if (isset($_SESSION["logged"])) {
   $risultato = prendereCF($cid, $_SESSION["utente"]);
@@ -44,12 +44,12 @@ if(isset($_POST["indirizzo"])){
 <nav class="navbar navbar-expand-sm navbar-light" id="prima-navbar">
 
     <div class="col-sm-12 col-md-3 col-lg-3">
-      <a class="navbar-brand" href="index.php"> <img src="./images/logo.png" style="width: 15rem;" id="logo" alt="logo"></a>
+      <a class="navbar-brand" href="../index.php"> <img src="../images/logo.png" style="width: 15rem;" id="logo" alt="logo"></a>
     </div>
 
     <div class="col-sm-6 col-md-6 col-lg-6">
 
-      <form class="example" action="./annunci.php" method="POST" style="margin:auto;max-width:450px">
+      <form class="example" action="../annunci.php" method="POST" style="margin:auto;max-width:450px">
         <input type="text" placeholder="Cerca..." name="search2">
         <button type="submit" name="submit-search2"><i class="fa fa-search"></i></button>
       </form>
@@ -64,9 +64,9 @@ if(isset($_POST["indirizzo"])){
           {
             echo "<li class='nav-item'>";
             if ($tipoutente[0] == "venditore"){
-              echo "<a class='nav-link' style='cursor: pointer;' href='profiloVenditore.php'>Profilo</a>";
+              echo "<a class='nav-link' style='cursor: pointer;' href='../frontend/profiloVenditore.php'>Profilo</a>";
             } else {
-              echo "<a class='nav-link' style='cursor: pointer;' href='profiloAcquirente.php'>Profilo</a>";
+              echo "<a class='nav-link' style='cursor: pointer;' href='../frontend/profiloAcquirente.php'>Profilo</a>";
             }
             echo "</li>";
             echo "<li class='nav-item'>";
@@ -79,7 +79,7 @@ if(isset($_POST["indirizzo"])){
            <li class='nav-item'>
            <a class='nav-link' onclick='openForm()' style='cursor: pointer;' id='accedi'><i class='fas fa-sign-in-alt'></i>Accedi</a>
            <div class='form-popup container-registrazione' id='myForm'>
-            <form action='./login.php' method='POST'>
+            <form action='../backend/login.php' method='POST'>
            <h4>Il Tuo Mercatino Online</h4>
            <label for='email'><b>Email</b></label><br/>
            <input type='text' placeholder='Immettere Email' value= "<?php echo $dat['email'];?>" name='email' id="email"></br>
@@ -88,7 +88,7 @@ if(isset($_POST["indirizzo"])){
               echo "<input type='password' placeholder='Immettere Password' id='password' name='password' value=";
               $dat["password"];
               echo " ></br>";
-              echo "<p>Non hai un account? <a href='./registrazione.php'>Registrati!</a></p>";
+              echo "<p>Non hai un account? <a href='../registrazione.php'>Registrati!</a></p>";
               echo "<button  class='btn btn-primary btn-login'  onclick='login()'>Accedi</button>";
               echo "<button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>";
              echo '</form>';
@@ -101,7 +101,7 @@ if(isset($_POST["indirizzo"])){
         <?php
 
           if (isset($_SESSION["utente"])) {
-            echo '<a class="nav-link" href="osservati.php"><i class="fas fa-eye fa-lg icon-eye"></i></a>';
+            echo '<a class="nav-link" href="../frontend/osservati.php"><i class="fas fa-eye fa-lg icon-eye"></i></a>';
           }
           else
           {
@@ -169,7 +169,7 @@ else {
       $categorie = array("Elettrodomestici", "Hobby", "Foto e Video", "Abbigliamento");
       for ($i=0; $i < 4 ; $i++) {
         echo '<li class="nav-item second">';
-          echo '<a type="submit" class="nav-link" href="annunci.php?cat='. "$categorie[$i]".'">'. "$categorie[$i]".'</a>';
+          echo '<a type="submit" class="nav-link" href="/annunci.php?cat='. "$categorie[$i]".'">'. "$categorie[$i]".'</a>';
         echo '</li>';
       }
       ?>
@@ -194,7 +194,7 @@ else {
 
   function messaggioLogout(){
     if (confirm('Sei sicuro che vuoi uscire?')) {
-        window.location = "common/logout.php";
+        window.location = "../common/logout.php";
     }
   }
   function login(){

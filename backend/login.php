@@ -1,7 +1,7 @@
 <?php
 
-include_once "db/connect.php";
-include_once "common/funzioni.php";
+include_once "../db/connect.php";
+include_once "../common/funzioni.php";
 
 $email = $_POST["email"];
 $password = $_POST["password"];
@@ -14,17 +14,17 @@ if ($ris["status"] == "ok"){
     $_SESSION["utente"] = $email;
     $_SESSION["logged"]=true;
 
-    header("Location: index.php");
+    header("Location: ../frontend/index.php");
     exit();
   }
   else{
-    $parameter = "Location: index.php?errore=password&password=$password";
+    $parameter = "Location: ../frontend/index.php?errore=password&password=$password";
     header($parameter);
   }
 }
 else
 {
-  $parameter = "Location: index.php?errore=email&email=$email";
+  $parameter = "Location: ../frontend/index.php?errore=email&email=$email";
   header($parameter);
 }
  ?>
