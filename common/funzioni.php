@@ -577,11 +577,15 @@ function inPrimoPiano($cid)
     $risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
     return $risultato;
   }
-	$sql = "SELECT DISTINCT annuncio.nome_annuncio, annuncio.nome_prodotto, osserva.prodotto, annuncio.foto
-					FROM osserva, annuncio
-					WHERE osserva.prodotto = annuncio.codice
+	$sql = "SELECT p.nome_annuncio, p.nome_prodotto, osserva.prodotto, p.foto
+					FROM osserva, annuncio p, stato s
+					WHERE p.codice=s.prodotto AND osserva.prodotto = p.codice AND p.visibilita ='pubblica' AND s.stato='in vendita' AND p.codice NOT IN
+              (SELECT s.prodotto
+              FROM stato s2
+              WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)
 					GROUP BY osserva.prodotto
 					ORDER BY COUNT(osserva.utente) DESC";
+
 
 	$res=$cid->query($sql);
 

@@ -14,8 +14,10 @@
       $prodotto = $risultato['contenuto'];
       $risultato = contaOsservatori($cid, $codice);
       $osservatori = $risultato['contenuto'];
+      if (isset($_SESSION["utente"])){
       $risultato = prodottoOsservato($cid,$codice_fiscale[0], $codice);
       $osservato = $risultato['contenuto'];
+      }
     ?>
     <div class='form-popup3 container-registrazione' id='stati' >
       <div class="">
@@ -66,24 +68,27 @@
               echo '<p>Stato usura: '. Ucwords("$prodotto[15]").'</p>';
               echo '<p>Tempo usura: '.  Ucwords("$prodotto[16]").'</p>';
             }
+            if (isset($_SESSION["utente"])){
+              if ($prodotto[12]==$codice_fiscale[0]){
+                echo '<a class="btn btn-primary" onclick="openForm()">Visualizza stati del prodotto</a>';
 
-             if ($prodotto[12]==$codice_fiscale[0]){
-               echo '<a class="btn btn-primary" onclick="openForm()">Visualizza stati del prodotto</a>';
+              } else {?>
+                <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
+                <?php if ($osservato == 1) {
+                  echo '<a href="nonOsservare.php?codice='. $codice .'&codicefiscale='.$codice_fiscale[0].'&prodotto=on" class="btn btn-primary">Non osservare più</a>';
+                } else {?>
+                <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
+              <?php
+            }
+          }
+        } else {
+          echo '<a href="registrazione.php"> Per poter comprare questo prodotto devi prima registrarti!</a>';
+        }
+            ?>
 
-             } else {?>
-               <button class="btn btn-primary" type="button" onclick="location.href='pagamento.php?codice=<?php echo "$codice" ;?>'">Acquista ora</button>
-               <?php if ($osservato == 1) {
-                 echo '<a href="nonOsservare.php?codice='. $codice .'&codicefiscale='.$codice_fiscale[0].'&prodotto=on" class="btn btn-primary">Non osservare più</a>';
-               } else {?>
-               <button class="btn btn-primary" type="button"><i class="fas fa-eye fa-md icon-eye" id="eye-prodotto"></i><a style="color: white !important;" href="osserva.php?codice=<?php echo $codice ?>&codicefiscale=<?php echo $codice_fiscale[0];?>">Osserva</a> </button>
-             <?php
-           }
-         }
-           ?>
           </div>
         </div>
       </div>
-
     </form>
 <script>
     function openForm() {

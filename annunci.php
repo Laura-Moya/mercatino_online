@@ -152,37 +152,82 @@
 
             if (isset($_POST['submit-search2'])){
               $search = mysqli_real_escape_string($cid,$_POST['search2']);
-              $sql = "SELECT * FROM annuncio WHERE nome_annuncio LIKE '%$search%' OR nome_prodotto LIKE '%$search%'";
+              $sql = "SELECT *
+                      FROM annuncio p, stato s
+                      WHERE p.codice=s.prodotto AND p.visibilita !='privata' AND s.stato ='in vendita' AND p.codice NOT IN
+                        (SELECT s.prodotto
+                        FROM stato s2
+                        WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora) AND p.nome_annuncio LIKE '%$search%' OR p.nome_prodotto LIKE '%$search%'";
             }
             if (isset($_GET['cat'])){
                 $cat = $_GET['cat'];
-                 $sql = "SELECT * FROM annuncio WHERE annuncio.categorie = '$cat'";
+                 $sql = " SELECT *
+                          FROM annuncio p, stato s
+                          WHERE p.codice=s.prodotto AND p.categorie = '$cat' AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+            								(SELECT s.prodotto
+            								FROM stato s2
+            								WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
             }
             if (isset($_GET['sottocat'])){
                 $sotcat = $_GET['sottocat'];
-                 $sql = "SELECT * FROM annuncio WHERE annuncio.sottocategorie = '$sotcat'";
+                 $sql = " SELECT *
+                          FROM annuncio p, stato s
+                          WHERE p.codice=s.prodotto AND p.categorie = '$sotcat' AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+            								(SELECT s.prodotto
+            								FROM stato s2
+            								WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
                }
             if (isset($_GET['stato'])){
               if ($_GET['stato']=="nuovo"){
-                $sql = "SELECT * FROM annuncio WHERE annuncio.nuovo = 1";
+                $sql = "SELECT *
+                        FROM annuncio p, stato s
+                        WHERE p.codice=s.prodotto AND p.nuovo = 1 AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+                          (SELECT s.prodotto
+                          FROM stato s2
+                          WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
               }else {
-                $sql = "SELECT * FROM annuncio WHERE annuncio.nuovo = 0";
+                $sql = "SELECT *
+                        FROM annuncio p, stato s
+                        WHERE p.codice=s.prodotto AND p.nuovo = 0 AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+                          (SELECT s.prodotto
+                          FROM stato s2
+                          WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
               }
             }
             if (isset($_GET['prezzo'])){
                 $prezzo = $_GET['prezzo'];
                 switch ($prezzo) {
                   case '1':
-                    $sql = "SELECT * FROM annuncio WHERE annuncio.prezzo >= 0 AND annuncio.prezzo < 20";
+                    $sql = "SELECT *
+                            FROM annuncio p, stato s
+                            WHERE p.codice=s.prodotto AND p.prezzo >= 0 AND p.prezzo < 20 AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+                              (SELECT s.prodotto
+                              FROM stato s2
+                              WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
                     break;
                   case '2':
-                    $sql = "SELECT * FROM annuncio WHERE annuncio.prezzo >= 20 AND annuncio.prezzo < 50";
+                    $sql = "SELECT *
+                            FROM annuncio p, stato s
+                            WHERE p.codice=s.prodotto AND p.prezzo >= 20 AND p.prezzo < 50 AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+                              (SELECT s.prodotto
+                              FROM stato s2
+                              WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
                     break;
                   case '3':
-                    $sql = "SELECT * FROM annuncio WHERE annuncio.prezzo >= 50 AND annuncio.prezzo < 100";
+                    $sql = "SELECT *
+                            FROM annuncio p, stato s
+                            WHERE p.codice=s.prodotto AND p.prezzo >= 50 AND p.prezzo < 100 AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+                              (SELECT s.prodotto
+                              FROM stato s2
+                              WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
                     break;
                   case '4':
-                    $sql = "SELECT * FROM annuncio WHERE annuncio.prezzo >= 100 ";
+                    $sql = "SELECT *
+                            FROM annuncio p, stato s
+                            WHERE p.codice=s.prodotto AND p.prezzo >= 100 AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+                              (SELECT s.prodotto
+                              FROM stato s2
+                              WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
                     break;
                 }
                }
@@ -206,8 +251,28 @@
             $queryResult = mysqli_num_rows($result);
               if ($queryResult > 0) {
                 while($row=mysqli_fetch_assoc($result)){
-                  if ($row["acquirente"]==null){
-                    if ($row["visibilita"]=="pubblica"){?>
+                  if ($row["visibilita"]!="ristretta"){?>
+                    <div class="card mb-3" id="annunci" style="max-width: 770px;">
+                      <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="<?php echo $row['foto']; ?>" class="card-img">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <?php
+                            echo '<h2 class="card-title"> <a href="prodotto.php?codice='.$row["codice"].'"> '.Ucwords($row["nome_prodotto"]).' </a></h2>';
+                            ?>
+                            <p class="card-text"> <?php echo Ucwords($row['nome_annuncio']) ?></p>
+                            <p class="card-text">Provenienza: <?php echo mb_strtoupper($row['provincia']) ?> </p>
+                            <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo $row['prezzo'] ?> </b></h4>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            <?php } else {
+                    if(isset($_SESSION["indirizzo"])){
+                      if ($indirizzoscelto[3]==$row["regione"]){?>
                       <div class="card mb-3" id="annunci" style="max-width: 770px;">
                         <div class="row no-gutters">
                           <div class="col-md-4">
@@ -226,35 +291,10 @@
                           </div>
                         </div>
                       </div>
-                    <?php }
-                    if ($row["visibilita"]=="ristretta"){
-                      if(isset($_SESSION["indirizzo"])){
-                        if ($indirizzoscelto[3]==$row["regione"]){?>
-                        <div class="card mb-3" id="annunci" style="max-width: 770px;">
-                          <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="<?php echo $row['foto']; ?>" class="card-img">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <?php
-                                echo '<h2 class="card-title"> <a href="prodotto.php?codice='.$row["codice"].'"> '.Ucwords($row["nome_prodotto"]).' </a></h2>';
-                                ?>
-                                <p class="card-text"> <?php echo Ucwords($row['nome_annuncio']) ?></p>
-                                <p class="card-text">Provenienza: <?php echo mb_strtoupper($row['provincia']) ?> </p>
-                                <h4 class="card-text" style="color: #824f93 !important;">Prezzo: <b>€ <?php echo $row['prezzo'] ?> </b></h4>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                <?php   }
-                      }
+              <?php   }
                     }
                   }
                 }
-              } else {
-                echo "<h4> Non sono presenti annunci con questo filtro </h4>";
               }
           ?>
         </div>
