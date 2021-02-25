@@ -40,15 +40,18 @@
             if ($intestatario=="" || $numero_carta=="" || $data_scadenza=="" || $cvv=="")
             {
               header("Location: pagamento.php?errore=campivuoti&codice=".$codice);
+              echo "1";
             }
-            elseif (strlen($numero_carta)!=16 || strlen($cvv)!=3)
+            elseif (is_numeric($numero_carta) || is_numeric($cvv)!=3)
             {
               header("Location: pagamento.php?errore=campierrati&codice=".$codice);
+              echo "2";
             }
             else
             {
               $query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'venduto', current_timestamp())";
               $data = mysqli_query($cid, $query);
+              echo "3";
 
               if ($data) {
                 $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
@@ -90,14 +93,21 @@
       $numero_carta = $_POST["numero_carta"];
       $data_scadenza = $_POST["data_scadenza"];
       $cvv = $_POST["cvv"];
-
-      if ($intestatario=="" || $numero_carta=="" || $data_scadenza=="" || $cvv==""){
+      if ($intestatario=="" || $numero_carta=="" || $data_scadenza=="" || $cvv=="")
+      {
         header("Location: pagamento.php?errore=campivuoti&codice=".$codice);
-      } elseif (strlen($numero_carta)!=16 || strlen($cvv)!=3) {
+        echo "1";
+      }
+      elseif (is_numeric($numero_carta) || is_numeric($cvv)!=3)
+      {
         header("Location: pagamento.php?errore=campierrati&codice=".$codice);
-      } else {
+        echo "2";
+      }
+      else
+      {
         $query = "INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES ('$codice', 'venduto', current_timestamp())";
         $data = mysqli_query($cid, $query);
+        echo "3";
 
         if ($data) {
           $sql = "UPDATE `annuncio` SET `acquirente` = '$codicefiscale' WHERE `annuncio`.`codice` = '$codice'";
