@@ -5,7 +5,11 @@
   </head>
   <body>
 
-    <?php include "../common/navbar.php";?>
+    <?php include "../common/navbar.php";
+    if (!isset($_SESSION['utente'])){
+      include "../common/jumbotron.php";
+    }    
+    ?>
 
     <?php
       $codice = mysqli_real_escape_string($cid, $_GET['codice']);

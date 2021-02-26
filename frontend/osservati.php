@@ -4,7 +4,11 @@
     <?php include "../common/header.php";?>
   </head>
 <body>
-  <?php include "../common/navbar.php";?>
+  <?php include "../common/navbar.php";
+  if (!isset($_SESSION['utente'])){
+    include "../common/jumbotron.php";
+  }
+  ?>
   <?php
 
     //Funzione annunciOsservati

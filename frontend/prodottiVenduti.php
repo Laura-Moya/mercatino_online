@@ -5,7 +5,11 @@
       <script type="text/javascript" src="../common/funzioni.js"></script>
   </head>
 <body onload="load()">
-  <?php include "../common/navbar.php";?>
+  <?php include "../common/navbar.php";
+  if (!isset($_SESSION['utente'])){
+    include "../common/jumbotron.php";
+  }
+  ?>
   <?php
 
     //Funzione annunciOsservati

@@ -13,6 +13,7 @@ $tipoErrore = array("1"=>"Inserire il nome dell'annuncio",
 $errore = array();
 $dati = array();
 
+
 if (isset($_GET["status"]))
 {
 	if ($_GET["status"]=='ko') $errore=unserialize($_GET["errore"]);
@@ -35,8 +36,11 @@ else
   </head>
   <body>
 
-  <?php include "../common/navbar.php";?>
-
+  <?php include "../common/navbar.php";
+  if (!isset($_SESSION['utente'])){
+    include "../common/jumbotron.php";
+  }
+  ?>
   <div class="container-creare-annuncio" align="center">
       <form action='../backend/checkAnnuncio.php?codicefiscale=<?php echo "$codice_fiscale[0]"; ?>' method="post">
         <table class="">

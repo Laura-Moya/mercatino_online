@@ -7,6 +7,9 @@
 
     <?php
      include "../common/navbar.php";
+     if (!isset($_SESSION['utente'])){
+       include "../common/jumbotron.php";
+     }
      $codice = $_GET["codice"];
      $risultato = leggiAnnuncio($cid, $codice);
      $prodotto = $risultato['contenuto'];
