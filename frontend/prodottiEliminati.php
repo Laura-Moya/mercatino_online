@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
       <script type="text/javascript" src="common/funzioni.js"></script>
   </head>
 <body onload="load()">
-  <?php include "common/navbar.php";?>
+  <?php include "../common/navbar.php";?>
   <?php
 
     //Funzione annunciOsservati

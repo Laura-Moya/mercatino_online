@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
 <body>
-  <?php include "db/connect.php";
+  <?php include "../db/connect.php";
 
 
   $codice=$_GET["codice"];
@@ -63,7 +63,7 @@
                   $message = "Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!";
                   $headers = "From: mariapatricianunez96@gmail.com";
                   $email = mail("$mail[0]", "Prodotto Acquistato", $message, $headers);
-                  header("Location: index.php?acquisto=ok");
+                  header("Location: ../frontend/index.php?acquisto=ok");
                 }
               }
 
@@ -83,7 +83,7 @@
                 $message = "Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!";
                 $headers = "From: mariapatricianunez96@gmail.com";
                 $email = mail("$mail[0]", "Prodotto Acquistato", $message, $headers);
-              header("Location: index.php?acquisto=ok");
+              header("Location: ../frontend/index.php?acquisto=ok");
               }
             }
           }
@@ -117,7 +117,7 @@
             $message = "Vai a vedere sul tuo profilo di Mercatino_Online, troverai un nuovo prodotto venduto!";
             $headers = "From: mariapatricianunez96@gmail.com";
             $email = mail("$mail[0]", "Prodotto Acquistato", $message, $headers);
-            header("Location: index.php?acquisto=ok");
+            header("Location: ../frontend/index.php?acquisto=ok");
           }
         }
       }

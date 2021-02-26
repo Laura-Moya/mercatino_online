@@ -44,7 +44,7 @@ if(isset($_POST["indirizzo"])){
 <nav class="navbar navbar-expand-sm navbar-light" id="prima-navbar">
 
     <div class="col-sm-12 col-md-3 col-lg-3">
-      <a class="navbar-brand" href="../index.php"> <img src="../images/logo.png" style="width: 15rem;" id="logo" alt="logo"></a>
+      <a class="navbar-brand" href="../frontend/index.php"> <img src="../images/logo.png" style="width: 15rem;" id="logo" alt="logo"></a>
     </div>
 
     <div class="col-sm-6 col-md-6 col-lg-6">

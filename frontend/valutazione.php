@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
   <body>
 
-    <?php include "common/navbar.php";?>
+    <?php include "../common/navbar.php";?>
 
     <?php
       $codice = mysqli_real_escape_string($cid, $_GET['codice']);
@@ -27,7 +27,7 @@
             <h4 class="nome-annuncio"> <?php echo Ucwords("$prodotto[0]"); ?> </h4>
             <h4 class="nome-prodotto" style="margin-top: 1rem;"> <?php echo Ucwords("$prodotto[1]"); ?> </h4>
 
-            <form action='valuta.php?codiceFiscaleValutato=<?php echo "$prodotto[12]";?>&codicefiscalevaluta=<?php echo "$codice_fiscale[0]"; ?>&acquirente=<?php echo "$prodotto[18]";?>' method='POST'>
+            <form action='../backend/valuta.php?codiceFiscaleValutato=<?php echo "$prodotto[12]";?>&codicefiscalevaluta=<?php echo "$codice_fiscale[0]"; ?>&acquirente=<?php echo "$prodotto[18]";?>' method='POST'>
 
               <label ><b>Puntalità</b></label><br/>
               <select class="form-control form-control-sm" name="puntualita" id="puntualita" style="width: 15% !important;" required>

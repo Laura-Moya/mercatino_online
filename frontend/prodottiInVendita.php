@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
       <script type="text/javascript" src="common/funzioni.js"></script>
   </head>
 <body onload="load()">
-  <?php include "common/navbar.php";?>
+  <?php include "../common/navbar.php";?>
   <?php
 
     //Funzione annunciOsservati
@@ -51,13 +51,13 @@
               echo '<div class="card" style="width: 16rem; margin-top:0px !important;">';
                 echo '<img src="'. $prodotto[6] .'" style="height: 10rem; width: revert;" class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
-                  echo '<form class="" action="stati.php " method="get">';
+                  echo '<form class="" action="../backend/stati.php " method="get">';
                   echo '<h5 class="card-title"><a href="prodotto.php?codice='. $prodotto[2].'"> '. Ucwords($prodotto[0]) . ' </a></h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[1]) . '</p>';
-                  echo '<a href="stati.php?stato=invendita&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
+                  echo '<a href="../backend/stati.php?stato=invendita&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
                   echo '</form>';
-                  echo '<form class="" action="eliminaAnnuncio.php " method="get">';
-                  echo '<a style="margin: 1rem 2.1rem; background-color: red !important; " href="eliminaAnnuncio.php?codice='. $prodotto[2].'" class="btn btn-primary" >Elimina annuncio</a>';
+                  echo '<form class="" action="../backend/eliminaAnnuncio.php " method="get">';
+                  echo '<a style="margin: 1rem 2.1rem; background-color: red !important; " href="../backend/eliminaAnnuncio.php?codice='. $prodotto[2].'" class="btn btn-primary" >Elimina annuncio</a>';
                   echo '</form>';
                 echo '</div>';
               echo '</div>';

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
       <script type="text/javascript" src="common/funzioni.js"></script>
   </head>
 <body onload="load()">
-  <?php include "common/navbar.php";?>
+  <?php include "../common/navbar.php";?>
   <?php
 
     //Funzione annunciOsservati
@@ -58,7 +58,7 @@
                   echo '<a href="valutazione.php?codice='. $prodotto[2].'" class="btn btn-primary" style="margin: 1rem 2.1rem;">Valuta transizione</a>';
                   echo '</form>';
                   echo '<form class="" action="rimettiInVendita.php " method="get">';
-                  echo '<a style="margin: 0rem 2.1rem;" href="rimettiInVendita.php?codice='. $prodotto[2].'" class="btn btn-primary" >Rimetti in vendita!</a>';
+                  echo '<a style="margin: 0rem 2.1rem;" href="../backend/rimettiInVendita.php?codice='. $prodotto[2].'" class="btn btn-primary" >Rimetti in vendita!</a>';
                   echo '</form>';
                 echo '</div>';
               echo '</div>';
@@ -69,7 +69,7 @@
   </div>
   <script>
   function load(){
-    if ((document.referrer.match("http://localhost/mercatino_online/prodottiVenduti.php?"))!= null){
+    if ((document.referrer.match("http://localhost/mercatino_online/frontend/prodottiVenduti.php?"))!= null){
       openForm();
     }
 
