@@ -84,7 +84,7 @@ if(isset($_POST["indirizzo"])){
            <label for='email'><b>Email</b></label><br/>
            <input type='text' placeholder='Immettere Email' value= "<?php echo $dat['email'];?>" name='email' id="email"></br>
            <?php
-              echo "<label for='psw'><b>Password</b></label>";
+              echo "<label for='psw'><b>Password</b></label><br/>";
               echo "<input type='password' placeholder='Immettere Password' id='password' name='password' value=";
               $dat["password"];
               echo " ></br>";

@@ -1,7 +1,7 @@
 <?php
 
-include_once "db/connect.php";
-include_once "common/funzioni.php";
+include_once "../db/connect.php";
+include_once "../common/funzioni.php";
 session_start();
 
 $errore = array();
@@ -38,7 +38,7 @@ if (isset($_SESSION["indirizzo"])) {
 if ($_POST["foto"]!="") {
 	$foto = "../images/" . $_POST["foto"];
 }
-else $foto = "images/Not-Available.png";
+else $foto = "../images/Not-Available.png";
 
 
 $sottocategorie = array();
@@ -155,11 +155,11 @@ $sottoCat = $sottoCat[$sottocategoria];
 
 			if (count($errore)>0)
 			{
-				header('location:creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+				header('location:../frontend/creareAnnuncio.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 			}
 			else
 			{
-				header('location:prodottiInVendita.php?nuovoannuncio=ok');
+				header('location:../frontend/prodottiInVendita.php?nuovoannuncio=ok');
 			}
 
 ?>

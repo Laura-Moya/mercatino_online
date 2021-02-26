@@ -29,6 +29,11 @@ include '../db/connect.php';
         echo '<script type="text/javascript">alert("Il tuo acquisto è andato a buon fine! Mettiti in contatto con il venditore per stabilire come effettuare il ritiro a mano. Continua lo shopping!")</script>';
       }
     }
+    if (isset($_GET["accounteliminato"])){
+      echo '<script type="text/javascript">alert("Account eliminato correttamente")</script>';
+
+    }
+
     //Errore del login
     if (isset($_GET["errore"])) {
       if ($_GET["errore"] == "password") {

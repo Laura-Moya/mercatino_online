@@ -29,7 +29,7 @@
                 for ($i=0; $i < 5 ; $i++) {
                   $sotcat = $sottocategorie[$cat];?>
                   <li class="nav-item">
-                    <a class="nav-link" href="annunci.php?cat=<?php echo "$cat"; ?>&sottocat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
+                    <a class="nav-link" href="annunci.php?cat=<?php echo "$cat"; ?>&sotcat=<?php  echo "$sotcat[$i]" ; ?>"><?php echo "$sotcat[$i]" ;?></a>
                   </li>
                 <?php
                 }
@@ -61,15 +61,15 @@
               <?php
               if (isset($_GET['cat'])){
                 echo "<h4>". $_GET['cat']."</h4>";
-                if (isset($_GET['sottocat'])){
-                  echo "</br> <h4>".$_GET['sottocat']."</h4>";
+                if (isset($_GET['sotcat'])){
+                  echo "</br> <h4>".$_GET['sotcat']."</h4>";
                 }
               }
               if (isset($_GET['stato'])){
                 if ($_GET['stato']=="nuovo"){
-                  echo "<h4>Nuovo</h4>";
+                  echo "<h4>Prodotti nuovi</h4>";
                 }else {
-                  echo "<h4>Usato</h4>";
+                  echo "<h4>Prodotti usati</h4>";
                 }
               }
               if (isset($_GET['prezzo'])){
@@ -92,6 +92,13 @@
                  if (isset($_POST['submit-search2'])){
                    $search = mysqli_real_escape_string($cid,$_POST['search2']);
                    echo '<h4>'. Ucwords($search).'</h4>';
+                 }
+                 if (isset($_GET['luogo'])){
+                   if ($_GET['luogo']=="provincia"){
+                     echo "<h4>Annunci nella tua provincia</h4>";
+                   }else {
+                     echo "<h4>Annunci nella tua regione</h4>";
+                   }
                  }
                ?>
             </div>
@@ -168,11 +175,11 @@
             								FROM stato s2
             								WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
             }
-            if (isset($_GET['sottocat'])){
-                $sotcat = $_GET['sottocat'];
+            if (isset($_GET['sotcat'])){
+                $sotcat = $_GET['sotcat'];
                  $sql = " SELECT *
                           FROM annuncio p, stato s
-                          WHERE p.codice=s.prodotto AND p.categorie = '$sotcat' AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
+                          WHERE p.codice=s.prodotto AND p.sottocategorie = '$sotcat' AND p.visibilita !='privata' AND s.stato='in vendita' AND p.codice NOT IN
             								(SELECT s.prodotto
             								FROM stato s2
             								WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
