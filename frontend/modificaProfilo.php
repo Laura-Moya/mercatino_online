@@ -9,17 +9,17 @@ $errore = array();
 $dati = array();
 
 
-// if (isset($_GET["status"]))
-// {
-// 	if ($_GET["status"]=='ko') $errore=unserialize($_GET["errore"]);
-// 	$dati=unserialize($_GET["dati"]);
-// }
-// else
-// {
-// 	$dati["nomeannuncio"]="";
-// 	$dati["nomeprodotto"]="";
-// 	$dati["prezzo"]="";
-// }
+if (isset($_GET["status"]))
+{
+	if ($_GET["status"]=='ko') $errore=unserialize($_GET["errore"]);
+	$dati=unserialize($_GET["dati"]);
+}
+else
+{
+	$dati["nome"]="";
+	$dati["cognome"]="";
+	$dati["password"]="";
+}
 
 ?>
 
@@ -51,6 +51,7 @@ $dati = array();
           </tr>
           <tr>
             <td colspan="2"> <input class="form-size" type="text" name="nome" value= "<?php echo $utente[0]; ?>"> </br>
+              <?php if (isset($errore["nome"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["nome"]] . "</span>"; ?>
              </td>
           </tr>
           <tr>
@@ -58,7 +59,7 @@ $dati = array();
           </tr>
           <tr>
             <td colspan="2"> <input class="form-size" type="text" name="cognome" value = "<?php echo $utente[1]; ?>"> </br>
-
+              <?php if (isset($errore["cognome"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["cognome"]] . "</span>"; ?>
              </td>
           </tr>
 
@@ -68,6 +69,7 @@ $dati = array();
 
           <tr>
             <td colspan="2"> <input class="form-size" type="text" name="password" value = "<?php echo $utente[4]; ?>"> </br>
+              <?php if (isset($errore["password"]))  echo "<span class=\"errore\">" . $tipoErrore[$errore["password"]] . "</span>"; ?>
              </td>
           </tr>
 

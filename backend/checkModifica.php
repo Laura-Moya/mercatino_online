@@ -4,6 +4,10 @@ include_once "../db/connect.php";
 include_once "../common/funzioni.php";
 session_start();
 
+//Prendiamo il codice codice_fiscale
+$risultato = prendereCF($cid, $_SESSION["utente"]);
+$codice_fiscale = $risultato['contenuto'];
+
 $errore = array();
 $dati=array();
 
@@ -77,11 +81,11 @@ else $foto = $immagine;
 
 			if (count($errore)>0)
 			{
-				// header('location:../frontend/modificaAnnunci.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
+				header('location:../frontend/modificaProfilo.php?status=ko&errore=' . serialize($errore). '&dati=' . serialize($dati));
 			}
 			else
 			{//Cambiare
-				// header('location:../frontend/prodottiInVendita.php?nuovoannuncio=ok');
+				header('location:../frontend/index.php?modificaProfilo=ok');
 			}
 
 ?>
