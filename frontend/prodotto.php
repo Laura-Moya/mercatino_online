@@ -8,7 +8,7 @@
     <?php include "../common/navbar.php";
     if (!isset($_SESSION['utente'])){
       include "../common/jumbotron.php";
-    }    
+    }
     ?>
 
     <?php
@@ -40,7 +40,7 @@
     </div>
 
 
-        <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;" href="#">OK </a></button>
+        <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;" onclick="closeForm()">OK </a></button>
         <button type='button' class='btn btn-primary btn-login' onclick='closeStati()'>Chiudi</button>
       </div>
 
@@ -94,6 +94,14 @@
       </div>
     </form>
 <script>
+    function openForm() {
+
+      document.getElementById("stati").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("stati").style.display = "none";
+    }
     function openStati() {
 
       document.getElementById("stati").style.display = "block";

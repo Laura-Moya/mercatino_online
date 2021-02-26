@@ -37,7 +37,7 @@
       ?>
     </div>
 
-      <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;" href="#">OK </a></button>
+      <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;" onclick="closeForm()">OK </a></button>
       <button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>
     </div>
 
