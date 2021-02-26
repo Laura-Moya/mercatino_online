@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <?php include "../common/header.php";?>
-      <script type="text/javascript" src="common/funzioni.js"></script>
+      <script type="text/javascript" src="../common/funzioni.js"></script>
   </head>
 <body onload="load()">
   <?php include "../common/navbar.php";?>
@@ -68,7 +68,7 @@
   </div>
   <script>
   function load(){
-    if ((document.referrer.match("http://localhost/mercatino_online/prodottiInVendita.php?"))!= null){
+    if ((document.referrer.match("http://localhost/mercatino_online/frontend/prodottiInVendita.php?"))!= null){
       openForm();
     }
 

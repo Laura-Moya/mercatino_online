@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <?php include "../common/header.php";?>
-      <script type="text/javascript" src="common/funzioni.js"></script>
+      <script type="text/javascript" src="../common/funzioni.js"></script>
   </head>
 <body onload="load()">
   <?php include "../common/navbar.php";?>
@@ -49,10 +49,10 @@
               echo '<div class="card" style="width: 16rem; margin-top:0px !important;">';
                 echo '<img src="'. $prodotto[4] .'" style="height: 10rem; width: revert;"  class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
-                  echo '<form class="" action="stati.php" method="get">';
+                  echo '<form class="" action="../backend/stati.php" method="get">';
                   echo '<h5 class="card-title"><a href="prodotto.php?codice='. $prodotto[2].'"> '. Ucwords($prodotto[0]) . ' </a></h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[1]) . '</p>';
-                  echo '<a href="stati.php?stato=venduto&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
+                  echo '<a href="../backend/stati.php?stato=venduto&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
                   echo '</form>';
                   echo '<form class="" action="valutazione.php" method="get">';
                   echo '<a href="valutazione.php?codice='. $prodotto[2].'" class="btn btn-primary" style="margin: 1rem 2.1rem;">Valuta transizione</a>';

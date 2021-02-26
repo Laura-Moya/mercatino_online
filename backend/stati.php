@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
+    <?php include "../common/header.php";?>
   </head>
 <body>
-  <?php include "db/connect.php";
+  <?php include "../db/connect.php";
 
 $codice = $_GET["codice"];
 $stato = $_GET["stato"];
 
 
 if ($stato=="invendita") {
-  header("Location:prodottiInVendita.php?codice=".$codice);
+  header("Location:../frontend/prodottiInVendita.php?codice=".$codice);
 } elseif ($stato=="eliminato") {
-  header("Location:prodottiEliminati.php?codice=".$codice);
+  header("Location:../frontend/prodottiEliminati.php?codice=".$codice);
 }elseif ($stato=="venduto") {
-  header("Location:prodottiVenduti.php?codice=".$codice);
+  header("Location:../frontend/prodottiVenduti.php?codice=".$codice);
 }
 else {
-  header("Location:index.php?errore=erroreDiConessione");
+  header("Location:../frontend/index.php?errore=erroreDiConessione");
 }
 
 ?>

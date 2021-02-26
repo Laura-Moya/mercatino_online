@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <?php include "../common/header.php";?>
-      <script type="text/javascript" src="common/funzioni.js"></script>
+      <script type="text/javascript" src="../common/funzioni.js"></script>
   </head>
 <body onload="load()">
   <?php include "../common/navbar.php";?>
@@ -52,7 +52,7 @@
                   echo '<form class="" action="stati.php" method="get">';
                   echo '<h5 class="card-title"><a href="prodotto.php?codice='. $prodotto[2].'"> '. Ucwords($prodotto[0]) . ' </a></h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[1]) . '</p>';
-                  echo '<a href="stati.php?stato=eliminato&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
+                  echo '<a href="../backend/stati.php?stato=eliminato&codice='. $prodotto[2].'" class="btn btn-primary" >Visualizza stati del prodotto</a>';
                   echo '</form>';
                   echo '<form class="" action="rimettiInVendita.php " method="get">';
                   echo '<a style="margin: 1rem 2.1rem;" href="rimettiInVendita.php?codice='. $prodotto[2].'" class="btn btn-primary" >Rimetti in vendita!</a>';
@@ -66,7 +66,7 @@
   </div>
   <script>
   function load(){
-    if ((document.referrer.match("http://localhost/mercatino_online/prodottiEliminati.php?"))!= null){
+    if ((document.referrer.match("http://localhost/mercatino_online/frontend/prodottiEliminati.php?"))!= null){
       openForm();
     }
 
