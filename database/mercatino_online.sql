@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2021 at 10:37 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Creato il: Feb 26, 2021 alle 17:56
+-- Versione del server: 10.4.14-MariaDB
+-- Versione PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `annuncio`
+-- Struttura della tabella `annuncio`
 --
 
 CREATE TABLE `annuncio` (
@@ -50,16 +50,16 @@ CREATE TABLE `annuncio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `annuncio`
+-- Dump dei dati per la tabella `annuncio`
 --
 
 INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `provincia`, `nome_annuncio`, `nome_prodotto`, `foto`, `prezzo`, `nuovo`, `tempo_usura`, `stato_usura`, `garanzia`, `copertura_garanzia`, `acquirente`, `visibilita`, `categorie`, `sottocategorie`) VALUES
-(1, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'vendesi aspirapolvere', 'folletto 3pro', '../images/folletto.jpg', 200, 1, NULL, NULL, 1, 'due anni', 'MRNVNT96R63I577A', 'pubblica', 'Elettrodomestici', 'Aspirapolveri'),
-(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'microonde', 'Samsung', '../images/microonde.jpg', 80, 1, NULL, NULL, 1, '7 anni', 'MRNVNT96R63I577A', 'pubblica', 'Elettrodomestici', 'Aspirapolveri'),
+(1, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'vendesi aspirapolvere', 'folletto 3pro', '../images/folletto.jpg', 200, 1, NULL, NULL, 1, 'due anni', NULL, 'pubblica', 'Elettrodomestici', 'Aspirapolveri'),
+(2, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'microonde', 'Samsung', '../images/microonde.jpg', 80, 1, NULL, NULL, 1, '7 anni', NULL, 'pubblica', 'Elettrodomestici', 'Aspirapolveri'),
 (3, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'si vende cellulare usato', 'huawei p20 lite', '../images/huawei.jpg', 120, 0, 'un anno', 'pari a nuovo', NULL, NULL, NULL, 'pubblica', 'Hobby', 'Altro da hobby'),
 (4, 'MYGLRA99P60Z131O', 'scarlatti 33', 'Buccinasco', 'Lombardia', 'MI', 'si vende televisione ', 'Sony G14', '../images/tv-sony.jpg', 750, 0, '4 mesi', 'pari a nuovo', NULL, NULL, NULL, 'ristretta', 'Foto e Video', 'Altro da foto e video'),
 (5, 'MRRCLS06S13H501K', 'aldo moro 76', 'Bologna', 'Emilia Romagna', 'BO', 'Vendesi DVD dei primi 6 film di Star Wars - originali', 'DVD star wars - cofanetto completo', '../images/dvd-starwars.jpg', 10, 1, NULL, NULL, 0, NULL, NULL, 'pubblica', 'Hobby', 'Film e DVD'),
-(6, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'Vendesi macchina fotografica vintage', 'Polaroid 580', '../images/polaroid.jpg', 150, 0, '20 anni', 'buono', NULL, NULL, 'MRNVNT96R63I577A', 'pubblica', 'Foto e Video', 'Macchine fotografiche'),
+(6, 'MYGLRA99P60Z131O', 'pitteri 56', 'Milano', 'Lombardia', 'MI', 'Vendesi macchina fotografica vintage', 'Polaroid 580', '../images/polaroid.jpg', 150, 0, '20 anni', 'buono', NULL, NULL, NULL, 'pubblica', 'Foto e Video', 'Macchine fotografiche'),
 (7, 'tzzzambornilllll', 'via mulino bianco', 'Pavia', 'Lombardia', 'PV', 'Caffettiera di design in super sconto', 'Caffettiera La conica by Alessi', '../images/caffettiera-conica.jpg', 15, 1, '', '', 1, '2 mesi', 'GLNRNI95E57F205P', 'pubblica', 'Elettrodomestici', 'Caffettiere'),
 (8, 'tzzzambornilllll', 'via Gonin', 'Roma', 'Lazio', 'RO', 'Vendesi come nuovi vinili di Levante', 'Album Magmamemoria di Levante in vinile', '../images/levante-vinili.jpg', 40, 0, '1 mese', 'pari a nuovo', 0, '', NULL, 'pubblica', 'Hobby', 'Musica'),
 (9, 'MRRCLS06S13H501K', 'Via I Maggio 12', 'Bergamo', 'Lombardia', 'BG', 'Bellissima maglietta da uomo - Onda di Hokustai ', 'T-shirt the wave by Hokusai, black', '../images/tshirt-wave.jpg', 20, 1, '', '', 0, '', NULL, 'pubblica', 'Abbigliamento', 'Vestiti'),
@@ -69,13 +69,13 @@ INSERT INTO `annuncio` (`codice`, `venditore`, `via`, `comune`, `regione`, `prov
 (13, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'LED Studi Anello Luce per Make Up', 'Anello Luce con Treppiede per Make Up con Telecomando Bluetooth', '../images/anello-luce.jpg', 25, 1, '', '', 0, '', 'MYGLRA99P60Z131O', 'ristretta', 'Foto e Video', 'Accessori fotografici'),
 (14, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Libro Usato Bellissimo', 'Venuto al mondo - Margaret Mazzantini', '../images/venuto-al-mondo-margaret-mazzantini.png', 8, 0, '3 anni', 'meglio', 0, '', NULL, 'pubblica', 'Hobby', 'Libri e Riviste'),
 (15, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Grande classico in ottime condizioni', 'Cime Tempestose - Emily Bronte', '../images/812WFlUxpsL.jpg', 5, 0, '3 anni', 'buono', 0, '', NULL, 'privata', 'Hobby', 'Libri e Riviste'),
-(16, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Gonna usata poco ', 'Gonna di velluto taglia M', '../images/gonna.jpeg', 10, 0, '2 anni', 'buono', 0, '', NULL, 'pubblica', 'Abbigliamento', 'Altro da abbigliamento'),
-(42, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', '', '', '../images/Not-Available.png', 0, 0, '', '', 0, '', NULL, 'pubblica', 'Foto e Video', 'Macchine fotografiche');
+(16, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Gonna usata poco ', 'Gonna di velluto taglia M', '../images/gonna.jpeg', 10, 0, '2 anni', 'buono', 0, '', 'MYGLRA99P60Z131O', 'pubblica', 'Abbigliamento', 'Altro da abbigliamento'),
+(17, 'GLNRNI95E57F205P', 'Via Mulino Bianco 13', 'Cusago', 'Lombardia', 'MI', 'Giocattolo per bambino maggiori di 5 anni - Mr potato', 'Mr potato da Toy Story da collezione', '../images/potato.jpg', 18, 0, '5 anni', 'usato', 0, '', 'MYGLRA99P60Z131O', 'pubblica', 'Hobby', 'Giocattoli');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `indirizzo`
+-- Struttura della tabella `indirizzo`
 --
 
 CREATE TABLE `indirizzo` (
@@ -86,7 +86,7 @@ CREATE TABLE `indirizzo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `indirizzo`
+-- Dump dei dati per la tabella `indirizzo`
 --
 
 INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
@@ -119,7 +119,7 @@ INSERT INTO `indirizzo` (`via`, `comune`, `provincia`, `regione`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `luogo_ristretta`
+-- Struttura della tabella `luogo_ristretta`
 --
 
 CREATE TABLE `luogo_ristretta` (
@@ -128,7 +128,7 @@ CREATE TABLE `luogo_ristretta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `luogo_ristretta`
+-- Dump dei dati per la tabella `luogo_ristretta`
 --
 
 INSERT INTO `luogo_ristretta` (`regione`, `provincia`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `luogo_ristretta` (`regione`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `osserva`
+-- Struttura della tabella `osserva`
 --
 
 CREATE TABLE `osserva` (
@@ -147,7 +147,7 @@ CREATE TABLE `osserva` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `osserva`
+-- Dump dei dati per la tabella `osserva`
 --
 
 INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
@@ -160,17 +160,20 @@ INSERT INTO `osserva` (`utente`, `prodotto`) VALUES
 ('MRRCLS06S13H501K', 2),
 ('MRRCLS06S13H501K', 4),
 ('MRRCLS06S13H501K', 5),
-('MYGLRA99P60Z131O', 10),
+('MYGLRA99P60Z131O', 8),
+('MYGLRA99P60Z131O', 11),
 ('pieroooooooooooo', 1),
 ('pieroooooooooooo', 3),
 ('tzzzambornilllll', 2),
 ('tzzzambornilllll', 3),
-('tzzzambornilllll', 4);
+('tzzzambornilllll', 4),
+('tzzzambornilllll', 5),
+('tzzzambornilllll', 16);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `possiede`
+-- Struttura della tabella `possiede`
 --
 
 CREATE TABLE `possiede` (
@@ -180,7 +183,7 @@ CREATE TABLE `possiede` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `possiede`
+-- Dump dei dati per la tabella `possiede`
 --
 
 INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
@@ -191,7 +194,7 @@ INSERT INTO `possiede` (`prodotto`, `regione`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stato`
+-- Struttura della tabella `stato`
 --
 
 CREATE TABLE `stato` (
@@ -201,7 +204,7 @@ CREATE TABLE `stato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `stato`
+-- Dump dei dati per la tabella `stato`
 --
 
 INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
@@ -209,6 +212,7 @@ INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (1, 'in vendita', '2021-02-18 14:50:31'),
 (1, 'in vendita', '2021-02-18 19:18:43'),
 (1, 'in vendita', '2021-02-20 23:21:45'),
+(1, 'in vendita', '2021-02-26 13:02:02'),
 (1, 'venduto', '2021-02-20 15:08:36'),
 (1, 'venduto', '2021-02-26 08:48:16'),
 (1, 'eliminato', '2021-02-17 16:10:43'),
@@ -222,7 +226,6 @@ INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (2, 'venduto', '2020-11-19 11:33:30'),
 (2, 'venduto', '2021-02-18 14:03:30'),
 (2, 'venduto', '2021-02-18 18:44:15'),
-(2, 'venduto', '2021-02-21 18:50:39'),
 (2, 'eliminato', '2021-02-17 13:43:52'),
 (2, 'eliminato', '2021-02-17 16:19:30'),
 (3, 'in vendita', '2021-02-17 12:56:32'),
@@ -239,6 +242,7 @@ INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (5, 'in vendita', '2021-02-21 12:29:08'),
 (5, 'venduto', '2021-02-18 14:54:16'),
 (6, 'in vendita', '2021-02-20 11:03:56'),
+(6, 'in vendita', '2021-02-26 13:02:14'),
 (6, 'venduto', '2021-02-20 19:36:02'),
 (7, 'in vendita', '2021-02-20 12:46:24'),
 (7, 'in vendita', '2021-02-21 12:28:12'),
@@ -255,17 +259,17 @@ INSERT INTO `stato` (`prodotto`, `stato`, `data_ora`) VALUES
 (13, 'in vendita', '2021-02-25 13:38:08'),
 (13, 'in vendita', '2021-02-25 18:17:43'),
 (13, 'venduto', '2021-02-25 13:39:02'),
-(13, 'venduto', '2021-02-26 00:48:05'),
-(13, 'venduto', '2021-02-26 00:48:44'),
 (14, 'in vendita', '2021-02-25 18:05:44'),
 (15, 'in vendita', '2021-02-25 18:12:02'),
 (16, 'in vendita', '2021-02-25 18:17:25'),
-(42, 'in vendita', '2021-02-25 22:19:39');
+(16, 'venduto', '2021-02-26 14:08:56'),
+(17, 'in vendita', '2021-02-26 15:45:41'),
+(17, 'venduto', '2021-02-26 15:46:45');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utente`
+-- Struttura della tabella `utente`
 --
 
 CREATE TABLE `utente` (
@@ -279,16 +283,14 @@ CREATE TABLE `utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `utente`
+-- Dump dei dati per la tabella `utente`
 --
 
 INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, `tipo_utente`, `password`) VALUES
-('2345678sdfg16262', 'Laura', 'Lamborgini', 'laura@kk.com', '../images/user.png', 'acquirente', '1234'),
 ('234567sdfg456789', 'Marco', 'Mesiti', 'marco@mesiti.com', '../images/user.png', 'venditore', '1234'),
 ('eeeeeeeeeeeeeeee', 'valentina', 'ciao', 'ciao@vale.it', '../images/user.png', 'venditore', '1234'),
 ('GLNRNI95E57F205P', 'Irene', 'Galiano', 'irn.galiano@gmail.com', '../images/irene.jpg', 'venditore', '1234'),
 ('LSMRNhoskjdfskjd', 'lisa', 'maronese', 'lisa@maronese.com', '../images/Lisa-maronese.jpg', 'acquirente', '1234'),
-('MRABND67RR3ACYY9', 'Maria', 'Biondi', 'maria@biondi.com', '../images/DSC_0092.JPG', 'acquirente', '1234'),
 ('MRNVNT96R63I577A', 'Valentina', 'Maronese', 'valentina@maronese.com', '../images/DSC_0153.JPG', 'venditore', '1234'),
 ('MRRCLS06S13H501K', 'Callisto', 'Morra', 'callisto@morra.com', '../images/user.png', 'venditore', '4567'),
 ('MYGLRA99P60Z131O', 'Laura', 'Moya', 'moyalaura2@gmail.com', '../images/Laura-Moya.jpeg', 'venditore', '7890'),
@@ -299,33 +301,30 @@ INSERT INTO `utente` (`codice_fiscale`, `nome`, `cognome`, `email`, `immagine`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `valutazione`
+-- Struttura della tabella `valutazione`
 --
 
 CREATE TABLE `valutazione` (
   `codice_fiscale_valuta` varchar(16) NOT NULL,
   `codice_fiscale_valutato` varchar(16) NOT NULL,
   `serieta` enum('1','2','3','4','5') NOT NULL,
-  `puntualita` enum('1','2','3','4','5') NOT NULL
+  `puntualita` enum('1','2','3','4','5') NOT NULL,
+  `prodotto` int(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `valutazione`
+-- Dump dei dati per la tabella `valutazione`
 --
 
-INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`) VALUES
-('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '1', '3'),
-('tzzzambornilllll', 'pieroooooooooooo', '5', '4'),
-('pieroooooooooooo', 'tzzzambornilllll', '2', '3'),
-('MRNVNT96R63I577A', 'MYGLRA99P60Z131O', '3', '4'),
-('MYGLRA99P60Z131O', 'MRNVNT96R63I577A', '3', '5'),
-('MYGLRA99P60Z131O', 'GLNRNI95E57F205P', '4', '5'),
-('MYGLRA99P60Z131O', 'GLNRNI95E57F205P', '4', '5');
+INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`, `prodotto`) VALUES
+('MYGLRA99P60Z131O', 'GLNRNI95E57F205P', '2', '3', 13),
+('MYGLRA99P60Z131O', 'GLNRNI95E57F205P', '3', '2', 16),
+('MYGLRA99P60Z131O', 'GLNRNI95E57F205P', '5', '3', 17);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vive`
+-- Struttura della tabella `vive`
 --
 
 CREATE TABLE `vive` (
@@ -337,7 +336,7 @@ CREATE TABLE `vive` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `vive`
+-- Dump dei dati per la tabella `vive`
 --
 
 INSERT INTO `vive` (`codice_fiscale`, `via`, `comune`, `provincia`, `regione`) VALUES
@@ -356,11 +355,11 @@ INSERT INTO `vive` (`codice_fiscale`, `via`, `comune`, `provincia`, `regione`) V
 ('tzzzambornilllll', 'via mulino bianco', 'Pavia', 'PV', 'Lombardia');
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `annuncio`
+-- Indici per le tabelle `annuncio`
 --
 ALTER TABLE `annuncio`
   ADD PRIMARY KEY (`codice`),
@@ -372,7 +371,7 @@ ALTER TABLE `annuncio`
   ADD KEY `acquirente` (`acquirente`);
 
 --
--- Indexes for table `indirizzo`
+-- Indici per le tabelle `indirizzo`
 --
 ALTER TABLE `indirizzo`
   ADD PRIMARY KEY (`via`,`comune`,`provincia`,`regione`),
@@ -382,7 +381,7 @@ ALTER TABLE `indirizzo`
   ADD KEY `regione` (`regione`);
 
 --
--- Indexes for table `luogo_ristretta`
+-- Indici per le tabelle `luogo_ristretta`
 --
 ALTER TABLE `luogo_ristretta`
   ADD PRIMARY KEY (`regione`,`provincia`),
@@ -390,14 +389,14 @@ ALTER TABLE `luogo_ristretta`
   ADD KEY `provincia` (`provincia`);
 
 --
--- Indexes for table `osserva`
+-- Indici per le tabelle `osserva`
 --
 ALTER TABLE `osserva`
   ADD PRIMARY KEY (`utente`,`prodotto`),
   ADD KEY `prodotto` (`prodotto`);
 
 --
--- Indexes for table `possiede`
+-- Indici per le tabelle `possiede`
 --
 ALTER TABLE `possiede`
   ADD PRIMARY KEY (`prodotto`,`regione`,`provincia`),
@@ -405,26 +404,26 @@ ALTER TABLE `possiede`
   ADD KEY `provincia` (`provincia`);
 
 --
--- Indexes for table `stato`
+-- Indici per le tabelle `stato`
 --
 ALTER TABLE `stato`
   ADD PRIMARY KEY (`prodotto`,`stato`,`data_ora`);
 
 --
--- Indexes for table `utente`
+-- Indici per le tabelle `utente`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`codice_fiscale`);
 
 --
--- Indexes for table `valutazione`
+-- Indici per le tabelle `valutazione`
 --
 ALTER TABLE `valutazione`
   ADD KEY `codice_fiscale_valutato` (`codice_fiscale_valutato`),
   ADD KEY `valutazione_ibfk_1` (`codice_fiscale_valuta`);
 
 --
--- Indexes for table `vive`
+-- Indici per le tabelle `vive`
 --
 ALTER TABLE `vive`
   ADD PRIMARY KEY (`codice_fiscale`,`via`,`comune`,`provincia`,`regione`),
@@ -434,21 +433,21 @@ ALTER TABLE `vive`
   ADD KEY `regione` (`regione`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `annuncio`
+-- AUTO_INCREMENT per la tabella `annuncio`
 --
 ALTER TABLE `annuncio`
-  MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `codice` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `annuncio`
+-- Limiti per la tabella `annuncio`
 --
 ALTER TABLE `annuncio`
   ADD CONSTRAINT `annuncio_ibfk_1` FOREIGN KEY (`venditore`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -459,14 +458,14 @@ ALTER TABLE `annuncio`
   ADD CONSTRAINT `annuncio_ibfk_6` FOREIGN KEY (`acquirente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `osserva`
+-- Limiti per la tabella `osserva`
 --
 ALTER TABLE `osserva`
   ADD CONSTRAINT `osserva_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `osserva_ibfk_2` FOREIGN KEY (`utente`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `possiede`
+-- Limiti per la tabella `possiede`
 --
 ALTER TABLE `possiede`
   ADD CONSTRAINT `possiede_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -474,20 +473,20 @@ ALTER TABLE `possiede`
   ADD CONSTRAINT `possiede_ibfk_3` FOREIGN KEY (`provincia`) REFERENCES `luogo_ristretta` (`provincia`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `stato`
+-- Limiti per la tabella `stato`
 --
 ALTER TABLE `stato`
   ADD CONSTRAINT `stato_ibfk_1` FOREIGN KEY (`prodotto`) REFERENCES `annuncio` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `valutazione`
+-- Limiti per la tabella `valutazione`
 --
 ALTER TABLE `valutazione`
   ADD CONSTRAINT `valutazione_ibfk_1` FOREIGN KEY (`codice_fiscale_valuta`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `valutazione_ibfk_2` FOREIGN KEY (`codice_fiscale_valutato`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `vive`
+-- Limiti per la tabella `vive`
 --
 ALTER TABLE `vive`
   ADD CONSTRAINT `vive_ibfk_1` FOREIGN KEY (`codice_fiscale`) REFERENCES `utente` (`codice_fiscale`) ON DELETE NO ACTION ON UPDATE CASCADE,

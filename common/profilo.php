@@ -58,6 +58,11 @@
     <span class="aggiungiIndirizzo additional-btn">
       <button class="btn btn-primary" type="submit" ><a style="color: white !important; padding: 1rem;" onclick='openFormIndirizzo()'>Aggiungi un indirizzo</a> </button>
     </span>
+    <span class="modificaProfilo additional-btn">
+      <button class="btn btn-primary" type="submit" ><a style="color: white !important; padding: 1rem;"
+        href="modificaProfilo.php">Modifica Profilo</a> </button>
+    </span>
+
     <div class="container-profilo container">
       <div class="row">
         <div class="immagine-profilo col-sm-12 col-md-6 col-lg-4">
@@ -69,10 +74,10 @@
           <p class="email-profilo" style="margin-top: 1rem;" type="email">Email: <a href="mailto: <?php echo "$utente[2]"; ?>"><?php echo "$utente[2]"; ?> </a></p>
           <?php
             echo '<div class="valutazione-profilo">';
-            for ($i=0; $i < round($utente[4]); $i++) {
+            for ($i=0; $i < round($utente[5]); $i++) {
               echo '<i class="fas fa-star fa-2x"></i>';
             }
-            $mancano = 5 - round($utente[4]);
+            $mancano = 5 - round($utente[5]);
             for ($i=0; $i < $mancano; $i++) {
               echo '<i class="far fa-star fa-2x"></i>';
             }

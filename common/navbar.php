@@ -129,33 +129,44 @@ if (isset($_SESSION["indirizzo"])) {
 else {
   $indirizzoscelto = array();
   $indirizzoscelto[0] = "";
+  $indirizzoscelto[1] = "";
+  $indirizzoscelto[2] = "";
 }
 ?>
-  <div id ="indi">
-      <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
-      <form method="post" id="indirizzoSelezionato">
-        <select type="submit" class="form-control form-control-md" id="indirizzoSel" name="indirizzo" onchange="$('#indirizzoSelezionato').submit();">
-          <option value="" ><?php echo Ucwords($indirizzoscelto[0]);  ?>  </option>';
 
-          <?php
-          if (!isset($_SESSION["utente"])) {
-            echo '<script type="text/javascript">';
-            echo 'document.getElementById("indi").style.visibility = "hidden";';
-            echo '</script>';
-          }
-          else {
+   <!-- if (isset($_SESSION["utente"])) { -->
 
-            for ($i=0; $i < count($indirizzi);$i++){
-              $indirizzo = $indirizzi[$i];
-              echo '<option value="'. $indirizzo[1] .'|'. $indirizzo[2] .'|'. $indirizzo[3] .'|'. $indirizzo[4] .'" > '. Ucwords($indirizzo[1]).'</option>';
+    <div id ="indi">
+        <p for="aaa"><i class="fas fa-map-marker"></i>Indirizzo </p>
+        <form method="post" id="indirizzoSelezionato">
+          <select type="submit" class="form-control form-control-md" id="indirizzoSel" name="indirizzo" onchange="$('#indirizzoSelezionato').submit();">
+
+            <option value="" ><?php echo Ucwords($indirizzoscelto[0]).' '.Ucwords($indirizzoscelto[2]); ?>  </option>
+
+            <?php
+            if (!isset($_SESSION["utente"])) {
+              echo '<script type="text/javascript">';
+              echo 'document.getElementById("indi").style.visibility = "hidden";';
+              echo '</script>';
             }
-          }
-         ?>
-       </select>
+            else {
 
-      </form>
+              for ($i=0; $i < count($indirizzi);$i++){
+                $indirizzo = $indirizzi[$i];
+                echo '<option value="'. $indirizzo[1] .'|'. $indirizzo[2] .'|'. $indirizzo[3] .'|'. $indirizzo[4] .'" > '. Ucwords($indirizzo[1]).', '.Ucwords($indirizzo[3]).'</option>';
+              }
+            }
+           ?>
+         </select>
 
-  </div>
+        </form>
+
+    </div>
+
+
+  <!-- } -->
+
+
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
