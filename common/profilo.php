@@ -55,9 +55,7 @@
       <input type="text" name="nuovaProvincia" maxlength="2">
       <label>Nuova Regione:</label>
       <input type="text" name="nuovaRegione"></br>
-
-      <!-- <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;"
-              href="aggiungiIndirizzo.php">OK </a></button> -->
+      
       <input type="submit" class='btn btn-primary btn-login' style="margin: 0px !important;" name="invia" value="invia">
       <button type='button' class='btn btn-primary btn-login' onclick='closeFormIndirizzo()'>Chiudi</button>
       </form>
