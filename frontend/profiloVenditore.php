@@ -27,7 +27,7 @@
           <p class="prodotti-venduti-profilo"><a href="prodottiVenduti.php">Prodotti venduti:</a> <?php echo "$prodottiVenduti[0]"; ?> </p>
           <p class="prodotti-in-vendita-profilo"><a href="prodottiInVendita.php">Prodotti in vendita:</a> <?php echo "$prodottiInVendita[0]"; ?>  </p>
           <p class="prodotti-in-vendita-profilo"><a href="prodottiEliminati.php">Prodotti eliminati:</a> <?php echo "$prodottiEliminati[0]"; ?>  </p>
-          <button class="btn btn-primary" type="button" onclick="location.href='../backend/creareAnnuncio.php'"><i class="fas fa-plus" id="piu"></i> Aggiungi annuncio </button>
+          <button class="btn btn-primary" type="button" onclick="location.href='../frontend/creareAnnuncio.php'"><i class="fas fa-plus" id="piu"></i> Aggiungi annuncio </button>
         </div>
       </div>
     </div>

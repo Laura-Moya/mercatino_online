@@ -30,15 +30,15 @@ else
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include "common/header.php";?>
-      <script type="text/javascript" src="common/funzioni.js"></script>
+    <?php include "../common/header.php";?>
+      <script type="text/javascript" src="../common/funzioni.js"></script>
   </head>
   <body>
 
-  <?php include "common/navbar.php";?>
+  <?php include "../common/navbar.php";?>
 
   <div class="container-creare-annuncio" align="center">
-      <form action='checkAnnuncio.php?codicefiscale=<?php echo "$codice_fiscale[0]"; ?>' method="post">
+      <form action='../backend/checkAnnuncio.php?codicefiscale=<?php echo "$codice_fiscale[0]"; ?>' method="post">
         <table class="">
           <tr>
             <h2 class="title">Creare Annuncio</h2>
