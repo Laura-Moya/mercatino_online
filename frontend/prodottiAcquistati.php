@@ -25,12 +25,18 @@
         for ($i=0; $i < count($prodotti) ; $i++) {
 
             $prodotto = $prodotti[$i];
+            $risultato = valutato($cid, $prodotto[3], $codice_fiscale[0]);
+            $valutato = $risultato['contenuto'];
               echo '<div class="card" style=" margin-top:0px; width: 16rem;">';
                 echo '<img src="'. $prodotto[4] .'" style="height: 10rem; width: revert;" class="card-img-top" alt="...">';
                   echo '<div class="card-body">';
                   echo '<h5 class="card-title"> '. Ucwords($prodotto[1]) . ' </h5>';
                   echo '<p class="card-text">'. Ucwords($prodotto[2]) . '</p>';
-                  echo '<a href="valutazione.php?codice='. $prodotto[3].'" class="btn btn-primary">Valuta transizione</a>';
+                   if ($valutato == 0) {
+                    echo '<a href="valutazione.php?codice='. $prodotto[3].'" class="btn btn-primary">Valuta transizione</a>';
+                  } else {
+                    echo '<p style="color: #9863a9;">Acquisto già valutato</p>';
+                  }
 
                 echo '</div>';
               echo '</div>';

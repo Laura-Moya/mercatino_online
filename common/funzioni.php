@@ -851,4 +851,32 @@ function prodottoOsservato ( $cid, $codicefiscale, $codice){
 	}
 }
 
+function valutato($cid, $codice, $cfvaluta){
+	$risultato= array("msg"=>"","status"=>"ok");
+
+	if ($cid->connect_errno) {
+		$risultato["status"] = "ko";
+		$risultato["msg"] = "Errore nella connessione al db " . $cid->connect_errno;
+		return $risultato;
+	}
+
+	$sql="SELECT * FROM `valutazione` WHERE codice_fiscale_valuta = '$cfvaluta' AND prodotto = '$codice'";
+
+	$res=$cid->query($sql);
+	$row=$res->fetch_row();
+
+
+	if ($row == null) {
+		$val = 0;
+		$risultato["contenuto"] = $val;
+
+    return $risultato;
+	} else {
+		$val = 1;
+		$risultato["contenuto"] = $val;
+		return $risultato;
+	}
+
+}
+
 ?>

@@ -11,16 +11,13 @@ $serieta = $_POST['serieta'];
 $codiceFiscaleValutato = $_GET["codiceFiscaleValutato"];
 $codicefiscalevaluta = $_GET["codicefiscalevaluta"];
 $acquirente =  $_GET["acquirente"];
+$prodotto =  $_GET["prodotto"];
 
-echo "$puntualita </br>";
-echo "$serieta </br>";
-echo "$codiceFiscaleValutato </br>";
-echo $codicefiscalevaluta. ' </br>';
-echo $acquirente;
+
 
 if ($codicefiscalevaluta == $acquirente){
-  $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
-            VALUES ('$codicefiscalevaluta', '$codiceFiscaleValutato', '$serieta', '$puntualita')";
+  $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`, `prodotto`)
+            VALUES ('$codicefiscalevaluta', '$codiceFiscaleValutato', '$serieta', '$puntualita','$prodotto')";
   $data = mysqli_query($cid, $query);
 
   if ($data) {
@@ -30,8 +27,8 @@ if ($codicefiscalevaluta == $acquirente){
   header("Location: ../frontend/prodottiAcquistati.php?errore=errore");
   }
 } else {
-  $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`)
-            VALUES ('$codicefiscalevaluta', '$acquirente', '$serieta', '$puntualita')";
+  $query = "INSERT INTO `valutazione` (`codice_fiscale_valuta`, `codice_fiscale_valutato`, `serieta`, `puntualita`, `prodotto`)
+            VALUES ('$codicefiscalevaluta', '$acquirente', '$serieta', '$puntualita','$prodotto')";
   $data = mysqli_query($cid, $query);
 
   if ($data) {

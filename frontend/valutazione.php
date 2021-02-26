@@ -14,6 +14,7 @@
       $prodotto = $risultato['contenuto'];
       $risultato = contaOsservatori($cid, $codice);
       $osservatori = $risultato['contenuto'];
+      
 
     ?>
 
@@ -27,7 +28,7 @@
             <h4 class="nome-annuncio"> <?php echo Ucwords("$prodotto[0]"); ?> </h4>
             <h4 class="nome-prodotto" style="margin-top: 1rem;"> <?php echo Ucwords("$prodotto[1]"); ?> </h4>
 
-            <form action='../backend/valuta.php?codiceFiscaleValutato=<?php echo "$prodotto[12]";?>&codicefiscalevaluta=<?php echo "$codice_fiscale[0]"; ?>&acquirente=<?php echo "$prodotto[18]";?>' method='POST'>
+            <form action='../backend/valuta.php?codiceFiscaleValutato=<?php echo "$prodotto[12]";?>&codicefiscalevaluta=<?php echo "$codice_fiscale[0]"; ?>&acquirente=<?php echo "$prodotto[18]";?>&prodotto=<?php echo "$codice"; ?>' method='POST'>
 
               <label ><b>Puntalità</b></label><br/>
               <select class="form-control form-control-sm" name="puntualita" id="puntualita" style="width: 15% !important;" required>
