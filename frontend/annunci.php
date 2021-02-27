@@ -159,27 +159,14 @@
 
             if (isset($_POST['submit-search2'])){
               $search = mysqli_real_escape_string($cid,$_POST['search2']);
-              $sql1= "SELECT * FROM annuncio p WHERE p.nome_annuncio LIKE '%$search%' OR p.nome_prodotto LIKE '%$search%'";
-              // $sql1 = "SELECT DISTINCT *
-              //         FROM annuncio p, stato s
-              //         WHERE p.nome_annuncio  LIKE '%$search%' OR p.nome_prodotto LIKE '%$search%' AND p.codice=s.prodotto AND p.visibilita !='privata' AND s.stato ='in vendita' AND  p.codice NOT IN
-              //         	(SELECT s.prodotto
-              //         	 FROM stato s2
-              //          	 WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
-              $ricerca = array();
-              $ricerca2 = array();
-              $result = mysqli_query($cid,$sql1);
-              $j=0;
-              while ($row=$result->fetch_row()) {
-            			for ($i=0; $i < 19 ; $i++) {
-            				$ricerca[$i] = $row[$i];
-            			}
-                  $ricerca2[$j] = $ricerca;
-            			$j++;
-              }
-              print_r($ricerca);
-              echo "</br>";
-              print_r($ricerca2);
+
+              $sql = "SELECT *
+                      FROM annuncio p, stato s
+                      WHERE p.codice=s.prodotto AND (p.nome_annuncio LIKE '%$search%' OR p.nome_prodotto LIKE '%$search%') AND p.visibilita !='privata' AND s.stato ='in vendita' AND p.codice NOT IN
+                        (SELECT s.prodotto
+                        FROM stato s2
+                        WHERE p.codice = s2.prodotto and s.data_ora < s2.data_ora)";
+
             }
             if (isset($_GET['cat'])){
                 $cat = $_GET['cat'];
