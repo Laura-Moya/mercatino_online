@@ -25,10 +25,10 @@
     ?>
     <!-- Popup eliminaAccount -->
     <div class='form-popup2 container-registrazione' id='eliminaAccount'>
-      <form action='../backend/eliminaAccount.php' method='get'>
+      <form action='../backend/eliminaAccount.php?codiceFiscale=<?php echo $codice_fiscale[0];?>' method='get'>
       <h4>Sei sicuro di voler eliminare l'account? </h4>
 
-      <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;" href="../backend/eliminaAccount.php?codiceFiscale=<?php echo $codice_fiscale[0];?>">OK </a></button>
+      <button type='submit' class='btn btn-primary btn-login'> <a style="color: white !important;">OK </a></button>
       <button type='button' class='btn btn-primary btn-login' onclick='closeForm()'>Chiudi</button>
       </form>
     </div>
