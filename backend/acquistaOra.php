@@ -39,12 +39,12 @@
             $cvv = $_POST["cvv"];
             if ($intestatario=="" || $numero_carta=="" || $data_scadenza=="" || $cvv=="")
             {
-              header("Location: pagamento.php?errore=campivuoti&codice=".$codice);
+              header("Location: ../frontend/pagamento.php?errore=campivuoti&codice=".$codice);
               echo "1";
             }
             elseif (!is_numeric($numero_carta) || !is_numeric($cvv))
             {
-              header("Location: pagamento.php?errore=campierrati&codice=".$codice);
+              header("Location: ../frontend/pagamento.php?errore=campierrati&codice=".$codice);
               echo "2";
             }
             else
@@ -100,7 +100,7 @@
       }
       elseif (!is_numeric($numero_carta) || !is_numeric($cvv))
       {
-        header("Location: pagamento.php?errore=campierrati&codice=".$codice);
+        header("Location: ../frontend/pagamento.php?errore=campierrati&codice=".$codice);
       }
       else
       {
